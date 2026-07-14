@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "889699580291",
+    "project_id": "price-action-master-2023",
+    "storage_bucket": "price-action-master-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889699580291:android:eedc155ba266756c5fdeb6",
+        "android_client_info": {
+          "package_name": "br.com.tradingplan.priceactionmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889699580291-mhnsndk0j7lokviipg9esbncechrpi9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC56vTN59hHes3ia1LSvDAwUW42IyfUVA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889699580291-mhnsndk0j7lokviipg9esbncechrpi9b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "889699580291-js9t3nk0mqvmlcviaadd8da6o5mh5v1r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.tradingplan.priceactionmaster"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
