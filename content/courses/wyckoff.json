@@ -1,0 +1,421 @@
+{
+  "id": "wyckoff",
+  "title": "Teoria de Wyckoff",
+  "description": "Domine a metodologia profissional de leitura de fluxo institucional, manipulação de mercado e ciclos de acumulação e distribuição.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "wyckoff_m1",
+      "title": "O Homem Composto e as Três Leis",
+      "description": "Descubra quem foi Richard Wyckoff, aprenda o conceito do Homem Composto e as três leis fundamentais que regem o movimento dos preços.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "wyckoff_m1_l1",
+          "title": "Quem foi Wyckoff e o Homem Composto",
+          "content": "Richard Wyckoff (1873-1934) foi um pioneiro americano na análise técnica de ações. Ele percebeu que as oscilações do mercado não eram fruto do acaso, mas sim do comportamento de grandes players (bancos e instituições). Para facilitar a compreensão do mercado de varejo, ele criou a figura conceitual do **Homem Composto** (Composite Man), como se todo o mercado fosse comandado por uma única mente inteligente de forma planejada.\n\nO Homem Composto atua em quatro fases operacionais cíclicas:\n*   **Acumulação:** Compra silenciosa de ativos a preços baixos, de maneira fragmentada para não elevar o preço de uma vez.\n*   **Markup (Alta):** Fase de tendência de alta onde as ações são empurradas para cima após a escassez de oferta ser criada.\n*   **Distribuição:** Venda lenta das posições adquiridas no fundo para o público de varejo empolgado a preços altos.\n*   **Markdown (Baixa):** Queda expressiva de preços após a finalização das vendas das grandes instituições, induzindo o varejo ao pânico.\n\nO objetivo do trader profissional é alinhar seu comportamento ao do Homem Composto, comprando na acumulação e vendendo na distribuição."
+        },
+        {
+          "id": "wyckoff_m1_l2",
+          "title": "As Três Leis de Wyckoff",
+          "content": "A metodologia baseia-se em três leis fundamentais e universais da física econômica:\n\n1. **Lei da Oferta e Demanda:** É o motor dos preços. Quando a demanda excede a oferta, os preços sobem. Quando a oferta excede a demanda, os preços caem. O volume operacional valida a força desse movimento.\n2. **Lei da Causa e Efeito:** Uma variação de preço (efeito) nunca acontece por acaso; ela é precedida por uma fase de preparação (causa), que é a acumulação ou distribuição lateral. Quanto maior for o tempo de consolidação e o volume negociado na causa, maior e mais prolongado será o movimento de tendência resultante.\n3. **Lei do Esforço vs Resultado:** Mede a harmonia ou divergência entre o volume (esforço) e a variação do preço (resultado). Se há alto volume e a barra de preço desloca-se amplamente na direção do volume, há **harmonia** (continuação). Se há alto volume, mas a variação de preço é mínima (barra pequena ou doji), há **divergência** (indicação de absorção e reversão iminente)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "wyckoff_m1_e1",
+          "title": "Esforço vs Resultado no Topo",
+          "description": "O primeiro candle de alta exibe harmonia entre preço e volume. O segundo candle mostra divergência: volume extremo (esforço), mas o corpo do candle quase não se desloca (absorção de compras pela oferta institucional).",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.85,
+                "x2": 0.95,
+                "y2": 0.85,
+                "colorStyle": "text"
+              },
+              {
+                "type": "candle",
+                "cx": 0.30,
+                "cy": 0.40,
+                "x1": 0.08,
+                "y1": 0.20,
+                "y2": 0.05,
+                "content": "green"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.85,
+                "x2": 0.30,
+                "y2": 0.65,
+                "colorStyle": "success"
+              },
+              {
+                "type": "candle",
+                "cx": 0.70,
+                "cy": 0.25,
+                "x1": 0.08,
+                "y1": 0.02,
+                "y2": 0.08,
+                "content": "green"
+              },
+              {
+                "type": "line",
+                "x1": 0.70,
+                "y1": 0.85,
+                "x2": 0.70,
+                "y2": 0.40,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.15,
+                "y": 0.12,
+                "content": "Harmonia",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.55,
+                "y": 0.12,
+                "content": "Divergência",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "wyckoff_m1_ex1",
+          "instruction": "Avalie a relação esforço versus resultado no seu gráfico do simulador:",
+          "checklist": [
+            "Identifiquei uma vela de corpo estreito (pouco resultado) acompanhada por um volume acima da média (muito esforço).",
+            "Verifiquei se essa divergência ocorreu em um topo ou fundo estrutural.",
+            "Monitorei se a vela seguinte confirmou a reversão da tendência anterior."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "wyckoff_m1_q1",
+          "question": "Se o mercado apresenta um volume extremamente alto (forte esforço), mas a vela resultante possui um corpo muito pequeno (baixo resultado) próxima a uma resistência, o que isso indica segundo a metodologia de Wyckoff?",
+          "options": [
+            "Forte harmonia de alta, indicando que a tendência de alta deve continuar com força.",
+            "Divergência de esforço versus resultado, sugerindo que os grandes investidores estão secretamente absorvendo as compras (presença de oferta), o que pode levar a uma reversão de baixa.",
+            "Falta de interesse do mercado, indicando que a volatilidade vai zerar e o preço ficará parado."
+          ],
+          "correctIndex": 1,
+          "explanation": "Quando há alto volume (esforço) mas o preço quase não se desloca (baixo resultado), há divergência. Em uma resistência, isso demonstra que a pressão compradora foi absorvida pelas ordens de venda do Homem Composto, sinalizando uma provável reversão de baixa."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "wyckoff_m1_ch1",
+          "title": "Desafio do Diário de Volume",
+          "description": "Abra o seu gráfico no simulador de trading. Monitore 5 fechamentos consecutivos de candles e anote a relação de volume de cada um. Classifique cada candle como Harmonia ou Divergência entre a variação de preço e o volume correspondente."
+        }
+      ]
+    },
+    {
+      "id": "wyckoff_m2",
+      "title": "O Ciclo e as Estruturas",
+      "description": "Estude as fases clássicas de Acumulação e Distribuição, compreendendo eventos chaves como o Spring e os testes de liquidez.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "wyckoff_m2_l1",
+          "title": "Estrutura de Acumulação Clássica",
+          "content": "A **Acumulação** é a preparação estrutural para um mercado de alta. Ela se desenvolve em cinco fases lógicas:\n\n*   **Fase A:** Interrupção da tendência de baixa anterior. Contém o clímax de vendas (**Selling Climax - SC**), o repique automático (**Automatic Rally - AR**) e o teste secundário (**Secondary Test - ST**).\n*   **Fase B:** Construção da causa. O preço oscila dentro do range, gerando absorção institucional e lateralização.\n*   **Fase C:** O teste de liquidez. Ocorre o evento mais famoso: o **Spring**. Trata-se de um falso rompimento do suporte da consolidação, projetado para acionar os stops das posições de compra do varejo e capturar liquidez institucional.\n*   **Fase D:** Retomada direcional dentro da consolidação. Caracterizada por pontos de suporte mais altos (**LPS - Last Point of Support**) e sinais de força (**SOS - Sign of Strength**).\n*   **Fase E:** Saída da estrutura. O preço rompe a resistência e inicia a tendência de alta (Markup) fora do range."
+        },
+        {
+          "id": "wyckoff_m2_l2",
+          "title": "Estrutura de Distribuição Clássica",
+          "content": "A **Distribuição** é a preparação para o mercado de baixa (Markdown), onde os grandes investidores se desfazem de suas posições. O processo é o oposto simétrico da acumulação:\n\n*   **Fase A:** Parada da tendência de alta anterior por meio do Clímax de Compra (**Buying Climax - BC**), Reação Automática de queda (**Automatic Reaction - AR**) e Teste Secundário (**ST**).\n*   **Fase B:** Construção da causa de baixa, lateralizando as cotações e atraindo investidores atrasados do varejo.\n*   **Fase C:** Teste de liquidez superior por meio do **Upthrust (UT)** ou **Upthrust After Distribution (UTAD)**, onde o preço faz um rompimento falso da resistência superior para capturar stops de vendidos e preencher vendas institucionais.\n*   **Fase D:** Início da queda de reteste dentro do range, marcando o último ponto de oferta (**LPSY - Last Point of Supply**).\n*   **Fase E:** Saída final e início da forte tendência de baixa fora do range."
+        }
+      ],
+      "examples": [
+        {
+          "id": "wyckoff_m2_e1",
+          "title": "A Anatomia da Acumulação",
+          "description": "Ilustração geométrica de um range de acumulação. O preço testa o suporte e executa um rompimento falso (Spring) para capturar liquidez de stops antes de romper a resistência e subir.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.15,
+                "y1": 0.40,
+                "x2": 0.95,
+                "y2": 0.40,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.15,
+                "y1": 0.70,
+                "x2": 0.75,
+                "y2": 0.70,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.10,
+                "y": 0.36,
+                "content": "Resistência",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.10,
+                "y": 0.66,
+                "content": "Suporte",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "circle",
+                "cx": 0.72,
+                "cy": 0.85,
+                "r": 0.03,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.68,
+                "y": 0.95,
+                "content": "Spring",
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.30,
+                "x2": 0.20,
+                "y2": 0.70,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.20,
+                "y1": 0.70,
+                "x2": 0.30,
+                "y2": 0.40,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.40,
+                "x2": 0.45,
+                "y2": 0.70,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.70,
+                "x2": 0.55,
+                "y2": 0.45,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.55,
+                "y1": 0.45,
+                "x2": 0.65,
+                "y2": 0.68,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.68,
+                "x2": 0.72,
+                "y2": 0.85,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.72,
+                "y1": 0.85,
+                "x2": 0.85,
+                "y2": 0.30,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.85,
+                "y1": 0.30,
+                "x2": 0.90,
+                "y2": 0.40,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.90,
+                "y1": 0.40,
+                "x2": 0.98,
+                "y2": 0.15,
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "wyckoff_m2_ex1",
+          "instruction": "Mapeie uma fase de consolidação no simulador seguindo as etapas estruturais:",
+          "checklist": [
+            "Identifiquei a tendência de baixa prévia e o Clímax de Venda (SC).",
+            "Tracei as linhas de suporte e resistência do range a partir do SC e do Rally Automático (AR).",
+            "Localizei o Spring (rompimento falso da mínima) e aguardei o fechamento do preço de volta para dentro do range.",
+            "Aguardei o teste do Spring com volume decrescente antes de validar a estrutura de alta."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "wyckoff_m2_q1",
+          "question": "Qual é o principal propósito operacional do evento 'Spring' na Fase C de uma estrutura de acumulação de Wyckoff?",
+          "options": [
+            "Forçar o mercado a iniciar imediatamente uma forte e definitiva tendência de baixa (markdown).",
+            "Capturar a liquidez abaixo do suporte (acionando stops dos comprados e induzindo vendas adicionais) para que os grandes players montem suas posições compradoras a preços baixos.",
+            "Confirmar que a resistência da consolidação é forte e que o preço continuará em lateralização perpétua."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Spring é uma agitação (choque) que faz um falso rompimento do suporte. Ao romper a mínima do range, as instituições acionam as ordens de Stop Loss (venda) dos comprados do varejo e capturam a liquidez necessária para preencher suas próprias ordens gigantescas de compra."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "wyckoff_m2_ch1",
+          "title": "Desafio do Mapeador de Ciclos",
+          "description": "Encontre no histórico de gráficos do simulador uma fase de consolidação lateral que resultou em uma tendência de alta. Rotule no seu gráfico os pontos equivalentes ao Selling Climax (SC), Automatic Rally (AR), Spring e o rompimento final (SOS/BUEC)."
+        }
+      ]
+    },
+    {
+      "id": "wyckoff_m3",
+      "title": "Zonas Operacionais e Indicadores Auxiliares",
+      "description": "Domine as melhores posições para entrar na estrutura e como utilizar o Volume Profile e as Barras de Sinal a seu favor.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "wyckoff_m3_l1",
+          "title": "Posições Operacionais Principais",
+          "content": "A metodologia Wyckoff foca nas regiões de máxima probabilidade técnica e melhor retorno para as operações:\n\n*   **Entrada na Fase C (Spring/UTAD ou Teste):** Ocorre na extremidade da consolidação. Oferece a melhor relação Risco/Retorno do ciclo. Para mitigar o risco de rompimento real do suporte, a entrada ideal deve ser feita no **Teste do Spring** (reteste da mínima com volume secando, indicando exaustão de vendedores).\n*   **Entrada na Fase D (BUEC - Backup to Edge of Creek):** O preço rompe a resistência e faz um retorno corretivo para testar o topo rompido (que passa a funcionar como suporte). Apresenta a maior taxa de acerto do método, pois a direcionalidade de alta já está confirmada pelo mercado.\n*   **Entrada na Fase E:** O preço entra em forte tendência direcional fora do range. Opera-se com base em sub-estruturas menores a favor do ciclo maior."
+        },
+        {
+          "id": "wyckoff_m3_l2",
+          "title": "Volume Profile e Barras de Sinal",
+          "content": "Para obter confluência e validar as estruturas, Wyckoff utilizava a fita e o volume. Hoje, duas ferramentas auxiliam esse processo:\n\n*   **Volume Profile (Perfil de Volume):** Um indicador que mostra o volume negociado por faixa de preço, evidenciando o **POC (Point of Control)**. A POC atua como um ímã de liquidez e colchão de suporte/resistência onde os grandes players preencheram a maior parte de suas ordens.\n*   **Barras de Sinal por Volume:**\n    *   *Barra de Sinal de Demanda:* O preço cai, mas com volume muito reduzido, mostrando desinteresse vendedor e propensão a reverter.\n    *   *Barra de Sinal de Oferta:* O preço sobe, mas com volume seco, mostrando falta de demanda compradora.\n    *   *Barra de Esforço vs Resultado:* Alto volume associado a uma vela pequena, confirmando absorção."
+        }
+      ],
+      "examples": [
+        {
+          "id": "wyckoff_m3_e1",
+          "title": "O Teste do Rompimento (BUEC)",
+          "description": "Entrada cirúrgica no reteste da antiga resistência rompida (BUEC). O círculo verde destaca a confluência operacional onde o preço testa a região rompida antes da alta final.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.60,
+                "x2": 0.90,
+                "y2": 0.60,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.12,
+                "y": 0.55,
+                "content": "Resistência Rompida (Suporte)",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.20,
+                "y1": 0.75,
+                "x2": 0.45,
+                "y2": 0.35,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.35,
+                "x2": 0.65,
+                "y2": 0.60,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.60,
+                "x2": 0.85,
+                "y2": 0.20,
+                "colorStyle": "success"
+              },
+              {
+                "type": "circle",
+                "cx": 0.65,
+                "cy": 0.60,
+                "r": 0.035,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.68,
+                "y": 0.66,
+                "content": "Compra (BUEC)",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "wyckoff_m3_ex1",
+          "instruction": "Use ferramentas operacionais e configure uma entrada simulada baseada em Wyckoff:",
+          "checklist": [
+            "Identifiquei a quebra da estrutura de acumulação com um candle de alta expressivo (SOS).",
+            "Tracei a antiga linha de resistência que agora deve funcionar como suporte.",
+            "Aguardei o preço retornar a essa região (BUEC) com volume de queda secando.",
+            "Posicionei o Stop Loss ligeiramente abaixo do último ponto de suporte (LPS) da consolidação."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "wyckoff_m3_q1",
+          "question": "Segundo o comportamento das Barras de Sinal de Volume na metodologia de Wyckoff, o que uma 'Barra de Sinal de Demanda' (queda no preço com volume muito abaixo do normal) nos diz sobre a pressão de mercado?",
+          "options": [
+            "Os compradores desistiram e o preço vai cair em queda livre vertical indefinidamente.",
+            "Há uma exaustão dos vendedores (diminuição da pressão de venda), sugerindo que a demanda pode retomar o controle do preço facilmente devido à falta de contraparte vendedora.",
+            "O Homem Composto está distribuindo massivamente suas ações e gerando clímax de mercado."
+          ],
+          "correctIndex": 1,
+          "explanation": "Uma barra que cai com volume seco (menor que o normal) sinaliza falta de interesse dos vendedores em continuar vendendo a esses preços baixos. Sem pressão de venda, uma pequena entrada de fluxo de compra é suficiente para reverter a tendência."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "wyckoff_m3_ch1",
+          "title": "Desafio Operacional BUEC",
+          "description": "No simulador de trade do aplicativo, aguarde o rompimento de uma consolidação. Faça uma entrada de compra apenas quando o preço retornar à região rompida (BUEC) com volume decrescente, definindo o alvo de saída com pelo menos o dobro da distância do Stop Loss (R:R 1:2)."
+        }
+      ]
+    }
+  ]
+}

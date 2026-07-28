@@ -108,11 +108,30 @@ python tools/content_validator.py
     ```bash
     flutter test
     ```
-3.  Execute o aplicativo localmente (Web/Chrome ou simulador):
+3.  Identifique ou configure os dispositivos de execução:
+    *   **Listar dispositivos conectados:**
+        ```bash
+        flutter devices
+        ```
+    *   **Dispositivo Físico Android:**
+        1. No celular Android, ative o **Modo Desenvolvedor** (toque 7 vezes em *Número da versão* em *Sobre o telefone*).
+        2. Ative a **Depuração USB** nas *Opções do desenvolvedor*.
+        3. Conecte o aparelho ao PC via USB e aprove a janela de permissão da chave RSA no celular.
+    *   **Emulador Virtual (Android Studio):**
+        1. Crie um dispositivo virtual no **Device Manager** do Android Studio.
+        2. Inicialize o emulador (pode listar/iniciar via terminal usando `flutter emulators` e depois `flutter emulators --launch <nome_do_emulador>`).
+4.  Execute o aplicativo localmente no dispositivo desejado:
     ```bash
+    # Para rodar no primeiro dispositivo disponível (ou escolher em caso de múltiplos)
+    flutter run
+    
+    # Para forçar a execução em um dispositivo específico
+    flutter run -d <id_do_dispositivo>
+    
+    # Exemplo para Web
     flutter run -d chrome
     ```
-4.  Execute a análise estática do linter antes de submeter alterações:
+5.  Execute a análise estática do linter antes de submeter alterações:
     ```bash
     flutter analyze
     ```

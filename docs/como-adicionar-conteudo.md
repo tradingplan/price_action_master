@@ -73,3 +73,20 @@ Para adicionar perguntas de quiz, a estrutura padrão recomendada é:
 As imagens de suporte aos padrões (campo `"chart"`) podem ser configuradas de duas formas:
 1.  **URLs Online (Recomendado para manter o app leve):** Endereços HTTPS hospedados em serviços de armazenamento (como Firebase Storage ou AWS S3). O aplicativo utiliza cache automático, de modo que após a primeira abertura do app online, as imagens funcionam perfeitamente sem internet.
 2.  **Arquivos Locais (Offline total de fábrica):** Armazenar a imagem na pasta `assets/images/` e referenciar o caminho relativo no JSON (ex: `assets/images/hammer.png`).
+
+---
+
+## 4. Uso de Referências e Formatos Suportados pela IA
+Para adicionar novos conteúdos a partir de materiais de referência que você já possua (como PDFs, arquivos Markdown ou imagens), siga estas diretrizes:
+
+### Onde colocar os materiais de referência?
+- **No Workspace do Projeto (Recomendado):** Salve os materiais em uma pasta de referências dentro do seu próprio projeto (por exemplo, em `docs/references/` ou `assets/references/`). Isso me permite acessá-los diretamente, mantendo o repositório autocontido.
+- **Evite pastas de sistema:** Não coloque esses arquivos nos diretórios de configuração do agente (como `.agents/` ou na pasta global de `knowledge`), pois estes são reservados para regras de codificação e customizações da IA, e não para dados do aplicativo.
+
+### Formatos que a IA consegue analisar e processar:
+- **Textos e Dados:** `.md` (Markdown), `.json`, `.txt`, `.yaml`/`.yml`, `.csv`, etc.
+- **Documentos Estruturados:** `.pdf` (leitura completa do texto e do conteúdo).
+- **Imagens:** `.png`, `.jpg`, `.jpeg`, `.webp` (leitura visual de gráficos, mockups de UI e diagramas).
+- **Mídia:** formatos comuns de áudio e vídeo (caso precise validar fluxos ou animações).
+
+Basta colocar as referências na pasta do projeto e me pedir: *"Gere o JSON do curso X usando o arquivo docs/references/manual.pdf como fonte de informação."*
