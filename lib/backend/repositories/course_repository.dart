@@ -9,7 +9,7 @@ abstract class CourseRepository {
 
 class LocalCourseRepository implements CourseRepository {
   // Catálogo estático de cursos conhecidos pela plataforma
-  static const List<String> _courseIds = ['candlesticks', 'figuras', 'smc', 'elliott'];
+  static const List<String> _courseIds = ['candlesticks', 'figuras', 'smc', 'elliott', 'gestao_risco'];
 
   @override
   Future<List<PlatformCourse>> getAllCourses() async {
