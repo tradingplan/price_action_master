@@ -1,0 +1,3204 @@
+<!-- Home - Price Action Master -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Action Master | Terminal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        body {
+            background-color: #0f1413;
+            scrollbar-width: thin;
+            scrollbar-color: #3b494c transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b494c;
+            border-radius: 10px;
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(28, 33, 31, 0.7);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 229, 255, 0.1);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f1413",
+                        "on-secondary-container": "#dab36a",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#00e5ff",
+                        "inverse-primary": "#006875",
+                        "surface-variant": "#313635",
+                        "surface-container": "#1c211f",
+                        "on-tertiary-fixed": "#400009",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "outline": "#849396",
+                        "surface-container-lowest": "#0a0f0e",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "surface-container-highest": "#313635",
+                        "surface-dim": "#0f1413",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#b3082d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-primary-fixed": "#001f24",
+                        "primary": "#c3f5ff",
+                        "inverse-on-surface": "#2c3130",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed-variant": "#004f58",
+                        "background": "#0f1413",
+                        "tertiary": "#ffe7e6",
+                        "surface-tint": "#00daf3",
+                        "on-background": "#dfe3e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#181d1b",
+                        "surface-container-high": "#262b2a",
+                        "secondary": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#604403",
+                        "on-tertiary": "#680015",
+                        "surface-bright": "#353a39",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-surface": "#dfe3e1",
+                        "primary-fixed": "#9cf0ff",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-surface">
+    <!-- Top Navigation Anchor -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-variant transition-colors p-2 rounded-full">search</span>
+            <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">account_circle</span>
+        </div>
+    </header>
+    <main class="pt-20 pb-24 px-gutter max-w-container-max mx-auto">
+        <!-- Hero Section: Premium Terminal Welcome -->
+        <section
+            class="relative overflow-hidden mb-8 rounded-xl border border-outline-variant bg-surface-container h-64 flex flex-col justify-end p-6 group">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <div class="scanline"></div>
+                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    data-alt="A professional trading terminal dashboard displayed on high-resolution screens in a dimly lit, high-tech environment. The scene features glowing cyan candlesticks, complex price action charts, and gold technical indicators against a deep charcoal background. The atmosphere is sophisticated and focused, representing a high-stakes professional financial workspace with a clean, terminal-like aesthetic."
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-rsJxGhL9RSwoUb7ipSL91u5YBttfakXRVT3JzOrK7kyEdUfZkl7HPRZij-3CDV2USrZlruS5OqfgViP8yeX-1_eVBiIxvsWBjFXFQSpFc3Hqd2sPWMHDw3vUAsilwLSSOz3VXtmBrQvhj-58kK2pOYuIqF-7rrTEnKMDFuX5Bh2_sEjzzywvJOVXy8OIt4mVYJvzafI8iboKnfnEoIKtYrzs3bMZQLX2FNukXt2iaKHuVE5Pp0okN0RKT_yNU7JKT5FwfxClGv8')">
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent z-10"></div>
+            <div class="relative z-20">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                    <span class="font-label-caps text-label-caps text-primary tracking-widest">LIVE DATA TERMINAL</span>
+                </div>
+                <h2
+                    class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                    Master the <span class="text-primary italic">Price Flow</span></h2>
+                <p class="text-on-surface-variant max-w-md mt-2 font-mono-data">Execute high-precision technical
+                    analysis with the ultimate price action toolkit.</p>
+            </div>
+        </section>
+        <!-- Stats / Market Pulse Ticker (Micro Interaction) -->
+        <div class="flex gap-4 mb-8 overflow-x-auto no-scrollbar py-2">
+            <div
+                class="flex-none bg-surface-container-high border border-outline-variant p-3 px-5 rounded-lg flex items-center gap-4">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">BTC/USD</span>
+                <span class="font-mono-data text-primary">64,231.50</span>
+                <span class="text-[10px] text-primary bg-primary-container/10 px-1 rounded">+1.2%</span>
+            </div>
+            <div
+                class="flex-none bg-surface-container-high border border-outline-variant p-3 px-5 rounded-lg flex items-center gap-4">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">XAU/USD</span>
+                <span class="font-mono-data text-secondary">2,342.10</span>
+                <span class="text-[10px] text-secondary bg-secondary-container/10 px-1 rounded">-0.4%</span>
+            </div>
+            <div
+                class="flex-none bg-surface-container-high border border-outline-variant p-3 px-5 rounded-lg flex items-center gap-4">
+                <span class="font-label-caps text-label-caps text-on-surface-variant">EUR/USD</span>
+                <span class="font-mono-data text-primary">1.0854</span>
+                <span class="text-[10px] text-primary bg-primary-container/10 px-1 rounded">+0.1%</span>
+            </div>
+        </div>
+        <!-- Main Navigation Menu List -->
+        <div class="space-y-3">
+            <h3 class="font-label-caps text-label-caps text-outline px-2 mb-4">MODULES &amp; SYSTEMS</h3>
+            <!-- Technical Analysis -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">analytics</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Análise Técnica</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Level:
+                            Professional</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Chart Figures -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary-container/10 border border-secondary-container/20">
+                        <span class="material-symbols-outlined text-secondary">stacked_line_chart</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Figuras Gráficas</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Patterns
+                            identified</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Candlesticks -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">candlestick_chart</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Candlesticks</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Visual
+                            dictionary</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- SMC -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">architecture</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Smart Money Concepts
+                            (SMC)</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Institutional
+                            flow</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Elliott -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">show_chart</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Ondas de Elliott</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Fractal
+                            Wave Theory</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Calculators -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary-container/10 border border-secondary-container/20">
+                        <span class="material-symbols-outlined text-secondary">calculate</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Calculadoras</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Risk
+                            &amp; Lot Size</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Quiz -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">psychology</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Quiz de Trade</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Test
+                            your mastery</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Simulator -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-container/10 border border-primary-container/20">
+                        <span class="material-symbols-outlined text-primary">terminal</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-on-surface">Simulador</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-surface-variant uppercase tracking-wider">Backtesting
+                            Engine</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline">chevron_right</span>
+            </button>
+            <!-- Tarot Trader -->
+            <button
+                class="w-full flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl border-dashed border-secondary/40 hover:bg-surface-variant transition-all active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary-container/20 border border-secondary/30">
+                        <span class="material-symbols-outlined text-secondary">auto_awesome</span>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-title-sm text-title-sm text-secondary">Tarot Trader</span>
+                        <span
+                            class="block font-mono-data text-[12px] text-on-secondary-container uppercase tracking-wider">Psychology
+                            &amp; Insight</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-secondary">chevron_right</span>
+            </button>
+        </div>
+        <!-- Featured Section -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-surface-container-highest border border-outline-variant p-6 rounded-xl flex flex-col gap-4">
+                <div class="flex justify-between items-start">
+                    <span
+                        class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-lg">history</span>
+                    <span class="font-mono-data text-[10px] bg-outline-variant/30 px-2 py-1 rounded">V.2.0.4</span>
+                </div>
+                <h4 class="font-title-sm text-title-sm">Continue Learning</h4>
+                <div class="w-full bg-surface-variant rounded-full h-1.5">
+                    <div class="bg-primary h-full rounded-full" style="width: 65%"></div>
+                </div>
+                <p class="font-mono-data text-[12px] text-on-surface-variant">SMC Order Blocks: 12/18 lessons complete.
+                </p>
+            </div>
+            <div class="bg-primary-container text-on-primary-container p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <h4 class="font-headline-md text-headline-md leading-tight mb-2">Upgrade to Pro Terminal</h4>
+                    <p class="font-body-md opacity-90">Unlock daily market bias and institutional order flow monitoring.
+                    </p>
+                </div>
+                <button
+                    class="mt-4 w-full py-3 bg-surface text-on-surface font-bold uppercase tracking-widest text-[12px] rounded-lg">Subscribe
+                    Now</button>
+            </div>
+        </div>
+    </main>
+    <!-- Bottom Navigation Shell -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 scale-95 active:scale-90 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined fill-icon">home</span>
+            <span class="font-label-caps text-[10px] mt-0.5">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-[10px] mt-0.5">Education</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-[10px] mt-0.5">Tools</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-[10px] mt-0.5">Quiz</span>
+        </a>
+    </nav>
+    <!-- Micro-interaction Script -->
+    <script>
+        // Subtle flicker effect for live data
+        setInterval(() => {
+            const dataItems = document.querySelectorAll('.font-mono-data.text-primary, .font-mono-data.text-secondary');
+            const target = dataItems[Math.floor(Math.random() * dataItems.length)];
+            target.style.opacity = '0.5';
+            setTimeout(() => {
+                target.style.opacity = '1';
+                // Randomly drift values slightly for realism
+                const val = parseFloat(target.innerText.replace(',', ''));
+                if (!isNaN(val)) {
+                    const drift = (Math.random() - 0.5) * 0.01 * val;
+                    const newVal = (val + drift).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+                    target.innerText = newVal;
+                }
+            }, 100);
+        }, 3000);
+
+        // Hover Glow Effect
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                btn.style.setProperty('--mouse-x', `${x}px`);
+                btn.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- Calculadoras -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Action Master - Calculadoras</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1413;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b494c;
+        }
+
+        .glow-cyan {
+            box-shadow: inset 0 1px 0 0 rgba(0, 229, 255, 0.2);
+        }
+
+        .terminal-grid {
+            background-image: radial-gradient(circle, #1c2524 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f1413",
+                        "on-secondary-container": "#dab36a",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#00e5ff",
+                        "inverse-primary": "#006875",
+                        "surface-variant": "#313635",
+                        "surface-container": "#1c211f",
+                        "on-tertiary-fixed": "#400009",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "outline": "#849396",
+                        "surface-container-lowest": "#0a0f0e",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "surface-container-highest": "#313635",
+                        "surface-dim": "#0f1413",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#b3082d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-primary-fixed": "#001f24",
+                        "primary": "#c3f5ff",
+                        "inverse-on-surface": "#2c3130",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed-variant": "#004f58",
+                        "background": "#0f1413",
+                        "tertiary": "#ffe7e6",
+                        "surface-tint": "#00daf3",
+                        "on-background": "#dfe3e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#181d1b",
+                        "surface-container-high": "#262b2a",
+                        "secondary": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#604403",
+                        "on-tertiary": "#680015",
+                        "surface-bright": "#353a39",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-surface": "#dfe3e1",
+                        "primary-fixed": "#9cf0ff",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md terminal-grid min-h-screen">
+    <!-- Top Navigation Shell -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:bg-surface-variant transition-colors p-2 rounded">menu</span>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span
+                class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-variant p-2 rounded">account_circle</span>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto">
+        <!-- Header Section -->
+        <section class="mb-12 border-l-2 border-primary-container pl-6">
+            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">
+                Calculadoras</h2>
+            <p class="font-mono-data text-mono-data text-on-surface-variant mt-2 max-w-xl">
+                Ferramentas de precisão para sua gestão de risco. Execute cálculos de lotagem e pontos instantaneamente
+                seguindo os parâmetros da B3.
+            </p>
+        </section>
+        <!-- Calculators Feed -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Card 1: Dolar Cheio -->
+            <article
+                class="bg-surface-container border border-outline-variant rounded-lg p-6 glow-cyan transition-all hover:border-primary/40 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3
+                            class="font-title-sm text-title-sm text-primary group-hover:text-primary-fixed transition-colors">
+                            DOL - DÓLAR CHEIO</h3>
+                        <div class="flex gap-3 mt-2">
+                            <span
+                                class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-0.5 rounded border border-secondary/20">R$
+                                50/ponto</span>
+                            <span
+                                class="font-label-caps text-label-caps bg-outline-variant/20 text-on-surface-variant px-2 py-0.5 rounded border border-outline-variant/30">2
+                                tick/ponto</span>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-outline">calculate</span>
+                </div>
+                <div class="space-y-6">
+                    <!-- Inputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Contratos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="5" />
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Pontos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="10" />
+                        </div>
+                    </div>
+                    <!-- Outputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="bg-on-tertiary-fixed-variant/40 border border-on-tertiary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span class="font-label-caps text-label-caps text-tertiary-fixed/80 uppercase mb-1">TOTAL
+                                TICKS</span>
+                            <span class="font-mono-data text-headline-md text-white">20</span>
+                        </div>
+                        <div
+                            class="bg-on-primary-fixed-variant/40 border border-on-primary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span
+                                class="font-label-caps text-label-caps text-primary/80 uppercase mb-1">RESULTADO</span>
+                            <span class="font-mono-data text-headline-md text-primary-container">R$ 2.500,00</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Card 2: Mini Indice -->
+            <article
+                class="bg-surface-container border border-outline-variant rounded-lg p-6 glow-cyan transition-all hover:border-primary/40 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3
+                            class="font-title-sm text-title-sm text-primary group-hover:text-primary-fixed transition-colors">
+                            WIN - MINI ÍNDICE</h3>
+                        <div class="flex gap-3 mt-2">
+                            <span
+                                class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-0.5 rounded border border-secondary/20">R$
+                                0.20/ponto</span>
+                            <span
+                                class="font-label-caps text-label-caps bg-outline-variant/20 text-on-surface-variant px-2 py-0.5 rounded border border-outline-variant/30">5
+                                tick/ponto</span>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-outline">calculate</span>
+                </div>
+                <div class="space-y-6">
+                    <!-- Inputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Contratos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="1" />
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Pontos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="500" />
+                        </div>
+                    </div>
+                    <!-- Outputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="bg-on-tertiary-fixed-variant/40 border border-on-tertiary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span class="font-label-caps text-label-caps text-tertiary-fixed/80 uppercase mb-1">TOTAL
+                                TICKS</span>
+                            <span class="font-mono-data text-headline-md text-white">100</span>
+                        </div>
+                        <div
+                            class="bg-on-primary-fixed-variant/40 border border-on-primary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span
+                                class="font-label-caps text-label-caps text-primary/80 uppercase mb-1">RESULTADO</span>
+                            <span class="font-mono-data text-headline-md text-primary-container">R$ 100,00</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Card 3: Mini Dolar (Example) -->
+            <article
+                class="bg-surface-container border border-outline-variant rounded-lg p-6 glow-cyan transition-all hover:border-primary/40 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3
+                            class="font-title-sm text-title-sm text-primary group-hover:text-primary-fixed transition-colors">
+                            WDO - MINI DÓLAR</h3>
+                        <div class="flex gap-3 mt-2">
+                            <span
+                                class="font-label-caps text-label-caps bg-secondary/10 text-secondary px-2 py-0.5 rounded border border-secondary/20">R$
+                                10/ponto</span>
+                            <span
+                                class="font-label-caps text-label-caps bg-outline-variant/20 text-on-surface-variant px-2 py-0.5 rounded border border-outline-variant/30">2
+                                tick/ponto</span>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-outline">calculate</span>
+                </div>
+                <div class="space-y-6">
+                    <!-- Inputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Contratos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="10" />
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label
+                                class="font-label-caps text-label-caps text-on-surface-variant uppercase">Pontos</label>
+                            <input
+                                class="bg-transparent border-b border-outline focus:border-primary-container focus:ring-0 text-primary font-mono-data text-headline-md py-1 transition-all outline-none"
+                                placeholder="0" type="number" value="5" />
+                        </div>
+                    </div>
+                    <!-- Outputs -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="bg-on-tertiary-fixed-variant/40 border border-on-tertiary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span class="font-label-caps text-label-caps text-tertiary-fixed/80 uppercase mb-1">TOTAL
+                                TICKS</span>
+                            <span class="font-mono-data text-headline-md text-white">10</span>
+                        </div>
+                        <div
+                            class="bg-on-primary-fixed-variant/40 border border-on-primary-fixed-variant p-4 rounded flex flex-col justify-center">
+                            <span
+                                class="font-label-caps text-label-caps text-primary/80 uppercase mb-1">RESULTADO</span>
+                            <span class="font-mono-data text-headline-md text-primary-container">R$ 500,00</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Custom Setup (Placeholder) -->
+            <article
+                class="bg-surface-container-low border border-dashed border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+                <span class="material-symbols-outlined text-4xl text-primary mb-4">add_box</span>
+                <h3 class="font-title-sm text-title-sm text-primary mb-2">SETUP PERSONALIZADO</h3>
+                <p class="font-label-caps text-label-caps text-on-surface-variant">Calcule lotagem para outros ativos ou
+                    corretoras</p>
+            </article>
+        </div>
+        <!-- Contract Specifications Link -->
+        <footer
+            class="mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+            <a class="flex items-center gap-2 text-primary font-label-caps text-label-caps hover:text-primary-fixed transition-colors"
+                href="#">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                ESPECIFICAÇÕES DO CONTRATO
+            </a>
+            <div class="flex items-center gap-6 text-on-surface-variant font-mono-data text-[10px]">
+                <span class="flex items-center gap-1"><span
+                        class="w-1 h-1 bg-primary-container rounded-full animate-pulse"></span> B3 SERVIDOR:
+                    CONECTADO</span>
+                <span>LATÊNCIA: 12ms</span>
+            </div>
+        </footer>
+    </main>
+    <!-- Bottom Navigation Bar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant md:hidden">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-label-caps">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-label-caps">Education</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-label-caps">Tools</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-label-caps">Quiz</span>
+        </a>
+    </nav>
+    <!-- Navigation Drawer (Desktop/Side) -->
+    <aside
+        class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 overflow-y-auto bg-surface-container-high w-80 border-r border-outline-variant shadow-2xl transition-transform -translate-x-full md:hidden"
+        id="nav-drawer">
+        <div class="flex justify-between items-center mb-8">
+            <span class="font-mono-data text-mono-data text-primary">TERMINAL MENU</span>
+            <span class="material-symbols-outlined cursor-pointer hover:text-primary"
+                onclick="document.getElementById('nav-drawer').classList.add('-translate-x-full')">close</span>
+        </div>
+        <nav class="space-y-1">
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-mono-data text-mono-data">Análise Técnica</span>
+            </a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#">
+                <span class="material-symbols-outlined">stacked_line_chart</span>
+                <span class="font-mono-data text-mono-data">Figuras Gráficas</span>
+            </a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#">
+                <span class="material-symbols-outlined">candlestick_chart</span>
+                <span class="font-mono-data text-mono-data">Candlesticks</span>
+            </a>
+            <a class="flex items-center gap-4 p-3 bg-primary/10 text-primary border-l-2 border-primary rounded-r transition-all"
+                href="#">
+                <span class="material-symbols-outlined">calculate</span>
+                <span class="font-mono-data text-mono-data">Calculadoras</span>
+            </a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#">
+                <span class="material-symbols-outlined">psychology</span>
+                <span class="font-mono-data text-mono-data">Quiz</span>
+            </a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                <span class="font-mono-data text-mono-data">Tarot Trader</span>
+            </a>
+        </nav>
+    </aside>
+    <script>
+        // Interactive Calculations Logic
+        document.querySelectorAll('article').forEach(card => {
+            const inputs = card.querySelectorAll('input');
+            if (inputs.length === 0) return;
+
+            const updateCalc = () => {
+                const contratos = parseFloat(inputs[0].value) || 0;
+                const pontos = parseFloat(inputs[1].value) || 0;
+
+                const title = card.querySelector('h3').innerText;
+                const ticksElement = card.querySelectorAll('.font-mono-data.text-headline-md')[0];
+                const resultElement = card.querySelectorAll('.font-mono-data.text-headline-md')[1];
+
+                let ratio = 0;
+                let valPerPoint = 0;
+
+                if (title.includes('DOL')) {
+                    ratio = 2; // 2 ticks per point
+                    valPerPoint = 50;
+                } else if (title.includes('WIN')) {
+                    ratio = 5; // 5 ticks per point
+                    valPerPoint = 0.20;
+                } else if (title.includes('WDO')) {
+                    ratio = 2;
+                    valPerPoint = 10;
+                }
+
+                const ticks = pontos * ratio;
+                const result = contratos * pontos * valPerPoint;
+
+                ticksElement.innerText = ticks.toLocaleString('pt-BR');
+                resultElement.innerText = `R$ ${result.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            };
+
+            inputs.forEach(input => input.addEventListener('input', updateCalc));
+        });
+
+        // Drawer Toggle (Example utility)
+        document.querySelector('header span.material-symbols-outlined').addEventListener('click', () => {
+            document.getElementById('nav-drawer').classList.toggle('-translate-x-full');
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- Candlesticks Category -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #0f1413;
+            color: #dfe3e1;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .technical-grid {
+            background-image: radial-gradient(circle at 2px 2px, #1c2524 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .glass-header {
+            background: rgba(15, 20, 19, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .candle-glow-up {
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+        }
+
+        .candle-glow-down {
+            filter: drop-shadow(0 0 8px rgba(255, 180, 171, 0.4));
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f1413",
+                        "on-secondary-container": "#dab36a",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#00e5ff",
+                        "inverse-primary": "#006875",
+                        "surface-variant": "#313635",
+                        "surface-container": "#1c211f",
+                        "on-tertiary-fixed": "#400009",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "outline": "#849396",
+                        "surface-container-lowest": "#0a0f0e",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "surface-container-highest": "#313635",
+                        "surface-dim": "#0f1413",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#b3082d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-primary-fixed": "#001f24",
+                        "primary": "#c3f5ff",
+                        "inverse-on-surface": "#2c3130",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed-variant": "#004f58",
+                        "background": "#0f1413",
+                        "tertiary": "#ffe7e6",
+                        "surface-tint": "#00daf3",
+                        "on-background": "#dfe3e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#181d1b",
+                        "surface-container-high": "#262b2a",
+                        "secondary": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#604403",
+                        "on-tertiary": "#680015",
+                        "surface-bright": "#353a39",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-surface": "#dfe3e1",
+                        "primary-fixed": "#9cf0ff",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface technical-grid min-h-screen pb-20 md:pb-0 md:pl-80">
+    <!-- Top Navigation Bar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant transition-colors md:left-80 md:w-[calc(100%-320px)]">
+        <div class="flex items-center gap-4">
+            <button
+                class="md:hidden text-primary cursor-pointer active:opacity-80 p-2 hover:bg-surface-variant transition-colors rounded-lg">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span
+                class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 p-2 hover:bg-surface-variant transition-colors rounded-lg">account_circle</span>
+        </div>
+    </header>
+    <!-- Desktop Navigation Drawer -->
+    <aside
+        class="hidden md:flex fixed inset-y-0 left-0 z-[60] w-80 bg-surface-container-high border-r border-outline-variant flex-col p-6 overflow-y-auto shadow-2xl">
+        <div class="mb-8">
+            <h2 class="font-mono-data text-mono-data text-on-surface-variant tracking-widest uppercase mb-4 opacity-50">
+                TERMINAL MENU</h2>
+            <div class="flex flex-col space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">analytics</span> Análise Técnica
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">stacked_line_chart</span> Figuras Gráficas
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data bg-primary/10 text-primary border-l-2 border-primary transition-all duration-200 ease-in-out rounded-r-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">candlestick_chart</span> Candlesticks
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">architecture</span> SMC
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">show_chart</span> Elliott
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">calculate</span> Calculadoras
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">psychology</span> Quiz
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">terminal</span> Simulador
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 font-mono-data text-mono-data text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined">auto_awesome</span> Tarot Trader
+                </a>
+            </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-outline-variant">
+            <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+                <p class="font-label-caps text-label-caps text-primary mb-2">LIVE SESSION</p>
+                <div class="flex items-center justify-between">
+                    <span class="font-mono-data text-xs text-on-surface-variant">NASDAQ 100</span>
+                    <span class="font-mono-data text-xs text-primary">+1.24%</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="pt-24 px-gutter md:px-margin-desktop max-w-container-max mx-auto">
+        <section class="mb-12">
+            <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div>
+                    <span class="font-label-caps text-label-caps text-primary uppercase mb-2 block">Educação
+                        Técnica</span>
+                    <h2
+                        class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                        Morfologia de <br /><span class="text-primary-container">Candlesticks</span></h2>
+                </div>
+                <div class="flex gap-2">
+                    <span
+                        class="px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full font-mono-data text-xs text-on-surface-variant flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Alta Precisão
+                    </span>
+                    <span
+                        class="px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full font-mono-data text-xs text-on-surface-variant flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Price Action Pure
+                    </span>
+                </div>
+            </header>
+            <!-- Patterns Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card: Martelo -->
+                <div
+                    class="group bg-surface-container border border-outline-variant rounded-xl p-6 hover:border-primary-container transition-all duration-300 flex flex-col items-center text-center cursor-pointer">
+                    <div
+                        class="w-full aspect-square bg-surface-container-lowest rounded-lg mb-6 flex items-center justify-center border border-outline-variant group-hover:bg-primary-container/5 transition-colors overflow-hidden relative">
+                        <svg class="w-32 h-32 candle-glow-up" viewbox="0 0 100 100">
+                            <!-- Long shadow -->
+                            <line class="text-primary-container" stroke="currentColor" stroke-width="1" x1="50" x2="50"
+                                y1="20" y2="90"></line>
+                            <!-- Small Body at the top -->
+                            <rect class="text-primary-container" fill="currentColor" height="12" width="16" x="42"
+                                y="20"></rect>
+                        </svg>
+                        <span
+                            class="absolute top-2 right-2 font-mono-data text-[10px] text-on-surface-variant opacity-40">REF:
+                            CM-01</span>
+                    </div>
+                    <h3 class="font-title-sm text-title-sm text-on-surface mb-2">Martelo (Hammer)</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm">Sinal de reversão altista
+                        caracterizado por uma longa sombra inferior e corpo pequeno no topo.</p>
+                </div>
+                <!-- Card: Estrela Cadente -->
+                <div
+                    class="group bg-surface-container border border-outline-variant rounded-xl p-6 hover:border-error transition-all duration-300 flex flex-col items-center text-center cursor-pointer">
+                    <div
+                        class="w-full aspect-square bg-surface-container-lowest rounded-lg mb-6 flex items-center justify-center border border-outline-variant group-hover:bg-error/5 transition-colors overflow-hidden relative">
+                        <svg class="w-32 h-32 candle-glow-down" viewbox="0 0 100 100">
+                            <!-- Long shadow top -->
+                            <line class="text-error" stroke="currentColor" stroke-width="1" x1="50" x2="50" y1="10"
+                                y2="80"></line>
+                            <!-- Small Body at the bottom -->
+                            <rect class="text-error" fill="currentColor" height="12" width="16" x="42" y="68"></rect>
+                        </svg>
+                        <span
+                            class="absolute top-2 right-2 font-mono-data text-[10px] text-on-surface-variant opacity-40">REF:
+                            CM-02</span>
+                    </div>
+                    <h3 class="font-title-sm text-title-sm text-on-surface mb-2">Estrela Cadente</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm">Padrão de reversão de baixa que
+                        ocorre após um rali, com longa sombra superior.</p>
+                </div>
+                <!-- Card: Doji -->
+                <div
+                    class="group bg-surface-container border border-outline-variant rounded-xl p-6 hover:border-outline transition-all duration-300 flex flex-col items-center text-center cursor-pointer">
+                    <div
+                        class="w-full aspect-square bg-surface-container-lowest rounded-lg mb-6 flex items-center justify-center border border-outline-variant group-hover:bg-on-surface/5 transition-colors overflow-hidden relative">
+                        <svg class="w-32 h-32 opacity-80" viewbox="0 0 100 100">
+                            <!-- Symmetrical shadows -->
+                            <line class="text-on-surface" stroke="currentColor" stroke-width="1" x1="50" x2="50" y1="20"
+                                y2="80"></line>
+                            <!-- Flat line body -->
+                            <line class="text-on-surface" stroke="currentColor" stroke-width="2" x1="40" x2="60" y1="50"
+                                y2="50"></line>
+                        </svg>
+                        <span
+                            class="absolute top-2 right-2 font-mono-data text-[10px] text-on-surface-variant opacity-40">REF:
+                            CM-03</span>
+                    </div>
+                    <h3 class="font-title-sm text-title-sm text-on-surface mb-2">Doji</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm">Representa indecisão do mercado
+                        onde os preços de abertura e fechamento são praticamente idênticos.</p>
+                </div>
+                <!-- Card: Engolfo de Alta -->
+                <div
+                    class="group bg-surface-container border border-outline-variant rounded-xl p-6 hover:border-primary-container transition-all duration-300 flex flex-col items-center text-center cursor-pointer">
+                    <div
+                        class="w-full aspect-square bg-surface-container-lowest rounded-lg mb-6 flex items-center justify-center border border-outline-variant group-hover:bg-primary-container/5 transition-colors overflow-hidden relative">
+                        <svg class="w-32 h-32" viewbox="0 0 100 100">
+                            <!-- Small Bearish Candle -->
+                            <rect class="text-error opacity-40" fill="currentColor" height="20" width="12" x="35"
+                                y="45"></rect>
+                            <!-- Large Bullish Candle (Engulfing) -->
+                            <rect class="text-primary-container candle-glow-up" fill="currentColor" height="50"
+                                width="12" x="53" y="30"></rect>
+                        </svg>
+                        <span
+                            class="absolute top-2 right-2 font-mono-data text-[10px] text-on-surface-variant opacity-40">REF:
+                            CM-04</span>
+                    </div>
+                    <h3 class="font-title-sm text-title-sm text-on-surface mb-2">Engolfo de Alta</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm">Um forte candle comprador que
+                        "engole" completamente o corpo do candle vendedor anterior.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Technical Note -->
+        <div class="mt-12 p-6 bg-surface-container-low border border-outline-variant rounded-xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary-container">info</span>
+            <div>
+                <p class="font-title-sm text-sm text-on-surface mb-1">Nota de Execução</p>
+                <p class="font-body-md text-xs text-on-surface-variant">Padronize a análise em tempos gráficos
+                    superiores (H1+) para maior confiabilidade estatística. O contexto do Price Action deve sempre
+                    prevalecer sobre a figura isolada.</p>
+            </div>
+        </div>
+    </main>
+    <!-- Mobile Navigation Bar -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-[10px] mt-1 uppercase">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 transition-all active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-[10px] mt-1 uppercase">Education</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-[10px] mt-1 uppercase">Tools</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-[10px] mt-1 uppercase">Quiz</span>
+        </a>
+    </nav>
+    <script>
+        // Micro-interactions for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- Pattern Detail - Hammer -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .inner-glow-cyan {
+            box-shadow: inset 0 1px 0 0 rgba(0, 229, 255, 0.3);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 229, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            animation: move-scanline 8s linear infinite;
+        }
+
+        @keyframes move-scanline {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        body {
+            background-color: #0f1413;
+            scrollbar-width: thin;
+            scrollbar-color: #3b494c #0f1413;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f1413",
+                        "on-secondary-container": "#dab36a",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#00e5ff",
+                        "inverse-primary": "#006875",
+                        "surface-variant": "#313635",
+                        "surface-container": "#1c211f",
+                        "on-tertiary-fixed": "#400009",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "outline": "#849396",
+                        "surface-container-lowest": "#0a0f0e",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "surface-container-highest": "#313635",
+                        "surface-dim": "#0f1413",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#b3082d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-primary-fixed": "#001f24",
+                        "primary": "#c3f5ff",
+                        "inverse-on-surface": "#2c3130",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed-variant": "#004f58",
+                        "background": "#0f1413",
+                        "tertiary": "#ffe7e6",
+                        "surface-tint": "#00daf3",
+                        "on-background": "#dfe3e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#181d1b",
+                        "surface-container-high": "#262b2a",
+                        "secondary": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#604403",
+                        "on-tertiary": "#680015",
+                        "surface-bright": "#353a39",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-surface": "#dfe3e1",
+                        "primary-fixed": "#9cf0ff",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen overflow-x-hidden">
+    <div class="scanline"></div>
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <button
+                class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 p-2 hover:bg-surface-variant transition-colors rounded">arrow_back</button>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span
+                class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-variant transition-colors rounded">bookmark</span>
+            <span
+                class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-variant transition-colors rounded">account_circle</span>
+        </div>
+    </header>
+    <main class="pt-24 pb-24 md:pb-8 px-gutter max-w-container-max mx-auto">
+        <!-- Header & Breadcrumb -->
+        <div class="mb-8">
+            <div class="flex items-center gap-2 mb-2">
+                <span
+                    class="font-label-caps text-label-caps text-primary bg-primary-container/10 px-2 py-0.5 rounded">CANDLESTICKS</span>
+                <span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">ALTAS</span>
+            </div>
+            <h2
+                class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase tracking-tight">
+                Martelo / Hammer</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Hero Graphic Card -->
+            <section class="md:col-span-7 lg:col-span-8 flex flex-col gap-6">
+                <div
+                    class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden relative inner-glow-cyan">
+                    <!-- Technical Background Grid -->
+                    <div class="absolute inset-0 opacity-10 pointer-events-none"
+                        style="background-image: linear-gradient(#849396 1px, transparent 1px), linear-gradient(90deg, #849396 1px, transparent 1px); background-size: 40px 40px;">
+                    </div>
+                    <div class="relative h-[400px] flex items-center justify-center p-8">
+                        <!-- Hammer Visualization -->
+                        <div class="flex flex-col items-center">
+                            <!-- Small wick top -->
+                            <div class="w-[2px] h-4 bg-outline opacity-30 mb-[-1px]"></div>
+                            <!-- Body -->
+                            <div
+                                class="w-24 h-20 bg-primary-container border-2 border-primary-container/50 flex items-center justify-center">
+                                <span class="font-mono-data text-mono-data text-on-primary-container">BODY</span>
+                            </div>
+                            <!-- Long Shadow -->
+                            <div
+                                class="w-[3px] h-48 bg-primary-container shadow-[0_0_15px_rgba(0,229,255,0.4)] relative">
+                                <div class="absolute -right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                                    <div class="w-8 h-[1px] bg-primary"></div>
+                                    <span class="font-mono-data text-mono-data text-primary text-[10px]">MINIMA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Technical Annotation Layer -->
+                        <div class="absolute bottom-8 left-8 flex flex-col gap-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-primary-container"></div>
+                                <span class="font-label-caps text-label-caps text-on-surface">Padrão de Reversão
+                                    Autista</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-secondary"></div>
+                                <span class="font-label-caps text-label-caps text-on-surface">Ocorre em Tendência de
+                                    Baixa</span>
+                            </div>
+                        </div>
+                        <!-- Data Chip Overlay -->
+                        <div class="absolute top-8 right-8 flex flex-col items-end">
+                            <div
+                                class="bg-surface-container-highest border border-outline-variant p-4 flex flex-col gap-1">
+                                <span
+                                    class="font-label-caps text-label-caps text-on-surface-variant">VOLATILIDADE</span>
+                                <span class="font-mono-data text-headline-md text-primary">ALTA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Footer: Metadata -->
+                    <div
+                        class="border-t border-outline-variant bg-surface-container-high px-6 py-4 flex justify-between items-center">
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="material-symbols-outlined text-primary text-sm">precision_manufacturing</span>
+                                <span class="font-mono-data text-mono-data text-on-surface-variant">Relação Sombra:Body
+                                    > 2:1</span>
+                            </div>
+                        </div>
+                        <button
+                            class="flex items-center gap-2 font-label-caps text-label-caps text-primary hover:opacity-80 transition-opacity">
+                            <span class="material-symbols-outlined text-sm">open_in_full</span>
+                            EXPANDIR TERMINAL
+                        </button>
+                    </div>
+                </div>
+                <!-- Descrição Técnica -->
+                <div class="bg-surface-container-low border border-outline-variant p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary">subject</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface">Descrição Técnica</h3>
+                    </div>
+                    <div class="font-body-md text-body-md text-on-surface-variant space-y-4 max-w-3xl">
+                        <p>
+                            O <strong class="text-on-surface">Martelo (Hammer)</strong> é um padrão de candle individual
+                            que sinaliza uma potencial reversão de alta após uma tendência de queda estabelecida. Sua
+                            anatomia é caracterizada por um corpo pequeno na parte superior da amplitude do período e
+                            uma sombra inferior longa que deve ser, no mínimo, o dobro do tamanho do corpo.
+                        </p>
+                        <p>
+                            Psicologicamente, o Martelo representa uma tentativa agressiva dos vendedores de empurrar o
+                            preço para novas mínimas, mas que é prontamente rejeitada por uma entrada massiva de
+                            compradores. O fechamento próximo à máxima do período demonstra que os touros recuperaram o
+                            controle total da narrativa intradiária, deixando os vendedores "pendurados".
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- Sidebar Sections -->
+            <aside class="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
+                <!-- Regras de Entrada/Saída -->
+                <div class="bg-surface-container border border-outline-variant p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-secondary">rule</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface">Setup Operacional</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-start gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg">
+                            <span class="material-symbols-outlined text-primary-container mt-1">login</span>
+                            <div>
+                                <span class="block font-label-caps text-label-caps text-on-surface mb-1">ENTRADA
+                                    (LONG)</span>
+                                <p class="font-mono-data text-mono-data text-on-surface-variant">Rompimento da máxima do
+                                    martelo no candle seguinte com volume acima da média.</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg">
+                            <span class="material-symbols-outlined text-error mt-1">front_hand</span>
+                            <div>
+                                <span class="block font-label-caps text-label-caps text-on-surface mb-1">STOP
+                                    LOSS</span>
+                                <p class="font-mono-data text-mono-data text-on-surface-variant">Posicionado logo abaixo
+                                    da mínima da sombra inferior (pavio).</p>
+                            </div>
+                        </li>
+                        <li
+                            class="flex items-start gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg">
+                            <span class="material-symbols-outlined text-secondary mt-1">ads_click</span>
+                            <div>
+                                <span class="block font-label-caps text-label-caps text-on-surface mb-1">ALVO
+                                    PRIMÁRIO</span>
+                                <p class="font-mono-data text-mono-data text-on-surface-variant">Próxima zona de
+                                    resistência ou 2x o risco projetado (R:R 1:2).</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Checklist de Validação -->
+                <div class="bg-surface-container-high border border-outline-variant p-6 rounded-xl">
+                    <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">CRITÉRIOS DE CONTEXTO</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div
+                                class="w-5 h-5 border border-outline-variant bg-surface-container group-hover:border-primary-container transition-colors flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary-container opacity-0 group-hover:opacity-100">check</span>
+                            </div>
+                            <span class="font-mono-data text-mono-data text-on-surface">Suporte Majoritário
+                                Próximo</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div
+                                class="w-5 h-5 border border-outline-variant bg-surface-container group-hover:border-primary-container transition-colors flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary-container opacity-0 group-hover:opacity-100">check</span>
+                            </div>
+                            <span class="font-mono-data text-mono-data text-on-surface">RSI/IFR em Sobrevenda</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div
+                                class="w-5 h-5 border border-outline-variant bg-surface-container group-hover:border-primary-container transition-colors flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary-container opacity-0 group-hover:opacity-100">check</span>
+                            </div>
+                            <span class="font-mono-data text-mono-data text-on-surface">Pavio > 2x Tamanho do
+                                Corpo</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Related Patterns Bento -->
+                <div class="bg-surface border border-outline-variant p-6 rounded-xl overflow-hidden relative">
+                    <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">PADRÕES SIMILARES</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div
+                            class="p-3 bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-pointer rounded">
+                            <span class="font-label-caps text-[10px] text-primary block mb-1">REVERSÃO</span>
+                            <span class="font-mono-data text-mono-data text-on-surface">Estrela da Manhã</span>
+                        </div>
+                        <div
+                            class="p-3 bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-pointer rounded">
+                            <span class="font-label-caps text-[10px] text-primary block mb-1">VARIAÇÃO</span>
+                            <span class="font-mono-data text-mono-data text-on-surface">Martelo Invertido</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <!-- Navigation Components -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant md:hidden">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-[10px] uppercase">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-[10px] uppercase">Education</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-[10px] uppercase">Tools</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-[10px] uppercase">Quiz</span>
+        </a>
+    </nav>
+    <!-- Side Navigation for Web (Drawer Logic integrated) -->
+    <div
+        class="hidden lg:flex fixed top-16 left-0 bottom-0 w-64 bg-surface border-r border-outline-variant flex-col p-6 z-40">
+        <span class="font-label-caps text-label-caps text-on-surface-variant mb-6">TERMINAL MENU</span>
+        <div class="flex flex-col gap-1 overflow-y-auto">
+            <a class="flex items-center gap-3 p-3 bg-primary/10 text-primary border-l-2 border-primary transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">analytics</span>
+                <span class="font-mono-data text-mono-data">Análise Técnica</span>
+            </a>
+            <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">stacked_line_chart</span>
+                <span class="font-mono-data text-mono-data">Figuras Gráficas</span>
+            </a>
+            <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">candlestick_chart</span>
+                <span class="font-mono-data text-mono-data">Candlesticks</span>
+            </a>
+            <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">architecture</span>
+                <span class="font-mono-data text-mono-data">SMC</span>
+            </a>
+            <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">calculate</span>
+                <span class="font-mono-data text-mono-data">Calculadoras</span>
+            </a>
+            <div class="mt-8 pt-8 border-t border-outline-variant">
+                <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                    <span class="font-mono-data text-mono-data">Tarot Trader</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Micro-interaction Script -->
+    <script>
+        // Simple ripple-like effect on terminal elements
+        document.querySelectorAll('.bg-surface-container-low').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.borderColor = 'var(--primary)';
+                el.style.transition = 'all 0.3s ease';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.borderColor = '';
+            });
+        });
+
+        // Simulating live data flicker on the "Minima" label
+        setInterval(() => {
+            const dataPoint = document.querySelector('.font-mono-data.text-primary.text-\\[10px\\]');
+            if (dataPoint) {
+                dataPoint.style.opacity = '0.5';
+                setTimeout(() => dataPoint.style.opacity = '1', 50);
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>
+
+<!-- Archetype Library -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+
+        .glass-card {
+            background: rgba(22, 29, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(132, 147, 150, 0.1);
+        }
+
+        .glow-cyan:hover {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+            border-color: #00daf3;
+        }
+
+        .archetype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1413;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b494c;
+            border-radius: 2px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#680015",
+                        "on-primary-fixed": "#001f24",
+                        "inverse-surface": "#dfe3e1",
+                        "surface-container-low": "#181d1b",
+                        "on-background": "#dfe3e1",
+                        "secondary-fixed": "#ffdea5",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-surface": "#dfe3e1",
+                        "surface-container-high": "#262b2a",
+                        "surface-dim": "#0f1413",
+                        "surface": "#0f1413",
+                        "on-secondary": "#412d00",
+                        "primary-fixed": "#9cf0ff",
+                        "primary": "#c3f5ff",
+                        "on-tertiary-container": "#b3082d",
+                        "secondary": "#e9c176",
+                        "secondary-fixed-dim": "#e9c176",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffe7e6",
+                        "background": "#0f1413",
+                        "surface-bright": "#353a39",
+                        "outline": "#849396",
+                        "tertiary-container": "#ffc1c1",
+                        "surface-container-lowest": "#0a0f0e",
+                        "on-secondary-container": "#dab36a",
+                        "surface-tint": "#00daf3",
+                        "on-primary-fixed-variant": "#004f58",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006875",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container": "#1c211f",
+                        "on-surface-variant": "#bac9cc",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "secondary-container": "#604403",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "surface-variant": "#313635",
+                        "on-tertiary-fixed": "#400009",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-primary-container": "#00626e",
+                        "primary-container": "#00e5ff",
+                        "on-primary": "#00363d",
+                        "surface-container-highest": "#313635",
+                        "inverse-on-surface": "#2c3130",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "gutter": "16px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer p-2 rounded-full">search</span>
+            <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">account_circle</span>
+        </div>
+    </header>
+    <main class="flex-grow pt-24 pb-24 px-4 md:px-margin-desktop max-w-container-max mx-auto w-full">
+        <!-- Header Section -->
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <div class="flex items-center gap-3 mb-2">
+                    <h2
+                        class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase">
+                        BIBLIOTECA DE ARQUÉTIPOS</h2>
+                    <span
+                        class="px-2 py-0.5 bg-surface-variant text-primary font-mono-data text-[10px] rounded border border-outline-variant">V1.0.4</span>
+                </div>
+                <p class="text-on-surface-variant max-w-2xl">Mapeamento psicológico das frequências comportamentais no
+                    mercado financeiro. Identifique seu estado atual para mitigar vieses cognitivos.</p>
+            </div>
+            <div class="relative w-full md:w-80 group">
+                <input
+                    class="w-full bg-surface-container border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-mono-data py-3 pl-4 pr-10 transition-all outline-none"
+                    placeholder="FILTRAR ARQUÉTIPO..." type="text" />
+                <span
+                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">filter_list</span>
+            </div>
+        </div>
+        <!-- Archetype Library Grid -->
+        <div class="archetype-grid">
+            <!-- 1. O Monge -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">psychology</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#001</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Monge</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Opera em estado de fluxo, aguardando
+                        pacientemente pelas confirmações estatísticas sem apego ao resultado.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full border border-primary/20">BIAS
+                        LEVEL: LOW</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+            <!-- 2. O Jogador -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">casino</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#002</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Jogador</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Busca a dopamina da incerteza,
+                        aumentando o risco após perdas na tentativa de recuperação emocional rápida.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-error/10 text-error font-label-caps text-[10px] rounded-full border border-error/20">BIAS
+                        LEVEL: HIGH</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+            <!-- 3. O Caçador -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">target</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#003</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Caçador</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Foco agressivo em alvos específicos,
+                        possui alta precisão mas pode sofrer de fadiga por hipervigilância.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-secondary/10 text-secondary font-label-caps text-[10px] rounded-full border border-secondary/20">BIAS
+                        LEVEL: MEDIUM</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+            <!-- 4. O Escriba -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">menu_book</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#004</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Escriba</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Documenta cada tick do mercado; sua
+                        força é a análise de dados, mas pode travar em paralisia por análise.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full border border-primary/20">BIAS
+                        LEVEL: LOW</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+            <!-- 5. O Guerreiro -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">shield</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#005</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Guerreiro</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Resiliência extrema diante de
+                        drawdowns, mantendo a calma sob fogo cruzado de volatilidade.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-secondary/10 text-secondary font-label-caps text-[10px] rounded-full border border-secondary/20">BIAS
+                        LEVEL: MEDIUM</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+            <!-- 6. O Visionário -->
+            <div class="glass-card p-6 rounded-lg glow-cyan transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center bg-secondary/10 border border-secondary/20 rounded">
+                            <span class="material-symbols-outlined text-secondary"
+                                style="font-size: 32px;">visibility</span>
+                        </div>
+                        <span class="text-label-caps font-label-caps text-on-surface-variant opacity-50">#006</span>
+                    </div>
+                    <h3 class="font-headline-md text-primary mb-2">O Visionário</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Conecta padrões macroeconômicos e
+                        intuitivos, antecipando reversões de tendência de longo prazo.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span
+                        class="px-3 py-1 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full border border-primary/20">BIAS
+                        LEVEL: LOW</span>
+                    <button
+                        class="text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 font-mono-data text-xs">DETALHES
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                </div>
+            </div>
+        </div>
+        <!-- Atmospheric Decoration -->
+        <div
+            class="mt-20 border-t border-outline-variant pt-8 flex flex-col md:flex-row justify-between items-start gap-12 opacity-60">
+            <div class="md:w-1/3">
+                <h4 class="font-mono-data text-secondary text-xs uppercase mb-4 tracking-widest">ANÁLISE DE
+                    PROBABILIDADE</h4>
+                <div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+                    <div class="h-full bg-primary w-2/3"></div>
+                </div>
+                <div class="flex justify-between text-[10px] font-mono-data mt-2">
+                    <span>COERÊNCIA PSICOLÓGICA</span>
+                    <span>88.4%</span>
+                </div>
+            </div>
+            <div class="flex-grow flex items-center gap-8">
+                <div class="text-[10px] font-mono-data text-on-surface-variant">
+                    <span class="block text-primary">SISTEMA: ONLINE</span>
+                    <span class="block">LATÊNCIA: 14MS</span>
+                </div>
+                <div class="text-[10px] font-mono-data text-on-surface-variant">
+                    <span class="block text-secondary">MODO: ESTUDO</span>
+                    <span class="block">CRYPT: AES-256</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant md:hidden">
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-label-caps">Home</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-label-caps">Education</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-label-caps">Tools</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-label-caps">Quiz</span>
+        </div>
+    </nav>
+    <!-- Navigation Drawer (Desktop Hint) -->
+    <aside
+        class="hidden lg:flex fixed inset-y-0 left-0 z-[60] w-80 flex-col p-6 bg-surface-container-high border-r border-outline-variant shadow-2xl -translate-x-full transition-transform hover:translate-x-0 group">
+        <div class="mb-8">
+            <h4 class="font-mono-data text-mono-data text-primary mb-4 tracking-widest">TERMINAL MENU</h4>
+            <div class="space-y-1">
+                <div
+                    class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="font-mono-data text-xs">Análise Técnica</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 p-3 bg-primary/10 text-primary border-l-2 border-primary cursor-pointer">
+                    <span class="material-symbols-outlined">psychology</span>
+                    <span class="font-mono-data text-xs">Psicologia</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    <span class="font-mono-data text-xs">Tarot Trader</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <script>
+        // Simple search filter micro-interaction
+        const searchInput = document.querySelector('input[placeholder="FILTRAR ARQUÉTIPO..."]');
+        const cards = document.querySelectorAll('.archetype-grid > div');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                if (title.includes(term) || desc.includes(term)) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        if (card.style.opacity === '0') card.style.display = 'none';
+                    }, 200);
+                }
+            });
+        });
+
+        // Hover sound effect or tactile feedback simulation
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for subtle haptic feedback triggers here
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- Calculadoras Interativas -->
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Action Master - Calculadoras</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1413;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b494c;
+        }
+
+        .terminal-grid {
+            background-image: radial-gradient(circle, #1c2524 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .glowing-gold-focus:focus-within {
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+            border-color: rgba(245, 158, 11, 0.6);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f1413",
+                        "on-secondary-container": "#dab36a",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#00e5ff",
+                        "inverse-primary": "#006875",
+                        "surface-variant": "#313635",
+                        "surface-container": "#1c211f",
+                        "on-tertiary-fixed": "#400009",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "outline": "#849396",
+                        "surface-container-lowest": "#0a0f0e",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "surface-container-highest": "#313635",
+                        "surface-dim": "#0f1413",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#b3082d",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-primary-fixed": "#001f24",
+                        "primary": "#c3f5ff",
+                        "inverse-on-surface": "#2c3130",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed-variant": "#004f58",
+                        "background": "#0f1413",
+                        "tertiary": "#ffe7e6",
+                        "surface-tint": "#00daf3",
+                        "on-background": "#dfe3e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#181d1b",
+                        "surface-container-high": "#262b2a",
+                        "secondary": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#604403",
+                        "on-tertiary": "#680015",
+                        "surface-bright": "#353a39",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-surface": "#dfe3e1",
+                        "primary-fixed": "#9cf0ff",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md terminal-grid min-h-screen">
+    <!-- Top Navigation Shell -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:bg-surface-variant transition-colors p-2 rounded"
+                onclick="document.getElementById('nav-drawer').classList.toggle('-translate-x-full')">menu</span>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span
+                class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-variant p-2 rounded">account_circle</span>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="pt-24 pb-32 px-gutter max-w-container-max mx-auto">
+        <!-- Header Section -->
+        <section class="mb-12 border-l-2 border-primary-container pl-6">
+            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">
+                Calculadoras</h2>
+            <p class="font-mono-data text-mono-data text-on-surface-variant mt-2 max-w-xl">
+                Ferramentas de precisão para sua gestão de risco. Execute cálculos de lotagem e pontos instantaneamente
+                seguindo os parâmetros da B3.
+            </p>
+        </section>
+        <!-- Calculators Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- DOL -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="DOL">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">DOL</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Dólar Cheio</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 50,00 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="0.5" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-DOL">2</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-DOL">R$ 50,00</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+            <!-- WDO -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="WDO">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">WDO</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Mini Dólar</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 10,00 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="0.5" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-WDO">2</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-WDO">R$ 10,00</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+            <!-- IND -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="IND">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">IND</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Índice Cheio</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 1,00 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="5" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-IND">0.2</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-IND">R$ 250,00</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+            <!-- WIN -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="WIN">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">WIN</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Mini Índice</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 0,20 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="5" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-WIN">0.2</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-WIN">R$ 0,20</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+            <!-- BITFUT -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="BITFUT">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">BITFUT</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Bitcoin Futuro</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 0,10 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-BITFUT">0.05</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-BITFUT">R$ 0,10</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+            <!-- CCM -->
+            <article class="bg-[#111615] rounded-xl border border-amber-500/20 p-6 flex flex-col gap-6"
+                data-ticker="CCM">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-emerald-400">CCM</h3>
+                    <div class="text-right">
+                        <p class="text-[10px] text-outline uppercase font-mono-data">Milho Futuro</p>
+                        <p class="text-[10px] text-outline font-mono-data">R$ 450,00 / Ponto</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Contratos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="1" type="number" value="1" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] text-on-surface-variant font-label-caps uppercase">Pontos</label>
+                        <div
+                            class="bg-surface-container-low rounded border border-outline-variant px-3 py-2 glowing-gold-focus transition-all">
+                            <input
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 text-primary font-mono-data"
+                                step="0.01" type="number" value="1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-rose-950/40 border border-rose-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-rose-300 font-label-caps uppercase mb-1">Total Ticks</span>
+                        <span class="font-mono-data text-xl text-rose-300" id="ticks-CCM">100</span>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-900/40 p-4 rounded flex flex-col">
+                        <span class="text-[10px] text-emerald-300 font-label-caps uppercase mb-1">Resultado</span>
+                        <span class="font-mono-data text-xl text-emerald-300" id="res-CCM">R$ 450,00</span>
+                    </div>
+                </div>
+                <a class="text-[10px] text-emerald-400 font-label-caps hover:underline mt-auto" href="#">ESPECIFICAÇÕES
+                    DO CONTRATO</a>
+            </article>
+        </div>
+        <!-- Contract Specifications Link -->
+        <footer
+            class="mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-6 text-on-surface-variant font-mono-data text-[10px]">
+                <span class="flex items-center gap-1"><span
+                        class="w-1 h-1 bg-primary-container rounded-full animate-pulse"></span> B3 SERVIDOR:
+                    CONECTADO</span>
+                <span>LATÊNCIA: 12ms</span>
+            </div>
+        </footer>
+    </main>
+    <!-- Bottom Navigation Bar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-label-caps">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-label-caps">Education</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-label-caps">Tools</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 hover:text-primary transition-all scale-95 active:scale-90"
+            href="#">
+            <span class="material-symbols-outlined">quiz</span>
+            <span class="font-label-caps text-label-caps">Quiz</span>
+        </a>
+    </nav>
+    <!-- Navigation Drawer -->
+    <aside
+        class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 overflow-y-auto bg-surface-container-high w-80 border-r border-outline-variant shadow-2xl transition-transform -translate-x-full"
+        id="nav-drawer">
+        <div class="flex justify-between items-center mb-8">
+            <span class="font-mono-data text-mono-data text-primary">TERMINAL MENU</span>
+            <span class="material-symbols-outlined cursor-pointer hover:text-primary"
+                onclick="document.getElementById('nav-drawer').classList.add('-translate-x-full')">close</span>
+        </div>
+        <nav class="space-y-1">
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#"><span class="material-symbols-outlined">analytics</span><span class="font-mono-data">Análise
+                    Técnica</span></a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#"><span class="material-symbols-outlined">stacked_line_chart</span><span
+                    class="font-mono-data">Figuras Gráficas</span></a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#"><span class="material-symbols-outlined">candlestick_chart</span><span
+                    class="font-mono-data">Candlesticks</span></a>
+            <a class="flex items-center gap-4 p-3 bg-primary/10 text-primary border-l-2 border-primary rounded-r transition-all"
+                href="#"><span class="material-symbols-outlined">calculate</span><span
+                    class="font-mono-data">Calculadoras</span></a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#"><span class="material-symbols-outlined">psychology</span><span
+                    class="font-mono-data">Quiz</span></a>
+            <a class="flex items-center gap-4 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded transition-all"
+                href="#"><span class="material-symbols-outlined">auto_awesome</span><span class="font-mono-data">Tarot
+                    Trader</span></a>
+        </nav>
+    </aside>
+    <script>
+        const formulas = {
+            'DOL': { tickMult: 2, resMult: 50 },
+            'WDO': { tickMult: 2, resMult: 10 },
+            'IND': { tickMult: 0.2, resMult: 250 },
+            'WIN': { tickMult: 0.2, resMult: 0.2 },
+            'BITFUT': { tickMult: 0.05, resMult: 0.1 },
+            'CCM': { tickMult: 100, resMult: 450 }
+        };
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }).format(value);
+        }
+
+        function calculate() {
+            document.querySelectorAll('article[data-ticker]').forEach(card => {
+                const ticker = card.getAttribute('data-ticker');
+                const inputs = card.querySelectorAll('input');
+                const c = parseFloat(inputs[0].value) || 0;
+                const p = parseFloat(inputs[1].value) || 0;
+                const formula = formulas[ticker];
+
+                if (formula) {
+                    const ticks = p * formula.tickMult;
+                    const res = c * p * formula.resMult;
+
+                    const ticksEl = document.getElementById(`ticks-${ticker}`);
+                    const resEl = document.getElementById(`res-${ticker}`);
+
+                    if (ticksEl) ticksEl.textContent = ticks.toLocaleString('pt-BR', { maximumFractionDigits: 4 });
+                    if (resEl) resEl.textContent = formatCurrency(res);
+                }
+            });
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        // Run initial calc
+        calculate();
+    </script>
+</body>
+
+</html>
+
+<!-- Quiz de Trading Master -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Action Master - Quiz</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #0f1413;
+            color: #dfe3e1;
+            overflow-x: hidden;
+        }
+
+        .technical-glow {
+            box-shadow: inset 0 1px 0 0 rgba(195, 245, 255, 0.1);
+        }
+
+        .chart-grid {
+            background-image: linear-gradient(#1c211f 1px, transparent 1px), linear-gradient(90deg, #1c211f 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide scrollbars */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ffc1c1",
+                        "on-primary-fixed-variant": "#004f58",
+                        "primary-fixed-dim": "#00daf3",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "outline": "#849396",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006875",
+                        "surface-container-low": "#181d1b",
+                        "secondary": "#e9c176",
+                        "on-background": "#dfe3e1",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dfe3e1",
+                        "surface-container-lowest": "#0a0f0e",
+                        "primary-fixed": "#9cf0ff",
+                        "primary-container": "#00e5ff",
+                        "surface-tint": "#00daf3",
+                        "on-tertiary": "#680015",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#920021",
+                        "on-secondary": "#412d00",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#dab36a",
+                        "secondary-fixed-dim": "#e9c176",
+                        "primary": "#c3f5ff",
+                        "on-secondary-fixed": "#261900",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "secondary-container": "#604403",
+                        "surface-container-high": "#262b2a",
+                        "on-surface-variant": "#bac9cc",
+                        "on-surface": "#dfe3e1",
+                        "on-tertiary-container": "#b3082d",
+                        "secondary-fixed": "#ffdea5",
+                        "surface-container": "#1c211f",
+                        "surface-dim": "#0f1413",
+                        "surface": "#0f1413",
+                        "surface-bright": "#353a39",
+                        "surface-variant": "#313635",
+                        "on-primary-container": "#00626e",
+                        "inverse-on-surface": "#2c3130",
+                        "background": "#0f1413",
+                        "surface-container-highest": "#313635",
+                        "outline-variant": "#3b494c",
+                        "on-tertiary-fixed": "#400009",
+                        "tertiary": "#ffe7e6",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-data": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Geist"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+            <h1 class="font-headline-md text-headline-md italic font-bold text-primary tracking-tighter">PRICE ACTION
+                MASTER</h1>
+        </div>
+        <span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">account_circle</span>
+    </header>
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-16 pb-20 px-4 max-w-lg mx-auto w-full flex flex-col justify-center relative">
+        <!-- INTRO SCREEN -->
+        <section class="fade-in" id="quiz-intro">
+            <div class="text-center mb-8">
+                <div class="inline-flex p-3 bg-primary/10 rounded-full mb-4 border border-primary/20">
+                    <span class="material-symbols-outlined text-primary text-4xl"
+                        style="font-variation-settings: 'FILL' 1;">quiz</span>
+                </div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Technical Proficiency Test</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Evaluate your understanding of SMC, Elliott
+                    Wave Theory, and Advanced Candlestick formations.</p>
+            </div>
+            <div class="space-y-4">
+                <div
+                    class="bg-surface-container border border-outline-variant p-4 rounded-xl flex items-center gap-4 technical-glow">
+                    <span class="material-symbols-outlined text-secondary">trending_up</span>
+                    <div>
+                        <p class="font-label-caps text-label-caps text-secondary uppercase">Level: Intermediate</p>
+                        <p class="font-body-md text-body-md text-on-surface">Covers Breaker Blocks & Wave 3 targets.</p>
+                    </div>
+                </div>
+                <div class="bg-surface-container border border-outline-variant p-4 rounded-xl flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary">timer</span>
+                    <div>
+                        <p class="font-label-caps text-label-caps text-primary uppercase">Estimated Time</p>
+                        <p class="font-body-md text-body-md text-on-surface">5 Minutes (10 Questions)</p>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="mt-10 w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-4 rounded-full font-bold uppercase tracking-widest active:scale-95 transition-transform"
+                onclick="startQuiz()">
+                Initialize Terminal
+            </button>
+        </section>
+        <!-- QUESTION SCREEN (Hidden by default) -->
+        <section class="hidden fade-in space-y-6" id="quiz-question">
+            <!-- Progress Bar -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-end">
+                    <span class="font-label-caps text-label-caps text-primary">QUESTION <span
+                            id="q-number">01</span>/10</span>
+                    <span class="font-mono-data text-mono-data text-on-surface-variant">TERM_00x91</span>
+                </div>
+                <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                    <div class="h-full bg-primary w-[10%] transition-all duration-500" id="progress-bar"></div>
+                </div>
+            </div>
+            <!-- Question Card -->
+            <div
+                class="bg-surface-container-high border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+                <!-- Mock Chart / Illustration Area -->
+                <div
+                    class="h-48 bg-surface-container-lowest relative chart-grid border-b border-outline-variant flex items-center justify-center p-4">
+                    <div class="w-full h-full relative" id="chart-illustration">
+                        <!-- SMC Diagram Mockup -->
+                        <svg class="w-full h-full" viewbox="0 0 200 100">
+                            <polyline fill="none" points="10,80 40,30 70,50 100,10 130,40 160,20" stroke="#e9c176"
+                                stroke-width="2"></polyline>
+                            <rect fill="rgba(0, 218, 243, 0.1)" height="15" stroke="#00daf3" stroke-dasharray="2,2"
+                                width="25" x="90" y="5"></rect>
+                            <text class="font-mono-data" fill="#00daf3" font-size="6" x="120" y="15">OB_ZONE</text>
+                            <circle cx="100" cy="10" fill="#ffb4ab" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute top-2 left-2 bg-surface-container px-2 py-1 border border-outline-variant rounded">
+                        <span class="font-mono-data text-[10px] text-primary">M15 · BITCOIN / USD</span>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <h3 class="font-title-sm text-title-sm text-on-surface leading-snug" id="question-text">
+                        In the provided SMC diagram, what technical event occurs at the marked zone TERM_X?
+                    </h3>
+                    <div class="space-y-3" id="options-container">
+                        <button
+                            class="w-full text-left p-4 rounded border border-outline-variant bg-surface-variant/50 hover:bg-surface-variant transition-colors group flex justify-between items-center"
+                            onclick="checkAnswer(this)">
+                            <span class="font-body-md text-body-md">Mitigation of a Bearish Order Block</span>
+                            <span
+                                class="material-symbols-outlined opacity-0 group-hover:opacity-100 text-primary">arrow_forward</span>
+                        </button>
+                        <button
+                            class="w-full text-left p-4 rounded border border-outline-variant bg-surface-variant/50 hover:bg-surface-variant transition-colors group flex justify-between items-center"
+                            onclick="checkAnswer(this)">
+                            <span class="font-body-md text-body-md">Bullish Change of Character (CHoCH)</span>
+                            <span
+                                class="material-symbols-outlined opacity-0 group-hover:opacity-100 text-primary">arrow_forward</span>
+                        </button>
+                        <button
+                            class="w-full text-left p-4 rounded border border-outline-variant bg-surface-variant/50 hover:bg-surface-variant transition-colors group flex justify-between items-center"
+                            onclick="checkAnswer(this)">
+                            <span class="font-body-md text-body-md">Equal Highs Liquidity Sweep</span>
+                            <span
+                                class="material-symbols-outlined opacity-0 group-hover:opacity-100 text-primary">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Feedback Panel (Hidden) -->
+            <div class="hidden animate-bounce-subtle p-4 rounded-xl border flex gap-3" id="feedback-panel">
+                <span class="material-symbols-outlined" id="feedback-icon"></span>
+                <div>
+                    <p class="font-label-caps text-label-caps uppercase" id="feedback-title"></p>
+                    <p class="font-body-md text-[14px] text-on-surface-variant" id="feedback-text"></p>
+                    <button class="mt-2 text-primary font-mono-data text-[12px] flex items-center gap-1"
+                        onclick="nextQuestion()">
+                        PROCEED TO NEXT SEQUENCE <span
+                            class="material-symbols-outlined text-[16px]">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- RESULTS SCREEN (Hidden by default) -->
+        <section class="hidden fade-in space-y-6" id="quiz-results">
+            <div class="text-center">
+                <p class="font-label-caps text-label-caps text-secondary mb-2">SEQUENCE COMPLETE</p>
+                <h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">92% Accuracy</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-surface-container border border-outline-variant p-4 rounded-xl text-center">
+                    <p class="font-label-caps text-label-caps text-on-surface-variant">TECHNICAL LEVEL</p>
+                    <p class="font-headline-md text-headline-md text-primary mt-1">MASTER</p>
+                </div>
+                <div class="bg-surface-container border border-outline-variant p-4 rounded-xl text-center">
+                    <p class="font-label-caps text-label-caps text-on-surface-variant">GLOBAL RANK</p>
+                    <p class="font-headline-md text-headline-md text-secondary mt-1">#128</p>
+                </div>
+            </div>
+            <div class="bg-surface-container-high border-t border-secondary/30 p-6 rounded-xl space-y-4">
+                <h4 class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary">workspace_premium</span> Terminal Verdict
+                </h4>
+                <p class="font-body-md text-body-md text-on-surface-variant italic">
+                    "Your execution logic matches institutional flow. Significant proficiency demonstrated in SMC
+                    mitigation zones. Suggest focusing on Elliott Wave corrective sub-cycles for 100% mastery."
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <button
+                    class="flex-1 bg-surface-variant text-on-surface font-label-caps text-label-caps py-4 rounded uppercase tracking-wider border border-outline-variant"
+                    onclick="location.reload()">
+                    Retry Simulation
+                </button>
+                <button
+                    class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded uppercase tracking-wider font-bold">
+                    Claim Badge
+                </button>
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter bg-surface-container/80 backdrop-blur-md rounded-t-xl border-t border-outline-variant">
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 cursor-pointer hover:text-primary transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-label-caps">Home</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 cursor-pointer hover:text-primary transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-caps text-label-caps">Education</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant py-1 px-4 cursor-pointer hover:text-primary transition-all scale-95 active:scale-90">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="font-label-caps text-label-caps">Tools</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-full py-1 px-4 cursor-pointer scale-95 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quiz</span>
+            <span class="font-label-caps text-label-caps">Quiz</span>
+        </div>
+    </nav>
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 10;
+
+        function startQuiz() {
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-question').classList.remove('hidden');
+        }
+
+        function checkAnswer(btn) {
+            const options = document.querySelectorAll('#options-container button');
+            options.forEach(o => o.disabled = true);
+
+            // Logic for visual feedback
+            const isCorrect = btn.innerText.includes('Mitigation'); // Simplified for prototype
+
+            btn.classList.remove('border-outline-variant', 'bg-surface-variant/50');
+
+            const feedback = document.getElementById('feedback-panel');
+            const fIcon = document.getElementById('feedback-icon');
+            const fTitle = document.getElementById('feedback-title');
+            const fText = document.getElementById('feedback-text');
+
+            if (isCorrect) {
+                btn.classList.add('border-primary', 'bg-primary/10');
+                feedback.classList.remove('hidden', 'border-error/30', 'bg-error/5');
+                feedback.classList.add('border-primary/30', 'bg-primary/5');
+                fIcon.innerText = 'check_circle';
+                fIcon.className = 'material-symbols-outlined text-primary';
+                fTitle.innerText = 'Correct Identification';
+                fTitle.className = 'font-label-caps text-label-caps uppercase text-primary';
+                fText.innerText = 'Price entered the Bearish Order Block and reacted perfectly to the mean threshold. This is a high-probability mitigation entry.';
+            } else {
+                btn.classList.add('border-error', 'bg-error/10');
+                feedback.classList.remove('hidden', 'border-primary/30', 'bg-primary/5');
+                feedback.classList.add('border-error/30', 'bg-error/5');
+                fIcon.innerText = 'cancel';
+                fIcon.className = 'material-symbols-outlined text-error';
+                fTitle.innerText = 'Logic Error';
+                fTitle.className = 'font-label-caps text-label-caps uppercase text-error';
+                fText.innerText = 'The zone marked is a Bearish OB. CHoCH occurred earlier in the sequence. Mitigation is the current active logic.';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 2) { // Just demoing 2 for flow
+                currentQuestion++;
+                updateUI();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateUI() {
+            // Reset state
+            document.getElementById('feedback-panel').classList.add('hidden');
+            const options = document.querySelectorAll('#options-container button');
+            options.forEach(o => {
+                o.disabled = false;
+                o.className = "w-full text-left p-4 rounded border border-outline-variant bg-surface-variant/50 hover:bg-surface-variant transition-colors group flex justify-between items-center";
+            });
+
+            // Update content for Q2
+            document.getElementById('q-number').innerText = '02';
+            document.getElementById('progress-bar').style.width = '20%';
+            document.getElementById('question-text').innerText = "According to Elliott Wave Principle, which rule is violated if Wave 4 enters the price territory of Wave 1 in a standard impulse?";
+
+            const btnTexts = [
+                "The Overlap Rule",
+                "The Alternation Rule",
+                "The Extension Rule"
+            ];
+
+            options.forEach((o, i) => {
+                o.querySelector('span:first-child').innerText = btnTexts[i];
+                o.onclick = () => {
+                    const corr = i === 0;
+                    handleQ2(o, corr);
+                };
+            });
+
+            // Update Illustration (Swap SVG paths etc)
+            document.getElementById('chart-illustration').innerHTML = `
+                <svg class="w-full h-full" viewBox="0 0 200 100">
+                    <polyline points="10,90 30,50 50,70 90,10 110,60 150,20" fill="none" stroke="#00daf3" stroke-width="2" />
+                    <text x="35" y="45" fill="#dfe3e1" font-size="8">1</text>
+                    <text x="55" y="75" fill="#dfe3e1" font-size="8">2</text>
+                    <text x="95" y="15" fill="#dfe3e1" font-size="8">3</text>
+                    <rect x="30" y="45" width="80" height="2" fill="rgba(233, 193, 118, 0.3)" />
+                </svg>
+            `;
+        }
+
+        function handleQ2(btn, correct) {
+            const options = document.querySelectorAll('#options-container button');
+            options.forEach(o => o.disabled = true);
+
+            const feedback = document.getElementById('feedback-panel');
+            const fIcon = document.getElementById('feedback-icon');
+            const fTitle = document.getElementById('feedback-title');
+            const fText = document.getElementById('feedback-text');
+
+            if (correct) {
+                btn.classList.add('border-primary', 'bg-primary/10');
+                feedback.classList.remove('hidden');
+                fIcon.innerText = 'verified';
+                fTitle.innerText = 'Technical Precision';
+                fText.innerText = 'Correct. In a classic impulse, Wave 4 must not overlap with Wave 1. Overlap suggests a Leading/Ending Diagonal formation instead.';
+            } else {
+                btn.classList.add('border-error', 'bg-error/10');
+                feedback.classList.remove('hidden');
+                fIcon.innerText = 'warning';
+                fTitle.innerText = 'Validation Failed';
+                fText.innerText = 'Incorrect. The Overlap Rule is the fundamental constraint being tested here.';
+            }
+
+            // Change button to final results
+            feedback.querySelector('button').onclick = showResults;
+            feedback.querySelector('button').innerText = 'VIEW FINAL DIAGNOSTICS';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-question').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+        }
+    </script>
+</body>
+
+</html>
