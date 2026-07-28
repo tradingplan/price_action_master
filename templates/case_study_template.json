@@ -1,0 +1,14 @@
+{
+  "id": "case_study_id_template",
+  "title": "Case Study Template",
+  "asset": "BTCUSD",
+  "timeframe": "4H",
+  "story": "Step-by-step description of a historically accurate trade execution, tracking structural shifts.",
+  "checkpoints": [
+    {
+      "step": 1,
+      "event": "Price broke structure creating BOS",
+      "vectorCanvas": null
+    }
+  ]
+}

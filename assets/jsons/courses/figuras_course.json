@@ -1,0 +1,59 @@
+{
+  "id": "figuras",
+  "title": "Figuras Gráficas",
+  "description": "Estude a geometria do preço e aprenda a negociar padrões clássicos de alta probabilidade.",
+  "modules": [
+    {
+      "id": "figuras_m1",
+      "title": "Padrões de Reversão Complexos",
+      "description": "Aprenda a mapear e operar o Ombro-Cabeça-Ombro Invertido (OCOI).",
+      "lessons": [
+        {
+          "id": "figuras_m1_l1",
+          "title": "O Ombro-Cabeça-Ombro Invertido",
+          "content": "Padrões geométricos de reversão surgem quando o mercado perde a força da tendência macro. O Ombro-Cabeça-Ombro Invertido (OCOI ou Inverted H&S) se assemelha a uma cabeça de cabeça para baixo e dois ombros menores laterais. Ele marca a transição de uma tendência de baixa (onde topos e fundos são descendentes) para uma estrutura de alta. O ponto crítico de entrada ocorre no rompimento e confirmação da Linha de Pescoço (Neckline)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "figuras_m1_e1",
+          "title": "Ombro-Cabeça-Ombro Invertido (OCOI)",
+          "description": "Veja acima o desenho geométrico do OCOI marcando os ombros laterais e a cabeça inferior rompendo a linha de pescoço (verde).",
+          "chartType": "oco_inverted"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "figuras_m1_ex1",
+          "instruction": "Encontre uma figura de reversão OCOI no gráfico e valide utilizando o checklist geométrico:",
+          "checklist": [
+            "A figura foi precedida por uma clara tendência de baixa anterior.",
+            "Identifiquei e marquei o Ombro Esquerdo, a Cabeça (fundo mais baixo) e o Ombro Direito.",
+            "Tracei a Linha de Pescoço unindo os topos intermediários da figura.",
+            "O rompimento da Linha de Pescoço ocorreu com uma vela de forte volume."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "figuras_m1_q1",
+          "question": "Qual é a linha de resistência fundamental em um padrão Ombro-Cabeça-Ombro Invertido que dispara o gatilho de compra após ser rompida?",
+          "options": [
+            "Linha de Canal de Baixa.",
+            "Linha de Pescoço (Neckline).",
+            "Linha de Retração da Cabeça."
+          ],
+          "correctIndex": 1,
+          "explanation": "A Linha de Pescoço une os picos de retração entre a cabeça e os ombros. O seu rompimento com corpo de vela indica a reversão estrutural oficial de baixa para alta."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "figuras_m1_ch1",
+          "title": "Desafio do Rompimento da Linha de Pescoço",
+          "description": "Localize um OCOI no histórico de preços. Meça a distância vertical do fundo da Cabeça até a Linha de Pescoço e projete essa mesma distância para cima a partir do ponto de rompimento. Verifique se o preço atingiu esse alvo de projeção."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Este diretório conterá os arquivos JSON dos cursos oficiais da plataforma (SMC, Elliott, Candlesticks, Figuras).
+Nenhum código Dart deve ser colocado aqui.

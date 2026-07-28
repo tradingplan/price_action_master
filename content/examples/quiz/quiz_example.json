@@ -1,0 +1,11 @@
+{
+  "id": "quiz_example_1",
+  "question": "Qual das seguintes regras invalida uma contagem de ondas de impulso de Elliott?",
+  "options": [
+    "A onda 2 corrigir 50% da onda 1.",
+    "A onda 4 fechar abaixo do topo da onda 1.",
+    "A onda 3 ser a maior das três ondas impulsivas."
+  ],
+  "correctIndex": 1,
+  "explanation": "A regra de ouro de Elliott dita que a onda 4 nunca pode entrar no território de preço da onda 1. Se elas se sobrepuserem, a contagem está nula e incorreta."
+}

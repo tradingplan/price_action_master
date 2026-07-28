@@ -1,0 +1,117 @@
+{
+  "id": "smc",
+  "title": "Smart Money Concepts",
+  "description": "Compreenda a movimentação de preço sob a perspectiva institucional de grandes bancos e algoritmos interbancários.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "smc_m1",
+      "title": "Estrutura e Rompimentos",
+      "description": "Aprenda a mapear topos e fundos válidos e identificar BOS e CHoCH.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "smc_m1_l1",
+          "title": "O Mapeamento Estrutural",
+          "content": "A estrutura de mercado é o pilar mais importante do trading institucional. Para o Smart Money, tendências de alta formam topos mais altos (Higher Highs) e fundos mais altos (Higher Lows). Uma quebra da estrutura atual a favor da tendência é chamada de BOS (Break of Structure). O primeiro sinal de que a tendência vai reverter, quando o preço quebra o fundo/topo oposto, é chamado de CHoCH (Change of Character)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m1_e1",
+          "title": "Diagrama de BOS",
+          "description": "Veja no gráfico acima como a continuação de alta é validada após o preço romper e fechar acima do topo anterior.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.70,
+                "x1": 0.12,
+                "y1": 0.05,
+                "y2": 0.05,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.40,
+                "cy": 0.50,
+                "x1": 0.10,
+                "y1": 0.05,
+                "y2": 0.05,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.60,
+                "x1": 0.08,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.80,
+                "cy": 0.35,
+                "x1": 0.15,
+                "y1": 0.05,
+                "y2": 0.05,
+                "content": "green"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.30,
+                "y1": 0.45,
+                "x2": 0.90,
+                "y2": 0.45,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.39,
+                "content": "BOS",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m1_ex1",
+          "instruction": "Abra seu gráfico e execute a validação de um BOS válido seguindo o checklist institucional:",
+          "checklist": [
+            "Identifiquei a tendência macro dominante (alta ou baixa).",
+            "Marquei a linha horizontal exatamente na ponta do pavio do topo/fundo anterior.",
+            "Aguardei o fechamento da vela romper o nível com o corpo (pavio sozinho não valida BOS).",
+            "Confirmei que a quebra de estrutura está a favor do fluxo dominante."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m1_q1",
+          "question": "O que indica a ocorrência de um CHoCH (Change of Character)?",
+          "options": [
+            "A continuidade forte da tendência atual.",
+            "A primeira sinalização de reversão da estrutura de mercado.",
+            "Que o mercado entrou em consolidação lateral indefinida."
+          ],
+          "correctIndex": 1,
+          "explanation": "O CHoCH representa a mudança de caráter da estrutura de mercado, indicando que o fluxo institucional de ordens reverteu de compradores para vendedores (ou vice-versa)."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m1_ch1",
+          "title": "Desafio do CHoCH Prático",
+          "description": "Abra um gráfico histórico recente de qualquer ativo (WIN, DOL ou BTC). Encontre uma reversão clara de tendência, localize o CHoCH, e trace uma linha marcando a mudança. Verifique se o preço retornou para testar a zona rompida."
+        }
+      ]
+    }
+  ]
+}

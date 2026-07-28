@@ -1,0 +1,8 @@
+{
+  "id": "exercise_id_template",
+  "instruction": "Exercise instructions to locate pattern on active charts.",
+  "checklist": [
+    "Identify structural context.",
+    "Verify confirmation candle close."
+  ]
+}

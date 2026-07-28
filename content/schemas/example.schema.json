@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Example",
+  "type": "OBJECT",
+  "properties": {
+    "id": {
+      "type": "STRING"
+    },
+    "title": {
+      "type": "STRING"
+    },
+    "description": {
+      "type": "STRING"
+    },
+    "chartType": {
+      "type": "STRING"
+    },
+    "vectorCanvas": {
+      "type": "OBJECT",
+      "properties": {
+        "width": {
+          "type": "NUMBER"
+        },
+        "height": {
+          "type": "NUMBER"
+        },
+        "elements": {
+          "type": "ARRAY",
+          "items": {
+            "type": "OBJECT",
+            "properties": {
+              "type": {
+                "type": "STRING",
+                "enum": ["line", "circle", "candle", "text", "dotted_line"]
+              },
+              "x1": {
+                "type": "NUMBER"
+              },
+              "y1": {
+                "type": "NUMBER"
+              },
+              "x2": {
+                "type": "NUMBER"
+              },
+              "y2": {
+                "type": "NUMBER"
+              },
+              "cx": {
+                "type": "NUMBER"
+              },
+              "cy": {
+                "type": "NUMBER"
+              },
+              "r": {
+                "type": "NUMBER"
+              },
+              "x": {
+                "type": "NUMBER"
+              },
+              "y": {
+                "type": "NUMBER"
+              },
+              "content": {
+                "type": "STRING"
+              },
+              "colorStyle": {
+                "type": "STRING",
+                "enum": ["primary", "success", "error", "text"]
+              }
+            },
+            "required": ["type"]
+          }
+        }
+      },
+      "required": ["width", "height", "elements"]
+    }
+  },
+  "required": ["id", "title", "description"]
+}

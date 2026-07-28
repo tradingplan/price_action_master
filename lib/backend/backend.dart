@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'schema/util/firestore_util.dart';
@@ -35,26 +37,34 @@ Stream<List<CandlesticksRecord>> queryCandlesticksRecord({
   int limit = -1,
   bool singleRecord = false,
 }) =>
-    queryCollection(
-      CandlesticksRecord.collection,
-      CandlesticksRecord.fromSnapshot,
+    Stream.fromFuture(queryCandlesticksRecordOnce(
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
+    ));
 
 Future<List<CandlesticksRecord>> queryCandlesticksRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      CandlesticksRecord.collection,
-      CandlesticksRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
+}) async {
+  try {
+    final String jsonStr = await rootBundle.loadString('assets/jsons/candlesticks.json');
+    final List<dynamic> jsonList = json.decode(jsonStr);
+    List<CandlesticksRecord> list = jsonList.map((data) {
+      final id = data['id'] as String? ?? 'mock';
+      final ref = FirebaseFirestore.instance.collection('candlesticks').doc(id);
+      return CandlesticksRecord.getDocumentFromData(data, ref);
+    }).toList();
+    if (limit > 0) {
+      list = list.take(limit).toList();
+    }
+    return list;
+  } catch (e) {
+    print('Error loading offline candlesticks: $e');
+    return [];
+  }
+}
 
 /// Functions to query FigurasRecords (as a Stream and as a Future).
 Future<int> queryFigurasRecordCount({
@@ -72,26 +82,34 @@ Stream<List<FigurasRecord>> queryFigurasRecord({
   int limit = -1,
   bool singleRecord = false,
 }) =>
-    queryCollection(
-      FigurasRecord.collection,
-      FigurasRecord.fromSnapshot,
+    Stream.fromFuture(queryFigurasRecordOnce(
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
+    ));
 
 Future<List<FigurasRecord>> queryFigurasRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      FigurasRecord.collection,
-      FigurasRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
+}) async {
+  try {
+    final String jsonStr = await rootBundle.loadString('assets/jsons/figuras.json');
+    final List<dynamic> jsonList = json.decode(jsonStr);
+    List<FigurasRecord> list = jsonList.map((data) {
+      final id = data['id'] as String? ?? 'mock';
+      final ref = FirebaseFirestore.instance.collection('figuras').doc(id);
+      return FigurasRecord.getDocumentFromData(data, ref);
+    }).toList();
+    if (limit > 0) {
+      list = list.take(limit).toList();
+    }
+    return list;
+  } catch (e) {
+    print('Error loading offline figuras: $e');
+    return [];
+  }
+}
 
 /// Functions to query ConceitosRecords (as a Stream and as a Future).
 Future<int> queryConceitosRecordCount({
@@ -109,26 +127,34 @@ Stream<List<ConceitosRecord>> queryConceitosRecord({
   int limit = -1,
   bool singleRecord = false,
 }) =>
-    queryCollection(
-      ConceitosRecord.collection,
-      ConceitosRecord.fromSnapshot,
+    Stream.fromFuture(queryConceitosRecordOnce(
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
+    ));
 
 Future<List<ConceitosRecord>> queryConceitosRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ConceitosRecord.collection,
-      ConceitosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
+}) async {
+  try {
+    final String jsonStr = await rootBundle.loadString('assets/jsons/conceitos.json');
+    final List<dynamic> jsonList = json.decode(jsonStr);
+    List<ConceitosRecord> list = jsonList.map((data) {
+      final id = data['id'] as String? ?? 'mock';
+      final ref = FirebaseFirestore.instance.collection('conceitos').doc(id);
+      return ConceitosRecord.getDocumentFromData(data, ref);
+    }).toList();
+    if (limit > 0) {
+      list = list.take(limit).toList();
+    }
+    return list;
+  } catch (e) {
+    print('Error loading offline conceitos: $e');
+    return [];
+  }
+}
 
 /// Functions to query EstrategiasRecords (as a Stream and as a Future).
 Future<int> queryEstrategiasRecordCount({
@@ -180,6 +206,7 @@ Future<int> queryCollectionCount(
 
   return query.count().get().catchError((err) {
     print('Error querying $collection: $err');
+    throw err;
   }).then((value) => value.count!);
 }
 

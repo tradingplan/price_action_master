@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Module",
+  "type": "OBJECT",
+  "properties": {
+    "id": {
+      "type": "STRING"
+    },
+    "title": {
+      "type": "STRING"
+    },
+    "description": {
+      "type": "STRING"
+    },
+    "xpValue": {
+      "type": "INTEGER"
+    },
+    "lessons": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "lesson.schema.json"
+      }
+    },
+    "examples": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "example.schema.json"
+      }
+    },
+    "exercises": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "exercise.schema.json"
+      }
+    },
+    "quizzes": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "quiz.schema.json"
+      }
+    },
+    "challenges": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "challenge.schema.json"
+      }
+    }
+  },
+  "required": ["id", "title", "description", "xpValue", "lessons", "examples", "exercises", "quizzes", "challenges"]
+}

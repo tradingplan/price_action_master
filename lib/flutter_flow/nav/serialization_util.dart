@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
 
@@ -96,8 +97,8 @@ String? serializeParam(
       case ParamType.DataStruct:
         data = param is BaseStruct ? param.serialize() : null;
 
-      default:
-        data = null;
+      // default:
+      //   data = null;
     }
     return data;
   } catch (e) {
@@ -294,6 +295,34 @@ Future<dynamic> Function(String) getDoc(
   List<String> collectionNamePath,
   RecordBuilder recordBuilder,
 ) {
+  final collectionName = collectionNamePath.last;
+  if (['candlesticks', 'figuras', 'conceitos'].contains(collectionName)) {
+    return (String id) async {
+      try {
+        final String jsonStr = await rootBundle.loadString('assets/jsons/$collectionName.json');
+        final List<dynamic> jsonList = json.decode(jsonStr);
+        final data = jsonList.firstWhere(
+          (d) => d['id'] == id,
+          orElse: () => null,
+        );
+        if (data != null) {
+          final ref = FirebaseFirestore.instance.collection(collectionName).doc(id);
+          if (collectionName == 'candlesticks') {
+            return CandlesticksRecord.getDocumentFromData(data, ref);
+          } else if (collectionName == 'figuras') {
+            return FigurasRecord.getDocumentFromData(data, ref);
+          } else if (collectionName == 'conceitos') {
+            return ConceitosRecord.getDocumentFromData(data, ref);
+          }
+        }
+      } catch (e) {
+        print('Error loading offline document in getDoc: $e');
+      }
+      return _deserializeDocumentReference(id, collectionNamePath)
+          .get()
+          .then((s) => recordBuilder(s));
+    };
+  }
   return (String ids) => _deserializeDocumentReference(ids, collectionNamePath)
       .get()
       .then((s) => recordBuilder(s));

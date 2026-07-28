@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Progress",
+  "type": "OBJECT",
+  "properties": {
+    "userId": {
+      "type": "STRING"
+    },
+    "completedCourses": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "courseId": {
+            "type": "STRING"
+          },
+          "completedAt": {
+            "type": "STRING"
+          },
+          "certificateEarned": {
+            "type": "BOOLEAN"
+          }
+        },
+        "required": ["courseId", "completedAt", "certificateEarned"]
+      }
+    },
+    "completedModules": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "courseId": {
+            "type": "STRING"
+          },
+          "moduleId": {
+            "type": "STRING"
+          },
+          "completedAt": {
+            "type": "STRING"
+          },
+          "score": {
+            "type": "INTEGER"
+          }
+        },
+        "required": ["courseId", "moduleId", "completedAt", "score"]
+      }
+    }
+  },
+  "required": ["userId", "completedCourses", "completedModules"]
+}

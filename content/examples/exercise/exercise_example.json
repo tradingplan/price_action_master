@@ -1,0 +1,10 @@
+{
+  "id": "exercise_example_1",
+  "instruction": "Encontre um Martelo (Hammer) em um suporte de tempo gráfico de 5 minutos e marque as seguintes condições:",
+  "checklist": [
+    "Identifiquei a mínima do dia ou um suporte anterior.",
+    "O candle Martelo se formou exatamente ao tocar a zona de suporte.",
+    "A sombra inferior é de pelo menos duas vezes o tamanho do corpo do candle.",
+    "A vela seguinte fechou verde confirmando a reversão."
+  ]
+}

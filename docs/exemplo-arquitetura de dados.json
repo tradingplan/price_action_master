@@ -1,0 +1,58 @@
+{
+    "id": "smc",
+    "title": "Smart Money Concepts",
+    "description": "Aprenda a rastrear o fluxo institucional...",
+    "modules": [
+        {
+            "id": "smc_mod_1",
+            "title": "Estrutura e Rompimentos",
+            "description": "Entendendo BOS e CHoCH",
+            "lessons": [
+                {
+                    "id": "smc_les_1",
+                    "title": "Introdução ao Fluxo de Ordens",
+                    "content": "O fluxo institucional dita a direção dos mercados..."
+                }
+            ],
+            "examples": [
+                {
+                    "id": "smc_ex_1",
+                    "title": "BOS em Tendência de Alta",
+                    "description": "Observe como o preço rompe a máxima e o corpo fecha acima...",
+                    "chartType": "bos_up"
+                }
+            ],
+            "exercises": [
+                {
+                    "id": "smc_exe_1",
+                    "instruction": "Valide se o rompimento é um BOS válido no seu gráfico de estudos:",
+                    "checklist": [
+                        "A tendência principal de alta está confirmada?",
+                        "O preço ultrapassou a máxima anterior?",
+                        "O corpo da vela fechou acima do nível rompido?"
+                    ]
+                }
+            ],
+            "quizzes": [
+                {
+                    "id": "smc_qz_1",
+                    "question": "Qual a principal diferença entre um CHoCH e um BOS?",
+                    "options": [
+                        "CHoCH indica reversão de caráter; BOS indica continuidade.",
+                        "BOS indica reversão; CHoCH indica continuidade.",
+                        "Não há diferença técnica entre os dois termos."
+                    ],
+                    "correctIndex": 0,
+                    "explanation": "O CHoCH (Change of Character) indica a primeira mudança de caráter (reversão), enquanto o BOS (Break of Structure) confirma a continuidade da estrutura vigente."
+                }
+            ],
+            "challenges": [
+                {
+                    "id": "smc_ch_1",
+                    "title": "Desafio do Rompimento Perfeito",
+                    "description": "Abra um gráfico histórico e identifique o primeiro CHoCH do dia. Desenhe a linha de retração de 50% e aguarde a mitigação. Anote os resultados no seu diário."
+                }
+            ]
+        }
+    ]
+}

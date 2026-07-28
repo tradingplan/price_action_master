@@ -1,0 +1,40 @@
+[
+  {
+    "id": "elliott_impulse",
+    "nome": "Ondas Impulsivas (1-2-3-4-5)",
+    "icon": "📈",
+    "description": "O ciclo impulsivo de Elliott é composto por 5 ondas que se movem a favor da tendência principal. As ondas 1, 3 e 5 são ondas de avanço (impulso), enquanto as ondas 2 e 4 são ondas de retração (correções internas). A onda 3 costuma ser a mais forte e de maior volume do ciclo.",
+    "chart": "impulse",
+    "rules": [
+      "Onda 1: Início do novo movimento a partir de uma consolidação ou reversão.",
+      "Onda 2: Correção parcial da onda 1 (normalmente entre 50% e 61.8% de Fibonacci).",
+      "Onda 3: Expansão mais forte e longa do ciclo, com forte volume financeiro.",
+      "Onda 4: Correção lateral ou em zigue-zague da onda 3 (normalmente corrigindo 38.2%).",
+      "Onda 5: Subida final de exaustão, onde o volume costuma ser menor que na onda 3."
+    ]
+  },
+  {
+    "id": "elliott_corrective",
+    "nome": "Ondas Corretivas (A-B-C)",
+    "icon": "📉",
+    "description": "Após a conclusão do ciclo de 5 ondas impulsivas, inicia-se o ciclo corretivo de contra-tendência composto por 3 ondas (A-B-C). Ele corrige o movimento de alta anterior antes que o mercado retome a tendência de longo prazo.",
+    "chart": "corrective",
+    "rules": [
+      "Onda A: Primeira queda corretiva, pegando a maioria dos investidores de surpresa.",
+      "Onda B: Recuperação de alta parcial (normalmente entre 50% e 61.8% do tamanho da Onda A).",
+      "Onda C: Queda final agressiva e de pânico que rompe o fundo da Onda A."
+    ]
+  },
+  {
+    "id": "elliott_rules",
+    "nome": "Três Regras Invioláveis de Elliott",
+    "icon": "🛑",
+    "description": "Para que um ciclo de 5 ondas impulsivas seja válido segundo as regras descritas por Ralph Nelson Elliott, ele deve respeitar estritamente três regras matemáticas. Se qualquer uma dessas regras for quebrada, a contagem de ondas está errada e deve ser refeita.",
+    "chart": "rules",
+    "rules": [
+      "Regra 1: A Onda 2 NUNCA pode corrigir mais do que 100% da Onda 1 (não rompe o início da 1).",
+      "Regra 2: A Onda 3 NUNCA pode ser a menor das três ondas impulsivas (1, 3 e 5).",
+      "Regra 3: A Onda 4 NUNCA pode entrar no território de preço da Onda 1 (não sobrepõe o topo da 1)."
+    ]
+  }
+]

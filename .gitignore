@@ -54,3 +54,10 @@ key.properties
 
 # Claude Code session-local state
 .claude/
+
+# Flutter iOS ephemeral build files
+ios/Flutter/ephemeral/
+
+# Local simulation and quiz history files
+trade_history.json
+quiz_history.json

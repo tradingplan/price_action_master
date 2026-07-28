@@ -1,0 +1,26 @@
+[
+  {
+    "id": "suporte_resistencia",
+    "nome": "Suporte e Resistência",
+    "icon": "📊",
+    "description": "Suportes e Resistências são barreiras psicológicas horizontais de preços criadas no gráfico devido a memórias operacionais de compra e venda dos participantes.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/conceitos%2Fsupport_resistance.png?alt=media",
+    "teoria_dow": "A história se repete: níveis de preços onde antes houve grande volume comprador ou vendedor tendem a reter o preço novamente no futuro."
+  },
+  {
+    "id": "linhas_tendencia",
+    "nome": "Linhas de Tendência (LTA / LTB)",
+    "icon": "📈",
+    "description": "Linhas de Tendência de Alta (LTA) unem fundos ascendentes e servem de suporte diagonal. Linhas de Tendência de Baixa (LTB) unem topos descendentes e servem de resistência diagonal.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/conceitos%2Ftrend_lines.png?alt=media",
+    "teoria_dow": "O mercado se move em tendências: Uma tendência de alta segue fazendo topos e fundos ascendentes; uma de baixa, topos e fundos descendentes."
+  },
+  {
+    "id": "teoria_dow",
+    "nome": "Teoria de Dow",
+    "icon": "👨‍💼",
+    "description": "Formulada por Charles Dow, é a base da análise técnica moderna. Ela define que os preços refletem todos os dados, que as tendências têm fases (acumulação, participação pública, distribuição) e devem ser confirmadas pelo volume.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/conceitos%2Fdow_theory.png?alt=media",
+    "teoria_dow": "Os índices descontam tudo (exceto atos de Deus). O preço de mercado reflete todas as esperanças, temores e informações disponíveis de todos os traders."
+  }
+]

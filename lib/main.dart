@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'backend/firebase/firebase_config.dart';
+import 'backend/local_data_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -16,6 +17,7 @@ void main() async {
   usePathUrlStrategy();
 
   await initFirebase();
+  await LocalDataManager.init();
 
   runApp(MyApp());
 }

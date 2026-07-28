@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quiz",
+  "type": "OBJECT",
+  "properties": {
+    "id": {
+      "type": "STRING"
+    },
+    "question": {
+      "type": "STRING"
+    },
+    "options": {
+      "type": "ARRAY",
+      "items": {
+        "type": "STRING"
+      },
+      "minItems": 2,
+      "maxItems": 4
+    },
+    "correctIndex": {
+      "type": "INTEGER"
+    },
+    "explanation": {
+      "type": "STRING"
+    }
+  },
+  "required": ["id", "question", "options", "correctIndex", "explanation"]
+}

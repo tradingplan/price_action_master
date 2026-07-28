@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ombro_cabeca_ombro",
+    "nome": "Ombro-Cabeça-Ombro (OCO)",
+    "icon": "👤",
+    "description": "O Ombro-Cabeça-Ombro é um padrão clássico de reversão de baixa que sinaliza a perda de força de uma tendência de alta e o início de uma nova tendência de queda.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/figuras%2Fhead_and_shoulders.png?alt=media",
+    "pattern": "Baixa"
+  },
+  {
+    "id": "ombro_cabeca_ombro_invertido",
+    "nome": "Ombro-Cabeça-Ombro Invertido (OCOI)",
+    "icon": "🙃",
+    "description": "O OCO Invertido é a contraparte de alta do OCO, formando-se no final de tendências de queda e apontando para uma forte reversão altista.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/figuras%2Fhead_and_shoulders_inverse.png?alt=media",
+    "pattern": "Alta"
+  },
+  {
+    "id": "topo_duplo",
+    "nome": "Topo Duplo (M)",
+    "icon": "M",
+    "description": "O Topo Duplo é um padrão de reversão baixista que consiste em duas máximas de preços consecutivas aproximadamente no mesmo nível, separadas por um vale temporário.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/figuras%2Fdouble_top.png?alt=media",
+    "pattern": "Baixa"
+  },
+  {
+    "id": "fundo_duplo",
+    "nome": "Fundo Duplo (W)",
+    "icon": "W",
+    "description": "O Fundo Duplo é um padrão de reversão autista composto por dois vales consecutivos no mesmo nível de suporte, sinalizando que a tendência de baixa perdeu força de continuação.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/figuras%2Fdouble_bottom.png?alt=media",
+    "pattern": "Alta"
+  },
+  {
+    "id": "bandeira_alta",
+    "nome": "Bandeira de Alta",
+    "icon": "🚩",
+    "description": "A Bandeira de Alta é um padrão de continuação que se forma após um movimento forte e impulsivo de alta (mastro), seguido de uma consolidação canalizada de baixa ligeiramente inclinada contrária à tendência.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/figuras%2Fbull_flag.png?alt=media",
+    "pattern": "Alta"
+  }
+]

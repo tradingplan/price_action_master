@@ -1,0 +1,82 @@
+[
+  {
+    "id": "martelo",
+    "nome": "Martelo (Hammer)",
+    "icon": "🔨",
+    "description": "O Martelo é um padrão de vela de reversão de alta de uma única vela que se forma no final de uma tendência de baixa.",
+    "overview": [
+      "Corpo pequeno localizado na extremidade superior do candle.",
+      "Sombra inferior longa (pelo menos duas vezes o tamanho do corpo da vela).",
+      "Pouca ou nenhuma sombra superior."
+    ],
+    "contexto": "Deve ocorrer no fundo de uma tendência de baixa estabelecida ou após uma forte correção de queda.",
+    "psicologia": "Os vendedores tentaram empurrar agressivamente o preço para novas mínimas durante o período, mas perderam o controle e os compradores empurraram o preço de volta para fechar próximo da máxima.",
+    "confirmation": "A confirmação é dada pelo fechamento da próxima vela acima do corpo do Martelo, preferencialmente acompanhada de alto volume financeiro.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fhammer.png?alt=media",
+    "pattern": "Alta"
+  },
+  {
+    "id": "estrela_cadente",
+    "nome": "Estrela Cadente (Shooting Star)",
+    "icon": "💫",
+    "description": "A Estrela Cadente é um padrão de vela de reversão de baixa que se forma no topo de uma tendência de alta.",
+    "overview": [
+      "Corpo pequeno localizado na extremidade inferior do candle.",
+      "Sombra superior longa (pelo menos duas vezes o tamanho do corpo da vela).",
+      "Pouca ou nenhuma sombra inferior."
+    ],
+    "contexto": "Ocorre no topo de uma tendência de alta estabelecida ou próximo a uma forte resistência de preço.",
+    "psicologia": "Os compradores tentaram elevar as cotações para novas máximas, mas a pressão vendedora (institucional) entrou no mercado, forçando o fechamento próximo à mínima do período.",
+    "confirmation": "Confirmado pela próxima vela fechando abaixo do corpo da Estrela Cadente.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fshooting_star.png?alt=media",
+    "pattern": "Baixa"
+  },
+  {
+    "id": "engolfo_alta",
+    "nome": "Engolfo de Alta (Bullish Engulfing)",
+    "icon": "📈",
+    "description": "O Engolfo de Alta é um padrão de reversão composto por duas velas, onde a segunda vela (de alta) cobre completamente o corpo da primeira vela (de baixa).",
+    "overview": [
+      "Primeira vela é de baixa (vermelha) com corpo pequeno.",
+      "Segunda vela é de alta (verde) com corpo longo que cobre totalmente o corpo da primeira vela.",
+      "O volume na segunda vela costuma ser significativamente maior."
+    ],
+    "contexto": "Identificado no final de um movimento corretivo ou de tendência de queda de curto/médio prazo.",
+    "psicologia": "Demonstra uma mudança abrupta e forte de sentimento de mercado. Os vendedores abrem o mercado em queda, mas os compradores dominam completamente a sessão, anulando o dia de baixa anterior.",
+    "confirmation": "Vela subsequente fechando acima do topo do corpo do engolfo.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fbullish_engulfing.png?alt=media",
+    "pattern": "Alta"
+  },
+  {
+    "id": "engolfo_baixa",
+    "nome": "Engolfo de Baixa (Bearish Engulfing)",
+    "icon": "📉",
+    "description": "O Engolfo de Baixa é um padrão de reversão composto por duas velas, onde a segunda vela (de baixa) cobre completamente o corpo da primeira vela (de alta).",
+    "overview": [
+      "Primeira vela é de alta (verde) com corpo pequeno.",
+      "Segunda vela é de baixa (vermelha) com corpo longo que cobre totalmente o corpo da primeira vela.",
+      "Abertura da segunda acima ou igual ao fechamento da primeira."
+    ],
+    "contexto": "Topos de mercados de alta ou após testes frustrados de resistência.",
+    "psicologia": "Os compradores abrem a sessão otimistas, mas a força vendedora atua fortemente e fecha o preço abaixo da mínima da abertura anterior, sinalizando reversão para queda.",
+    "confirmation": "Próxima vela fechando abaixo do limite inferior do corpo do engolfo.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fbearish_engulfing.png?alt=media",
+    "pattern": "Baixa"
+  },
+  {
+    "id": "doji",
+    "nome": "Doji",
+    "icon": "⚖️",
+    "description": "O Doji é um padrão de vela única que indica equilíbrio de forças ou indecisão no mercado, onde o preço de abertura é praticamente idêntico ao preço de fechamento.",
+    "overview": [
+      "Corpo da vela é uma linha fina horizontal.",
+      "Sombras superiores e inferiores podem variar de tamanho (Doji Estrela, Libélula, Lápide).",
+      "Representa o empate perfeito entre touros e ursos."
+    ],
+    "contexto": "Ocorre em qualquer momento da tendência. Em topos ou fundos esticados, alerta para possível perda de força do movimento dominante.",
+    "psicologia": "Nem compradores nem vendedores conseguiram deslocar o preço de forma sustentável para longe da abertura até o final da sessão.",
+    "confirmation": "Exige aguardar a vela seguinte para definir a direção do rompimento da máxima ou mínima do Doji.",
+    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fdoji.png?alt=media",
+    "pattern": "Indecisão"
+  }
+]

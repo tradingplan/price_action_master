@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Analytics",
+  "type": "OBJECT",
+  "properties": {
+    "events": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "timestamp": {
+            "type": "STRING"
+          },
+          "eventType": {
+            "type": "STRING"
+          },
+          "courseId": {
+            "type": "STRING"
+          },
+          "moduleId": {
+            "type": "STRING"
+          },
+          "durationSeconds": {
+            "type": "INTEGER"
+          }
+        },
+        "required": ["timestamp", "eventType", "courseId", "moduleId", "durationSeconds"]
+      }
+    }
+  },
+  "required": ["events"]
+}

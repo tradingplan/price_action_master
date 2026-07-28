@@ -1,0 +1,17 @@
+{
+  "id": "candlesticks_m1",
+  "title": "Velas de Reversão (Exemplo)",
+  "description": "Exemplo de módulo para o Content Architect.",
+  "xpValue": 150,
+  "lessons": [
+    {
+      "id": "candlesticks_m1_l1",
+      "title": "O Martelo (Hammer)",
+      "content": "Conteúdo teórico da lição..."
+    }
+  ],
+  "examples": [],
+  "exercises": [],
+  "quizzes": [],
+  "challenges": []
+}

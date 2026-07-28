@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Course",
+  "type": "OBJECT",
+  "properties": {
+    "id": {
+      "type": "STRING"
+    },
+    "title": {
+      "type": "STRING"
+    },
+    "description": {
+      "type": "STRING"
+    },
+    "version": {
+      "type": "INTEGER"
+    },
+    "modules": {
+      "type": "ARRAY",
+      "items": {
+        "$ref": "module.schema.json"
+      }
+    }
+  },
+  "required": ["id", "title", "description", "version", "modules"]
+}

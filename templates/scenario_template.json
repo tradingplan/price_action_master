@@ -1,0 +1,11 @@
+{
+  "id": "scenario_id_template",
+  "title": "Trading Scenario Template",
+  "description": "Describe the operational context (e.g. Trend is Bullish, price is retracing to OB).",
+  "chartState": {
+    "trend": "bullish",
+    "fvgPresent": true,
+    "obPresent": true
+  },
+  "expectedAction": "buy"
+}

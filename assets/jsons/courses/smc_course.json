@@ -1,0 +1,123 @@
+{
+  "id": "smc",
+  "title": "Smart Money Concepts",
+  "description": "Compreenda a movimentação de preço sob a perspectiva institucional de grandes bancos e algoritmos interbancários.",
+  "modules": [
+    {
+      "id": "smc_m1",
+      "title": "Estrutura e Rompimentos",
+      "description": "Aprenda a mapear topos e fundos válidos e identificar BOS e CHoCH.",
+      "lessons": [
+        {
+          "id": "smc_m1_l1",
+          "title": "O Mapeamento Estrutural",
+          "content": "A estrutura de mercado é o pilar mais importante do trading institucional. Para o Smart Money, tendências de alta formam topos mais altos (Higher Highs) e fundos mais altos (Higher Lows). Uma quebra da estrutura atual a favor da tendência é chamada de BOS (Break of Structure). O primeiro sinal de que a tendência vai reverter, quando o preço quebra o fundo/topo oposto, é chamado de CHoCH (Change of Character)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m1_e1",
+          "title": "Diagrama de BOS",
+          "description": "Veja no gráfico acima como a continuação de alta é validada após o preço romper e fechar acima do topo anterior.",
+          "chartType": "bos"
+        },
+        {
+          "id": "smc_m1_e2",
+          "title": "Diagrama de CHoCH",
+          "description": "Observe a mudança de fluxo de ordens ocorrendo após a quebra do fundo estrutural anterior que originou o topo mais alto.",
+          "chartType": "choch"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m1_ex1",
+          "instruction": "Abra seu gráfico e execute a validação de um BOS válido seguindo o checklist institucional:",
+          "checklist": [
+            "Identifiquei a tendência macro dominante (alta ou baixa).",
+            "Marquei a linha horizontal exatamente na ponta do pavio do topo/fundo anterior.",
+            "Aguardei o fechamento da vela romper o nível com o corpo (pavio sozinho não valida BOS).",
+            "Confirmei que a quebra de estrutura está a favor do fluxo dominante."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m1_q1",
+          "question": "O que indica a ocorrência de um CHoCH (Change of Character)?",
+          "options": [
+            "A continuidade forte da tendência atual.",
+            "A primeira sinalização de reversão da estrutura de mercado.",
+            "Que o mercado entrou em consolidação lateral indefinida."
+          ],
+          "correctIndex": 1,
+          "explanation": "O CHoCH representa a mudança de caráter da estrutura de mercado, indicando que o fluxo institucional de ordens reverteu de compradores para vendedores (ou vice-versa)."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m1_ch1",
+          "title": "Desafio do CHoCH Prático",
+          "description": "Abra um gráfico histórico recente de qualquer ativo (WIN, DOL ou BTC). Encontre uma reversão clara de tendência, localize o CHoCH, e trace uma linha marcando a mudança. Verifique se o preço retornou para testar a zona rompida."
+        }
+      ]
+    },
+    {
+      "id": "smc_m2",
+      "title": "Zonas de Oferta e Demanda",
+      "description": "Como identificar áreas de alta probabilidade baseadas em Order Blocks e FVG.",
+      "lessons": [
+        {
+          "id": "smc_m2_l1",
+          "title": "Zonas de Liquidez e Mitigação",
+          "content": "Order Blocks (OB) representam a última vela contrária antes de uma forte expansão de preços que quebrou estrutura (BOS ou CHoCH). São áreas onde instituições financeiras posicionaram grandes ordens pendentes. Fair Value Gaps (FVG) são ineficiências na entrega do preço, ocorrendo quando o mercado se move muito rápido, deixando uma lacuna que tende a ser preenchida posteriormente (mitigada)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m2_e1",
+          "title": "Bloco de Ordens (Order Block)",
+          "description": "O bloco representa a zona ideal de suporte/demanda (verde) ou resistência/oferta (vermelha) onde buscamos novas entradas.",
+          "chartType": "order_block"
+        },
+        {
+          "id": "smc_m2_e2",
+          "title": "Preenchimento de FVG",
+          "description": "A área sombreada em laranja destaca o desequilíbrio (imbalance) que o preço tende a preencher para reequilibrar o mercado.",
+          "chartType": "fvg"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m2_ex1",
+          "instruction": "Encontre uma zona de interesse válida utilizando o checklist institucional:",
+          "checklist": [
+            "Localizei a última vela contrária antes do movimento de impulso.",
+            "Essa expansão subsequente rompeu estrutura gerando BOS ou CHoCH.",
+            "Marquei a área englobando a abertura e fechamento da vela contrária.",
+            "Aguardei o retorno do preço na zona marcada sem afobação."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m2_q1",
+          "question": "Qual a condição necessária para classificar uma vela como um Order Block válido?",
+          "options": [
+            "Ela deve ser a maior vela de todo o gráfico diário.",
+            "A expansão que se seguiu a ela deve obrigatoriamente quebrar estrutura (BOS ou CHoCH).",
+            "Ela deve estar localizada no meio de uma forte lateralização."
+          ],
+          "correctIndex": 1,
+          "explanation": "Um Order Block só é institucionalmente válido se o movimento gerado a partir dele tiver força suficiente para quebrar estrutura (BOS ou CHoCH), demonstrando presença de grandes investidores."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m2_ch1",
+          "title": "Desafio do Bloco Oculto",
+          "description": "Encontre no gráfico um Order Block no tempo gráfico de 15 minutos. Mude para o tempo de 1 minuto para refinar sua entrada e anote onde estaria posicionado o seu Stop Loss (idealmente protegido logo abaixo/acima do bloco)."
+        }
+      ]
+    }
+  ]
+}

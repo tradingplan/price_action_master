@@ -1,0 +1,19 @@
+{
+  "id": "example_id_template",
+  "title": "Example Title Template",
+  "description": "Example description template.",
+  "vectorCanvas": {
+    "width": 200,
+    "height": 120,
+    "elements": [
+      {
+        "type": "line",
+        "x1": 0.10,
+        "y1": 0.80,
+        "x2": 0.90,
+        "y2": 0.20,
+        "colorStyle": "primary"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "id": "candlesticks",
+  "title": "Velas Japonesas",
+  "description": "Compreenda a linguagem do preço através dos padrões de candles individuais e combinados mais fortes do mercado.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "candlesticks_m1",
+      "title": "Velas de Reversão de Alta",
+      "description": "Aprenda a identificar e validar o Martelo (Hammer) e o Engolfo de Alta (Bullish Engulfing) em zonas de suporte.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "candlesticks_m1_l1",
+          "title": "O Poder da Reversão",
+          "content": "Padrões de velas de reversão indicam a perda de força do movimento anterior e a entrada de pressão contrária de compradores ou vendedores. O Martelo (Hammer) é composto por um corpo pequeno e uma sombra inferior longa (pelo menos duas vezes o tamanho do corpo), mostrando que os vendedores tentaram empurrar o preço, mas os compradores reagiram antes do fechamento. O Engolfo de Alta (Bullish Engulfing) ocorre quando uma grande vela verde cobre inteiramente o corpo da vela vermelha anterior, indicando controle total dos touros."
+        }
+      ],
+      "examples": [
+        {
+          "id": "candlesticks_m1_e1",
+          "title": "O Padrão Martelo (Hammer)",
+          "description": "O Martelo possui uma longa cauda (pavio inferior) mostrando rejeição de preços baixos em zona de suporte.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.25,
+                "cy": 0.35,
+                "x1": 0.15,
+                "y1": 0.05,
+                "y2": 0.05,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.50,
+                "cy": 0.45,
+                "x1": 0.12,
+                "y1": 0.05,
+                "y2": 0.05,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.75,
+                "cy": 0.60,
+                "x1": 0.06,
+                "y1": 0.02,
+                "y2": 0.24,
+                "content": "green"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.72,
+                "x2": 0.90,
+                "y2": 0.72,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.78,
+                "y": 0.50,
+                "content": "Martelo",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "candlesticks_m1_ex1",
+          "instruction": "Encontre um padrão de reversão no gráfico e valide usando o checklist técnico:",
+          "checklist": [
+            "O padrão se formou após um movimento de queda (ou seja, em suporte ou fundo estrutural).",
+            "A sombra inferior do Martelo é de pelo menos duas vezes o tamanho do seu corpo.",
+            "No caso do Engolfo, a vela verde cobriu totalmente o corpo da vela vermelha anterior.",
+            "Aguardei o fechamento completo do candle para validar o padrão."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "candlesticks_m1_q1",
+          "question": "Qual é a principal mensagem psicológica por trás da longa cauda inferior de um Martelo (Hammer) em um suporte?",
+          "options": [
+            "Forte persistência da força vendedora pressionando o mercado para baixo.",
+            "Rejeição agressiva dos preços baixos por parte dos compradores, retomando o controle.",
+            "Indefinição total entre compradores e vendedores, indicando consolidação."
+          ],
+          "correctIndex": 1,
+          "explanation": "A longa sombra inferior do Martelo demonstra que os ursos tentaram empurrar as cotações, mas houve forte rejeição compradora, que fez o preço fechar perto da máxima."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "candlesticks_m1_ch1",
+          "title": "Desafio do Martelo de Suporte",
+          "description": "Abra o gráfico no tempo gráfico de 5 minutos. Encontre um suporte forte. Aguarde o preço testar a região e formar um Martelo. Observe se houve reação compradora imediata após a conclusão da vela."
+        }
+      ]
+    }
+  ]
+}

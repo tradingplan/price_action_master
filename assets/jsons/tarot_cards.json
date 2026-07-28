@@ -1,0 +1,44 @@
+[
+  {
+    "id": "monk",
+    "nome": "O Monge Disciplinado",
+    "bias": "NEUTRO / ESTÁVEL",
+    "icon": "🧘",
+    "advice": "Sua mente está calma e focada. Hoje não é dia de caçar operações ou forçar entradas por tédio. Defina seu preço de interesse, aguarde pacientemente a mitigação de um Order Block ou preenchimento de FVG, e deixe a liquidez do mercado vir até você. Lucro é o subproduto de uma mente tranquila."
+  },
+  {
+    "id": "gambler",
+    "nome": "O Jogador Impulsivo",
+    "bias": "ALTO RISCO / GANÂNCIA",
+    "icon": "🎲",
+    "advice": "Cuidado com o overtrading e a ganância. Quem corre atrás do preço acaba pagando caro. Operar fora do plano ou tentar 'recuperar' perdas de forma emocional (revenge trading) é a receita certa para a ruína. Se bater o stop-loss ou meta diária, feche a plataforma imediatamente e vá caminhar."
+  },
+  {
+    "id": "executor",
+    "nome": "O Executor Hesitante",
+    "bias": "MEDO / INSEGURANÇA",
+    "icon": "⏳",
+    "advice": "O medo de perder bloqueia a clareza para lucrar. Se a estrutura do preço acionou o seu gatilho técnico e todas as regras do seu checklist estão marcadas, execute a ordem sem hesitação. O risco já foi dimensionado. Aceite que o stop é parte do jogo estatístico e confie no seu setup."
+  },
+  {
+    "id": "bottom_fisher",
+    "nome": "O Caçador de Topo/Fundo",
+    "bias": "ANSIEDADE / PRECIPITAÇÃO",
+    "icon": "🎣",
+    "advice": "Tentar adivinhar fundos e topos sem confirmação é jogar contra a correnteza institucional. Pare de tentar prever reversões antes de um CHoCH (Change of Character) claro. Opere a favor do fluxo dominante e do BOS (Break of Structure). A tendência é sua melhor aliada."
+  },
+  {
+    "id": "revenge_trader",
+    "nome": "O Vingador do Mercado",
+    "bias": "FÚRIA / RAIVA",
+    "icon": "⚡",
+    "advice": "O mercado é impessoal e não deve nada a você. Tentar 'bater de frente' com a tendência para se vingar de um prejuízo anterior só trará perdas ainda maiores. A perda faz parte do custo operacional do trader profissional. Aceite-a, respire fundo, e volte somente amanhã."
+  },
+  {
+    "id": "risk_master",
+    "nome": "O Mestre do Risco",
+    "bias": "ALTAMENTE CONSISTENTE",
+    "icon": "🛡️",
+    "advice": "Você compreende que a consistência reside no controle estrito das perdas. Mantenha o gerenciamento de risco cirúrgico. Cada operação deve arriscar no máximo 1% do seu capital total. Lembre-se: sua prioridade número um é sobreviver ao dia de hoje para poder operar amanhã."
+  }
+]

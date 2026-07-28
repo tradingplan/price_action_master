@@ -1,0 +1,72 @@
+[
+  {
+    "id": "q1",
+    "category": "CANDLESTICKS",
+    "question": "Qual destes padrões de velas indica uma possível reversão de alta na parte inferior de uma tendência de baixa?",
+    "illustration_type": "hammer",
+    "options": [
+      "Estrela Cadente (Shooting Star)",
+      "Martelo (Hammer)",
+      "Marubozu de Baixa",
+      "Harami de Baixa"
+    ],
+    "correct_index": 1,
+    "explanation": "O Martelo possui corpo pequeno na parte superior e uma longa sombra inferior (pelo menos duas vezes o tamanho do corpo), indicando rejeição de queda pelos compradores no fundo de uma tendência."
+  },
+  {
+    "id": "q2",
+    "category": "CANDLESTICKS",
+    "question": "O que caracteriza o padrão 'Engolfo de Alta' (Bullish Engulfing)?",
+    "illustration_type": "engulfing",
+    "options": [
+      "Uma vela verde cujo corpo engloba completamente o corpo da vela vermelha anterior",
+      "Duas velas de tamanhos iguais sem sombras",
+      "Uma vela com sombras extremamente longas e corpo inexistente",
+      "Uma sucessão de três velas vermelhas consecutivas"
+    ],
+    "correct_index": 0,
+    "explanation": "No Engolfo de Alta, a abertura da vela verde ocorre abaixo ou igual ao fechamento anterior e o fechamento ocorre acima da abertura da vela vermelha, engolindo-a totalmente."
+  },
+  {
+    "id": "q3",
+    "category": "SMART MONEY CONCEPTS (SMC)",
+    "question": "O que representa o conceito de CHoCH (Change of Character) no SMC?",
+    "illustration_type": "choch",
+    "options": [
+      "A continuação fiel da tendência vigente",
+      "A primeira quebra de estrutura local indicando mudança de tendência",
+      "Uma zona ampla de consolidação de liquidez",
+      "Um desequilíbrio no livro de ofertas (Fair Value Gap)"
+    ],
+    "correct_index": 1,
+    "explanation": "O CHoCH (Mudança de Caráter) ocorre quando o preço quebra o último fundo (em tendência de alta) ou topo (em tendência de baixa), sinalizando a reversão do fluxo de ordens institucional."
+  },
+  {
+    "id": "q4",
+    "category": "ONDAS DE ELLIOTT",
+    "question": "Segundo as Ondas de Elliott, qual destas ondas representa uma movimentação Corretiva?",
+    "illustration_type": "elliott",
+    "options": [
+      "Onda 1",
+      "Onda 3",
+      "Onda B",
+      "Onda 5"
+    ],
+    "correct_index": 2,
+    "explanation": "As ondas de Elliot são compostas por 5 ondas de impulso (1, 2, 3, 4, 5) a favor da tendência e 3 ondas de correção (A, B, C) contra a tendência principal. A Onda B é de correção."
+  },
+  {
+    "id": "q5",
+    "category": "FIGURAS GRÁFICAS",
+    "question": "Qual das seguintes figuras gráficas é um padrão clássico de reversão de alta?",
+    "illustration_type": "oco_inverted",
+    "options": [
+      "Topo Duplo (Double Top)",
+      "OCO (Ombro-Cabeça-Ombro)",
+      "OCO Invertido (Ombro-Cabeça-Ombro Invertido)",
+      "Bandeira de Baixa (Bear Flag)"
+    ],
+    "correct_index": 2,
+    "explanation": "O Ombro-Cabeça-Ombro Invertido (OCOI) ocorre no final de uma tendência de baixa, onde o preço falha em continuar caindo (formando ombros mais altos que a cabeça central) e reverte em alta."
+  }
+]

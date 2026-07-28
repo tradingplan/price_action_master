@@ -1,0 +1,54 @@
+[
+  {
+    "id": "bos",
+    "nome": "Break of Structure (BOS)",
+    "icon": "📈",
+    "description": "O BOS (Quebra de Estrutura) representa a continuação da tendência atual. Ocorre quando o preço ultrapassa a máxima anterior (em tendência de alta) ou a mínima anterior (em tendência de baixa), confirmando a força e o alinhamento da estrutura institucional.",
+    "chart": "bos",
+    "rules": [
+      "Identificar a tendência principal dominante (Alta ou Baixa).",
+      "Marcar o último topo (swing high) ou fundo (swing low) válido.",
+      "Aguardar o fechamento do corpo da vela romper esse nível.",
+      "Confirmar a quebra para continuar operando a favor da tendência."
+    ]
+  },
+  {
+    "id": "choch",
+    "nome": "Change of Character (CHoCH)",
+    "icon": "🔄",
+    "description": "O CHoCH (Mudança de Caráter) é o primeiro sinal de reversão de tendência. Ele acontece quando o preço quebra o último fundo estrutural (em alta) ou topo estrutural (em baixa), indicando uma mudança no fluxo de ordens das instituições.",
+    "chart": "choch",
+    "rules": [
+      "O preço deve atingir uma zona de interesse (Order Block ou Liquidez).",
+      "Identificar o último fundo que originou a máxima (em tendência de alta).",
+      "O preço rompe esse fundo com força e fecha abaixo.",
+      "O fluxo institucional agora reverteu para venda (ou compra no inverso)."
+    ]
+  },
+  {
+    "id": "order_block",
+    "nome": "Order Blocks (OB)",
+    "icon": "🧱",
+    "description": "Order Blocks são blocos de ordens institucionais. Representam a última vela contrária antes do início de um forte movimento de expansão que quebrou estrutura (BOS ou CHoCH). São áreas onde grandes bancos deixaram ordens pendentes.",
+    "chart": "order_block",
+    "rules": [
+      "Localizar a última vela de baixa antes do movimento forte de alta (ou vice-versa).",
+      "Essa expansão deve ter gerado quebra de estrutura (BOS ou CHoCH).",
+      "Marcar a área do corpo da vela (e pavios) como zona de suporte/resistência.",
+      "Aguardar o retorno do preço (mitigação) nessa zona para buscar entradas."
+    ]
+  },
+  {
+    "id": "fvg",
+    "nome": "Fair Value Gap (FVG)",
+    "icon": "🕳️",
+    "description": "O Fair Value Gap (FVG) é um desequilíbrio (imbalance) entre compradores e vendedores. É identificado em um padrão de 3 velas consecutivas, onde existe uma lacuna de preço entre a máxima da primeira vela e a mínima da terceira vela.",
+    "chart": "fvg",
+    "rules": [
+      "Localizar um movimento impulsivo muito rápido de 3 velas consecutivas.",
+      "A primeira vela e a terceira vela não devem ter pavios que se cruzem.",
+      "Marcar a lacuna (gap) de preço vazia deixada pelo corpo da segunda vela.",
+      "O mercado tende a retornar nessa área para preencher a ineficiência."
+    ]
+  }
+]

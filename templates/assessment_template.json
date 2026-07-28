@@ -1,0 +1,13 @@
+{
+  "id": "assessment_id_template",
+  "title": "Assessment Template",
+  "minPassingScore": 80,
+  "questions": [
+    {
+      "question": "Assessment question?",
+      "options": ["Opt 1", "Opt 2"],
+      "correctIndex": 0,
+      "explanation": "Why Opt 1 is correct."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "elliott",
+  "title": "Ondas de Elliott",
+  "description": "Compreenda a teoria de ciclos e psicologia de massas do mercado financeiro descrita por Ralph Nelson Elliott.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "elliott_m1",
+      "title": "O Ciclo Impulsivo",
+      "description": "Domine o mapeamento das 5 ondas impulsivas a favor da tendência.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "elliott_m1_l1",
+          "title": "As 5 Ondas de Avanço",
+          "content": "A teoria de Elliott divide os movimentos em dois grandes ciclos: Impulso e Correção. O impulso move o preço na direção principal e é composto por 5 ondas numeradas de 1 a 5. As ondas 1, 3 e 5 representam o avanço, enquanto as ondas 2 e 4 representam a retração temporária interna. Cada onda possui uma psicologia própria, sendo a onda 3 tipicamente a de maior aceleração e volume."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m1_e1",
+          "title": "Estrutura de Impulso",
+          "description": "Observe as linhas direcionais das ondas 1 a 5 e a proporção de cada perna de alta.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              { "type": "line", "x1": 0.05, "y1": 0.90, "x2": 0.20, "y2": 0.60, "colorStyle": "text" },
+              { "type": "line", "x1": 0.20, "y1": 0.60, "x2": 0.35, "y2": 0.80, "colorStyle": "text" },
+              { "type": "line", "x1": 0.35, "y1": 0.80, "x2": 0.65, "y2": 0.20, "colorStyle": "primary" },
+              { "type": "line", "x1": 0.65, "y1": 0.20, "x2": 0.80, "y2": 0.50, "colorStyle": "text" },
+              { "type": "line", "x1": 0.80, "y1": 0.50, "x2": 0.95, "y2": 0.10, "colorStyle": "text" },
+              { "type": "text", "x": 0.22, "y": 0.56, "content": "1" },
+              { "type": "text", "x": 0.37, "y": 0.82, "content": "2" },
+              { "type": "text", "x": 0.67, "y": 0.16, "content": "3", "colorStyle": "primary" },
+              { "type": "text", "x": 0.82, "y": 0.52, "content": "4" },
+              { "type": "text", "x": 0.96, "y": 0.06, "content": "5" }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m1_ex1",
+          "instruction": "Verifique a integridade da sua contagem de impulso de 1 a 5 utilizando o checklist prático:",
+          "checklist": [
+            "Identifiquei o início da perna 1 após uma reversão clara.",
+            "A perna 2 corrigiu parcialmente sem romper o início da perna 1.",
+            "A perna 3 apresentou forte volume financeiro e velocidade.",
+            "A perna 5 alcançou novos topos com menor momentum que a perna 3."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m1_q1",
+          "question": "Qual das seguintes ondas impulsivas é caracteristicamente a mais forte e de maior volume?",
+          "options": [
+            "Onda 1",
+            "Onda 3",
+            "Onda 5"
+          ],
+          "correctIndex": 1,
+          "explanation": "A Onda 3 é a onda da participação institucional maciça, caracterizada por forte aceleração, alto volume financeiro e rompimento de barreiras técnicas."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m1_ch1",
+          "title": "Desafio do Impulso Perfeito",
+          "description": "Selecione um gráfico diário de uma ação ou criptoativo. Encontre um movimento forte de alta de médio prazo, marque as 5 sub-ondas e verifique se as retrações se alinham com os níveis comuns de Fibonacci (ex: 50% para onda 2 e 38.2% para onda 4)."
+        }
+      ]
+    }
+  ]
+}

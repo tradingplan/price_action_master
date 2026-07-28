@@ -1,0 +1,117 @@
+{
+  "id": "elliott",
+  "title": "Ondas de Elliott",
+  "description": "Compreenda a teoria de ciclos e psicologia de massas do mercado financeiro descrita por Ralph Nelson Elliott.",
+  "modules": [
+    {
+      "id": "elliott_m1",
+      "title": "O Ciclo Impulsivo",
+      "description": "Domine o mapeamento das 5 ondas impulsivas a favor da tendência.",
+      "lessons": [
+        {
+          "id": "elliott_m1_l1",
+          "title": "As 5 Ondas de Avanço",
+          "content": "A teoria de Elliott divide os movimentos em dois grandes ciclos: Impulso e Correção. O impulso move o preço na direção principal e é composto por 5 ondas numeradas de 1 a 5. As ondas 1, 3 e 5 representam o avanço, enquanto as ondas 2 e 4 representam a retração temporária interna. Cada onda possui uma psicologia própria, sendo a onda 3 tipicamente a de maior aceleração e volume."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m1_e1",
+          "title": "Estrutura de Impulso",
+          "description": "Observe as linhas direcionais das ondas 1 a 5 e a proporção de cada perna de alta.",
+          "chartType": "impulse"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m1_ex1",
+          "instruction": "Verifique a integridade da sua contagem de impulso de 1 a 5 utilizando o checklist prático:",
+          "checklist": [
+            "Identifiquei o início da perna 1 após uma reversão clara.",
+            "A perna 2 corrigiu parcialmente sem romper o início da perna 1.",
+            "A perna 3 apresentou forte volume financeiro e velocidade.",
+            "A perna 5 alcançou novos topos com menor momentum que a perna 3."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m1_q1",
+          "question": "Qual das seguintes ondas impulsivas é caracteristicamente a mais forte e de maior volume?",
+          "options": [
+            "Onda 1",
+            "Onda 3",
+            "Onda 5"
+          ],
+          "correctIndex": 1,
+          "explanation": "A Onda 3 é a onda da participação institucional maciça, caracterizada por forte aceleração, alto volume financeiro e rompimento de barreiras técnicas."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m1_ch1",
+          "title": "Desafio do Impulso Perfeito",
+          "description": "Selecione um gráfico diário de uma ação ou criptoativo. Encontre um movimento forte de alta de médio prazo, marque as 5 sub-ondas e verifique se as retrações se alinham com os níveis comuns de Fibonacci (ex: 50% para onda 2 e 38.2% para onda 4)."
+        }
+      ]
+    },
+    {
+      "id": "elliott_m2",
+      "title": "Regras de Ouro e Correção",
+      "description": "Aprenda a aplicar as 3 regras invioláveis e identificar as ondas de correção A-B-C.",
+      "lessons": [
+        {
+          "id": "elliott_m2_l1",
+          "title": "As Regras Invioláveis",
+          "content": "Para uma contagem de 5 ondas de impulso ser considerada válida, ela deve cumprir obrigatoriamente 3 regras descritas por Elliott: \n1. A Onda 2 nunca corrige mais de 100% do tamanho da Onda 1.\n2. A Onda 3 nunca pode ser a menor das três ondas de impulso (1, 3 e 5).\n3. A Onda 4 nunca pode entrar no território de preço da Onda 1. \nApós o impulso, inicia-se a correção de contra-tendência em 3 pernas: A, B e C."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m2_e1",
+          "title": "Mapeamento das 3 Regras",
+          "description": "Veja o destaque visual de suporte e não sobreposição das ondas 2 e 4 nos níveis corretos.",
+          "chartType": "rules"
+        },
+        {
+          "id": "elliott_m2_e2",
+          "title": "Ciclo Corretivo A-B-C",
+          "description": "Observe a estrutura corretiva de queda A-B-C se formando logo após o topo da onda 5.",
+          "chartType": "corrective"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m2_ex1",
+          "instruction": "Valide a conformidade das regras invioláveis na sua contagem do gráfico:",
+          "checklist": [
+            "A Onda 2 respeitou a mínima de início da Onda 1.",
+            "A Onda 3 é maior que a Onda 1 ou a Onda 5 (ou seja, não é a menor).",
+            "A mínima da Onda 4 não cruzou a máxima do topo da Onda 1.",
+            "Identifiquei a Onda A e C como movimentos descendentes e B como recuperação."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m2_q1",
+          "question": "Qual das seguintes situações invalida imediatamente uma contagem de ondas de impulso?",
+          "options": [
+            "A Onda 2 corrigir 61.8% da Onda 1.",
+            "A Onda 4 fechar abaixo do topo alcançado pela Onda 1.",
+            "A Onda 3 ser de tamanho menor que a Onda 1, mas maior que a Onda 5."
+          ],
+          "correctIndex": 1,
+          "explanation": "A Regra 3 de Elliott afirma expressamente que a Onda 4 nunca pode entrar no território de preço da Onda 1. Se elas se sobrepuserem, a contagem está inválida."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m2_ch1",
+          "title": "Desafio do Caçador de Violações",
+          "description": "Vasculhe um gráfico e encontre uma contagem que parece correta à primeira vista, mas que viola uma das 3 regras de Elliott. Documente qual regra foi violada (ex: onda 4 sobrepondo onda 1)."
+        }
+      ]
+    }
+  ]
+}

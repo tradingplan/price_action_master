@@ -1,0 +1,11 @@
+{
+  "id": "quiz_id_template",
+  "question": "Scenario question text?",
+  "options": [
+    "Distractor choice A",
+    "Correct answer choice B",
+    "Distractor choice C"
+  ],
+  "correctIndex": 1,
+  "explanation": "Rationale explanation on why B is correct and distractors are wrong."
+}

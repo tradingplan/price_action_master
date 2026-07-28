@@ -1,0 +1,19 @@
+{
+  "id": "smc_course",
+  "title": "Smart Money Concepts (Exemplo)",
+  "description": "Exemplo de especificação de curso para o Content Architect.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "smc_m1",
+      "title": "Estrutura Básica",
+      "description": "Introdução a BOS e CHoCH.",
+      "xpValue": 100,
+      "lessons": [],
+      "examples": [],
+      "exercises": [],
+      "quizzes": [],
+      "challenges": []
+    }
+  ]
+}
