@@ -30,8 +30,21 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
 
   late PlatformModule _module;
   late List<bool> _exerciseChecklist;
+  int _quizStep = 0;
   int? _selectedQuizIndex;
   bool _isQuizAnswered = false;
+
+  // O quiz só conta como concluído quando a última pergunta do módulo for respondida
+  bool get _isQuizDone =>
+      _isQuizAnswered && _quizStep == _module.quizzes.length - 1;
+
+  void _nextQuiz() {
+    setState(() {
+      _quizStep++;
+      _selectedQuizIndex = null;
+      _isQuizAnswered = false;
+    });
+  }
 
   @override
   void initState() {
@@ -155,7 +168,7 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
               // 4. Aba Quiz (Múltipla Escolha)
               _module.quizzes.isNotEmpty
                   ? QuizRenderer(
-                      quiz: _module.quizzes.first,
+                      quiz: _module.quizzes[_quizStep],
                       selectedIndex: _selectedQuizIndex,
                       isAnswered: _isQuizAnswered,
                       onAnswerSelected: (index) {
@@ -164,6 +177,10 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
                           _isQuizAnswered = true;
                         });
                       },
+                      subtitle: _module.quizzes.length > 1
+                          ? 'Pergunta ${_quizStep + 1} de ${_module.quizzes.length}'
+                          : null,
+                      onNext: _quizStep < _module.quizzes.length - 1 ? _nextQuiz : null,
                     )
                   : const Center(child: Text('Nenhum quiz disponível.')),
 
@@ -172,7 +189,7 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
                   ? ChallengeRenderer(
                       challenge: _module.challenges.first,
                       isExerciseDone: _exerciseChecklist.every((e) => e == true),
-                      isQuizDone: _isQuizAnswered,
+                      isQuizDone: _isQuizDone,
                       onCompletePressed: _finishModule,
                     )
                   : const Center(child: Text('Nenhum desafio disponível.')),

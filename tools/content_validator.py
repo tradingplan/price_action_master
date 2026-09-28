@@ -239,6 +239,58 @@ def validate_courses():
         print("\n[SUCCESS] All course files are compliant with schemas and constraints!")
         return True
 
+def validate_concepts():
+    concept_files = glob.glob("content/reference/*.json")
+    if not concept_files:
+        print("No reference JSON files found in 'content/reference/'.")
+        return True
+
+    required_fields = ["id", "title", "icon", "description", "chartImage", "theoryNote"]
+    has_errors = False
+
+    print(f"\nStarting reference content validation for {len(concept_files)} file(s)...\n")
+
+    for filepath in concept_files:
+        filename = os.path.basename(filepath)
+        print(f"Validating file: {filename}")
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as e:
+            print(f"  [ERROR] Failed to parse JSON: {e}")
+            has_errors = True
+            continue
+
+        if not isinstance(data, list):
+            print(f"  [ERROR] '{filename}' must contain a JSON array of concepts.")
+            has_errors = True
+            continue
+
+        seen_ids = set()
+        for idx, concept in enumerate(data):
+            cid = concept.get("id")
+            if not cid:
+                print(f"  [ERROR] Concept index {idx} is missing 'id'.")
+                has_errors = True
+            elif cid in seen_ids:
+                print(f"  [ERROR] Duplicate concept ID found: '{cid}'")
+                has_errors = True
+            else:
+                seen_ids.add(cid)
+
+            for field in required_fields:
+                if not concept.get(field):
+                    print(f"  [ERROR] Concept '{cid}' is missing '{field}'.")
+                    has_errors = True
+
+    if has_errors:
+        print("\n[FAIL] Reference content validation failed. Please check errors above.")
+        return False
+    else:
+        print("[SUCCESS] All reference files are compliant with the concept schema!")
+        return True
+
 if __name__ == "__main__":
-    success = validate_courses()
+    success = validate_courses() and validate_concepts()
     sys.exit(0 if success else 1)

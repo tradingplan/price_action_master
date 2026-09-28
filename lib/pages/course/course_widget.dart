@@ -10,10 +10,13 @@ export 'course_model.dart';
 
 class CourseWidget extends StatefulWidget {
   final String? courseId;
+  // Falso quando o curso é exibido como aba da barra inferior (sem rota para voltar)
+  final bool showBackButton;
 
   const CourseWidget({
     super.key,
     this.courseId,
+    this.showBackButton = true,
   });
 
   static String routeName = 'Course';
@@ -107,14 +110,16 @@ class _CourseWidgetState extends State<CourseWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
-          leading: InkWell(
-            onTap: () => context.pop(),
-            child: Icon(
-              Icons.chevron_left_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 32.0,
-            ),
-          ),
+          leading: widget.showBackButton
+              ? InkWell(
+                  onTap: () => context.pop(),
+                  child: Icon(
+                    Icons.chevron_left_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 32.0,
+                  ),
+                )
+              : null,
           title: Text(
             courseTitle,
             style: FlutterFlowTheme.of(context).headlineMedium.override(

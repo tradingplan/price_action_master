@@ -1,4 +1,4 @@
-import '/backend/backend.dart';
+import '/backend/schema/platform_concept_model.dart';
 import '/components/trading_plan_logo/trading_plan_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +12,10 @@ class DetalheATWidget extends StatefulWidget {
     this.singleAT,
   });
 
-  final ConceitosRecord? singleAT;
+  // Serializado como Map para funcionar tanto vindo de `extra` (navegação
+  // interna) quanto de um deep link (query param JSON), igual ao padrão
+  // usado por ModulePanelWidget.moduleData.
+  final Map<String, dynamic>? singleAT;
 
   static String routeName = 'DetalheAT';
   static String routePath = '/detalheAT';
@@ -26,10 +29,13 @@ class _DetalheATWidgetState extends State<DetalheATWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  late PlatformConcept _concept;
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => DetalheATModel());
+    _concept = PlatformConcept.fromJson(widget.singleAT ?? const {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -67,7 +73,7 @@ class _DetalheATWidgetState extends State<DetalheATWidget> {
               ),
             ),
             title: Text(
-              widget.singleAT!.nome,
+              _concept.title,
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily:
                         FlutterFlowTheme.of(context).headlineSmallFamily,
@@ -92,11 +98,20 @@ class _DetalheATWidgetState extends State<DetalheATWidget> {
                       Expanded(
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
-                          child: Image.network(
-                            widget.singleAT!.icon,
+                          child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 230.0,
-                            fit: BoxFit.fitWidth,
+                            height: 140.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primary
+                                  .withAlpha(20),
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              _concept.icon,
+                              style: const TextStyle(fontSize: 72.0),
+                            ),
                           ),
                         ),
                       ),
@@ -134,7 +149,7 @@ class _DetalheATWidgetState extends State<DetalheATWidget> {
                       children: [
                         Expanded(
                           child: Text(
-                            widget.singleAT!.description,
+                            _concept.description,
                             style: FlutterFlowTheme.of(context)
                                 .bodySmall
                                 .override(
@@ -158,7 +173,7 @@ class _DetalheATWidgetState extends State<DetalheATWidget> {
                       children: [
                         Expanded(
                           child: Image.network(
-                            widget.singleAT!.chart,
+                            _concept.chartImage,
                             width: 100.0,
                             height: 230.0,
                             fit: BoxFit.cover,

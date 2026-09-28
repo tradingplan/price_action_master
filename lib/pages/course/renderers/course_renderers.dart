@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:price_action_master/backend/schema/platform_course_models.dart';
 import '../../../flutter_flow/flutter_flow_theme.dart';
 import 'vector_painter.dart';
-import '../../smc/detalhe_smc_widget.dart';
-import '../../elliott/detalhe_elliott_widget.dart';
-import '../../quiz/quiz_widget.dart';
 
 // --- 1. RENDERIZADOR DE LIÇÕES (LessonRenderer) ---
 class LessonRenderer extends StatelessWidget {
@@ -157,7 +154,6 @@ class ExampleRenderer extends StatelessWidget {
   }
 
   Widget _buildChartWidget(BuildContext context) {
-    // 1. Prioridade para Vector Canvas Dinâmico
     if (example.vectorCanvas != null) {
       return CustomPaint(
         size: Size(example.vectorCanvas!.width, example.vectorCanvas!.height),
@@ -166,18 +162,6 @@ class ExampleRenderer extends StatelessWidget {
           context: context,
         ),
       );
-    }
-
-    // 2. Fallback de suporte a Ilustradores Legados (Ponte de Transição)
-    final type = example.chartType ?? '';
-    if (type == 'bos' || type == 'choch' || type == 'order_block' || type == 'fvg') {
-      return SMCIllustration(type: type);
-    }
-    if (type == 'impulse' || type == 'corrective' || type == 'rules') {
-      return ElliottIllustration(type: type);
-    }
-    if (type == 'hammer' || type == 'engulfing' || type == 'oco_inverted') {
-      return QuizIllustration(type: type);
     }
 
     return const Icon(Icons.bar_chart_rounded, size: 48.0);
@@ -293,6 +277,12 @@ class QuizRenderer extends StatefulWidget {
   final int? selectedIndex;
   final bool isAnswered;
   final Function(int) onAnswerSelected;
+  final String title;
+  // Linha de contexto opcional (ex: "Pergunta 2 de 3")
+  final String? subtitle;
+  // Quando informado, exibe um botão de avanço após a resposta
+  final VoidCallback? onNext;
+  final String nextLabel;
 
   const QuizRenderer({
     super.key,
@@ -300,6 +290,10 @@ class QuizRenderer extends StatefulWidget {
     required this.selectedIndex,
     required this.isAnswered,
     required this.onAnswerSelected,
+    this.title = 'Pergunta de Fixação',
+    this.subtitle,
+    this.onNext,
+    this.nextLabel = 'Próxima Pergunta',
   });
 
   @override
@@ -316,13 +310,23 @@ class _QuizRendererState extends State<QuizRenderer> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Pergunta de Fixação',
+              widget.title,
               style: FlutterFlowTheme.of(context).titleMedium.override(
                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                     color: FlutterFlowTheme.of(context).primary,
                     fontWeight: FontWeight.bold,
                   ),
             ),
+            if (widget.subtitle != null) ...[
+              const SizedBox(height: 4.0),
+              Text(
+                widget.subtitle!,
+                style: FlutterFlowTheme.of(context).bodySmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                    ),
+              ),
+            ],
             const SizedBox(height: 12.0),
             Text(
               widget.quiz.question,
@@ -424,6 +428,26 @@ class _QuizRendererState extends State<QuizRenderer> {
                   ],
                 ),
               ),
+              if (widget.onNext != null) ...[
+                const SizedBox(height: 16.0),
+                SizedBox(
+                  width: double.infinity,
+                  height: 45.0,
+                  child: ElevatedButton(
+                    onPressed: widget.onNext,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: FlutterFlowTheme.of(context).primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    child: Text(
+                      widget.nextLabel,
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ],
         ),

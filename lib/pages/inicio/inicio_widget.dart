@@ -848,7 +848,7 @@ class _InicioWidgetState extends State<InicioWidget>
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  QuizWidget.routeName,
+                                  QuizSessionWidget.routeName,
                                   extra: <String, dynamic>{
                                     '__transition_info__': TransitionInfo(
                                       hasTransition: true,

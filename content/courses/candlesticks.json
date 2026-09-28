@@ -94,6 +94,30 @@
           ],
           "correctIndex": 1,
           "explanation": "A longa sombra inferior do Martelo demonstra que os ursos tentaram empurrar as cotações, mas houve forte rejeição compradora, que fez o preço fechar perto da máxima."
+        },
+        {
+          "id": "candlesticks_m1_q2",
+          "question": "Qual destes padrões de velas indica uma possível reversão de alta na parte inferior de uma tendência de baixa?",
+          "options": [
+            "Estrela Cadente (Shooting Star)",
+            "Martelo (Hammer)",
+            "Marubozu de Baixa",
+            "Harami de Baixa"
+          ],
+          "correctIndex": 1,
+          "explanation": "O Martelo possui corpo pequeno na parte superior e uma longa sombra inferior (pelo menos duas vezes o tamanho do corpo), indicando rejeição de queda pelos compradores no fundo de uma tendência."
+        },
+        {
+          "id": "candlesticks_m1_q3",
+          "question": "O que caracteriza o padrão 'Engolfo de Alta' (Bullish Engulfing)?",
+          "options": [
+            "Uma vela verde cujo corpo engloba completamente o corpo da vela vermelha anterior",
+            "Duas velas de tamanhos iguais sem sombras",
+            "Uma vela com sombras extremamente longas e corpo inexistente",
+            "Uma sucessão de três velas vermelhas consecutivas"
+          ],
+          "correctIndex": 0,
+          "explanation": "No Engolfo de Alta, a abertura da vela verde ocorre abaixo ou igual ao fechamento anterior e o fechamento ocorre acima da abertura da vela vermelha, engolindo-a totalmente."
         }
       ],
       "challenges": [

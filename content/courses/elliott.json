@@ -62,6 +62,18 @@
           ],
           "correctIndex": 1,
           "explanation": "A Onda 3 é a onda da participação institucional maciça, caracterizada por forte aceleração, alto volume financeiro e rompimento de barreiras técnicas."
+        },
+        {
+          "id": "elliott_m1_q2",
+          "question": "Segundo as Ondas de Elliott, qual destas ondas representa uma movimentação Corretiva?",
+          "options": [
+            "Onda 1",
+            "Onda 3",
+            "Onda B",
+            "Onda 5"
+          ],
+          "correctIndex": 2,
+          "explanation": "As ondas de Elliot são compostas por 5 ondas de impulso (1, 2, 3, 4, 5) a favor da tendência e 3 ondas de correção (A, B, C) contra a tendência principal. A Onda B é de correção."
         }
       ],
       "challenges": [

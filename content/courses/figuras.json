@@ -64,6 +64,18 @@
           ],
           "correctIndex": 1,
           "explanation": "A Linha de Pescoço une os picos de retração entre a cabeça e os ombros. O seu rompimento com corpo de vela indica a reversão estrutural oficial de baixa para alta."
+        },
+        {
+          "id": "figuras_m1_q2",
+          "question": "Qual das seguintes figuras gráficas é um padrão clássico de reversão de alta?",
+          "options": [
+            "Topo Duplo (Double Top)",
+            "OCO (Ombro-Cabeça-Ombro)",
+            "OCO Invertido (Ombro-Cabeça-Ombro Invertido)",
+            "Bandeira de Baixa (Bear Flag)"
+          ],
+          "correctIndex": 2,
+          "explanation": "O Ombro-Cabeça-Ombro Invertido (OCOI) ocorre no final de uma tendência de baixa, onde o preço falha em continuar caindo (formando ombros mais altos que a cabeça central) e reverte em alta."
         }
       ],
       "challenges": [

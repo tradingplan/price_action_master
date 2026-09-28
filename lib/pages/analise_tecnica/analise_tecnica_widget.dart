@@ -1,10 +1,10 @@
-import '/backend/backend.dart';
+import '/backend/repositories/concept_repository.dart';
+import '/backend/schema/platform_concept_model.dart';
 import '/components/trading_plan_logo/trading_plan_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'analise_tecnica_model.dart';
@@ -25,10 +25,17 @@ class _AnaliseTecnicaWidgetState extends State<AnaliseTecnicaWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Conceitos são lidos localmente (content/reference/conceitos.json), não
+  // mais do Firestore: os dados já viviam num asset local antes disso.
+  late Future<List<PlatformConcept>> _conceptsFuture;
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => AnaliseTecnicaModel());
+    _conceptsFuture = LocalConceptRepository().getAllConcepts().then(
+          (concepts) => concepts..sort((a, b) => a.title.compareTo(b.title)),
+        );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -187,167 +194,123 @@ class _AnaliseTecnicaWidgetState extends State<AnaliseTecnicaWidget> {
                               ),
                             ],
                           ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                DetalheATWidget.routeName,
-                                extra: <String, dynamic>{
-                                  '__transition_info__': TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType:
-                                        PageTransitionType.topToBottom,
-                                  ),
-                                },
-                              );
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: FutureBuilder<List<ConceitosRecord>>(
-                                      future: queryConceitosRecordOnce(
-                                        queryBuilder: (conceitosRecord) =>
-                                            conceitosRecord.orderBy('nome'),
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: FutureBuilder<List<PlatformConcept>>(
+                              future: _conceptsFuture,
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitFadingGrid(
+                                        color: Color(0xFF0E6C04),
+                                        size: 50.0,
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitFadingGrid(
-                                                color: Color(0xFF0E6C04),
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ConceitosRecord>
-                                            listViewConceitosRecordList =
-                                            snapshot.data!;
+                                    ),
+                                  );
+                                }
+                                final concepts = snapshot.data!;
 
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: listViewConceitosRecordList
-                                              .length,
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewConceitosRecord =
-                                                listViewConceitosRecordList[
-                                                    listViewIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  DetalheATWidget.routeName,
-                                                  queryParameters: {
-                                                    'singleAT': serializeParam(
-                                                      listViewConceitosRecord,
-                                                      ParamType.Document,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'singleAT':
-                                                        listViewConceitosRecord,
-                                                    '__transition_info__':
-                                                        TransitionInfo(
-                                                      hasTransition: true,
-                                                      transitionType:
-                                                          PageTransitionType
-                                                              .topToBottom,
-                                                    ),
-                                                  },
-                                                );
-                                              },
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.all(8.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      child: CachedNetworkImage(
-                                                        fadeInDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                        fadeOutDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                        imageUrl:
-                                                            listViewConceitosRecord
-                                                                .icon,
-                                                        width: 70.0,
-                                                        height: 70.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Text(
-                                                      listViewConceitosRecord
-                                                          .nome,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallIsCustom,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.all(8.0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .chevron_right_outlined,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .gray600,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: concepts.length,
+                                  itemBuilder: (context, listViewIndex) {
+                                    final concept = concepts[listViewIndex];
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          DetalheATWidget.routeName,
+                                          queryParameters: {
+                                            'singleAT': serializeParam(
+                                              concept.toJson(),
+                                              ParamType.JSON,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'singleAT': concept.toJson(),
+                                            '__transition_info__':
+                                                TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType
+                                                      .topToBottom,
+                                            ),
                                           },
                                         );
                                       },
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Container(
+                                              width: 70.0,
+                                              height: 70.0,
+                                              decoration: BoxDecoration(
+                                                color: FlutterFlowTheme.of(
+                                                        context)
+                                                    .primary
+                                                    .withAlpha(20),
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                concept.icon,
+                                                style: const TextStyle(
+                                                    fontSize: 32.0),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              concept.title,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallIsCustom,
+                                                  ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Icon(
+                                              Icons.chevron_right_outlined,
+                                              color: FlutterFlowTheme.of(
+                                                      context)
+                                                  .gray600,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                           Row(

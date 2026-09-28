@@ -17,11 +17,12 @@ class LocalCourseRepository implements CourseRepository {
     List<String> ids = [];
 
     try {
-      final String manifestContent = await rootBundle.loadString('AssetManifest.json');
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent) as Map<String, dynamic>;
-      
+      // AssetManifest.json deixou de ser gerado pelo Flutter; a API oficial lê o AssetManifest.bin
+      final AssetManifest manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+
       // Filtrar os assets de cursos
-      final List<String> coursePaths = manifestMap.keys
+      final List<String> coursePaths = manifest
+          .listAssets()
           .where((String key) => key.startsWith('content/courses/') && key.endsWith('.json'))
           .toList();
 
@@ -32,6 +33,16 @@ class LocalCourseRepository implements CourseRepository {
           ids.add(id);
         }
       }
+
+      // Mantém a ordem do catálogo conhecido; cursos novos entram no fim, em ordem alfabética
+      int rank(String id) {
+        final i = _fallbackCourseIds.indexOf(id);
+        return i < 0 ? _fallbackCourseIds.length : i;
+      }
+      ids.sort((a, b) {
+        final byRank = rank(a).compareTo(rank(b));
+        return byRank != 0 ? byRank : a.compareTo(b);
+      });
     } catch (e) {
       print('LocalCourseRepository: Erro ao listar assets dinamicamente: $e. Usando fallback.');
       ids = List.from(_fallbackCourseIds);

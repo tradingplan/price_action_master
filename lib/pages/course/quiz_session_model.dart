@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'detalhe_smc_widget.dart' show DetalheSMCWidget;
+import 'quiz_session_widget.dart' show QuizSessionWidget;
 import 'package:flutter/material.dart';
 
-class DetalheSMCModel extends FlutterFlowModel<DetalheSMCWidget> {
+class QuizSessionModel extends FlutterFlowModel<QuizSessionWidget> {
   @override
   void initState(BuildContext context) {}
 
