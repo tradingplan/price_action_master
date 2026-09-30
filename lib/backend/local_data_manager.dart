@@ -43,6 +43,50 @@ class LocalDataManager {
     await _prefs?.setString('last_tarot_card_id', cardId);
   }
 
+  // Última Leitura Completa do Tarot
+  static Map<String, dynamic>? getLastTarotReading() {
+    final jsonStr = _prefs?.getString('last_tarot_reading');
+    if (jsonStr != null && jsonStr.isNotEmpty) {
+      try {
+        return json.decode(jsonStr) as Map<String, dynamic>;
+      } catch (_) {}
+    }
+    final date = getLastTarotDrawDate();
+    final cardId = getLastTarotCardId();
+    if (date != null && cardId != null) {
+      return {
+        'data': date,
+        'cartaId': cardId,
+        'psychLoad': 50,
+        'biasStatus': 'STABLE_FLOW',
+      };
+    }
+    return null;
+  }
+
+  static Future<void> saveLastTarotReading(Map<String, dynamic> reading) async {
+    await _prefs?.setString('last_tarot_reading', json.encode(reading));
+    if (reading['data'] != null) {
+      await setLastTarotDrawDate(reading['data'].toString());
+    }
+    if (reading['cartaId'] != null) {
+      await setLastTarotCardId(reading['cartaId'].toString());
+    }
+  }
+
+  // Histórico de leituras do Tarot (limitado às últimas 90)
+  static Future<List<Map<String, dynamic>>> getTarotHistory() async {
+    final raw = await _readJsonList('tarot_history.json');
+    return raw.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+  }
+
+  static Future<void> saveTarotHistoryEntry(Map<String, dynamic> entry) async {
+    final history = await getTarotHistory();
+    history.add(entry);
+    final trimmed = history.length > 90 ? history.sublist(history.length - 90) : history;
+    await _writeJsonList('tarot_history.json', trimmed);
+  }
+
   // --- REGISTROS DE HISTÓRICO ESTRUTURADOS (JSON no disco local) ---
 
   // Retorna a referência de arquivo local na pasta de documentos do aplicativo
@@ -333,6 +377,8 @@ class LocalDataManager {
       if (await srFile.exists()) await srFile.delete();
       final certFile = await _getLocalFile('certificates.json');
       if (await certFile.exists()) await certFile.delete();
+      final tarotFile = await _getLocalFile('tarot_history.json');
+      if (await tarotFile.exists()) await tarotFile.delete();
     } catch (e) {
       print('Error clearing local files: $e');
     }

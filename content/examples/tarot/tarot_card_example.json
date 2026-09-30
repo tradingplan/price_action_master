@@ -1,0 +1,29 @@
+{
+  "versao": "1.0.0",
+  "idioma": "pt-BR",
+  "aviso": "Tarot Trader é uma ferramenta de reflexão comportamental. Não constitui recomendação de investimento.",
+  "regras_de_uso": {
+    "frequencia": "1_por_dia",
+    "momento_ideal": "pre_market",
+    "objetivo": "calibragem_emocional"
+  },
+  "cartas": [
+    {
+      "numero": 1,
+      "id": "exemplo_disciplinado",
+      "arquetipo": "O Executor Frio",
+      "emocao": "Serenidade metódica",
+      "polaridade": "bull",
+      "icone": "shield-check",
+      "psych_load": 15,
+      "vies": "Disciplina Imparcial",
+      "sabedoria": "Executa o plano sem hesitar, aceitando os stops como custos normais do negócio.",
+      "sinais": [
+        "Entradas calculadas estritamente nos níveis definidos no checklist pré-mercado.",
+        "Ausência de arrependimento em stops técnicos e ausência de euforia em alvos atingidos."
+      ],
+      "antidoto": "Manter o diário de trade atualizado e respeitar o limite máximo diário de operações.",
+      "fonte": "Mark Douglas, Trading in the Zone"
+    }
+  ]
+}

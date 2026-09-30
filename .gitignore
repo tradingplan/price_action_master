@@ -58,8 +58,12 @@ key.properties
 # Flutter iOS ephemeral build files
 ios/Flutter/ephemeral/
 
-# Local simulation and quiz history files
+# Local simulation, tarot and quiz history files
 trade_history.json
 quiz_history.json
 spaced_repetition.json
 certificates.json
+tarot_history.json
+
+# Temporary local artifacts
+_temp/

@@ -39,7 +39,8 @@ O workspace está organizado da seguinte forma para suportar a manutenção por 
 *   [`.agents/`](file:///.agents/): Perfis e diretrizes para os papéis especializados de IA.
 *   [`content/`](file:///content/):
     *   [`courses/`](file:///content/courses/): Banco de dados de cursos ativos (`candlesticks.json`, `figuras.json`, `smc.json`, `elliott.json`, `gestao_risco.json`).
-    *   [`schemas/`](file:///content/schemas/): Schemas JSON que garantem conformidade técnica de todo o conteúdo.
+    *   [`tarot/`](file:///content/tarot/): Catálogo declarativo do **Tarot Trader** (`tarot-trader-cartas.json`) com 22 arquétipos comportamentais e controle de viés.
+    *   [`schemas/`](file:///content/schemas/): Schemas JSON que garantem conformidade técnica de todo o conteúdo (cursos e cartas do Tarot).
     *   [`examples/`](file:///content/examples/): Exemplos corretos de JSONs para referência rápida.
 *   [`docs/`](file:///docs/):
     *   [`00-project/`](file:///docs/00-project/): Regras do workspace, Roadmap, Changelogs e Glossário.

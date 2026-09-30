@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotTraderDeck",
+  "type": "object",
+  "required": ["versao", "idioma", "aviso", "regras_de_uso", "cartas"],
+  "properties": {
+    "versao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idioma": {
+      "type": "string",
+      "minLength": 2
+    },
+    "aviso": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regras_de_uso": {
+      "type": "object"
+    },
+    "cartas": {
+      "type": "array",
+      "minItems": 22,
+      "maxItems": 22,
+      "items": {
+        "type": "object",
+        "required": [
+          "numero",
+          "id",
+          "arquetipo",
+          "emocao",
+          "polaridade",
+          "icone",
+          "psych_load",
+          "vies",
+          "sabedoria",
+          "sinais",
+          "antidoto",
+          "fonte"
+        ],
+        "properties": {
+          "numero": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 22
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arquetipo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "emocao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "polaridade": {
+            "type": "string",
+            "enum": ["bear", "bull"]
+          },
+          "icone": {
+            "type": "string",
+            "minLength": 1
+          },
+          "psych_load": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "vies": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sabedoria": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sinais": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "antidoto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fonte": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

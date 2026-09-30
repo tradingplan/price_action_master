@@ -1,3 +1,4 @@
+import '/components/safe_image_widget.dart';
 import '/backend/backend.dart';
 import '/components/trading_plan_logo/trading_plan_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -96,12 +97,7 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                       Expanded(
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
-                          child: Image.network(
-                            widget.singleCandle!.icon,
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 230.0,
-                            fit: BoxFit.cover,
-                          ),
+                          child: SafeImageWidget(imageOrIcon: widget.singleCandle!.icon, width: MediaQuery.sizeOf(context).width * 1.0, height: 230.0),
                         ),
                       ),
                     ],
@@ -327,11 +323,7 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Image.network(
-                            widget.singleCandle!.chart,
-                            width: 100.0,
-                            fit: BoxFit.cover,
-                          ),
+                          child: SafeImageWidget(imageOrIcon: widget.singleCandle!.chart, width: 100.0, height: 200.0),
                         ),
                       ],
                     ),

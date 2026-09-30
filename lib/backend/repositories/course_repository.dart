@@ -17,11 +17,9 @@ class LocalCourseRepository implements CourseRepository {
     List<String> ids = [];
 
     try {
-      final String manifestContent = await rootBundle.loadString('AssetManifest.json');
-      final Map<String, dynamic> manifestMap = json.decode(manifestContent) as Map<String, dynamic>;
-      
-      // Filtrar os assets de cursos
-      final List<String> coursePaths = manifestMap.keys
+      final AssetManifest manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      final List<String> coursePaths = manifest
+          .listAssets()
           .where((String key) => key.startsWith('content/courses/') && key.endsWith('.json'))
           .toList();
 

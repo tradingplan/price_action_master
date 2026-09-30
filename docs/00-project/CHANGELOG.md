@@ -2,6 +2,16 @@
 
 Histórico de atualizações arquiteturais e evolutivas da plataforma.
 
+## [1.4.0] - 2026-09-30
+### Adicionado
+*   Módulo **Tarot Trader** para controle de viés cognitivo e calibração psicológica diária do trader, 100% offline-first.
+*   Catálogo declarativo JSON (`content/tarot/tarot-trader-cartas.json`) com 22 arquétipos comportamentais, polaridades ("bear" / "bull"), psych_load, gatilhos/sinais e antídotos.
+*   Schema declarativo rigoroso `content/schemas/tarot.schema.json` e integração com `tools/content_validator.py`.
+*   Animação 3D de flip com rotação no eixo Y (450ms) e UI responsiva conforme especificações do PRD.
+*   Lógica de negócio de sorteio diário único com variação dinâmica de ±8 no `psych_load` (clamped em [0, 100]), cálculo automático de `biasStatus` e premiação de +25 XP na primeira leitura do dia.
+*   Persistência local integrada no `LocalDataManager` (SharedPreferences + histórico de até 90 leituras em JSON no disco).
+*   Suíte de testes automatizados com 100% de aprovação (`test/tarot_test.dart` e `test/local_data_manager_test.dart`).
+
 ---
 
 ## [1.3.0] - 2026-09-30

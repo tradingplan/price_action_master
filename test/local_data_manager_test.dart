@@ -40,6 +40,30 @@ void main() {
     expect(LocalDataManager.getLastTarotCardId(), 'a_torre');
   });
 
+  test('Deve persistir e recuperar última leitura completa e histórico do Tarot', () async {
+    expect(LocalDataManager.getLastTarotReading(), isNull);
+
+    final leituraMap = {
+      'data': '2026-09-30',
+      'cartaId': 'guardiao-do-capital',
+      'psychLoad': 15,
+      'biasStatus': 'STABLE_FLOW',
+    };
+
+    await LocalDataManager.saveLastTarotReading(leituraMap);
+    final recuperada = LocalDataManager.getLastTarotReading();
+    expect(recuperada, isNotNull);
+    expect(recuperada!['cartaId'], 'guardiao-do-capital');
+    expect(recuperada['psychLoad'], 15);
+    expect(recuperada['biasStatus'], 'STABLE_FLOW');
+
+    // Histórico
+    await LocalDataManager.saveTarotHistoryEntry(leituraMap);
+    final history = await LocalDataManager.getTarotHistory();
+    expect(history.length, 1);
+    expect(history[0]['cartaId'], 'guardiao-do-capital');
+  });
+
   test('Deve persistir tentativas de Quizzes no arquivo JSON local', () async {
     var history = await LocalDataManager.getQuizHistory();
     expect(history, isEmpty);

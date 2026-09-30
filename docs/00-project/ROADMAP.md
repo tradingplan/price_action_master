@@ -16,6 +16,7 @@ Visão de longo prazo para expansão da plataforma educacional e do ecossistema 
 *   `[x]` Implementação do sistema local de Spaced Repetition (Repetição Espaçada) usando algoritmo de Leitner nos Quizzes e alertas na Home.
 *   `[x]` Geração local e offline do hash criptográfico SHA-256 para validação de certificados de conclusão de curso.
 *   `[x]` Visualizador dedicado de certificados de conclusão offline (CertificateViewerWidget).
+*   `[x]` Módulo Tarot Trader: reflexão psicológica diária, calibração de viés cognitivo, animação 3D de flip e persistência local.
 
 ---
 

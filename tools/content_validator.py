@@ -233,12 +233,110 @@ def validate_courses():
                         has_errors = True
 
     if has_errors:
-        print("\n[FAIL] Content validation failed. Please check errors above.")
+        print("\n[FAIL] Content validation failed for courses. Please check errors above.")
         return False
     else:
         print("\n[SUCCESS] All course files are compliant with schemas and constraints!")
         return True
 
+def validate_tarot():
+    tarot_file = "content/tarot/tarot-trader-cartas.json"
+    schema_file = "content/schemas/tarot.schema.json"
+
+    if not os.path.exists(tarot_file):
+        print(f"[ERROR] Tarot file not found: {tarot_file}")
+        return False
+
+    print(f"\nStarting Tarot validation: {tarot_file}")
+    try:
+        with open(tarot_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"  [ERROR] Failed to parse Tarot JSON: {e}")
+        return False
+
+    has_errors = False
+
+    # Check root fields
+    for field in ["versao", "idioma", "aviso", "regras_de_uso", "cartas"]:
+        if field not in data:
+            print(f"  [ERROR] Tarot root is missing required field '{field}'.")
+            has_errors = True
+
+    cartas = data.get("cartas", [])
+    if not isinstance(cartas, list):
+        print("  [ERROR] Tarot 'cartas' must be a list.")
+        return False
+
+    if len(cartas) != 22:
+        print(f"  [ERROR] Tarot 'cartas' must have exactly 22 items, found {len(cartas)}.")
+        has_errors = True
+
+    seen_ids = set()
+    seen_numbers = set()
+
+    for idx, carta in enumerate(cartas):
+        cid = carta.get("id")
+        num = carta.get("numero")
+
+        if not cid:
+            print(f"  [ERROR] Card at index {idx} is missing 'id'.")
+            has_errors = True
+        elif cid in seen_ids:
+            print(f"  [ERROR] Duplicate card id '{cid}' at index {idx}.")
+            has_errors = True
+        else:
+            seen_ids.add(cid)
+
+        if not isinstance(num, int) or num < 1 or num > 22:
+            print(f"  [ERROR] Card '{cid}' has invalid 'numero': {num}. Must be an integer between 1 and 22.")
+            has_errors = True
+        elif num in seen_numbers:
+            print(f"  [ERROR] Duplicate card number '{num}' on card '{cid}'.")
+            has_errors = True
+        else:
+            seen_numbers.add(num)
+
+        # Validate polarity
+        pol = carta.get("polaridade")
+        if pol not in ["bear", "bull"]:
+            print(f"  [ERROR] Card '{cid}' has invalid polaridade '{pol}'. Must be 'bear' or 'bull'.")
+            has_errors = True
+
+        # Validate psych_load
+        pl = carta.get("psych_load")
+        if not isinstance(pl, int) or pl < 0 or pl > 100:
+            print(f"  [ERROR] Card '{cid}' has invalid psych_load '{pl}'. Must be integer 0..100.")
+            has_errors = True
+
+        # Validate sinais
+        sinais = carta.get("sinais")
+        if not isinstance(sinais, list) or len(sinais) < 2 or len(sinais) > 3:
+            print(f"  [ERROR] Card '{cid}' must have 2 to 3 sinais, found {len(sinais) if isinstance(sinais, list) else 0}.")
+            has_errors = True
+        else:
+            for s in sinais:
+                if not isinstance(s, str) or not s.strip():
+                    print(f"  [ERROR] Card '{cid}' has empty string in sinais.")
+                    has_errors = True
+
+        # Validate string fields
+        for str_field in ["arquetipo", "emocao", "icone", "vies", "sabedoria", "antidoto", "fonte"]:
+            val = carta.get(str_field)
+            if not isinstance(val, str) or (str_field != "fonte" and not val.strip()):
+                print(f"  [ERROR] Card '{cid}' is missing or has empty field '{str_field}'.")
+                has_errors = True
+
+    if has_errors:
+        print("\n[FAIL] Tarot validation failed.")
+        return False
+    else:
+        print("\n[SUCCESS] Tarot deck is fully compliant with schemas and constraints (22 cards valid)!")
+        return True
+
 if __name__ == "__main__":
-    success = validate_courses()
+    courses_ok = validate_courses()
+    tarot_ok = validate_tarot()
+    success = courses_ok and tarot_ok
     sys.exit(0 if success else 1)
+
