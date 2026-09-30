@@ -8,6 +8,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'inicio_model.dart';
 import '../../backend/repositories/course_repository.dart';
 import '../../backend/schema/platform_course_models.dart';
+import '../../backend/local_data_manager.dart';
 export 'inicio_model.dart';
 
 class InicioWidget extends StatefulWidget {
@@ -244,6 +245,100 @@ class _InicioWidgetState extends State<InicioWidget>
                             ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation']!),
+                    ),
+                    FutureBuilder<List<PlatformSpacedRepetitionItem>>(
+                      future: LocalDataManager.getDueReviewItems(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        final dueItems = snapshot.data!;
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).primary.withAlpha(40),
+                                  FlutterFlowTheme.of(context).secondaryBackground,
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary.withAlpha(120),
+                                width: 1.5,
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(14.0),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 44.0,
+                                  height: 44.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).primary.withAlpha(40),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.psychology_rounded,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 26.0,
+                                  ),
+                                ),
+                                const SizedBox(width: 12.0),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Repetição Espaçada',
+                                            style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                  color: FlutterFlowTheme.of(context).primary,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 13.0,
+                                                ),
+                                          ),
+                                          const SizedBox(width: 6.0),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                                            decoration: BoxDecoration(
+                                              color: FlutterFlowTheme.of(context).primary,
+                                              borderRadius: BorderRadius.circular(8.0),
+                                            ),
+                                            child: Text(
+                                              '${dueItems.length} pendente${dueItems.length > 1 ? "s" : ""}',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 10.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 4.0),
+                                      Text(
+                                        'Hora de revisar: ${dueItems.first.title}${dueItems.length > 1 ? " e mais ${dueItems.length - 1} conceito(s)" : ""}.',
+                                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                              fontSize: 11.5,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     Padding(
                       padding:

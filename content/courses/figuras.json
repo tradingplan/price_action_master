@@ -1,42 +1,199 @@
 {
   "id": "figuras",
   "title": "Figuras Gráficas",
-  "description": "Estude a geometria do preço e aprenda a negociar padrões clássicos de alta probabilidade.",
+  "description": "Identifique os padrões geométricos clássicos da análise técnica e domine projeções de alvos com alta precisão.",
   "version": 1,
   "modules": [
     {
       "id": "figuras_m1",
-      "title": "Padrões de Reversão Complexos",
-      "description": "Aprenda a mapear e operar o Ombro-Cabeça-Ombro Invertido (OCOI).",
+      "title": "Padrões Clássicos de Reversão",
+      "description": "Aprenda a mapear o Ombro-Cabeça-Ombro (OCO/OCOI) e os Topos e Fundos Duplos em zonas de exaustão.",
       "xpValue": 100,
       "lessons": [
         {
           "id": "figuras_m1_l1",
-          "title": "O Ombro-Cabeça-Ombro Invertido",
-          "content": "Padrões geométricos de reversão surgem quando o mercado perde a força da tendência macro. O Ombro-Cabeça-Ombro Invertido (OCOI ou Inverted H&S) se assemelha a uma cabeça de cabeça para baixo e dois ombros menores laterais. Ele marca a transição de uma tendência de baixa (onde topos e fundos são descendentes) para uma estrutura de alta. O ponto crítico de entrada ocorre no rompimento e confirmação da Linha de Pescoço (Neckline)."
+          "title": "Ombro-Cabeça-Ombro (OCO e OCOI)",
+          "content": "O **Ombro-Cabeça-Ombro (OCO)** é a mais famosa e confiável figura de reversão da análise técnica clássica. Ele sinaliza o fim de uma tendência de alta e o início de um ciclo de baixa.\n\n### Anatomia do OCO:\n*   **Ombro Esquerdo:** O preço sobe, forma um topo e corrige até um suporte temporário.\n*   **Cabeça:** O mercado faz uma nova perna de alta, superando o topo do ombro esquerdo, mas sofre forte realização e recua até a mesma linha de suporte.\n*   **Ombro Direito:** Os compradores tentam subir novamente, mas falham em atingir a altura da cabeça (demonstrando fraqueza extrema) e o preço desaba.\n*   **Linha de Pescoço (Neckline):** Linha que conecta os dois fundos de suporte. O gatilho de venda é acionado no **rompimento da Neckline**.\n\n### Projeção do Alvo:\nMeça a distância vertical do topo da Cabeça até a Linha de Pescoço e projete 100% dessa distância para baixo a partir do ponto de rompimento."
+        },
+        {
+          "id": "figuras_m1_l2",
+          "title": "Topos e Fundos Duplos (M e W)",
+          "content": "Topos e Fundos Duplos representam a incapacidade do mercado em renovar máximas ou mínimas:\n\n### Topo Duplo (Padrão 'M'):\n*   Forma-se no topo de uma tendência de alta.\n*   Dois topos no mesmo nível de preço separados por um fundo intermediário.\n*   A confirmação ocorre quando o preço fecha abaixo da mínima do fundo intermediário.\n\n### Fundo Duplo (Padrão 'W'):\n*   Forma-se no fundo de uma queda.\n*   Dois topos de rejeição no mesmo suporte.\n*   A confirmação de compra ocorre quando o preço supera a linha de resistência intermediária, projetando a altura do W para cima."
         }
       ],
       "examples": [
         {
           "id": "figuras_m1_e1",
-          "title": "Ombro-Cabeça-Ombro Invertido (OCOI)",
-          "description": "Veja acima o desenho geométrico do OCOI marcando os ombros e a cabeça inferior rompendo a linha de pescoço.",
+          "title": "Diagrama de Ombro-Cabeça-Ombro (OCO)",
+          "description": "Veja os três topos consecutivos e a quebra da Linha de Pescoço (Neckline) que dispara o alvo de baixa.",
           "vectorCanvas": {
             "width": 200,
             "height": 120,
             "elements": [
-              { "type": "line", "x1": 0.08, "y1": 0.25, "x2": 0.25, "y2": 0.65 },
-              { "type": "line", "x1": 0.25, "y1": 0.65, "x2": 0.33, "y2": 0.30 },
-              { "type": "line", "x1": 0.33, "y1": 0.30, "x2": 0.46, "y2": 0.90 },
-              { "type": "line", "x1": 0.46, "y1": 0.90, "x2": 0.58, "y2": 0.30 },
-              { "type": "line", "x1": 0.58, "y1": 0.30, "x2": 0.66, "y2": 0.65 },
-              { "type": "line", "x1": 0.66, "y1": 0.65, "x2": 0.83, "y2": 0.25 },
-              { "type": "line", "x1": 0.83, "y1": 0.25, "x2": 0.95, "y2": 0.10, "colorStyle": "success" },
-              { "type": "dotted_line", "x1": 0.33, "y1": 0.30, "x2": 0.83, "y2": 0.30, "colorStyle": "success" },
-              { "type": "text", "x": 0.20, "y": 0.70, "content": "OE" },
-              { "type": "text", "x": 0.44, "y": 0.94, "content": "Cabeça", "colorStyle": "primary" },
-              { "type": "text", "x": 0.64, "y": 0.70, "content": "OD" },
-              { "type": "text", "x": 0.50, "y": 0.24, "content": "Neckline", "colorStyle": "success" }
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.70,
+                "x2": 0.95,
+                "y2": 0.70,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.08,
+                "y": 0.76,
+                "content": "Linha de Pescoço (Neckline)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.70,
+                "x2": 0.25,
+                "y2": 0.40,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.25,
+                "y1": 0.40,
+                "x2": 0.38,
+                "y2": 0.70,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.38,
+                "y1": 0.70,
+                "x2": 0.52,
+                "y2": 0.15,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.52,
+                "y1": 0.15,
+                "x2": 0.65,
+                "y2": 0.70,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.70,
+                "x2": 0.78,
+                "y2": 0.40,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.78,
+                "y1": 0.40,
+                "x2": 0.92,
+                "y2": 0.95,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.20,
+                "y": 0.34,
+                "content": "Ombro E.",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.48,
+                "y": 0.09,
+                "content": "Cabeça",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.74,
+                "y": 0.34,
+                "content": "Ombro D.",
+                "colorStyle": "text"
+              }
+            ]
+          }
+        },
+        {
+          "id": "figuras_m1_e2",
+          "title": "Fundo Duplo em W",
+          "description": "Dois toques no mesmo suporte com rompimento da linha de confirmação intermediária e expansão altista.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.90,
+                "y2": 0.85,
+                "colorStyle": "success"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.45,
+                "x2": 0.90,
+                "y2": 0.45,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.15,
+                "y1": 0.45,
+                "x2": 0.30,
+                "y2": 0.85,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.85,
+                "x2": 0.50,
+                "y2": 0.45,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.50,
+                "y1": 0.45,
+                "x2": 0.70,
+                "y2": 0.85,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.70,
+                "y1": 0.85,
+                "x2": 0.90,
+                "y2": 0.15,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.22,
+                "y": 0.92,
+                "content": "Fundo 1",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.92,
+                "content": "Fundo 2",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.45,
+                "y": 0.38,
+                "content": "Rompimento",
+                "colorStyle": "primary"
+              }
             ]
           }
         }
@@ -44,33 +201,533 @@
       "exercises": [
         {
           "id": "figuras_m1_ex1",
-          "instruction": "Encontre uma figura de reversão OCOI no gráfico e valide utilizando o checklist geométrico:",
+          "instruction": "Avalie o padrão de reversão no gráfico com o checklist técnico:",
           "checklist": [
-            "A figura foi precedida por uma clara tendência de baixa anterior.",
-            "Identifiquei e marquei o Ombro Esquerdo, a Cabeça (fundo mais baixo) e o Ombro Direito.",
-            "Tracei a Linha de Pescoço unindo os topos intermediários da figura.",
-            "O rompimento da Linha de Pescoço ocorreu com uma vela de forte volume."
+            "Confirmei que o padrão surgiu após uma tendência clara e sustentada.",
+            "Tracei a Linha de Pescoço (Neckline) unindo com precisão os fundos/topos intermediários.",
+            "Aguardei o candle romper e fechar além da Linha de Pescoço antes de considerar a figura ativada.",
+            "Calculei a projeção de 100% da altura da figura para definir o alvo de lucro."
           ]
         }
       ],
       "quizzes": [
         {
           "id": "figuras_m1_q1",
-          "question": "Qual é a linha de resistência fundamental em um padrão Ombro-Cabeça-Ombro Invertido que dispara o gatilho de compra após ser rompida?",
+          "question": "Como é calculada a projeção de alvo padrão de um Ombro-Cabeça-Ombro (OCO)?",
           "options": [
-            "Linha de Canal de Baixa.",
-            "Linha de Pescoço (Neckline).",
-            "Linha de Retração da Cabeça."
+            "Meça a distância vertical do topo da Cabeça até a Linha de Pescoço e projete 100% dessa distância a partir do rompimento.",
+            "Metade do tamanho do Ombro Esquerdo.",
+            "O alvo é sempre 50 pontos fixos."
+          ],
+          "correctIndex": 0,
+          "explanation": "A regra técnica de projeção do OCO determina que a distância da cabeça à linha de pescoço deve ser projetada integralmente a partir do ponto onde a linha de pescoço foi rompida."
+        },
+        {
+          "id": "figuras_m1_q2",
+          "question": "O que valida a ativação definitiva de um padrão de Topo Duplo?",
+          "options": [
+            "O simples toque do segundo topo na mesma resistência.",
+            "O rompimento confirmado com fechamento de vela abaixo do fundo intermediário entre os dois topos.",
+            "Uma notícia desfavorável na televisão."
           ],
           "correctIndex": 1,
-          "explanation": "A Linha de Pescoço une os picos de retração entre a cabeça e os ombros. O seu rompimento com corpo de vela indica a reversão estrutural oficial de baixa para alta."
+          "explanation": "O topo duplo só é confirmado quando o mercado rompe o suporte intermediário que separa os dois picos."
         }
       ],
       "challenges": [
         {
           "id": "figuras_m1_ch1",
-          "title": "Desafio do Rompimento da Linha de Pescoço",
-          "description": "Localize um OCOI no histórico de preços. Meça a distância vertical do fundo da Cabeça até a Linha de Pescoço e projete essa mesma distância para cima a partir do ponto de rompimento. Verifique se o preço atingiu esse alvo de projeção."
+          "title": "Mapeamento de OCO ou OCOI no Gráfico",
+          "description": "Localize um padrão OCO ou OCO Invertido no gráfico de 15 minutos. Trace a Linha de Pescoço e meça se o preço atingiu 100% do alvo projetado após o rompimento."
+        }
+      ]
+    },
+    {
+      "id": "figuras_m2",
+      "title": "Padrões de Continuação (Bandeiras e Flâmulas)",
+      "description": "Opere a favor do fluxo dominante através de Bandeiras, Flâmulas e Retângulos de continuação.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "figuras_m2_l1",
+          "title": "Bandeiras e Flâmulas de Alta e Baixa",
+          "content": "As **Bandeiras (Flags)** e **Flâmulas (Pennants)** são os melhores padrões operacionais de continuação da análise técnica, pois representam uma breve respiração do mercado antes da próxima explosão.\n\n### Estrutura da Bandeira de Alta:\n1.  **Mastro (Pole):** Movimento de alta forte, vertical e volumoso.\n2.  **Pano / Canal da Bandeira:** Pequeno canal corretivo inclinado contra a tendência (para baixo) com volume decrescente.\n3.  **Rompimento:** O preço rompe o teto do canal com retorno do volume financeiro.\n\n### Projeção do Alvo:\nProjete 100% do tamanho do **Mastro** a partir do fundo mais baixo da bandeira para encontrar o alvo de Take Profit."
+        },
+        {
+          "id": "figuras_m2_l2",
+          "title": "Retângulos e Canais de Continuação",
+          "content": "Quando o mercado consolida lateralmente de forma horizontal após uma forte pernada direcional, temos um **Retângulo de Continuação**:\n\n*   O preço bate entre suportes e resistências horizontais paralelos.\n*   O volume seca gradativamente durante a lateralização.\n*   Ao romper na direção da tendência prévia, o alvo é a projeção da largura do retângulo adicionada ao mastro de entrada."
+        }
+      ],
+      "examples": [
+        {
+          "id": "figuras_m2_e1",
+          "title": "Bandeira de Alta com Mastro",
+          "description": "O mastro impulsivo de alta seguido por um canal corretivo inclinado para baixo e posterior rompimento explosivo.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.90,
+                "x2": 0.40,
+                "y2": 0.25,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.15,
+                "y": 0.55,
+                "content": "Mastro",
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.40,
+                "y1": 0.25,
+                "x2": 0.70,
+                "y2": 0.45,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.50,
+                "x2": 0.75,
+                "y2": 0.70,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.40,
+                "y1": 0.25,
+                "x2": 0.48,
+                "y2": 0.52,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.48,
+                "y1": 0.52,
+                "x2": 0.58,
+                "y2": 0.37,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.58,
+                "y1": 0.37,
+                "x2": 0.68,
+                "y2": 0.65,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.68,
+                "y1": 0.65,
+                "x2": 0.95,
+                "y2": 0.10,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.72,
+                "y": 0.20,
+                "content": "Rompimento",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "figuras_m2_ex1",
+          "instruction": "Execute o checklist de validação de Bandeira de Alta antes da entrada:",
+          "checklist": [
+            "Identifiquei um mastro de impulsão claro e quase vertical.",
+            "Verifiquei se a correção da bandeira não ultrapassou 50% do mastro (correção saudável).",
+            "Confirmei que o volume diminuiu durante a formação do canal corretivo.",
+            "Projetei a altura do mastro a partir do fundo da bandeira para definir o alvo final."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "figuras_m2_q1",
+          "question": "Como deve se comportar o volume financeiro durante a formação do canal corretivo de uma Bandeira saudável?",
+          "options": [
+            "O volume deve explodir atingindo o recorde do dia.",
+            "O volume deve diminuir gradativamente, demonstrando falta de interesse vendedor durante o recuo.",
+            "O volume não possui relevância técnica."
+          ],
+          "correctIndex": 1,
+          "explanation": "Durante a correção da bandeira, a redução do volume comprova que não há pressão vendedora real, apenas uma pausa antes do próximo impulso."
+        },
+        {
+          "id": "figuras_m2_q2",
+          "question": "Qual é a projeção técnica de alvo de uma Bandeira de Alta rompida?",
+          "options": [
+            "O tamanho integral do mastro anterior projetado para cima a partir da mínima da bandeira.",
+            "Apenas a metade do canal da bandeira.",
+            "Três velas de 1 minuto."
+          ],
+          "correctIndex": 0,
+          "explanation": "A regra clássica de projeção de bandeiras projeta a extensão do mastro a partir do fundo da correção."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "figuras_m2_ch1",
+          "title": "Trade de Bandeira no Simulador",
+          "description": "Identifique uma bandeira de alta ou baixa após uma perna impulsiva em 5 minutos. Entre no rompimento da linha da bandeira com stop além do canal e conduza a posição até o alvo do mastro."
+        }
+      ]
+    },
+    {
+      "id": "figuras_m3",
+      "title": "Triângulos e Cunhas",
+      "description": "Compreenda os padrões de afunilamento de volatilidade em Triângulos Simétricos, Ascendentes, Descendentes e Cunhas.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "figuras_m3_l1",
+          "title": "Triângulos: Ascendente, Descendente e Simétrico",
+          "content": "Os **Triângulos** são figuras geométricas formadas pela convergência de linhas de suporte e resistência:\n\n*   **Triângulo Ascendente:** Topos no mesmo nível horizontal (resistência) e fundos cada vez mais altos (LTA de suporte). Demonstra pressão compradora crescente contra uma barreira. Rompe tipicamente para **cima**.\n*   **Triângulo Descendente:** Fundos no mesmo nível horizontal (suporte) e topos cada vez mais baixos. Demonstra pressão vendedora constante contra um piso. Rompe tipicamente para **baixo**.\n*   **Triângulo Simétrico:** Topos descendentes e fundos ascendentes. Reflete compressão pura de volatilidade. Rompe na direção da tendência dominante que o antecedeu."
+        },
+        {
+          "id": "figuras_m3_l2",
+          "title": "Cunhas (Wedges): Exaustão e Reversão",
+          "content": "Diferente dos triângulos onde as linhas convergem em direções opostas, nas **Cunhas** ambas as linhas de suporte e resistência inclinam-se na **mesma direção**:\n\n*   **Cunha Ascendente (Rising Wedge):** O preço sobe afunilando (topos mais altos e fundos mais altos convergentes). Sinaliza exaustão compradora e rompe tipicamente para **baixo**.\n*   **Cunha Descendente (Falling Wedge):** O preço desce afunilando (topos mais baixos e fundos mais baixos convergentes). Sinaliza exaustão vendedora e rompe tipicamente para **cima**."
+        }
+      ],
+      "examples": [
+        {
+          "id": "figuras_m3_e1",
+          "title": "Triângulo Ascendente com Rompimento",
+          "description": "Resistência horizontal no teto com fundos ascendentes pressionando até o rompimento de alta.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.30,
+                "x2": 0.90,
+                "y2": 0.30,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.80,
+                "y2": 0.30,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.15,
+                "y1": 0.80,
+                "x2": 0.30,
+                "y2": 0.30,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.30,
+                "x2": 0.45,
+                "y2": 0.60,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.60,
+                "x2": 0.60,
+                "y2": 0.30,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.60,
+                "y1": 0.30,
+                "x2": 0.70,
+                "y2": 0.42,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.70,
+                "y1": 0.42,
+                "x2": 0.92,
+                "y2": 0.10,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.35,
+                "y": 0.24,
+                "content": "Resistência Plana",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.72,
+                "y": 0.18,
+                "content": "Rompimento!",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        },
+        {
+          "id": "figuras_m3_e2",
+          "title": "Cunha Descendente de Reversão de Alta",
+          "description": "Afunilamento descendente com perda de força vendedora e reversão altista explosiva.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.20,
+                "x2": 0.80,
+                "y2": 0.65,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.60,
+                "x2": 0.80,
+                "y2": 0.85,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.15,
+                "y1": 0.23,
+                "x2": 0.28,
+                "y2": 0.68,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.28,
+                "y1": 0.68,
+                "x2": 0.45,
+                "y2": 0.42,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.42,
+                "x2": 0.60,
+                "y2": 0.78,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.60,
+                "y1": 0.78,
+                "x2": 0.90,
+                "y2": 0.25,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.72,
+                "y": 0.32,
+                "content": "Reversão",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "figuras_m3_ex1",
+          "instruction": "Avalie o padrão de afunilamento (Triângulo ou Cunha) com o checklist:",
+          "checklist": [
+            "Tracei as duas linhas convergentes com no mínimo 2 toques superiores e 2 toques inferiores.",
+            "Classifiquei se as linhas apontam em direções opostas (Triângulo) ou na mesma direção (Cunha).",
+            "Aguardei o preço atingir pelo menos 2/3 da extensão do padrão antes do rompimento.",
+            "Não antecipei a operação dentro do vértice sem confirmação de volume."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "figuras_m3_q1",
+          "question": "Qual é a expectativa estatística clássica para o rompimento de um Triângulo Ascendente?",
+          "options": [
+            "Rompimento de alta, pois a formação de fundos ascendentes demonstra compradores dispostos a pagar preços cada vez mais altos contra a resistência.",
+            "Rompimento de baixa obrigatório.",
+            "O padrão é nulo e não possui viés direcional."
+          ],
+          "correctIndex": 0,
+          "explanation": "No Triângulo Ascendente, os compradores não deixam o preço cair tanto a cada recuo (fundos mais altos), demonstrando agressão contínua que costuma romper o teto."
+        },
+        {
+          "id": "figuras_m3_q2",
+          "question": "Em qual direção rompe tipicamente uma Cunha Ascendente (Rising Wedge)?",
+          "options": [
+            "Para cima, continuando a alta indefinidamente.",
+            "Para baixo, pois o afunilamento em alta indica perda gradual de momentum comprador (exaustão).",
+            "Lateralmente sem romper."
+          ],
+          "correctIndex": 1,
+          "explanation": "A Cunha Ascendente é um padrão clássico de exaustão compradora que quase sempre rompe para baixo."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "figuras_m3_ch1",
+          "title": "Identificação de Cunha ou Triângulo",
+          "description": "Encontre uma compressão de volatilidade recente (Triângulo ou Cunha) no gráfico de 15 minutos. Meça a base mais larga da figura e verifique se o alvo projetado foi atingido após a saída do padrão."
+        }
+      ]
+    },
+    {
+      "id": "figuras_m4",
+      "title": "Volume, Projeções e Falsos Rompimentos",
+      "description": "Filtre armadilhas de mercado através do volume financeiro e opere o reteste seguro em Pullback.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "figuras_m4_l1",
+          "title": "A Regra do Volume no Rompimento",
+          "content": "Nenhum rompimento de figura gráfica é 100% confiável sem a validação do **Volume Financeiro**:\n\n*   **Rompimento Real:** Deve ser acompanhado por um candle de convicção (Marubozu ou barra de ignição) e **volume pelo menos 50% acima da média** dos últimos 20 períodos.\n*   **Falso Rompimento (Bull Trap / Bear Trap):** O preço rompe a linha da figura com volume baixo ou decrescente, e a vela seguinte fecha de volta para dentro do padrão. Isso indica absorção e armadilha."
+        },
+        {
+          "id": "figuras_m4_l2",
+          "title": "A Técnica de Entrada no Reteste (Pullback/Throwback)",
+          "content": "Para maximizar a relação Risco:Retorno e eliminar o risco de violinações em falsos rompimentos, os traders profissionais utilizam a **Entrada no Reteste**:\n\n1.  **Aguarde o Rompimento:** Deixe o mercado romper a figura com volume e fechar fora.\n2.  **Aguarde o Retorno:** O preço faz um recuo natural com volume baixo para testar a antiga resistência rompida (que agora virou suporte).\n3.  **Confirmação do Gatilho:** Ao tocar a linha e formar um candle de rejeição (Martelo ou Engolfo), execute a ordem com stop curtíssimo logo atrás da linha de suporte."
+        }
+      ],
+      "examples": [
+        {
+          "id": "figuras_m4_e1",
+          "title": "Rompimento e Reteste em Pullback",
+          "description": "O preço rompe a resistência, volta suavemente para testar o nível como novo suporte e dispara para o alvo.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.55,
+                "x2": 0.95,
+                "y2": 0.55,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.45,
+                "y2": 0.55,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.55,
+                "x2": 0.65,
+                "y2": 0.25,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.25,
+                "x2": 0.75,
+                "y2": 0.55,
+                "colorStyle": "error"
+              },
+              {
+                "type": "circle",
+                "cx": 0.75,
+                "cy": 0.55,
+                "r": 0.04,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.75,
+                "y1": 0.55,
+                "x2": 0.92,
+                "y2": 0.12,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.52,
+                "y": 0.18,
+                "content": "Rompimento",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.66,
+                "y": 0.65,
+                "content": "Pullback / Reteste",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "figuras_m4_ex1",
+          "instruction": "Execute o checklist de entrada no reteste de figura gráfica:",
+          "checklist": [
+            "Confirmei que o rompimento inicial ocorreu com volume financeiro acima da média.",
+            "Não entrei a mercado no topo do rompimento, aguardando o pullback de recuo.",
+            "Verifiquei se o volume secou durante o pullback até a linha rompida.",
+            "Entrei na confirmação do candle de rejeição no reteste, posicionando o stop técnico abaixo do nível."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "figuras_m4_q1",
+          "question": "Qual é a principal vantagem de operar a entrada no reteste (Pullback) em vez de comprar diretamente no candle de rompimento?",
+          "options": [
+            "Proporciona melhor relação Risco:Retorno e reduz drasticamente o risco de ser capturado em falsos rompimentos (Bull/Bear Traps).",
+            "Elimina a necessidade de colocar stop loss.",
+            "Garante 100% de trades vencedores sem qualquer exceção."
+          ],
+          "correctIndex": 0,
+          "explanation": "Aguardar o pullback permite entrar com stop loss muito menor (na linha de teste) e confirma se a antiga resistência de fato se converteu em suporte real."
+        },
+        {
+          "id": "figuras_m4_q2",
+          "question": "O que ocorre com uma linha de resistência quando ela é superada com alto volume?",
+          "options": [
+            "Ela desaparece e é apagada do gráfico.",
+            "Princípio da Bipolaridade: ela inverte de papel e passa a atuar como suporte para o preço.",
+            "O mercado trava por falta de ordens."
+          ],
+          "correctIndex": 1,
+          "explanation": "Pelo Princípio da Bipolaridade da análise técnica, uma resistência rompida com convicção tende a se transformar em suporte nos testes seguintes."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "figuras_m4_ch1",
+          "title": "Operação de Reteste no Simulador",
+          "description": "Aguarde o rompimento de qualquer figura gráfica nos tempos gráficos de 5min ou 15min. Não entre no rompimento. Espere o pullback de reteste na linha da figura e execute a ordem no candle de confirmação."
         }
       ]
     }

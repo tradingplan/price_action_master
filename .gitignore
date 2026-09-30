@@ -61,3 +61,5 @@ ios/Flutter/ephemeral/
 # Local simulation and quiz history files
 trade_history.json
 quiz_history.json
+spaced_repetition.json
+certificates.json

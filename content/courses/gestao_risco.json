@@ -1,26 +1,31 @@
 {
   "id": "gestao_risco",
   "title": "Gestão de Risco",
-  "description": "Aprenda a proteger seu capital e gerenciar posições de forma matemática e consistente.",
+  "description": "Domine a matemática da consistência, dimensionamento de posição, controle de drawdown e psicologia profissional.",
   "version": 1,
   "modules": [
     {
       "id": "gestao_risco_m1",
-      "title": "O Controle de Ruína",
-      "description": "Compreenda a relação risco/retorno e como evitar a ruína matemática de sua conta.",
+      "title": "Matemática da Consistência e Risco/Retorno",
+      "description": "Compreenda por que a expectativa matemática positiva e o Payoff assimétrico são a chave da longevidade financeira.",
       "xpValue": 100,
       "lessons": [
         {
           "id": "gestao_risco_m1_l1",
-          "title": "A Matemática do Risco",
-          "content": "A gestão de risco é o único fator que garante a sobrevivência de longo prazo no trading. A relação **Risco/Retorno (R:R)** ideal deve ser de pelo menos **1:2**, o que significa que para cada R$ 1,00 arriscado, busca-se um retorno de R$ 2,00. Sob essa métrica, uma taxa de acerto de apenas **40%** é suficiente para manter a conta lucrativa ao longo do tempo. O maior erro de traders iniciantes é arriscar mais de **2%** do capital total em uma única operação, o que acelera a ruína da conta após uma sequência inevitável de perdas consecutivas (drawdown)."
+          "title": "Expectativa Matemática e Payoff Assimétrico",
+          "content": "No mercado financeiro, **não é a sua taxa de acerto** que determina o sucesso, mas sim quanto você ganha quando acerta em comparação com quanto você perde quando erra.\n\n### A Fórmula da Expectativa Matemática (EM):\n`EM = (% de Acerto × Ganho Médio) - (% de Erro × Perda Média)`\n\n### O Poder do Payoff 3:1 ou 2:1:\n*   Se o seu **Payoff for de 2:1** (você ganha R$ 200 quando acerta e perde R$ 100 quando erra), você precisa de apenas **34% de acerto** para sair no lucro.\n*   Se o seu **Payoff for de 3:1**, com apenas **30% de acerto** sua curva de capital já será exponencialmente positiva.\n*   Traders amadores buscam 90% de acerto com Payoff 0.5:1 (ganham R$ 50 e perdem R$ 200). Um único dia ruim destrói semanas de ganhos."
+        },
+        {
+          "id": "gestao_risco_m1_l2",
+          "title": "A Regra de Ouro do Risco de 1% a 2%",
+          "content": "Nunca arrisque mais do que **1% a 2% do seu capital líquido total em uma única operação**.\n\n### Por que limitar a 1%?\n*   Mesmo os melhores sistemas operacionais do mundo enfrentam sequências inevitáveis de 5 a 8 perdas consecutivas (streaks de perdas).\n*   Se você arrisca **10% por trade**, 7 perdas seguidas reduzem sua conta em mais de 50%, gerando pânico psicológico.\n*   Se você arrisca **1% por trade**, 7 perdas seguidas reduzem sua conta em apenas 6.8%, mantendo sua mente calma e permitindo recuperação rápida."
         }
       ],
       "examples": [
         {
           "id": "gestao_risco_m1_e1",
-          "title": "Relação Risco/Retorno 1:2",
-          "description": "Neste diagrama, a distância da Entrada até o Alvo (Take Profit) é o dobro da distância até o Stop Loss, garantindo assimetria matemática positiva.",
+          "title": "Curva de Capital com Payoff 2:1",
+          "description": "Simulação de 10 trades com 40% de acerto e Payoff 2:1. O saldo cresce consistentemente mesmo errando mais da metade das operações.",
           "vectorCanvas": {
             "width": 200,
             "height": 120,
@@ -28,62 +33,80 @@
               {
                 "type": "line",
                 "x1": 0.05,
-                "y1": 0.50,
-                "x2": 0.85,
-                "y2": 0.50,
-                "colorStyle": "primary"
+                "y1": 0.85,
+                "x2": 0.95,
+                "y2": 0.85,
+                "colorStyle": "text"
               },
               {
-                "type": "text",
-                "x": 0.87,
-                "y": 0.48,
-                "content": "Entrada",
-                "colorStyle": "primary"
-              },
-              {
-                "type": "dotted_line",
+                "type": "line",
                 "x1": 0.05,
                 "y1": 0.10,
-                "x2": 0.85,
-                "y2": 0.10,
-                "colorStyle": "success"
+                "x2": 0.05,
+                "y2": 0.85,
+                "colorStyle": "text"
               },
               {
-                "type": "text",
-                "x": 0.87,
-                "y": 0.08,
-                "content": "Alvo (+2R)",
-                "colorStyle": "success"
-              },
-              {
-                "type": "dotted_line",
+                "type": "line",
                 "x1": 0.05,
-                "y1": 0.70,
-                "x2": 0.85,
-                "y2": 0.70,
-                "colorStyle": "error"
-              },
-              {
-                "type": "text",
-                "x": 0.87,
-                "y": 0.68,
-                "content": "Stop (-1R)",
+                "y1": 0.80,
+                "x2": 0.20,
+                "y2": 0.88,
                 "colorStyle": "error"
               },
               {
                 "type": "line",
-                "x1": 0.40,
-                "y1": 0.10,
-                "x2": 0.40,
-                "y2": 0.70,
-                "colorStyle": "text"
+                "x1": 0.20,
+                "y1": 0.88,
+                "x2": 0.35,
+                "y2": 0.95,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.35,
+                "y1": 0.95,
+                "x2": 0.50,
+                "y2": 0.60,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.50,
+                "y1": 0.60,
+                "x2": 0.65,
+                "y2": 0.68,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.68,
+                "x2": 0.80,
+                "y2": 0.30,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.80,
+                "y1": 0.30,
+                "x2": 0.95,
+                "y2": 0.15,
+                "colorStyle": "success"
               },
               {
                 "type": "circle",
-                "cx": 0.40,
-                "cy": 0.50,
-                "r": 0.015,
-                "colorStyle": "primary"
+                "cx": 0.95,
+                "cy": 0.15,
+                "r": 0.04,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.45,
+                "y": 0.22,
+                "content": "Curva Crescente (40% Winrate)",
+                "colorStyle": "success"
               }
             ]
           }
@@ -92,33 +115,449 @@
       "exercises": [
         {
           "id": "gestao_risco_m1_ex1",
-          "instruction": "Estruture a planilha de capital do seu simulador seguindo as regras de gestão de risco:",
+          "instruction": "Calcule a viabilidade matemática do seu plano operacional com o checklist:",
           "checklist": [
-            "Defini meu capital inicial total no simulador (ex: R$ 10.000,00).",
-            "Calculei o limite máximo de perda de 1% por operação (R$ 100,00).",
-            "Mapeei o tamanho da posição de forma que o acionamento do Stop Loss não exceda o limite de 1%.",
-            "Defini o alvo (Take Profit) com no mínimo o dobro do valor de Stop Loss."
+            "Defini meu risco máximo fixo por trade entre 1% e 2% do patrimônio total da conta.",
+            "Calculei meu alvo mínimo exigindo no mínimo 2x o valor em risco (Payoff 2:1).",
+            "Verifiquei se a minha expectativa matemática histórica é estritamente positiva.",
+            "Aceitei previamente o risco financeiro de perda antes de enviar a ordem ao mercado."
           ]
         }
       ],
       "quizzes": [
         {
           "id": "gestao_risco_m1_q1",
-          "question": "Se um trader realiza operações com uma relação Risco/Retorno de 1:3, qual é a taxa de acerto mínima necessária para alcançar o ponto de equilíbrio (breakeven)?",
+          "question": "É matematicamente possível ser altamente lucrativo no longo prazo acertando apenas 40% das operações?",
           "options": [
-            "50%",
-            "25%",
-            "33%"
+            "Não, quem acerta menos de 50% é matematicamente fadado à ruína.",
+            "Sim, desde que o Payoff médio das operações vencedoras seja de no mínimo 2:1 ou superior.",
+            "Apenas se operar sem stop loss."
           ],
           "correctIndex": 1,
-          "explanation": "Com uma relação R:R de 1:3, cada ganho compensa três perdas. Portanto, acertando exatamente 25% das operações (1 acerto a cada 4 trades), o lucro do acerto (3x) anula a perda dos 3 erros (3x), alcançando o ponto de equilíbrio matemático."
+          "explanation": "Com Payoff 2:1, acertando 40 em 100 trades de R$ 100 de risco: Ganhos = 40 × R$ 200 = R$ 8.000; Perdas = 60 × R$ 100 = R$ 6.000; Lucro Líquido = R$ +2.000."
+        },
+        {
+          "id": "gestao_risco_m1_q2",
+          "question": "Por que o risco máximo por operação deve ser mantido entre 1% e 2% da conta?",
+          "options": [
+            "Para permitir que a conta suporte sequências estatísticas normais de perdas consecutivas sem sofrer drawdown irreversível.",
+            "Porque a corretora não aceita ordens maiores.",
+            "Para demorar mais para bater a meta do dia."
+          ],
+          "correctIndex": 0,
+          "explanation": "Arriscar 1% a 2% protege a integridade do patrimônio contra sequências inevitáveis de perdas (drawdown normal)."
         }
       ],
       "challenges": [
         {
           "id": "gestao_risco_m1_ch1",
-          "title": "Desafio da Planilha de Riscos",
-          "description": "Abra um bloco de notas ou planilha. Faça o diário de 5 operações executadas no simulador de trade. Em cada uma delas, registre: tamanho da conta, capital arriscado (máximo 1%), relação Risco/Retorno projetada (mínimo 1:2) e resultado financeiro real."
+          "title": "Cálculo de Expectativa Matemática",
+          "description": "Pegue o histórico dos seus últimos 20 trades. Calcule a sua Taxa de Acerto e o seu Payoff Médio. Calcule a Expectativa Matemática da sua estratégia usando a fórmula do módulo."
+        }
+      ]
+    },
+    {
+      "id": "gestao_risco_m2",
+      "title": "Dimensionamento de Posição (Position Sizing)",
+      "description": "Aprenda a calcular o lote exato com base no stop técnico para manter o risco financeiro 100% constante.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "gestao_risco_m2_l1",
+          "title": "A Fórmula do Tamanho da Posição",
+          "content": "O maior erro cometido por iniciantes é operar sempre com a mesma quantidade de contratos ou ações (ex: 'eu opero sempre 5 contratos'), independente do tamanho do stop gráfico.\n\n### A Regra Profissional:\n> **O risco financeiro deve ser SEMPRE fixo (ex: R$ 100). O tamanho da posição é VARIÁVEL.**\n\n### A Fórmula:\n`Tamanho da Posição = Risco Financeiro Máximo Permitido (R$) / Distância do Stop Técnico (Pontos/Centavos)`\n\n*   Se o stop técnico for **curto** (50 pontos): você opera uma posição **maior**.\n*   Se o stop técnico for **longo** (200 pontos): você opera uma posição **menor**.\n*   Em ambos os casos, se o stop for atingido, você perde rigorosamente os mesmos R$ 100."
+        },
+        {
+          "id": "gestao_risco_m2_l2",
+          "title": "Stop Técnico vs Stop Financeiro",
+          "content": "Nunca posicione um stop baseado em 'quanto dinheiro você quer perder' (Stop Financeiro arbitrário). O mercado não sabe nem se importa com o tamanho da sua conta.\n\n*   **Stop Técnico:** É posicionado onde a tese gráfica é **comprovadamente invalidada** (abaixo de um fundo estrutural, atrás de um Order Block ou fora de uma figura).\n*   **Integração Perfeita:** Primeiro encontre o Stop Técnico no gráfico. Depois use a fórmula de Position Sizing para calcular quantos contratos você pode comprar para que o Stop Técnico custe exatamente o seu limite de risco de 1%."
+        }
+      ],
+      "examples": [
+        {
+          "id": "gestao_risco_m2_e1",
+          "title": "Ajuste Dinâmico de Lote",
+          "description": "Comparação entre Trade A (stop curto de 50 pts = lote 4) e Trade B (stop longo de 100 pts = lote 2), ambos mantendo risco de R$ 100.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.30,
+                "cy": 0.45,
+                "x1": 0.10,
+                "y1": 0.02,
+                "y2": 0.02,
+                "content": "green"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.15,
+                "y1": 0.55,
+                "x2": 0.45,
+                "y2": 0.55,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.18,
+                "y": 0.30,
+                "content": "Stop Curto (50p)",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.18,
+                "y": 0.65,
+                "content": "Lote: 4 Contratos",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "candle",
+                "cx": 0.75,
+                "cy": 0.40,
+                "x1": 0.25,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.60,
+                "y1": 0.70,
+                "x2": 0.90,
+                "y2": 0.70,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.20,
+                "content": "Stop Longo (100p)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.82,
+                "content": "Lote: 2 Contratos",
+                "colorStyle": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "gestao_risco_m2_ex1",
+          "instruction": "Calcule o tamanho exato da posição antes de abrir qualquer ordem:",
+          "checklist": [
+            "Localizei o ponto exato do Stop Loss Técnico no gráfico.",
+            "Calculei a distância em pontos/centavos da entrada até o Stop Loss.",
+            "Dividi meu risco fixo em reais (ex: R$ 100) pela distância em pontos do stop.",
+            "Ajustei a boleta com a quantidade exata de contratos/lotes calculada."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "gestao_risco_m2_q1",
+          "question": "Se um trade possui uma distância de Stop Técnico que é o dobro da média habitual, como o trader deve agir?",
+          "options": [
+            "Manter o mesmo número de contratos e torcer para dar certo.",
+            "Reduzir o tamanho da posição pela metade para manter a perda financeira em reais exatamente no limite planejado.",
+            "Desistir de colocar stop loss."
+          ],
+          "correctIndex": 1,
+          "explanation": "Para manter o risco financeiro constante em reais, se a distância do stop em pontos dobra, a quantidade de contratos deve ser cortada pela metade."
+        },
+        {
+          "id": "gestao_risco_m2_q2",
+          "question": "O que nunca deve ser feito após abrir uma operação que está se aproximando do Stop Loss?",
+          "options": [
+            "Deixar o stop loss ser executado e aceitar a perda planejada.",
+            "Arrastar o stop loss para trás para evitar ser estopado (aumentando o prejuízo potencial).",
+            "Anotar a operação no diário de trading."
+          ],
+          "correctIndex": 1,
+          "explanation": "Arrastar o stop loss para trás é o comportamento mais destrutivo do trading, transformando perdas calculadas em quebras de conta."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "gestao_risco_m2_ch1",
+          "title": "Operações com Dimensionamento Fixo",
+          "description": "Execute 3 operações no simulador onde o risco financeiro de cada uma seja fixado estritamente em R$ 100 (ou 1% da conta), variando a quantidade de lotes conforme o tamanho do stop técnico."
+        }
+      ]
+    },
+    {
+      "id": "gestao_risco_m3",
+      "title": "Drawdown e Circuit Breaker Pessoal",
+      "description": "Domine a física da recuperação de perdas e estabeleça regras intransponíveis de bloqueio diário.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "gestao_risco_m3_l1",
+          "title": "A Matemática Desleal do Drawdown",
+          "content": "A perda de capital é assimétrica contra o investidor:\n\n*   Se você perde **10%** da conta: precisa de **+11.1%** para recuperar.\n*   Se você perde **20%** da conta: precisa de **+25%** para recuperar.\n*   Se você perde **30%** da conta: precisa de **+42.8%** para recuperar.\n*   Se você perde **50%** da conta: precisa de **+100% de lucro (dobrar a conta)** apenas para voltar ao zero a zero!\n*   Se você perde **80%** da conta: precisa de **+400% de retorno**!\n\n> **Preservar o capital é a prioridade #1. Fazer dinheiro é a consequência de não perder.**"
+        },
+        {
+          "id": "gestao_risco_m3_l2",
+          "title": "Circuit Breaker Diário e Limite de Perda",
+          "content": "Todo operador profissional possui um **Circuit Breaker Pessoal** inviolável:\n\n### Regras de Bloqueio Recomendadas:\n*   **Stop Diário Máximo (Daily Loss Limit):** Limite de **3% da conta** ou no máximo **2 a 3 stops cheios no dia**.\n*   **Bloqueio Automático:** Ao atingir o limite diário, a plataforma de trading deve ser desligada imediatamente até o dia seguinte, sem exceções.\n*   **Meta Semanal de Proteção:** Se o drawdown semanal atingir 6%, o trader reduz o tamanho da mão pela metade na semana seguinte para reequilibrar o psicológico."
+        }
+      ],
+      "examples": [
+        {
+          "id": "gestao_risco_m3_e1",
+          "title": "A Escalada Exponencial do Drawdown",
+          "description": "Veja como a porcentagem necessária para recuperar o capital dispara de forma não linear após perdas superiores a 30%.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.85,
+                "x2": 0.95,
+                "y2": 0.85,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.10,
+                "x2": 0.05,
+                "y2": 0.85,
+                "colorStyle": "text"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.80,
+                "x2": 0.30,
+                "y2": 0.75,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.75,
+                "x2": 0.50,
+                "y2": 0.65,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.50,
+                "y1": 0.65,
+                "x2": 0.70,
+                "y2": 0.40,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.70,
+                "y1": 0.40,
+                "x2": 0.90,
+                "y2": 0.10,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.52,
+                "y": 0.35,
+                "content": "-50% Perda = +100% Retorno",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "gestao_risco_m3_ex1",
+          "instruction": "Configure e respeite o seu Circuit Breaker diário:",
+          "checklist": [
+            "Defini meu Stop Diário Máximo (máximo de 2 a 3 trades negativos por dia).",
+            "Configurei a ferramenta de bloqueio de ordens da plataforma após atingir o limite.",
+            "Comprometi-me a desligar o computador e não abrir novas ordens se atingir o Stop Diário.",
+            "Não operei sob estado de cansaço, estresse ou tentando compensar perdas passadas."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "gestao_risco_m3_q1",
+          "question": "Se uma conta de R$ 10.000 sofrer uma perda de 50% (restando R$ 5.000), quantos % de lucro ela precisa render para voltar ao saldo inicial?",
+          "options": [
+            "50% de lucro.",
+            "100% de lucro (dobrar o capital restante de R$ 5.000 para R$ 10.000).",
+            "75% de lucro."
+          ],
+          "correctIndex": 1,
+          "explanation": "Para recuperar de R$ 5.000 para R$ 10.000 é necessário ganhar R$ 5.000, o que equivale a exatamente 100% de rentabilidade sobre o saldo atual."
+        },
+        {
+          "id": "gestao_risco_m3_q2",
+          "question": "Qual é a única atitude profissional aceitável ao atingir o limite de perda diária (Daily Stop Loss)?",
+          "options": [
+            "Dobrar o lote no trade seguinte para recuperar rápido.",
+            "Encerrar as operações do dia imediatamente, aceitar o resultado e desligar a plataforma até a próxima sessão.",
+            "Mudar de ativo e continuar operando."
+          ],
+          "correctIndex": 1,
+          "explanation": "O stop diário existe para blindar o trader contra viés emocional e descontrole financeiro. Atingido o limite, o dia está encerrado."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "gestao_risco_m3_ch1",
+          "title": "Criação do Plano de Circuit Breaker",
+          "description": "Escreva o seu plano de gestão com 3 regras claras: 1) Limite financeiro máximo de perda diária, 2) Número máximo de trades consecutivos no negativo, 3) Procedimento físico imediato caso o limite seja atingido."
+        }
+      ]
+    },
+    {
+      "id": "gestao_risco_m4",
+      "title": "Psicotrading e Diário de Bordo",
+      "description": "Elimine os vieses cognitivos (FOMO, Ganância, Medo e Vingança) e opere com mentalidade probabilística.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "gestao_risco_m4_l1",
+          "title": "Os 4 Grandes Vilões Emocionais",
+          "content": "No mercado, 90% das perdas graves não decorrem de falhas técnicas, mas de armadilhas psicológicas:\n\n1.  **FOMO (Fear of Missing Out - Medo de Ficar de Fora):** O trader vê o mercado subindo forte sem ele e compra no topo esticado sem stop.\n2.  **Revenge Trading (Trade de Vingança):** Após tomar um stop, o trader fica com raiva do mercado e abre imediatamente outra posição com lote dobrado para 'recuperar'.\n3.  **Overtrading (Excesso de Operações):** Operar compulsivamente por tédio ou vício de dopamina, sem que haja qualquer setup técnico válido.\n4.  **Aversão à Perda / Medo do Stop:** Não aceitar errar, arrastando o stop loss ou fazendo preço médio para trás."
+        },
+        {
+          "id": "gestao_risco_m4_l2",
+          "title": "A Mentalidade Probabilística e o Diário de Trades",
+          "content": "Como ensina Mark Douglas em *Trading in the Zone*, cada operação individual tem um resultado incerto, mas um conjunto de 100 operações gera uma distribuição estatística previsível.\n\n### O Diário de Trades como Arma Secreta:\nO diário de trades transforma dados em evolução pessoal. Para cada trade, registre:\n*   Print do gráfico no momento da entrada.\n*   Motivo técnico da entrada (confluências, checklist).\n*   Estado emocional pré-trade (calmo, ansioso, vingativo).\n*   Resultado financeiro e conformidade com o plano de trading."
+        }
+      ],
+      "examples": [
+        {
+          "id": "gestao_risco_m4_e1",
+          "title": "Ciclo Emocional do Trader Amador",
+          "description": "O ciclo destrutivo: FOMO no topo, Stop Loss não aceito, Revenge Trading com mão pesada e quebra de conta.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "circle",
+                "cx": 0.20,
+                "cy": 0.35,
+                "r": 0.08,
+                "colorStyle": "error"
+              },
+              {
+                "type": "circle",
+                "cx": 0.80,
+                "cy": 0.35,
+                "r": 0.08,
+                "colorStyle": "error"
+              },
+              {
+                "type": "circle",
+                "cx": 0.50,
+                "cy": 0.85,
+                "r": 0.08,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.28,
+                "y1": 0.35,
+                "x2": 0.72,
+                "y2": 0.35,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.80,
+                "y1": 0.43,
+                "x2": 0.55,
+                "y2": 0.80,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.80,
+                "x2": 0.20,
+                "y2": 0.43,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.14,
+                "y": 0.37,
+                "content": "FOMO",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.73,
+                "y": 0.37,
+                "content": "Raiva",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.40,
+                "y": 0.87,
+                "content": "Vingança",
+                "colorStyle": "text"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "gestao_risco_m4_ex1",
+          "instruction": "Execute o ritual de controle psicológico antes e após a sessão:",
+          "checklist": [
+            "Avaliei se meu estado físico e mental está calmo e focado antes de abrir o home broker.",
+            "Não operei por tédio ou com pressa de bater metas irreais.",
+            "Aceitei previamente a perda antes de clicar no botão de compra ou venda.",
+            "Preenchi o Diário de Bordo logo após fechar o trade, analisando se segui 100% o plano operacional."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "gestao_risco_m4_q1",
+          "question": "O que caracteriza o comportamento de Revenge Trading (Trade de Vingança)?",
+          "options": [
+            "Fazer uma pausa de 30 minutos após um stop para beber água.",
+            "Abrir imediatamente uma nova posição (geralmente com lote maior) após uma perda, motivado pela raiva e pelo desejo impulsivo de recuperar o dinheiro perdido.",
+            "Rever as estatísticas no diário de trades."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Revenge Trading é o comportamento irracional gerado pela não aceitação da perda, levando o operador a alavancar a mão e quebrar o gerenciamento."
+        },
+        {
+          "id": "gestao_risco_m4_q2",
+          "question": "Qual é o principal objetivo do Diário de Trades para a evolução profissional?",
+          "options": [
+            "Apenas mostrar para amigos nas redes sociais.",
+            "Registrar dados reais sobre acertos, falhas e estados emocionais para identificar padrões de comportamento e eliminar vazamentos de capital.",
+            "Calcular o imposto de renda no final do mês."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Diário de Trades permite que o operador meça com objetividade científica o que está funcionando e onde estão seus erros comportamentais recorrentes."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "gestao_risco_m4_ch1",
+          "title": "Diário de Bordo Psicológico",
+          "description": "Nas suas próximas 5 operações no simulador, preencha o Diário de Bordo completo registrando: 1) O setup técnico, 2) O sentimento emocional antes do clique, 3) Se o plano de saída foi cumprido sem hesitação."
         }
       ]
     }

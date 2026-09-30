@@ -1,40 +1,155 @@
 {
   "id": "elliott",
   "title": "Ondas de Elliott",
-  "description": "Compreenda a teoria de ciclos e psicologia de massas do mercado financeiro descrita por Ralph Nelson Elliott.",
+  "description": "Domine a teoria fractal de comportamento de massa e ciclos de mercado desenvolvida por Ralph Nelson Elliott.",
   "version": 1,
   "modules": [
     {
       "id": "elliott_m1",
-      "title": "O Ciclo Impulsivo",
-      "description": "Domine o mapeamento das 5 ondas impulsivas a favor da tendência.",
+      "title": "O Ciclo de 8 Ondas e as 3 Regras Cardeais",
+      "description": "Compreenda a estrutura fractal completa de 5 ondas de impulsão e 3 ondas de correção, e conheça as três regras inquebráveis.",
       "xpValue": 100,
       "lessons": [
         {
           "id": "elliott_m1_l1",
-          "title": "As 5 Ondas de Avanço",
-          "content": "A teoria de Elliott divide os movimentos em dois grandes ciclos: Impulso e Correção. O impulso move o preço na direção principal e é composto por 5 ondas numeradas de 1 a 5. As ondas 1, 3 e 5 representam o avanço, enquanto as ondas 2 e 4 representam a retração temporária interna. Cada onda possui uma psicologia própria, sendo a onda 3 tipicamente a de maior aceleração e volume."
+          "title": "A Estrutura Fractal do Ciclo Completo",
+          "content": "Ralph Nelson Elliott descobriu na década de 1930 que os mercados financeiros não se movem de forma caótica, mas em **padrões repetitivos e fractais** impulsionados pela psicologia coletiva da multidão.\n\n### O Ciclo Completo de 8 Ondas:\nO ciclo completo é composto por duas fases distintas:\n1.  **Fase Motiva / Impulsiva (5 Ondas):** Numeradas de **1 a 5**, movimentam-se na direção da tendência primária.\n    *   **Ondas 1, 3 e 5:** São as ondas de impulso (ação).\n    *   **Ondas 2 e 4:** São as ondas de recuo/correção interna (reação).\n2.  **Fase Corretiva (3 Ondas):** Identificadas pelas letras **A, B e C**, corrigem todo o avanço do ciclo de 5 ondas.\n    *   **Ondas A e C:** Movimento corretivo a favor da correção.\n    *   **Onda B:** Repique contra-tendência corretiva."
+        },
+        {
+          "id": "elliott_m1_l2",
+          "title": "As 3 Regras Cardeais Inquebráveis",
+          "content": "A contagem de ondas de Elliott possui diretrizes e regras. As diretrizes podem variar, mas as **Três Regras Cardeais nunca podem ser violadas**. Se uma contagem quebrar qualquer uma dessas regras, ela é automaticamente inválida:\n\n1.  **Regra 1:** A **Onda 2 nunca pode retrair mais de 100% da Onda 1**. (O fundo da Onda 2 não pode romper a mínima inicial da Onda 1).\n2.  **Regra 2:** A **Onda 3 nunca é a mais curta** entre as ondas impulsivas (Ondas 1, 3 e 5). Na maioria esmagadora dos casos, ela é a mais longa e poderosa.\n3.  **Regra 3:** A **Onda 4 nunca pode entrar no território de preço da Onda 1** (exceto em diagonais contráteis/triângulos diagonais). Ou seja, o fundo da Onda 4 não pode fechar abaixo do topo da Onda 1 em uma tendência de alta."
         }
       ],
       "examples": [
         {
           "id": "elliott_m1_e1",
-          "title": "Estrutura de Impulso",
-          "description": "Observe as linhas direcionais das ondas 1 a 5 e a proporção de cada perna de alta.",
+          "title": "Diagrama do Ciclo Completo de 8 Ondas",
+          "description": "Estrutura clássica de 5 ondas impulsivas (1-2-3-4-5) seguidas pelo padrão corretivo de 3 ondas (A-B-C).",
           "vectorCanvas": {
             "width": 200,
             "height": 120,
             "elements": [
-              { "type": "line", "x1": 0.05, "y1": 0.90, "x2": 0.20, "y2": 0.60, "colorStyle": "text" },
-              { "type": "line", "x1": 0.20, "y1": 0.60, "x2": 0.35, "y2": 0.80, "colorStyle": "text" },
-              { "type": "line", "x1": 0.35, "y1": 0.80, "x2": 0.65, "y2": 0.20, "colorStyle": "primary" },
-              { "type": "line", "x1": 0.65, "y1": 0.20, "x2": 0.80, "y2": 0.50, "colorStyle": "text" },
-              { "type": "line", "x1": 0.80, "y1": 0.50, "x2": 0.95, "y2": 0.10, "colorStyle": "text" },
-              { "type": "text", "x": 0.22, "y": 0.56, "content": "1" },
-              { "type": "text", "x": 0.37, "y": 0.82, "content": "2" },
-              { "type": "text", "x": 0.67, "y": 0.16, "content": "3", "colorStyle": "primary" },
-              { "type": "text", "x": 0.82, "y": 0.52, "content": "4" },
-              { "type": "text", "x": 0.96, "y": 0.06, "content": "5" }
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.90,
+                "x2": 0.18,
+                "y2": 0.65,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.18,
+                "y1": 0.65,
+                "x2": 0.28,
+                "y2": 0.78,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.28,
+                "y1": 0.78,
+                "x2": 0.50,
+                "y2": 0.20,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.50,
+                "y1": 0.20,
+                "x2": 0.62,
+                "y2": 0.45,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.62,
+                "y1": 0.45,
+                "x2": 0.75,
+                "y2": 0.12,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.75,
+                "y1": 0.12,
+                "x2": 0.83,
+                "y2": 0.38,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.83,
+                "y1": 0.38,
+                "x2": 0.89,
+                "y2": 0.28,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.89,
+                "y1": 0.28,
+                "x2": 0.96,
+                "y2": 0.58,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.16,
+                "y": 0.58,
+                "content": "1",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.26,
+                "y": 0.86,
+                "content": "2",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.48,
+                "y": 0.14,
+                "content": "3",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.60,
+                "y": 0.52,
+                "content": "4",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.73,
+                "y": 0.08,
+                "content": "5",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.82,
+                "y": 0.44,
+                "content": "A",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.88,
+                "y": 0.22,
+                "content": "B",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.95,
+                "y": 0.65,
+                "content": "C",
+                "colorStyle": "error"
+              }
             ]
           }
         }
@@ -42,33 +157,523 @@
       "exercises": [
         {
           "id": "elliott_m1_ex1",
-          "instruction": "Verifique a integridade da sua contagem de impulso de 1 a 5 utilizando o checklist prático:",
+          "instruction": "Valide a sua contagem de ondas aplicando rigorosamente as 3 Regras Cardeais:",
           "checklist": [
-            "Identifiquei o início da perna 1 após uma reversão clara.",
-            "A perna 2 corrigiu parcialmente sem romper o início da perna 1.",
-            "A perna 3 apresentou forte volume financeiro e velocidade.",
-            "A perna 5 alcançou novos topos com menor momentum que a perna 3."
+            "Verifiquei se a Onda 2 retraiu no máximo 99% da Onda 1 sem violar a mínima inicial.",
+            "Comparei a extensão das Ondas 1, 3 e 5 e confirmei que a Onda 3 não é a mais curta.",
+            "Certifiquei-me de que o fundo da Onda 4 não invadiu o teto de preço do topo da Onda 1.",
+            "Classifiquei se o movimento atual está em fase impulsiva (1 a 5) ou corretiva (A-B-C)."
           ]
         }
       ],
       "quizzes": [
         {
           "id": "elliott_m1_q1",
-          "question": "Qual das seguintes ondas impulsivas é caracteristicamente a mais forte e de maior volume?",
+          "question": "Qual das seguintes afirmações sobre a Onda 3 é uma Regra Cardeal inquebrável de Elliott?",
           "options": [
-            "Onda 1",
-            "Onda 3",
-            "Onda 5"
+            "A Onda 3 precisa obrigatoriamente ser a mais curta de todas as ondas.",
+            "A Onda 3 nunca pode ser a mais curta entre as ondas impulsivas (1, 3 e 5).",
+            "A Onda 3 sempre tem o mesmo tamanho exato da Onda 1."
           ],
           "correctIndex": 1,
-          "explanation": "A Onda 3 é a onda da participação institucional maciça, caracterizada por forte aceleração, alto volume financeiro e rompimento de barreiras técnicas."
+          "explanation": "Uma das 3 regras fundamentais de Elliott determina que a Onda 3 jamais poderá ser a menor entre as ondas impulsivas 1, 3 e 5."
+        },
+        {
+          "id": "elliott_m1_q2",
+          "question": "O que acontece com a contagem de ondas se a Onda 4 retrair e fechar abaixo do topo da Onda 1 em uma tendência de alta clássica?",
+          "options": [
+            "A contagem é considerada válida e deve-se comprar imediatamente.",
+            "A contagem de impulso clássico é invalidada e precisa ser reavaliada, pois a Onda 4 violou a Regra Cardeal de não invadir o território da Onda 1.",
+            "O mercado encerra o pregão imediatamente."
+          ],
+          "correctIndex": 1,
+          "explanation": "A sobreposição entre a Onda 4 e o topo da Onda 1 invalida uma estrutura de impulso padrão segundo as regras de Elliott."
         }
       ],
       "challenges": [
         {
           "id": "elliott_m1_ch1",
-          "title": "Desafio do Impulso Perfeito",
-          "description": "Selecione um gráfico diário de uma ação ou criptoativo. Encontre um movimento forte de alta de médio prazo, marque as 5 sub-ondas e verifique se as retrações se alinham com os níveis comuns de Fibonacci (ex: 50% para onda 2 e 38.2% para onda 4)."
+          "title": "Mapeamento de 5 Ondas no Gráfico",
+          "description": "Abra o gráfico diário ou de 60 minutos de uma ação ou índice em forte tendência. Identifique e rotule as 5 ondas impulsivas (1 a 5), garantindo que nenhuma das 3 regras cardeais seja violada."
+        }
+      ]
+    },
+    {
+      "id": "elliott_m2",
+      "title": "Ondas Impulsivas e Alternância",
+      "description": "Aprenda a psicologia por trás de cada onda e domine a Regra da Alternância para prever correções.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "elliott_m2_l1",
+          "title": "A Psicologia das Ondas 1, 2 e 3",
+          "content": "Cada onda do ciclo reflete o estado emocional predominante dos participantes do mercado:\n\n*   **Onda 1 (Construção Silenciosa):** Quase ninguém acredita na alta; apenas 'insiders' e investidores institucionais compram nos fundos. O volume é moderado.\n*   **Onda 2 (O Teste de Fé):** O mercado recua com força. O público em geral acredita que a tendência de baixa vai continuar, mas a Onda 2 para antes da mínima da Onda 1 com volume decrescente.\n*   **Onda 3 (O Choque de Realidade / Euphoria Institucional):** É o coração da tendência. Rompe o topo da Onda 1 com volume explosivo, gaps de ignição e deslocamento vertical. É a onda mais lucrativa para os traders."
+        },
+        {
+          "id": "elliott_m2_l2",
+          "title": "Onda 4, Onda 5 e a Regra da Alternância",
+          "content": "As etapas finais do ciclo impulsivo trazem alertas de exaustão:\n\n*   **Onda 4 (Consolidação Complexa):** Uma pausa no movimento onde o lucro é realizado. Costuma ser demorada e lateral.\n*   **Onda 5 (O Topo do Varejo):** O público em geral e a mídia celebram a alta. No entanto, o volume financeiro e o momentum (RSI) começam a apresentar **divergências de baixa**, sinalizando que as instituições estão distribuindo suas posições.\n\n### A Regra da Alternância:\nSe a **Onda 2** foi uma correção rápida, profunda e simples (ex: Zigue-Zague agudo), a **Onda 4** será uma correção lateral, demorada e complexa (ex: Triângulo ou Plana), e vice-versa."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m2_e1",
+          "title": "Alternância entre Onda 2 e Onda 4",
+          "description": "A Onda 2 corrige de forma aguda e rápida; a Onda 4 alterna formando uma consolidação lateral e complexa.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.85,
+                "x2": 0.20,
+                "y2": 0.60,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.20,
+                "y1": 0.60,
+                "x2": 0.25,
+                "y2": 0.80,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.20,
+                "y": 0.90,
+                "content": "Onda 2 (Aguda)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.25,
+                "y1": 0.80,
+                "x2": 0.55,
+                "y2": 0.20,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.55,
+                "y1": 0.20,
+                "x2": 0.62,
+                "y2": 0.35,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.62,
+                "y1": 0.35,
+                "x2": 0.68,
+                "y2": 0.24,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.68,
+                "y1": 0.24,
+                "x2": 0.74,
+                "y2": 0.32,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.58,
+                "y": 0.44,
+                "content": "Onda 4 (Lateral)",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.74,
+                "y1": 0.32,
+                "x2": 0.92,
+                "y2": 0.10,
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m2_ex1",
+          "instruction": "Analise o comportamento e a alternância das ondas no seu gráfico com o checklist:",
+          "checklist": [
+            "Identifiquei se a Onda 2 foi simples e profunda (retração aguda de 50%-61.8%).",
+            "Monitorei a Onda 3 confirmando expansão volumosa e rompimento do topo da Onda 1.",
+            "Apliquei a Regra da Alternância para esperar uma Onda 4 lateral e complexa (38.2% de retração).",
+            "Fiquei atento à divergência de volume/RSI na formação da Onda 5."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m2_q1",
+          "question": "O que estabelece a diretriz da Regra da Alternância na teoria de Elliott?",
+          "options": [
+            "Que todas as ondas precisam ter exatamente a mesma duração em dias.",
+            "Que o mercado tende a alternar a forma das correções: se a Onda 2 for aguda e profunda, a Onda 4 tenderá a ser lateral e demorada.",
+            "Que após uma vela verde sempre virá uma vela vermelha."
+          ],
+          "correctIndex": 1,
+          "explanation": "A alternância dita que correções sucessivas dentro do mesmo ciclo raramente são idênticas em formato e profundidade."
+        },
+        {
+          "id": "elliott_m2_q2",
+          "question": "Qual onda do ciclo é geralmente a mais indicada para posicionamento de swing trade devido à sua velocidade e extensão?",
+          "options": [
+            "Onda 2.",
+            "Onda 3.",
+            "Onda 4."
+          ],
+          "correctIndex": 1,
+          "explanation": "A Onda 3 é o movimento mais explosivo e direcional, oferecendo a maior velocidade e potencial de lucro do ciclo."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m2_ch1",
+          "title": "Identificação de Onda 3 Estendida",
+          "description": "No simulador ou gráfico histórico, encontre uma sequência onde a Onda 3 atingiu mais de 161.8% do tamanho da Onda 1. Observe o comportamento do volume financeiro durante o rompimento."
+        }
+      ]
+    },
+    {
+      "id": "elliott_m3",
+      "title": "Estruturas Corretivas (A-B-C)",
+      "description": "Domine as três famílias clássicas de correção: Zigue-Zagues, Planas (Flats) e Triângulos.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "elliott_m3_l1",
+          "title": "Zigue-Zagues (5-3-5) e Correções Planas (3-3-5)",
+          "content": "As correções do mercado dividem-se em famílias estruturais bem definidas:\n\n### 1. Zigue-Zague (Padrão 5-3-5):\n*   Correção aguda e profunda contra a tendência.\n*   **Onda A:** Subdividida em 5 ondas internas.\n*   **Onda B:** Subdividida em 3 ondas (retrai tipicamente 50% a 61.8% da Onda A).\n*   **Onda C:** Subdividida em 5 ondas impulsivas na direção da Onda A.\n\n### 2. Plana / Flat (Padrão 3-3-5):\n*   Correção lateral onde o mercado não recua com profundidade.\n*   **Onda A:** Subdividida em 3 ondas.\n*   **Onda B:** Subdividida em 3 ondas (retorna até perto do início da Onda A, testando o topo anterior).\n*   **Onda C:** Subdividida em 5 ondas que finaliza próxima ao fundo da Onda A."
+        },
+        {
+          "id": "elliott_m3_l2",
+          "title": "Triângulos de Elliott (3-3-3-3-3)",
+          "content": "Os **Triângulos** são padrões corretivos laterais exclusivos que refletem o equilíbrio temporário de forças:\n\n### Regras dos Triângulos:\n*   Compostos por **5 sub-ondas** rotuladas como **A-B-C-D-E**.\n*   Cada uma das 5 sub-ondas possui estrutura interna de 3 ondas (**3-3-3-3-3**).\n*   **Onde ocorrem:** Surgem quase que exclusivamente na **Onda 4** (antecedendo o movimento final da Onda 5) ou na **Onda B** de uma correção.\n*   **O 'Thrust' (Disparo):** O rompimento que sai de um triângulo na Onda 4 costuma ser rápido e veloz, atingindo o alvo da Onda 5 antes de encerrar todo o ciclo maior."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m3_e1",
+          "title": "Zigue-Zague Corretivo A-B-C (5-3-5)",
+          "description": "Estrutura clássica de recuo profundo composta por pernas 5-3-5.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.20,
+                "x2": 0.45,
+                "y2": 0.85,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.85,
+                "x2": 0.65,
+                "y2": 0.45,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.65,
+                "y1": 0.45,
+                "x2": 0.90,
+                "y2": 0.95,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.42,
+                "y": 0.92,
+                "content": "Onda A (5)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.63,
+                "y": 0.38,
+                "content": "Onda B (3)",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.88,
+                "y": 0.98,
+                "content": "Onda C (5)",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        },
+        {
+          "id": "elliott_m3_e2",
+          "title": "Triângulo Contrátil na Onda 4 (A-B-C-D-E)",
+          "description": "Padrão de afunilamento em 5 ondas 3-3-3-3-3 antecedendo o disparo final da Onda 5.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.25,
+                "x2": 0.85,
+                "y2": 0.45,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.85,
+                "y2": 0.65,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.15,
+                "y1": 0.28,
+                "x2": 0.30,
+                "y2": 0.80,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.30,
+                "y1": 0.80,
+                "x2": 0.45,
+                "y2": 0.34,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.45,
+                "y1": 0.34,
+                "x2": 0.60,
+                "y2": 0.72,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.60,
+                "y1": 0.72,
+                "x2": 0.75,
+                "y2": 0.42,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.75,
+                "y1": 0.42,
+                "x2": 0.82,
+                "y2": 0.64,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.82,
+                "y1": 0.64,
+                "x2": 0.95,
+                "y2": 0.15,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.86,
+                "y": 0.12,
+                "content": "Onda 5",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m3_ex1",
+          "instruction": "Classifique a correção atual aplicando a taxonomia de Elliott:",
+          "checklist": [
+            "Verifiquei se a correção possui estrutura aguda profunda (Zigue-Zague) ou lateral (Plana/Triângulo).",
+            "No caso de Triângulo, confirmei a presença das 5 sub-ondas rotuladas de A a E.",
+            "Certifiquei-me de que o Triângulo está ocorrendo em uma Onda 4 ou Onda B.",
+            "Preparei a ordem para operar o rompimento explosivo (Thrust) da Onda 5."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m3_q1",
+          "question": "Qual é a contagem interna de sub-ondas de um padrão Zigue-Zague clássico?",
+          "options": [
+            "3-3-3.",
+            "5-3-5.",
+            "5-5-5."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Zigue-Zague é composto por 5 sub-ondas na Onda A, 3 sub-ondas na Onda B e 5 sub-ondas na Onda C (5-3-5)."
+        },
+        {
+          "id": "elliott_m3_q2",
+          "question": "Em qual posição estrutural do ciclo os Triângulos de Elliott costumam se formar?",
+          "options": [
+            "Apenas na Onda 1 de impulso.",
+            "Na Onda 4 (precedendo a Onda 5 final) ou na Onda B de uma correção.",
+            "Em qualquer lugar sem regras."
+          ],
+          "correctIndex": 1,
+          "explanation": "Os triângulos são padrões de penúltima onda, surgindo na Onda 4 ou na Onda B antes do movimento terminal."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m3_ch1",
+          "title": "Mapeamento de Correção A-B-C",
+          "description": "Encontre uma correção A-B-C completa após uma perna impulsiva. Classifique se a correção foi um Zigue-Zague ou uma Plana e meça a retração de Fibonacci atingida pela Onda C."
+        }
+      ]
+    },
+    {
+      "id": "elliott_m4",
+      "title": "Confluência de Fibonacci e Projeções",
+      "description": "Calcule alvos matemáticos precisos para as Ondas 3, 5 e C utilizando proporções áureas de Fibonacci.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "elliott_m4_l1",
+          "title": "Retrações Matemáticas de Fibonacci",
+          "content": "A Teoria de Elliott e a Sequência de Fibonacci são inseparáveis. As ondas corrigem e expandem em proporções matemáticas exatas:\n\n### Níveis Típicos de Retração:\n*   **Onda 2:** Retrai frequentemente **50% a 61.8%** da Onda 1. Se a correção for muito profunda, pode testar até 78.6% sem violar 100%.\n*   **Onda 4:** Retrai tipicamente **38.2%** da Onda 3 (correção rasa e lateral).\n*   **Onda B:** Em Zigue-Zagues retrai 50%-61.8% da Onda A; em Planas retrai entre 90% e 100% da Onda A."
+        },
+        {
+          "id": "elliott_m4_l2",
+          "title": "Projeções de Expansão de Fibonacci",
+          "content": "Para definir alvos precisos de Take Profit, utilizamos a Projeção de Fibonacci (baseada em 3 pontos):\n\n### Alvos Clássicos de Impulsão:\n*   **Alvo da Onda 3:** Projete o tamanho da Onda 1 a partir do fundo da Onda 2. O alvo primário é **161.8%** da Onda 1. Em ondas estendidas, pode alcançar **261.8%**.\n*   **Alvo da Onda 5:** Quando a Onda 3 é estendida, a Onda 5 costuma ter **tamanho igual à Onda 1 (100%)** ou 61.8% da distância percorrida do início da Onda 1 ao topo da Onda 3.\n*   **Alvo da Onda C:** Projeta 100% da extensão da Onda A a partir do topo da Onda B (igualdade A = C)."
+        }
+      ],
+      "examples": [
+        {
+          "id": "elliott_m4_e1",
+          "title": "Projeção de 161.8% na Onda 3",
+          "description": "Aplicação da Projeção de Fibonacci demonstrando a Onda 3 atingindo com precisão a extensão áurea de 161.8%.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.18,
+                "x2": 0.95,
+                "y2": 0.18,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.65,
+                "y": 0.14,
+                "content": "Alvo 161.8% Fib",
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.25,
+                "y2": 0.60,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.25,
+                "y1": 0.60,
+                "x2": 0.35,
+                "y2": 0.75,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.15,
+                "y": 0.70,
+                "content": "Onda 1",
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.28,
+                "y": 0.82,
+                "content": "61.8% Fib",
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.35,
+                "y1": 0.75,
+                "x2": 0.65,
+                "y2": 0.18,
+                "colorStyle": "success"
+              },
+              {
+                "type": "circle",
+                "cx": 0.65,
+                "cy": 0.18,
+                "r": 0.04,
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "elliott_m4_ex1",
+          "instruction": "Calcule alvos de trade combinando Ondas de Elliott e Fibonacci:",
+          "checklist": [
+            "Tracei a retração de Fibonacci na Onda 1 e aguardei a Onda 2 finalizar entre 50% e 61.8%.",
+            "Tracei a projeção de Fibonacci ancorando no início da Onda 1, topo da Onda 1 e fundo da Onda 2.",
+            "Posicionei meu alvo parcial no alvo de 100% e alvo final em 161.8%.",
+            "Movi meu stop loss para o breakeven assim que o topo da Onda 1 foi superado com volume."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "elliott_m4_q1",
+          "question": "Qual é a relação de projeção de Fibonacci mais comum para uma Onda 3 impulsiva?",
+          "options": [
+            "Exatamente 50% da Onda 1.",
+            "161.8% do comprimento da Onda 1 projetado a partir do fundo da Onda 2.",
+            "Apenas 20% do tamanho da Onda 1."
+          ],
+          "correctIndex": 1,
+          "explanation": "A Onda 3 estende-se tipicamente em 161.8% (proporção áurea de Fibonacci) da extensão da Onda 1."
+        },
+        {
+          "id": "elliott_m4_q2",
+          "question": "Qual retração de Fibonacci é mais comum para a Onda 4 em relação à Onda 3?",
+          "options": [
+            "Retração rasa de 38.2%.",
+            "Retração profunda de 99%.",
+            "Não existe retração na Onda 4."
+          ],
+          "correctIndex": 0,
+          "explanation": "A Onda 4 é tipicamente uma correção lateral e mais rasa, respeitando comumente o nível de 38.2% de Fibonacci da Onda 3."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "elliott_m4_ch1",
+          "title": "Operação de Onda 3 no Simulador",
+          "description": "Identifique uma Onda 1 clara e aguarde a Onda 2 retrair 50%-61.8% no gráfico de 5 minutos. Entre no rompimento do topo da Onda 1 buscando o alvo de 161.8% de Fibonacci na Onda 3."
         }
       ]
     }

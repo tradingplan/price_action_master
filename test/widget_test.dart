@@ -10,8 +10,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:price_action_master/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('App initialization smoke test', (WidgetTester tester) async {
+    // Build our app and trigger frames including splash delay.
     await tester.pumpWidget(MyApp());
+    await tester.pumpAndSettle(const Duration(milliseconds: 1500));
   });
 }

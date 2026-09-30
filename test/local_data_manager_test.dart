@@ -84,4 +84,69 @@ void main() {
     expect(history[0]['pointsProfit'], 200.0);
     expect(history[0]['financialProfit'], 200.0);
   });
+
+  test('Deve gerenciar Repetição Espaçada (Sistema Leitner) com promoção e rebaixamento de Boxes', () async {
+    // 1. Resposta correta na primeira vez promove para Box 2
+    final item1 = await LocalDataManager.recordSpacedRepetitionReview(
+      id: 'lesson_bos_1',
+      courseId: 'smc',
+      moduleId: 'smc_m1',
+      title: 'Estruturas BOS e CHoCH',
+      isCorrect: true,
+    );
+    expect(item1.box, 2);
+    expect(item1.consecutiveCorrect, 1);
+    expect(item1.totalReviews, 1);
+
+    // 2. Resposta correta novamente promove para Box 3
+    final item2 = await LocalDataManager.recordSpacedRepetitionReview(
+      id: 'lesson_bos_1',
+      courseId: 'smc',
+      moduleId: 'smc_m1',
+      title: 'Estruturas BOS e CHoCH',
+      isCorrect: true,
+    );
+    expect(item2.box, 3);
+    expect(item2.consecutiveCorrect, 2);
+    expect(item2.totalReviews, 2);
+
+    // 3. Resposta errada rebaixa imediatamente para Box 1
+    final item3 = await LocalDataManager.recordSpacedRepetitionReview(
+      id: 'lesson_bos_1',
+      courseId: 'smc',
+      moduleId: 'smc_m1',
+      title: 'Estruturas BOS e CHoCH',
+      isCorrect: false,
+    );
+    expect(item3.box, 1);
+    expect(item3.consecutiveCorrect, 0);
+    expect(item3.totalReviews, 3);
+
+    final allItems = await LocalDataManager.getSpacedRepetitionItems();
+    expect(allItems.length, 1);
+  });
+
+  test('Deve gerar Certificado offline com hash criptográfico SHA-256 e validar autenticidade', () async {
+    final cert = await LocalDataManager.generateCertificate(
+      courseId: 'wyckoff',
+      studentName: 'Trader Pro',
+      xpEarned: 200,
+      correctAnswers: 2,
+    );
+
+    expect(cert.id, startsWith('cert_wyckoff_'));
+    expect(cert.courseId, 'wyckoff');
+    expect(cert.studentName, 'Trader Pro');
+    expect(cert.verificationHash, isNotEmpty);
+    expect(cert.verificationHash.length, 64); // SHA-256 hex string tem 64 chars
+
+    // Validação de autenticidade
+    final isValid = LocalDataManager.verifyCertificate(cert);
+    expect(isValid, isTrue);
+
+    // Consulta do certificado gerado
+    final fetchedCert = await LocalDataManager.getCertificateForCourse('wyckoff');
+    expect(fetchedCert, isNotNull);
+    expect(fetchedCert!.verificationHash, cert.verificationHash);
+  });
 }

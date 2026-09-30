@@ -1,26 +1,31 @@
 {
   "id": "smc",
   "title": "Smart Money Concepts",
-  "description": "Compreenda a movimentação de preço sob a perspectiva institucional de grandes bancos e algoritmos interbancários.",
+  "description": "Compreenda a movimentação de preço sob a perspectiva dos grandes algoritmos bancários, fluxo de ordens e liquidez institucional.",
   "version": 1,
   "modules": [
     {
       "id": "smc_m1",
-      "title": "Estrutura e Rompimentos",
-      "description": "Aprenda a mapear topos e fundos válidos e identificar BOS e CHoCH.",
+      "title": "Estrutura de Mercado e Rompimentos",
+      "description": "Aprenda a mapear topos e fundos válidos, identificando a quebra de estrutura (BOS) e a mudança de caráter (CHoCH).",
       "xpValue": 100,
       "lessons": [
         {
           "id": "smc_m1_l1",
-          "title": "O Mapeamento Estrutural",
-          "content": "A estrutura de mercado é o pilar mais importante do trading institucional. Para o Smart Money, tendências de alta formam topos mais altos (Higher Highs) e fundos mais altos (Higher Lows). Uma quebra da estrutura atual a favor da tendência é chamada de BOS (Break of Structure). O primeiro sinal de que a tendência vai reverter, quando o preço quebra o fundo/topo oposto, é chamado de CHoCH (Change of Character)."
+          "title": "O Mapeamento Estrutural Institucional",
+          "content": "A estrutura de mercado é o alicerce fundamental de toda a metodologia **Smart Money Concepts (SMC)**. Enquanto a análise clássica traça linhas de suporte e resistência subjetivas, o trader institucional mapeia os **pontos estruturais reais** onde as instituições deixaram suas pegadas.\n\n### Princípios de Estrutura:\n*   **Tendência de Alta:** O mercado cria sucessivamente **Topos Mais Altos (Higher Highs - HH)** e **Fundos Mais Altos (Higher Lows - HL)**.\n*   **Tendência de Baixa:** O mercado cria sucessivamente **Topos Mais Baixos (Lower Highs - LH)** e **Fundos Mais Baixos (Lower Lows - LL)**.\n*   **Topos e Fundos Fortes (Strong Highs/Lows):** São aqueles que causaram o rompimento de uma estrutura anterior. Topos fortes protegem a tendência de baixa; fundos fortes protegem a tendência de alta.\n*   **Topos e Fundos Fracos (Weak Highs/Lows):** São níveis que falharam em criar novos extremos e servem apenas como alvos de liquidez para serem rompidos."
+        },
+        {
+          "id": "smc_m1_l2",
+          "title": "BOS vs CHoCH: Continuação vs Reversão",
+          "content": "Para operar SMC com precisão, é indispensável diferenciar a continuidade do fluxo da reversão institucional:\n\n### 1. BOS (Break of Structure - Quebra de Estrutura):\n*   Ocorre quando o preço rompe e fecha **além do topo anterior (em alta)** ou **além do fundo anterior (em baixa)**.\n*   Confirma que o algoritmo interbancário continua expandindo na direção da tendência primária.\n*   **Regra de Ouro:** O BOS é validado apenas pelo **fechamento do corpo da vela** além do nível. Apenas o pavio violando o nível é considerado captura de liquidez, não BOS.\n\n### 2. CHoCH (Change of Character - Mudança de Caráter):\n*   É a **primeira quebra estrutural contra a tendência vigente**.\n*   Em uma alta, o CHoCH ocorre quando o preço perde o último Fundo Mais Alto (HL) que gerou o topo máximo.\n*   Em uma baixa, ocorre quando o preço supera o último Topo Mais Baixo (LH) que gerou o fundo mínimo.\n*   Sinaliza que o fluxo de ordens institucionais virou de compra para venda (ou vice-versa)."
         }
       ],
       "examples": [
         {
           "id": "smc_m1_e1",
-          "title": "Diagrama de BOS",
-          "description": "Veja no gráfico acima como a continuação de alta é validada após o preço romper e fechar acima do topo anterior.",
+          "title": "Diagrama de BOS em Tendência de Alta",
+          "description": "O preço forma um Higher High, faz uma retração e rompe o topo anterior com corpo de vela, confirmando o Break of Structure (BOS).",
           "vectorCanvas": {
             "width": 200,
             "height": 120,
@@ -30,17 +35,17 @@
                 "cx": 0.20,
                 "cy": 0.70,
                 "x1": 0.12,
-                "y1": 0.05,
-                "y2": 0.05,
+                "y1": 0.04,
+                "y2": 0.04,
                 "content": "green"
               },
               {
                 "type": "candle",
                 "cx": 0.40,
-                "cy": 0.50,
+                "cy": 0.48,
                 "x1": 0.10,
-                "y1": 0.05,
-                "y2": 0.05,
+                "y1": 0.04,
+                "y2": 0.04,
                 "content": "green"
               },
               {
@@ -48,8 +53,8 @@
                 "cx": 0.60,
                 "cy": 0.60,
                 "x1": 0.08,
-                "y1": 0.04,
-                "y2": 0.04,
+                "y1": 0.03,
+                "y2": 0.03,
                 "content": "red"
               },
               {
@@ -57,23 +62,85 @@
                 "cx": 0.80,
                 "cy": 0.35,
                 "x1": 0.15,
-                "y1": 0.05,
-                "y2": 0.05,
+                "y1": 0.04,
+                "y2": 0.04,
                 "content": "green"
               },
               {
                 "type": "dotted_line",
                 "x1": 0.30,
-                "y1": 0.45,
+                "y1": 0.43,
                 "x2": 0.90,
-                "y2": 0.45,
+                "y2": 0.43,
                 "colorStyle": "error"
               },
               {
                 "type": "text",
-                "x": 0.62,
-                "y": 0.39,
-                "content": "BOS",
+                "x": 0.60,
+                "y": 0.36,
+                "content": "BOS (Alta)",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        },
+        {
+          "id": "smc_m1_e2",
+          "title": "Diagrama de CHoCH com Reversão",
+          "description": "O preço perde o último fundo relevante após falhar em renovar topo, caracterizando o Change of Character (CHoCH).",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.45,
+                "x1": 0.12,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.40,
+                "cy": 0.58,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.38,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.82,
+                "cy": 0.70,
+                "x1": 0.20,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.32,
+                "y1": 0.62,
+                "x2": 0.92,
+                "y2": 0.62,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.55,
+                "y": 0.76,
+                "content": "CHoCH (Baixa)",
                 "colorStyle": "error"
               }
             ]
@@ -83,12 +150,12 @@
       "exercises": [
         {
           "id": "smc_m1_ex1",
-          "instruction": "Abra seu gráfico e execute a validação de um BOS válido seguindo o checklist institucional:",
+          "instruction": "Mapeie a estrutura de mercado e valide os rompimentos usando o checklist institucional:",
           "checklist": [
-            "Identifiquei a tendência macro dominante (alta ou baixa).",
-            "Marquei a linha horizontal exatamente na ponta do pavio do topo/fundo anterior.",
-            "Aguardei o fechamento da vela romper o nível com o corpo (pavio sozinho não valida BOS).",
-            "Confirmei que a quebra de estrutura está a favor do fluxo dominante."
+            "Identifiquei a tendência macro dominante em tempo gráfico superior (1h ou 4h).",
+            "Tracei a linha de nível exatamente na ponta do pavio do topo/fundo que define o range.",
+            "Confirmei que a vela rompeu o nível com o corpo fechado (pavio sozinho representa sweep).",
+            "Diferenciei se o evento gráfico foi um BOS (continuação) ou um CHoCH (virada de tendência)."
           ]
         }
       ],
@@ -97,19 +164,559 @@
           "id": "smc_m1_q1",
           "question": "O que indica a ocorrência de um CHoCH (Change of Character)?",
           "options": [
-            "A continuidade forte da tendência atual.",
-            "A primeira sinalização de reversão da estrutura de mercado.",
-            "Que o mercado entrou em consolidação lateral indefinida."
+            "A continuação forte e acelerada da tendência anterior.",
+            "A primeira quebra da estrutura contra a tendência, sinalizando reversão do fluxo de ordens institucional.",
+            "Que o mercado entrou em congestão e nenhum trade deve ser executado."
           ],
           "correctIndex": 1,
-          "explanation": "O CHoCH representa a mudança de caráter da estrutura de mercado, indicando que o fluxo institucional de ordens reverteu de compradores para vendedores (ou vice-versa)."
+          "explanation": "O CHoCH representa a mudança de caráter estrutural, indicando que o fluxo dominante foi quebrado e as instituições estão revertendo suas posições."
+        },
+        {
+          "id": "smc_m1_q2",
+          "question": "Por que a metodologia SMC exige que o BOS seja confirmado pelo corpo da vela e não apenas pelo pavio?",
+          "options": [
+            "Porque o pavio indica apenas teste de margem sem liquidez.",
+            "Porque um pavio ultrapassando a máxima e fechando abaixo representa captura de liquidez (Sweep/Raid) e não expansão institucional sustentada.",
+            "Porque o fechamento de corpo só importa no gráfico diário."
+          ],
+          "correctIndex": 1,
+          "explanation": "Se o preço ultrapassa a máxima com pavio e fecha de volta dentro do range, ocorreu um Sweep de liquidez. O BOS requer fechamento de corpo para confirmar deslocamento real."
         }
       ],
       "challenges": [
         {
           "id": "smc_m1_ch1",
-          "title": "Desafio do CHoCH Prático",
-          "description": "Abra um gráfico histórico recente de qualquer ativo (WIN, DOL ou BTC). Encontre uma reversão clara de tendência, localize o CHoCH, e trace uma linha marcando a mudança. Verifique se o preço retornou para testar a zona rompida."
+          "title": "Mapeamento Estrutural no Simulador",
+          "description": "Abra o gráfico de 15 minutos de um ativo. Mapeie os últimos 3 BOS ocorridos a favor da tendência. Em seguida, localize o ponto exato onde o primeiro CHoCH reverteu o movimento e marque no gráfico."
+        }
+      ]
+    },
+    {
+      "id": "smc_m2",
+      "title": "Order Blocks e Zonas de Oferta/Demanda",
+      "description": "Descubra como localizar as pegadas dos blocos de ordens bancários e operar a mitigação institucional.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "smc_m2_l1",
+          "title": "A Anatomia do Order Block Institucional",
+          "content": "Um **Order Block (OB)** é a zona de preço onde grandes instituições financeiras (bancos centrais, fundos soberanos e market makers) executaram ordens massivas que desequilibraram o mercado.\n\n### Como Identificar um Order Block Válido:\n*   **Bullish Order Block (Demanda):** É a **última vela de baixa (vermelha)** que antecedeu um movimento agressivo de alta com deslocamento rápido (displacement) e quebra de estrutura (BOS).\n*   **Bearish Order Block (Oferta):** É a **última vela de alta (verde)** que antecedeu um colapso agressivo de baixa que rompeu fundos anteriores.\n\n### Critérios de Validação Rigorosos:\n1.  **Deslocamento Rápido:** O movimento seguinte deve ser forte e impulsivo (gerando desbalanceamento/FVG).\n2.  **Quebra de Estrutura:** O movimento originado no OB precisa obrigatoriamente quebrar um topo ou fundo estrutural anterior (gerar BOS ou CHoCH).\n3.  **Captura de Liquidez Prévia:** Os melhores OBs são aqueles que capturaram liquidez do varejo antes do disparo."
+        },
+        {
+          "id": "smc_m2_l2",
+          "title": "Mitigação e Breaker Blocks",
+          "content": "Quando as instituições abrem posições gigantescas para empurrar o mercado, parte de suas ordens preliminares fica temporariamente no prejuízo.\n\n### O Processo de Mitigação:\nO mercado faz um pullback de volta à região do Order Block para que as instituições possam **zerar suas ordens no ponto de equilíbrio (breakeven)** e adicionar novas posições a favor da tendência. Esse reteste do OB chama-se **Mitigação** e oferece o ponto ideal de entrada de baixo risco.\n\n### O que é um Breaker Block?\nQuando um Order Block válido é rompido sem respeitar a mitigação, ele inverte de polaridade: um Bullish OB violado transforma-se em um **Bearish Breaker Block**, tornando-se uma barreira de venda imediata quando o preço tentar subir novamente."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m2_e1",
+          "title": "Bullish Order Block com Mitigação",
+          "description": "A última vela vermelha antes da forte explosão de alta é mitigada com precisão cirúrgica antes da continuação da tendência.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.65,
+                "x1": 0.12,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.38,
+                "cy": 0.45,
+                "x1": 0.18,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.55,
+                "cy": 0.30,
+                "x1": 0.14,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.72,
+                "cy": 0.52,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.88,
+                "cy": 0.25,
+                "x1": 0.22,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "line",
+                "x1": 0.12,
+                "y1": 0.71,
+                "x2": 0.85,
+                "y2": 0.71,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.14,
+                "y": 0.82,
+                "content": "Bullish OB",
+                "colorStyle": "success"
+              },
+              {
+                "type": "circle",
+                "cx": 0.72,
+                "cy": 0.65,
+                "r": 0.04,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.78,
+                "content": "Mitigação",
+                "colorStyle": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "id": "smc_m2_e2",
+          "title": "Bearish Breaker Block",
+          "description": "O bloco de demanda anterior falhou e foi rompido para baixo, convertendo-se em um Breaker Block de venda no reteste.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.25,
+                "cy": 0.50,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.45,
+                "cy": 0.35,
+                "x1": 0.14,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.65,
+                "cy": 0.65,
+                "x1": 0.22,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.82,
+                "cy": 0.52,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "line",
+                "x1": 0.18,
+                "y1": 0.55,
+                "x2": 0.92,
+                "y2": 0.55,
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.55,
+                "y": 0.48,
+                "content": "Breaker Block",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m2_ex1",
+          "instruction": "Avalie se o Order Block selecionado atende a todos os critérios institucionais:",
+          "checklist": [
+            "Localizei a última vela oposta antes do movimento de forte deslocamento.",
+            "Confirmei que o deslocamento causou quebra de estrutura (BOS ou CHoCH).",
+            "Identifiquei a presença de Fair Value Gap (desbalanceamento) logo após o Order Block.",
+            "Posicionei a ordem limite no topo da vela do OB (em compras) e stop loss abaixo da mínima do bloco."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m2_q1",
+          "question": "Qual é a definição exata de um Bullish Order Block (OB de Demanda)?",
+          "options": [
+            "Qualquer vela verde de corpo grande após uma notícia econômica.",
+            "A última vela de baixa (vermelha) que antecedeu uma forte expansão altista com quebra de estrutura (BOS).",
+            "O topo mais alto do gráfico diário."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Bullish Order Block é a última vela vendedora antes da injeção massiva de capital comprador institucional que quebrou a estrutura de mercado."
+        },
+        {
+          "id": "smc_m2_q2",
+          "question": "O que ocorre durante o processo de 'Mitigação' de um Order Block?",
+          "options": [
+            "As corretoras fecham o livro de ofertas para manutenção.",
+            "O preço retorna à zona do Order Block permitindo que as instituições financeiras encerrem ordens pendentes no zero a zero e adicionem posições a favor da tendência.",
+            "O ativo perde todo o seu valor e é deslistado."
+          ],
+          "correctIndex": 1,
+          "explanation": "Mitigação é o retorno eficiente do preço à zona do bloco de ordens para balancear as ordens institucionais e impulsionar a próxima perna direcional."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m2_ch1",
+          "title": "Operação de Mitigação de OB",
+          "description": "No simulador de trading, identifique um Order Block recente que tenha gerado BOS no gráfico de 5 minutos. Posicione uma ordem de compra/venda na entrada do OB com stop técnico além do bloco. Acompanhe a reação de mitigação."
+        }
+      ]
+    },
+    {
+      "id": "smc_m3",
+      "title": "Fair Value Gaps e Imbalance",
+      "description": "Compreenda a ineficiência de entrega de preço (Imbalance/FVG) e as zonas de desconto (Discount) e prêmio (Premium).",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "smc_m3_l1",
+          "title": "O que é Fair Value Gap (FVG)?",
+          "content": "O **Fair Value Gap (FVG)**, também conhecido como **Imbalance** ou **Inefficiency**, ocorre quando uma movimentação agressiva e unilateral de preços não permite que compradores e vendedores negociem em todos os níveis de preço com liquidez equilibrada.\n\n### Anatomia de 3 Velas do FVG:\n*   **Vela 1:** Vela que antecede o disparo.\n*   **Vela 2:** Vela de expansão gigantesca (impulsão pura).\n*   **Vela 3:** Vela que sucede o disparo.\n*   **O Gap:** É o espaço vazio entre o **pavio da Vela 1** e o **pavio da Vela 3**. Nenhuma negociação contrária ocorreu nesse intervalo durante a formação da Vela 2.\n\n### O Algoritmo de Entrega Eficiente:\nO algoritmo interbancário (IPDA) possui como objetivo principal entregar o preço de forma eficiente nos dois sentidos. Portanto, o mercado tende a retornar como um ímã para preencher e rebalancear o FVG antes de dar continuidade à tendência."
+        },
+        {
+          "id": "smc_m3_l2",
+          "title": "Zonas Premium vs Discount e Consequent Encroachment",
+          "content": "Saber onde comprar e onde vender é a chave para a lucratividade consistente no Smart Money:\n\n### Zonas de Equilíbrio (Range):\nTrace a ferramenta de Fibonacci de 0% a 100% no range atual:\n*   **Zona Premium (Acima de 50%):** O preço está 'caro'. Instituições apenas **vendem** no Premium.\n*   **Equilíbrio (50%):** Preço justo de mercado.\n*   **Zona Discount (Abaixo de 50%):** O preço está 'barato'. Instituições apenas **compram** no Discount.\n\n### Consequent Encroachment (C.E.):\nÉ o ponto exato de **50% do Fair Value Gap**. Frequentemente, o preço não precisa preencher 100% do FVG; um simples toque no nível de 50% (C.E.) é suficiente para ativar a reação institucional e retomar o movimento."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m3_e1",
+          "title": "Anatomia de 3 Velas de um Bullish FVG",
+          "description": "O espaço vazio entre a máxima da Vela 1 e a mínima da Vela 3 forma o Fair Value Gap (FVG), que atua como ímã para reteste.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.25,
+                "cy": 0.70,
+                "x1": 0.10,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.50,
+                "cy": 0.40,
+                "x1": 0.32,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.75,
+                "cy": 0.18,
+                "x1": 0.10,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "line",
+                "x1": 0.25,
+                "y1": 0.61,
+                "x2": 0.90,
+                "y2": 0.61,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "line",
+                "x1": 0.55,
+                "y1": 0.26,
+                "x2": 0.90,
+                "y2": 0.26,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.62,
+                "y": 0.44,
+                "content": "Fair Value Gap",
+                "colorStyle": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "id": "smc_m3_e2",
+          "title": "Range Premium e Discount",
+          "description": "Mapeamento das zonas de valor: compras devem ser executadas exclusivamente na zona Discount (abaixo de 50%).",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.20,
+                "x2": 0.90,
+                "y2": 0.20,
+                "colorStyle": "error"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.50,
+                "x2": 0.90,
+                "y2": 0.50,
+                "colorStyle": "text"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.10,
+                "y1": 0.80,
+                "x2": 0.90,
+                "y2": 0.80,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.35,
+                "y": 0.15,
+                "content": "Zona Premium (Venda)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.40,
+                "y": 0.46,
+                "content": "Equilíbrio 50%",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.35,
+                "y": 0.86,
+                "content": "Zona Discount (Compra)",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m3_ex1",
+          "instruction": "Encontre e valide um FVG em zona Discount com o checklist:",
+          "checklist": [
+            "Mapeei o range completo da perna de alta (mínima a máxima).",
+            "Calculei o nível de 50% de equilíbrio para filtrar trades apenas na zona Discount (abaixo de 50%).",
+            "Identifiquei o FVG entre os pavios da Vela 1 e Vela 3.",
+            "Marquei a linha de 50% do gap (Consequent Encroachment) como ponto de entrada institucional."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m3_q1",
+          "question": "Como é medido visualmente o espaço de um Fair Value Gap (FVG)?",
+          "options": [
+            "Pelo tamanho total da vela central incluindo corpo e pavios.",
+            "Pelo espaço desbalanceado entre a máxima da Vela 1 e a mínima da Vela 3 em um movimento de alta.",
+            "Pelo indicador de média móvel de 20 períodos."
+          ],
+          "correctIndex": 1,
+          "explanation": "O FVG é a lacuna de ineficiência onde não houve sobreposição entre a extremidade da Vela 1 e a extremidade da Vela 3."
+        },
+        {
+          "id": "smc_m3_q2",
+          "question": "Por que o Smart Money busca comprar exclusivamente na Zona de Discount (Desconto)?",
+          "options": [
+            "Para comprar o ativo por um preço mais barato em relação ao range atual, aumentando a assimetria e o retorno potencial do trade.",
+            "Porque corretoras cobram menos taxas em compras na zona de desconto.",
+            "Porque os indicadores técnicos são desligados na zona premium."
+          ],
+          "correctIndex": 0,
+          "explanation": "Comprar em Discount significa adquirir posições a preços promocionais em relação ao equilíbrio do mercado, maximizando a relação risco-retorno."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m3_ch1",
+          "title": "Mapeamento de 3 FVGs Rebalanceados",
+          "description": "Abra um gráfico de 1 hora de qualquer par de moedas ou índice. Localize 3 FVGs distintos formados em dias recentes e observe como o preço retornou exatamente ao espaço do gap antes de retomar o movimento."
+        }
+      ]
+    },
+    {
+      "id": "smc_m4",
+      "title": "Liquidez Institucional e Sweeps",
+      "description": "Entenda onde os stops do varejo estão concentrados e como as instituições executam a caça à liquidez.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "smc_m4_l1",
+          "title": "Pools de Liquidez: BSL e SSL",
+          "content": "Para uma instituição financeira comprar 50.000 contratos, ela necessita de traders vendendo 50.000 contratos no mesmo momento. Essa contraparte é encontrada onde milhares de traders de varejo colocam seus **Stops de Proteção**.\n\n### Onde reside a Liquidez:\n*   **Buy-Side Liquidity (BSL):** Localizada **acima de topos anteriores**, especialmente em **Equal Highs (EQH - Topos Duplos)**. Contém stops de compra de vendedores e ordens de rompimento do varejo.\n*   **Sell-Side Liquidity (SSL):** Localizada **abaixo de fundos anteriores**, especialmente em **Equal Lows (EQL - Fundos Duplos)**. Contém stops de venda de compradores.\n\n### A Ilusão do Suporte e Resistência do Varejo:\nO varejo acredita que topos duplos são 'resistências intransponíveis'. O Smart Money enxerga topos duplos como uma piscina de combustível (liquidez) que será capturada antes da verdadeira queda."
+        },
+        {
+          "id": "smc_m4_l2",
+          "title": "Liquidity Sweeps e o Gatilho de Entrada",
+          "content": "O **Liquidity Sweep** (ou Liquidity Purge/Raid) é a violação rápida de uma zona de liquidez seguida de rejeição imediata.\n\n### Dinâmica do Sweep:\n1.  O preço avança agressivamente além de um fundo importante (SSL), acionando todos os stops de venda do varejo.\n2.  A instituição consome toda essa liquidez de venda como contraparte para abrir suas posições de compra gigantescas.\n3.  O candle fecha com um longo pavio de rejeição de volta para dentro do range.\n4.  O preço expande rapidamente na direção oposta, gerando um CHoCH em tempo gráfico menor.\n\n### O Padrão de Entrada:\nNunca compre durante a queda; aguarde o **Sweep de SSL** ocorrer, espere o **CHoCH no gráfico de 1min ou 5min**, e entre na mitigação do primeiro FVG/OB formado após a mudança de caráter."
+        }
+      ],
+      "examples": [
+        {
+          "id": "smc_m4_e1",
+          "title": "Sweep de Equal Lows (SSL) e Disparo de Alta",
+          "description": "O preço viola a linha de Equal Lows para capturar stops do varejo e reverte violentamente para cima com forte deslocamento.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.08,
+                "y1": 0.65,
+                "x2": 0.92,
+                "y2": 0.65,
+                "colorStyle": "error"
+              },
+              {
+                "type": "candle",
+                "cx": 0.22,
+                "cy": 0.60,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.45,
+                "cy": 0.60,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.68,
+                "cy": 0.68,
+                "x1": 0.06,
+                "y1": 0.02,
+                "y2": 0.22,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.88,
+                "cy": 0.35,
+                "x1": 0.22,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "text",
+                "x": 0.25,
+                "y": 0.52,
+                "content": "Equal Lows (SSL)",
+                "colorStyle": "error"
+              },
+              {
+                "type": "circle",
+                "cx": 0.68,
+                "cy": 0.80,
+                "r": 0.04,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.58,
+                "y": 0.92,
+                "content": "Liquidity Sweep",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "smc_m4_ex1",
+          "instruction": "Execute a estratégia de entrada após captura de liquidez com o checklist:",
+          "checklist": [
+            "Localizei uma piscina de liquidez evidente (Equal Highs ou Equal Lows).",
+            "Aguardei o preço varrer os stops da região com uma sombra rápida (Sweep).",
+            "Verifiquei a ocorrência de um CHoCH no tempo gráfico menor confirmando a rejeição.",
+            "Defini a entrada na mitigação do FVG/Order Block que gerou a quebra estrutural."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "smc_m4_q1",
+          "question": "O que as instituições financeiras buscam quando o preço viola topos duplos (Equal Highs)?",
+          "options": [
+            "Capturar a Buy-Side Liquidity (stops de venda de quem estava vendido e ordens de compra de rompimento do varejo) para preencher ordens massivas de venda institucional.",
+            "Executar operações manuais de scalping sem volume.",
+            "Fechar os servidores da bolsa."
+          ],
+          "correctIndex": 0,
+          "explanation": "Acima de Equal Highs concentra-se imensa liquidez compradora (BSL), que é exatamente o combustível necessário para os bancos venderem em grande quantidade."
+        },
+        {
+          "id": "smc_m4_q2",
+          "question": "Qual é a melhor conduta ao identificar um rompimento com pavio de uma zona de liquidez?",
+          "options": [
+            "Entrar a mercado imediatamente na direção do rompimento.",
+            "Não comprar no rompimento; aguardar a confirmação de rejeição (Sweep) e o CHoCH no tempo menor para operar a favor do fluxo institucional real.",
+            "Aumentar a alavancagem sem stop loss."
+          ],
+          "correctIndex": 1,
+          "explanation": "Aguardar o Sweep e o CHoCH subsequente evita ser capturado como liquidez de varejo e permite entrar alinhado ao Smart Money."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "smc_m4_ch1",
+          "title": "Desafio do Sweep no Simulador",
+          "description": "Encontre uma região com fundos duplos (Equal Lows) em 15 minutos. Aguarde o mercado furar a mínima, rejeitar o movimento com cauda e gerar um CHoCH em 5 minutos. Execute a compra na mitigação subsequente."
         }
       ]
     }

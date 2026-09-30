@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/local_data_manager.dart';
 import 'package:price_action_master/backend/schema/platform_course_models.dart';
+import 'package:price_action_master/backend/repositories/course_repository.dart';
 import 'package:price_action_master/pages/course/renderers/course_renderers.dart';
 import 'module_panel_model.dart';
 export 'module_panel_model.dart';
@@ -59,26 +60,49 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
     // 2. Concede e persiste a XP definida no Schema do Módulo
     await LocalDataManager.addXP(_module.xpValue);
 
-    // 3. Exibe feedback pedagógico e gamificado
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: FlutterFlowTheme.of(context).success,
-        content: Row(
-          children: [
-            const Icon(Icons.stars, color: Colors.white),
-            const SizedBox(width: 8.0),
-            Expanded(
-              child: Text(
-                'Módulo "${_module.title}" concluído! +${_module.xpValue} XP obtidos.',
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    // 3. Verifica se todo o curso foi concluído para gerar o certificado offline
+    try {
+      final course = await LocalCourseRepository().getCourseById(widget.courseId);
+      if (course != null) {
+        final allCompleted = course.modules.every((m) =>
+            m.id == _module.id ? true : LocalDataManager.isModuleCompleted(widget.courseId, m.id));
+        if (allCompleted) {
+          final totalXP = course.modules.fold<int>(0, (sum, m) => sum + m.xpValue);
+          final totalQuizzes = course.modules.fold<int>(0, (sum, m) => sum + m.quizzes.length);
+          await LocalDataManager.generateCertificate(
+            courseId: course.id,
+            studentName: 'Trader Pro',
+            xpEarned: totalXP,
+            correctAnswers: totalQuizzes,
+          );
+        }
+      }
+    } catch (e) {
+      print('Erro ao verificar geração de certificado: $e');
+    }
 
-    Navigator.pop(context, true);
+    // 4. Exibe feedback pedagógico e gamificado
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: FlutterFlowTheme.of(context).success,
+          content: Row(
+            children: [
+              const Icon(Icons.stars, color: Colors.white),
+              const SizedBox(width: 8.0),
+              Expanded(
+                child: Text(
+                  'Módulo "${_module.title}" concluído! +${_module.xpValue} XP obtidos.',
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+      Navigator.pop(context, true);
+    }
   }
 
   @override
@@ -152,17 +176,26 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
                     )
                   : const Center(child: Text('Nenhum exercício disponível.')),
 
-              // 4. Aba Quiz (Múltipla Escolha)
+              // 4. Aba Quiz (Múltipla Escolha com Spaced Repetition)
               _module.quizzes.isNotEmpty
                   ? QuizRenderer(
                       quiz: _module.quizzes.first,
                       selectedIndex: _selectedQuizIndex,
                       isAnswered: _isQuizAnswered,
-                      onAnswerSelected: (index) {
+                      onAnswerSelected: (index) async {
                         setState(() {
                           _selectedQuizIndex = index;
                           _isQuizAnswered = true;
                         });
+                        final quiz = _module.quizzes.first;
+                        final isCorrect = index == quiz.correctIndex;
+                        await LocalDataManager.recordSpacedRepetitionReview(
+                          id: quiz.id,
+                          courseId: widget.courseId,
+                          moduleId: _module.id,
+                          title: _module.title,
+                          isCorrect: isCorrect,
+                        );
                       },
                     )
                   : const Center(child: Text('Nenhum quiz disponível.')),

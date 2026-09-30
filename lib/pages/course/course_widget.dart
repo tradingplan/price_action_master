@@ -6,6 +6,7 @@ import 'package:price_action_master/backend/schema/platform_course_models.dart';
 import 'package:price_action_master/backend/repositories/course_repository.dart';
 import 'course_model.dart';
 import 'module_panel_widget.dart';
+import 'certificate_viewer_widget.dart';
 export 'course_model.dart';
 
 class CourseWidget extends StatefulWidget {
@@ -182,6 +183,93 @@ class _CourseWidgetState extends State<CourseWidget> {
                         minHeight: 8.0,
                         borderRadius: BorderRadius.circular(4.0),
                       ),
+                      if (progressPercent >= 1.0) ...[
+                        const SizedBox(height: 16.0),
+                        InkWell(
+                          onTap: () async {
+                            var cert = await LocalDataManager.getCertificateForCourse(_course!.id);
+                            if (cert == null) {
+                              final totalXP = modules.fold<int>(0, (sum, m) => sum + m.xpValue);
+                              final totalQuizzes = modules.fold<int>(0, (sum, m) => sum + m.quizzes.length);
+                              cert = await LocalDataManager.generateCertificate(
+                                courseId: _course!.id,
+                                studentName: 'Trader Pro',
+                                xpEarned: totalXP,
+                                correctAnswers: totalQuizzes,
+                              );
+                            }
+                            if (context.mounted) {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CertificateViewerWidget(
+                                    certificate: cert!,
+                                    courseTitle: _course!.title,
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFFF59E0B).withAlpha(50),
+                                  blurRadius: 10.0,
+                                  offset: const Offset(0, 4),
+                                )
+                              ],
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.workspace_premium_rounded,
+                                  color: Colors.black,
+                                  size: 28.0,
+                                ),
+                                const SizedBox(width: 12.0),
+                                const Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Certificado de Mestria Disponível!',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13.0,
+                                        ),
+                                      ),
+                                      SizedBox(height: 2.0),
+                                      Text(
+                                        'Toque para visualizar e validar o certificado offline.',
+                                        style: TextStyle(
+                                          color: Color(0xFF451A03),
+                                          fontSize: 10.5,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.black,
+                                  size: 16.0,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

@@ -11,13 +11,14 @@ Visão de longo prazo para expansão da plataforma educacional e do ecossistema 
 
 ---
 
-## Próxima Fase: Expansão de Cursos e Certificados (Q4 2026)
-*   `[ ]` Migração completa e exaustiva dos módulos das 4 disciplinas (Candlesticks, SMC, Elliott, Figuras).
-*   `[ ]` Implementação do sistema local de Spaced Repetition (Repetição Espaçada) usando algoritmo de Leitner nos Quizzes.
-*   `[ ]` Geração local e offline do hash criptográfico para validação de certificados de conclusão de curso.
+## Fase Atual: Expansão de Cursos e Certificados (Q4 2026)
+*   `[x]` Expansão completa e exaustiva dos módulos das disciplinas (Candlesticks, SMC, Elliott, Figuras, Gestão de Risco e Wyckoff).
+*   `[x]` Implementação do sistema local de Spaced Repetition (Repetição Espaçada) usando algoritmo de Leitner nos Quizzes e alertas na Home.
+*   `[x]` Geração local e offline do hash criptográfico SHA-256 para validação de certificados de conclusão de curso.
+*   `[x]` Visualizador dedicado de certificados de conclusão offline (CertificateViewerWidget).
 
 ---
 
-## Futuro: Gamificação Avançada e IA Integrada (2027+)
+## Próxima Fase: Cenários Operacionais e IA Integrada (2027+)
 *   `[ ]` Conexão direta de agentes de geração de conteúdo com o Content Validator via pipeline CI.
 *   `[ ]` Implementação de Cenários Operacionais (Scenario/Case Study) interativos e dinâmicos baseados em dados de simulador.

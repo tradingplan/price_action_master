@@ -1,34 +1,108 @@
 {
   "id": "candlesticks",
   "title": "Velas Japonesas",
-  "description": "Compreenda a linguagem do preço através dos padrões de candles individuais e combinados mais fortes do mercado.",
+  "description": "Compreenda a linguagem profunda do preço através dos padrões de candles individuais e combinados mais assertivos do mercado.",
   "version": 1,
   "modules": [
     {
       "id": "candlesticks_m1",
       "title": "Velas de Reversão de Alta",
-      "description": "Aprenda a identificar e validar o Martelo (Hammer) e o Engolfo de Alta (Bullish Engulfing) em zonas de suporte.",
+      "description": "Aprenda a identificar e validar o Martelo (Hammer), Martelo Invertido e o Engolfo de Alta (Bullish Engulfing) em regiões de suporte.",
       "xpValue": 100,
       "lessons": [
         {
           "id": "candlesticks_m1_l1",
-          "title": "O Poder da Reversão",
-          "content": "Padrões de velas de reversão indicam a perda de força do movimento anterior e a entrada de pressão contrária de compradores ou vendedores. O Martelo (Hammer) é composto por um corpo pequeno e uma sombra inferior longa (pelo menos duas vezes o tamanho do corpo), mostrando que os vendedores tentaram empurrar o preço, mas os compradores reagiram antes do fechamento. O Engolfo de Alta (Bullish Engulfing) ocorre quando uma grande vela verde cobre inteiramente o corpo da vela vermelha anterior, indicando controle total dos touros."
+          "title": "Anatomia e Psicologia do Martelo (Hammer)",
+          "content": "O **Martelo (Hammer)** é um dos padrões individuais de reversão mais confiáveis da análise técnica ocidental e oriental. Ele se forma exclusivamente após uma tendência prévia de baixa ou durante a correção de um movimento de alta em direção a um suporte relevante.\n\n### Anatomia Detalhada:\n*   **Corpo Pequeno:** Localizado no terço superior do candle. A cor pode ser verde (bullish) ou vermelha (bearish), mas o corpo verde demonstra maior urgência compradora.\n*   **Sombra Inferior Longa:** Deve medir no mínimo **duas a três vezes** a altura do corpo real. Essa sombra reflete a tentativa frustrada dos vendedores de empurrar as cotações para baixo.\n*   **Sombra Superior Mínima ou Ausente:** Demonstra que os compradores conseguiram fechar o candle muito próximo de sua máxima absoluta.\n\n### Dinâmica Psicológica:\nDurante a formação da vela, os ursos empurram o preço para novas mínimas com forte ímpeto. No entanto, em um nível de suporte institucional, surge uma onda maciça de compras que absorve toda a oferta e empurra o preço de volta ao topo do range. O fechamento superior sinaliza exaustão vendedora e domínio dos touros."
+        },
+        {
+          "id": "candlesticks_m1_l2",
+          "title": "Engolfo de Alta e Estrela da Manhã",
+          "content": "Quando analisamos combinações de candles, o **Engolfo de Alta (Bullish Engulfing)** e a **Estrela da Manhã (Morning Star)** representam viradas dramáticas de sentimento de mercado.\n\n### Engolfo de Alta:\n*   Composto por duas velas consecutivas no fundo de uma queda.\n*   A primeira vela é vendedora (vermelha), representando a continuação da pressão de baixa.\n*   A segunda vela abre abaixo ou no mesmo nível do fechamento anterior, mas expande com ímpeto comprador, fechando **acima da abertura da vela vermelha**.\n*   O corpo da vela verde engole completamente o corpo da vela anterior, demonstrando substituição imediata de poder.\n\n### Estrela da Manhã (Padrão de 3 Velas):\n*   **Vela 1:** Longa vela vermelha de continuação.\n*   **Vela 2:** Vela de corpo muito pequeno (Doji ou Spinning Top) com gap ou desaceleração no fundo (indecisão/exaustão).\n*   **Vela 3:** Longa vela verde que penetra profundamente (pelo menos 50% ou mais) no corpo da primeira vela vermelha, confirmando a reversão altista."
         }
       ],
       "examples": [
         {
           "id": "candlesticks_m1_e1",
-          "title": "O Padrão Martelo (Hammer)",
-          "description": "O Martelo possui uma longa cauda (pavio inferior) mostrando rejeição de preços baixos em zona de suporte.",
+          "title": "Martelo em Suporte Rejeitando Fundo",
+          "description": "Observe a longa cauda inferior tocando o nível de suporte horizontal e a reação compradora vigorosa que impulsionou o preço para cima.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.80,
+                "x2": 0.95,
+                "y2": 0.80,
+                "colorStyle": "success"
+              },
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.35,
+                "x1": 0.18,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.40,
+                "cy": 0.52,
+                "x1": 0.14,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.60,
+                "x1": 0.06,
+                "y1": 0.02,
+                "y2": 0.22,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.80,
+                "cy": 0.42,
+                "x1": 0.16,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "text",
+                "x": 0.52,
+                "y": 0.48,
+                "content": "Martelo",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.08,
+                "y": 0.88,
+                "content": "Suporte Relevante",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        },
+        {
+          "id": "candlesticks_m1_e2",
+          "title": "Engolfo de Alta com Absorção",
+          "description": "A vela compradora verde envolve por completo o corpo do candle vendedor anterior, demonstrando entrada massiva de fluxo comprador.",
           "vectorCanvas": {
             "width": 200,
             "height": 120,
             "elements": [
               {
                 "type": "candle",
-                "cx": 0.25,
-                "cy": 0.35,
+                "cx": 0.30,
+                "cy": 0.40,
                 "x1": 0.15,
                 "y1": 0.05,
                 "y2": 0.05,
@@ -37,34 +111,34 @@
               {
                 "type": "candle",
                 "cx": 0.50,
-                "cy": 0.45,
-                "x1": 0.12,
-                "y1": 0.05,
-                "y2": 0.05,
+                "cy": 0.55,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
                 "content": "red"
               },
               {
                 "type": "candle",
-                "cx": 0.75,
-                "cy": 0.60,
-                "x1": 0.06,
-                "y1": 0.02,
-                "y2": 0.24,
+                "cx": 0.72,
+                "cy": 0.48,
+                "x1": 0.26,
+                "y1": 0.03,
+                "y2": 0.03,
                 "content": "green"
               },
               {
-                "type": "dotted_line",
-                "x1": 0.10,
-                "y1": 0.72,
-                "x2": 0.90,
-                "y2": 0.72,
-                "colorStyle": "success"
+                "type": "line",
+                "x1": 0.38,
+                "y1": 0.35,
+                "x2": 0.85,
+                "y2": 0.35,
+                "colorStyle": "primary"
               },
               {
                 "type": "text",
-                "x": 0.78,
-                "y": 0.50,
-                "content": "Martelo",
+                "x": 0.55,
+                "y": 0.28,
+                "content": "Engolfo de Alta",
                 "colorStyle": "success"
               }
             ]
@@ -76,31 +150,472 @@
           "id": "candlesticks_m1_ex1",
           "instruction": "Encontre um padrão de reversão no gráfico e valide usando o checklist técnico:",
           "checklist": [
-            "O padrão se formou após um movimento de queda (ou seja, em suporte ou fundo estrutural).",
-            "A sombra inferior do Martelo é de pelo menos duas vezes o tamanho do seu corpo.",
-            "No caso do Engolfo, a vela verde cobriu totalmente o corpo da vela vermelha anterior.",
-            "Aguardei o fechamento completo do candle para validar o padrão."
+            "O padrão se formou após um movimento de queda evidente ou toque em suporte importante.",
+            "A sombra inferior do Martelo é de no mínimo duas a três vezes o tamanho do seu corpo real.",
+            "No caso do Engolfo, o corpo da vela verde cobriu totalmente o corpo da vela vermelha anterior.",
+            "Aguardei o fechamento completo da vela no tempo gráfico operacional antes de tomar qualquer decisão."
           ]
         }
       ],
       "quizzes": [
         {
           "id": "candlesticks_m1_q1",
-          "question": "Qual é a principal mensagem psicológica por trás da longa cauda inferior de um Martelo (Hammer) em um suporte?",
+          "question": "Qual é a principal mensagem psicológica por trás da longa cauda inferior de um Martelo (Hammer) formado em um suporte?",
           "options": [
-            "Forte persistência da força vendedora pressionando o mercado para baixo.",
-            "Rejeição agressiva dos preços baixos por parte dos compradores, retomando o controle.",
-            "Indefinição total entre compradores e vendedores, indicando consolidação."
+            "Persistência agressiva da força vendedora pressionando o mercado rumo a novas mínimas.",
+            "Rejeição vigorosa dos preços baixos por compradores institucionais, retomando o controle da sessão.",
+            "Indefinição total entre touros e ursos, sugerindo lateralização sem viés direcional."
           ],
           "correctIndex": 1,
-          "explanation": "A longa sombra inferior do Martelo demonstra que os ursos tentaram empurrar as cotações, mas houve forte rejeição compradora, que fez o preço fechar perto da máxima."
+          "explanation": "A longa sombra inferior do Martelo demonstra que os vendedores tentaram empurrar o ativo para mínimas, mas houve forte rejeição compradora, fazendo o preço fechar perto da máxima."
+        },
+        {
+          "id": "candlesticks_m1_q2",
+          "question": "Para que um Engolfo de Alta seja considerado tecnicamente perfeito, qual critério é obrigatório?",
+          "options": [
+            "A vela compradora deve ter corpo menor que a vela anterior, mas com sombra muito longa.",
+            "O corpo da vela verde compradora deve envolver (engolfar) completamente o corpo da vela vermelha anterior.",
+            "A vela anterior deve ser verde e a vela atual deve fechar na mínima do dia."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Engolfo de Alta exige que o corpo real da vela de alta cubra por completo o corpo real da vela de baixa imediatamente anterior, demonstrando superação do ímpeto vendedor."
         }
       ],
       "challenges": [
         {
           "id": "candlesticks_m1_ch1",
           "title": "Desafio do Martelo de Suporte",
-          "description": "Abra o gráfico no tempo gráfico de 5 minutos. Encontre um suporte forte. Aguarde o preço testar a região e formar um Martelo. Observe se houve reação compradora imediata após a conclusão da vela."
+          "description": "Abra o simulador no tempo gráfico de 5 minutos. Localize uma região de suporte anterior. Aguarde o preço testar o nível e formar um Martelo ou Engolfo de Alta. Execute a compra no fechamento com stop abaixo da mínima do padrão."
+        }
+      ]
+    },
+    {
+      "id": "candlesticks_m2",
+      "title": "Velas de Reversão de Baixa",
+      "description": "Domine a identificação da Estrela Cadente (Shooting Star), Enforcado (Hanging Man) e Engolfo de Baixa em resistências de topo.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "candlesticks_m2_l1",
+          "title": "A Estrela Cadente (Shooting Star)",
+          "content": "A **Estrela Cadente (Shooting Star)** é o espelho exato do Martelo, surgindo no topo de tendências de alta ou após correções altistas em direção a resistências.\n\n### Características Estruturais:\n*   **Corpo Pequeno:** Situado no terço inferior do range total da vela.\n*   **Sombra Superior Longa:** Mede de duas a três vezes o tamanho do corpo real, mostrando rejeição de preços altos.\n*   **Sombra Inferior Mínima ou Ausente:** O fechamento ocorre próximo da mínima do candle.\n\n### O Enforcado (Hanging Man):\nPossui formato idêntico ao Martelo (corpo em cima, cauda embaixo), mas surge **no topo de uma tendência de alta**. Sinaliza que os compradores começaram a perder a hegemonia, permitindo que os vendedores causassem uma queda intraday expressiva antes do fechamento."
+        },
+        {
+          "id": "candlesticks_m2_l2",
+          "title": "Engolfo de Baixa e Nuvem Negra",
+          "content": "Os padrões compostos de baixa marcam a entrada pesada de oferta institucional:\n\n### Engolfo de Baixa (Bearish Engulfing):\n*   Surge após uma perna de alta.\n*   Uma vela verde positiva é seguida por uma grande vela vermelha de baixa cujo corpo engole por completo o corpo verde anterior.\n*   Indica que os vendedores assumiram o controle total do mercado, sobrepujando as compras anteriores.\n\n### Nuvem Negra (Dark Cloud Cover):\n*   Padrão de duas velas onde a primeira é uma barra verde forte.\n*   A segunda vela abre com gap acima da máxima anterior, mas despenca e fecha **abaixo do ponto médio (50%)** do corpo da vela verde.\n*   Representa uma falha clara dos compradores em sustentar novos topos."
+        }
+      ],
+      "examples": [
+        {
+          "id": "candlesticks_m2_e1",
+          "title": "Estrela Cadente em Resistência",
+          "description": "O longo pavio superior testa a linha de resistência e é violentamente rejeitado pelos vendedores, sinalizando topo.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.20,
+                "x2": 0.95,
+                "y2": 0.20,
+                "colorStyle": "error"
+              },
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.70,
+                "x1": 0.16,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.40,
+                "cy": 0.50,
+                "x1": 0.14,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.42,
+                "x1": 0.06,
+                "y1": 0.22,
+                "y2": 0.02,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.80,
+                "cy": 0.65,
+                "x1": 0.18,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "text",
+                "x": 0.48,
+                "y": 0.35,
+                "content": "Shooting Star",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.08,
+                "y": 0.14,
+                "content": "Resistência Relevante",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        },
+        {
+          "id": "candlesticks_m2_e2",
+          "title": "Engolfo de Baixa no Topo",
+          "description": "A vela vermelha subsequente encobre todo o candle verde comprador anterior, deflagrando queda acelerada.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "candle",
+                "cx": 0.30,
+                "cy": 0.65,
+                "x1": 0.14,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.50,
+                "cy": 0.48,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.72,
+                "cy": 0.54,
+                "x1": 0.26,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "line",
+                "x1": 0.38,
+                "y1": 0.40,
+                "x2": 0.85,
+                "y2": 0.40,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.55,
+                "y": 0.32,
+                "content": "Engolfo de Baixa",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "candlesticks_m2_ex1",
+          "instruction": "Avalie o padrão de reversão de baixa identificado no seu gráfico com o checklist:",
+          "checklist": [
+            "O padrão ocorreu em topo consolidado, resistência horizontal ou linha de tendência de baixa (LTA rompida).",
+            "A Estrela Cadente possui sombra superior no mínimo duas vezes maior que seu corpo.",
+            "O volume financeiro na formação do Engolfo de Baixa aumentou em relação aos candles anteriores.",
+            "O stop de proteção foi posicionado acima da máxima do padrão com margem de segurança."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "candlesticks_m2_q1",
+          "question": "O que indica a longa sombra superior em uma Estrela Cadente (Shooting Star)?",
+          "options": [
+            "Que os compradores tentaram romper a máxima, mas a oferta institucional absorveu o ímpeto e derrubou o fechamento.",
+            "Que a tendência de alta se acelerou com volume e continuará sem pausas.",
+            "Que os vendedores foram liquidados e o mercado entrará em forte expansão altista."
+          ],
+          "correctIndex": 0,
+          "explanation": "A sombra superior reflete a rejeição de preços mais altos: os touros levaram as cotações à máxima, mas os ursos tomaram a dianteira antes do fechamento, derrubando a cotação."
+        },
+        {
+          "id": "candlesticks_m2_q2",
+          "question": "Qual é a principal diferença de contexto entre um Martelo (Hammer) e um Enforcado (Hanging Man), já que ambos possuem o mesmo formato geométrico?",
+          "options": [
+            "O Martelo ocorre no topo e o Enforcado no fundo.",
+            "O Martelo surge no fundo de uma tendência de baixa (reversão altista), enquanto o Enforcado surge no topo de uma tendência de alta (alerta de baixa).",
+            "Não existe diferença de contexto, ambos operam apenas na compra."
+          ],
+          "correctIndex": 1,
+          "explanation": "O formato é idêntico (corpo superior com longa cauda inferior), mas a localização define o significado: no fundo de uma queda é Martelo (compra); no topo de uma alta é Enforcado (alerta de fraqueza compradora)."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "candlesticks_m2_ch1",
+          "title": "Desafio da Reversão em Resistência",
+          "description": "Localize uma resistência diária ou de 60 minutos. No gráfico de 15 minutos, aguarde a formação de uma Estrela Cadente ou Engolfo de Baixa. Monitore se o rompimento da mínima do candle ativou o fluxo vendedor."
+        }
+      ]
+    },
+    {
+      "id": "candlesticks_m3",
+      "title": "Indecisão e Força Direcional",
+      "description": "Aprenda a ler o equilíbrio e a explosão de volatilidade através do Doji, Spinning Tops e Marubozu.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "candlesticks_m3_l1",
+          "title": "A Família dos Dojis e Spinning Tops",
+          "content": "O **Doji** é caracterizado pela abertura e fechamento exatamente no mesmo preço (ou extremamente próximos), formando uma cruz ou linha fina. Representa o estado puro de equilíbrio e indecisão entre forças compradoras e vendedoras.\n\n### Principais Variações do Doji:\n*   **Doji Clássico / Estrela:** Sombras superior e inferior proporcionais de tamanho médio. Marca perda de convicção direcional.\n*   **Doji Dragonfly (Libélula):** Sombra inferior muito longa e sem sombra superior. Quando surge em suporte, atua como forte sinal de rejeição de baixa similar ao Martelo.\n*   **Doji Gravestone (Lápide):** Sombra superior muito longa e sem sombra inferior. Em resistências, funciona como forte rejeição de alta similar à Estrela Cadente.\n*   **Doji Pernas Longas (Long-Legged):** Sombras gigantes em ambas as direções, indicando altíssima volatilidade mas indefinição no fechamento.\n\n### Spinning Tops (Piões):\nVelas de corpos pequenos com sombras superior e inferior equilibradas, demonstrando hesitação antes de rompimentos."
+        },
+        {
+          "id": "candlesticks_m3_l2",
+          "title": "Marubozu: A Força Direcional Absoluta",
+          "content": "O **Marubozu** é o oposto do Doji. Trata-se de uma vela de corpo gigante e quase nenhuma sombra (ou sombras microscópicas).\n\n### Tipos de Marubozu:\n*   **Marubozu de Alta (Bullish):** Abre na mínima do candle e fecha na máxima absoluta. Os compradores controlaram 100% da duração da barra, sem permitir qualquer recuo dos vendedores.\n*   **Marubozu de Baixa (Bearish):** Abre na máxima absoluta e fecha na mínima da barra. Vendedores exerceram pressão contínua e esmagadora.\n\n### Aplicação Prática:\nUm Marubozu rompendo uma consolidação ou rompendo um nível de suporte/resistência confirma o início de uma nova perna impulsiva com alto grau de convicção institucional."
+        }
+      ],
+      "examples": [
+        {
+          "id": "candlesticks_m3_e1",
+          "title": "Doji em Equilíbrio vs Marubozu de Rompimento",
+          "description": "Veja o contraste entre a indecisão simétrica do Doji e a barra de ignição Marubozu que rompe a resistência lateral.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.50,
+                "x2": 0.95,
+                "y2": 0.50,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "candle",
+                "cx": 0.25,
+                "cy": 0.50,
+                "x1": 0.01,
+                "y1": 0.20,
+                "y2": 0.20,
+                "content": "red"
+              },
+              {
+                "type": "text",
+                "x": 0.16,
+                "y": 0.22,
+                "content": "Doji Indecisão",
+                "colorStyle": "text"
+              },
+              {
+                "type": "candle",
+                "cx": 0.65,
+                "cy": 0.40,
+                "x1": 0.32,
+                "y1": 0.01,
+                "y2": 0.01,
+                "content": "green"
+              },
+              {
+                "type": "text",
+                "x": 0.52,
+                "y": 0.18,
+                "content": "Marubozu de Ignição",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "candlesticks_m3_ex1",
+          "instruction": "Avalie a presença de equilíbrio ou força direcional através do checklist:",
+          "checklist": [
+            "Classifiquei se a vela atual demonstra equilíbrio (Doji/Spinning Top) ou expansão (Marubozu).",
+            "Identifiquei se o Doji surgiu no meio de uma congestão (ignorar) ou em extremo de tendência (alerta de reversão).",
+            "Verifiquei se o Marubozu fechou rompendo uma linha de suporte/resistência com volume acima da média.",
+            "Não operei o Doji de forma isolada, aguardando o candle seguinte de confirmação."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "candlesticks_m3_q1",
+          "question": "Quando um Doji Dragonfly (Libélula) surge em uma região de suporte estrutural, qual é o seu significado?",
+          "options": [
+            "Forte reversão de alta, pois a longa cauda inferior demonstra rejeição completa dos preços baixos.",
+            "Continuação imediata da queda sem qualquer pausa.",
+            "Indica que o mercado fechou e não haverá mais negociações."
+          ],
+          "correctIndex": 0,
+          "explanation": "O Doji Dragonfly possui uma longa sombra inferior e fechamento na máxima, o que em suporte atua como forte rejeição de queda e potencial reversão altista."
+        },
+        {
+          "id": "candlesticks_m3_q2",
+          "question": "Qual é a principal característica visual e comportamental de um Marubozu de Alta?",
+          "options": [
+            "Corpo muito pequeno com sombras longas em ambos os lados.",
+            "Corpo verde volumoso e extenso com sombras quase inexistentes, abrindo na mínima e fechando na máxima.",
+            "Abertura em gap de baixa e fechamento no mesmo preço da abertura."
+          ],
+          "correctIndex": 1,
+          "explanation": "O Marubozu de Alta representa convicção compradora unilateral do início ao fim do candle, possuindo corpo grande e praticamente sem sombras."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "candlesticks_m3_ch1",
+          "title": "Rastreamento de Marubozu de Rompimento",
+          "description": "Localize uma consolidação lateral que dure pelo menos 10 candles. Aguarde um Marubozu romper o teto ou o piso da consolidação. Verifique se o movimento seguinte continuou com expansão a favor da barra."
+        }
+      ]
+    },
+    {
+      "id": "candlesticks_m4",
+      "title": "Confluência e Leitura de Contexto",
+      "description": "Aprenda por que velas isoladas geram falsos sinais e como operar confluências de alta probabilidade.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "candlesticks_m4_l1",
+          "title": "Contexto é Rei: O Perigo dos Candles Isolados",
+          "content": "O maior erro dos traders iniciantes é operar padrões de candlestick de forma isolada no meio do gráfico. Uma Estrela Cadente no meio de uma consolidação ou sem contexto estrutural tem taxa de acerto inferior a 40%.\n\n### A Regra de Ouro:\n> **Padrão de Candle = Apenas o Gatilho (Trigger). Onde ele ocorre = A Vantagem Estatística (Edge).**\n\n### Os 3 Pilares da Confluência:\n1. **Localização Estrutural:** O candle precisa se formar em uma zona de liquidez institucional, suporte/resistência chave ou retração de Fibonacci (50%-61.8%).\n2. **Tendência e Fluxo Dominante:** Padrões a favor da tendência maior possuem probabilidade significativamente superior a padrões contra-tendência.\n3. **Volume e Confirmação:** O candle de reversão ou a vela de confirmação seguinte deve apresentar aumento de volume financeiro."
+        },
+        {
+          "id": "candlesticks_m4_l2",
+          "title": "Filtros de Falsos Sinais e Gestão de Stop",
+          "content": "Para filtrar falsos rompimentos e 'armadilhas de candle', utilize regras rígidas de execução:\n\n*   **Regra do Fechamento:** Nunca antecipe uma operação antes do cronômetro do candle zerar. Um candle que parecia um Martelo a 30 segundos do final pode fechar como uma barra cheia de baixa.\n*   **Posicionamento do Stop Loss:** O stop técnico deve sempre ficar alguns ticks além da extremidade da sombra do padrão (mínima do Martelo ou máxima da Shooting Star).\n*   **Alvo de Risco:Retorno:** O alvo mínimo deve ser de pelo menos 2 vezes o risco assumido (Payoff 2:1), visando o próximo topo ou fundo relevante."
+        }
+      ],
+      "examples": [
+        {
+          "id": "candlesticks_m4_e1",
+          "title": "Confluência Perfeita em Suporte",
+          "description": "O Martelo coincide com o suporte horizontal prévio e a linha de tendência de alta (LTA), gerando tripla confluência.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.90,
+                "x2": 0.95,
+                "y2": 0.35,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.05,
+                "y1": 0.65,
+                "x2": 0.95,
+                "y2": 0.65,
+                "colorStyle": "success"
+              },
+              {
+                "type": "candle",
+                "cx": 0.20,
+                "cy": 0.78,
+                "x1": 0.10,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.45,
+                "cy": 0.50,
+                "x1": 0.12,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.60,
+                "x1": 0.06,
+                "y1": 0.02,
+                "y2": 0.18,
+                "content": "green"
+              },
+              {
+                "type": "circle",
+                "cx": 0.60,
+                "cy": 0.65,
+                "r": 0.04,
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.52,
+                "y": 0.42,
+                "content": "Confluência Tripla",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "candlesticks_m4_ex1",
+          "instruction": "Execute a análise de confluência completa antes de abrir uma posição:",
+          "checklist": [
+            "Localizei uma zona de suporte ou resistência estrutural em tempo gráfico maior.",
+            "Identifiquei o padrão de candlestick no tempo gráfico operacional apenas após o fechamento do candle.",
+            "Verifiquei se a relação risco/retorno até o próximo obstáculo gráfico é de no mínimo 2:1.",
+            "Defini meu stop loss técnico além da cauda do candle antes de boletar a ordem."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "candlesticks_m4_q1",
+          "question": "Por que um padrão de candle operado no meio de uma consolidação sem confluência apresenta baixa assertividade?",
+          "options": [
+            "Porque padrões de candle só funcionam se houver notícias macroeconômicas no momento.",
+            "Porque o candle é apenas um gatilho de timing; sem a localização estrutural (suporte, resistência, liquidez), não há assimetria favorável nem desequilíbrio institucional.",
+            "Porque candles só funcionam no mercado de ações, nunca no Forex ou cripto."
+          ],
+          "correctIndex": 1,
+          "explanation": "O candle indica a reação imediata, mas a probabilidade estatística vem do local onde ele ocorre (suporte, resistência, zonas de valor)."
+        },
+        {
+          "id": "candlesticks_m4_q2",
+          "question": "Qual é o procedimento correto referente ao timing de entrada ao operar um padrão de candlestick?",
+          "options": [
+            "Entrar na abertura da vela sem esperar qualquer desenvolvimento.",
+            "Aguardar o fechamento formal do candle para certificar-se de que a anatomia do padrão foi concretizada.",
+            "Entrar quando faltarem 10 minutos para o fechamento em tempos gráficos curtos."
+          ],
+          "correctIndex": 1,
+          "explanation": "Até o último segundo de formação, a anatomia da vela pode se alterar completamente. A confirmação exige aguardar o candle fechar."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "candlesticks_m4_ch1",
+          "title": "Simulação de Confluência Completa",
+          "description": "Realize 3 trades no simulador onde cada entrada respeite obrigatoriamente: 1) Suporte ou Resistência de 60min, 2) Padrão de Reversão de candle de 5min, 3) Payoff mínimo de 2:1. Registre o resultado de cada trade."
         }
       ]
     }

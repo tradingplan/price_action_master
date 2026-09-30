@@ -541,3 +541,53 @@ class PlatformAnalyticsEvent {
         'durationSeconds': durationSeconds,
       };
 }
+
+class PlatformSpacedRepetitionItem {
+  final String id;
+  final String courseId;
+  final String moduleId;
+  final String title;
+  final int box; // 1 to 5
+  final String lastReviewedAt; // ISO 8601
+  final String nextReviewDate; // YYYY-MM-DD
+  final int consecutiveCorrect;
+  final int totalReviews;
+
+  PlatformSpacedRepetitionItem({
+    required this.id,
+    required this.courseId,
+    required this.moduleId,
+    required this.title,
+    required this.box,
+    required this.lastReviewedAt,
+    required this.nextReviewDate,
+    this.consecutiveCorrect = 0,
+    this.totalReviews = 0,
+  });
+
+  factory PlatformSpacedRepetitionItem.fromJson(Map<String, dynamic> json) {
+    return PlatformSpacedRepetitionItem(
+      id: json['id'] as String? ?? '',
+      courseId: json['courseId'] as String? ?? '',
+      moduleId: json['moduleId'] as String? ?? '',
+      title: json['title'] as String? ?? '',
+      box: json['box'] as int? ?? 1,
+      lastReviewedAt: json['lastReviewedAt'] as String? ?? '',
+      nextReviewDate: json['nextReviewDate'] as String? ?? '',
+      consecutiveCorrect: json['consecutiveCorrect'] as int? ?? 0,
+      totalReviews: json['totalReviews'] as int? ?? 0,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'courseId': courseId,
+        'moduleId': moduleId,
+        'title': title,
+        'box': box,
+        'lastReviewedAt': lastReviewedAt,
+        'nextReviewDate': nextReviewDate,
+        'consecutiveCorrect': consecutiveCorrect,
+        'totalReviews': totalReviews,
+      };
+}
