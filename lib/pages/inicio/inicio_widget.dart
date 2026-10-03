@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '/components/trading_plan_logo/trading_plan_logo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'inicio_model.dart';
 import '../../backend/repositories/course_repository.dart';
 import '../../backend/schema/platform_course_models.dart';
@@ -899,6 +900,109 @@ class _InicioWidgetState extends State<InicioWidget>
                                                   !FlutterFlowTheme.of(context)
                                                       .bodySmallIsCustom,
                                             ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                final uri = Uri.parse('https://www.tradingplan.com.br');
+                                if (await canLaunchUrl(uri)) {
+                                  await launchUrl(uri, mode: LaunchMode.externalApplication);
+                                }
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      FlutterFlowTheme.of(context).primary.withAlpha(25),
+                                      FlutterFlowTheme.of(context).secondaryBackground,
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).primary.withAlpha(80),
+                                  ),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x1F000000),
+                                      offset: Offset(0.0, 2.0),
+                                    )
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context).primary.withAlpha(30),
+                                          borderRadius: BorderRadius.circular(10.0),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Icon(
+                                          Icons.public_rounded,
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          size: 28.0,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Ecossistema Trading Plan',
+                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight: FontWeight.bold,
+                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                        ),
+                                                  ),
+                                                  const SizedBox(width: 6.0),
+                                                  Icon(
+                                                    Icons.open_in_new_rounded,
+                                                    size: 14.0,
+                                                    color: FlutterFlowTheme.of(context).primary,
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Análises de mercado, setups diários e ferramentas exclusivas.',
+                                                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                        fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),

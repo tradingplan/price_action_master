@@ -539,6 +539,32 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                       trailing: Icon(Icons.open_in_new_rounded, color: theme.secondaryText, size: 18.0),
                       onTap: _openPrivacyPolicy,
                     ),
+                    Divider(height: 1.0, color: theme.lineColor),
+                    ListTile(
+                      leading: Icon(Icons.language_rounded, color: theme.primary),
+                      title: Text(
+                        'Website Oficial Trading Plan',
+                        style: theme.bodyMedium.override(
+                          fontFamily: theme.bodyMediumFamily,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'tradingplan.com.br • Sala de estudos e ferramentas',
+                        style: theme.bodySmall.override(
+                          fontFamily: theme.bodySmallFamily,
+                          color: theme.secondaryText,
+                          fontSize: 11.0,
+                        ),
+                      ),
+                      trailing: Icon(Icons.open_in_new_rounded, color: theme.secondaryText, size: 18.0),
+                      onTap: () async {
+                        final uri = Uri.parse('https://www.tradingplan.com.br');
+                        if (await canLaunchUrl(uri)) {
+                          await launchUrl(uri, mode: LaunchMode.externalApplication);
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

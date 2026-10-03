@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'calculadoras_model.dart';
@@ -195,11 +196,115 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                     )
                   else
                     Column(
-                      children: cards.map((c) => Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: c,
-                      )).toList(),
+                      children: cards
+                          .map((c) => Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: c,
+                              ))
+                          .toList(),
                     ),
+                  // Card Promocional de Ferramentas / Trading Plan
+                  const SizedBox(height: 12.0),
+                  InkWell(
+                    onTap: () async {
+                      final uri = Uri.parse('https://www.tradingplan.com.br');
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      }
+                    },
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(18.0),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            FlutterFlowTheme.of(context).primary.withAlpha(35),
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primary.withAlpha(60),
+                        ),
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 8.0,
+                            color: Color(0x14000000),
+                            offset: Offset(0.0, 3.0),
+                          )
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48.0,
+                            height: 48.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary.withAlpha(30),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Icon(
+                              Icons.auto_graph_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 26.0,
+                            ),
+                          ),
+                          const SizedBox(width: 14.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Planilhas & Diário de Trade',
+                                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                                            fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    const SizedBox(width: 6.0),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context).primary,
+                                        borderRadius: BorderRadius.circular(4.0),
+                                      ),
+                                      child: const Text(
+                                        'GRÁTIS',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 9.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4.0),
+                                Text(
+                                  'Acesse ferramentas avançadas de gestão e risco no portal tradingplan.com.br',
+                                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                                        fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        fontSize: 11.5,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16.0,
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 50.0),
                 ],
               ),
