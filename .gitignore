@@ -51,6 +51,7 @@ firebase/.firebase/
 *.jks
 *.keystore
 key.properties
+keystore/
 .env
 .env.*
 
