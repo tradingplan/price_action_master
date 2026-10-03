@@ -1,0 +1,529 @@
+{
+  "id": "analise_tecnica",
+  "title": "Análise Técnica Clássica",
+  "description": "Domine os pilares da leitura gráfica tradicional: Teoria de Dow, Suportes e Resistências, Linhas de Tendência (LTA/LTB), Canais e Rompimentos.",
+  "version": 1,
+  "modules": [
+    {
+      "id": "analise_tecnica_m1",
+      "title": "Teoria de Dow e Estrutura de Tendência",
+      "description": "Compreenda a pedra fundamental da análise técnica moderna criada por Charles Dow e identifique ciclos de mercado com precisão.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "analise_tecnica_m1_l1",
+          "title": "Os 6 Princípios da Teoria de Dow",
+          "content": "Formulada por Charles Dow no final do século XIX, a **Teoria de Dow** é a base conceitual de toda a análise gráfica ocidental. Seus princípios continuam válidos em qualquer mercado e tempo gráfico.\n\n### Os 6 Princípios Fundamentais:\n1. **Os Preços Descontam Tudo:** Todas as notícias, balanços, emoções e expectativas dos investidores já estão refletidos no preço do ativo.\n2. **O Mercado se Move em Três Tendências:**\n   *   **Primária (Maré):** Dura de meses a anos (a direção principal).\n   *   **Secundária (Ondas):** Correções contra a tendência primária (dura semanas a meses).\n   *   **Terciária (Marolas):** Ruídos e oscilações diárias ou intraday.\n3. **As Três Fases da Tendência Primária:**\n   *   **Acumulação:** Investidores informados compram no fundo silenciosamente.\n   *   **Participação Pública:** O público em geral percebe o movimento e adere à tendência.\n   *   **Distribuição:** Investidores institucionais realizam lucros enquanto a mídia e amadores estão eufóricos.\n4. **Os Índices Devem se Confirmar:** O movimento de um índice líder deve ser respaldado pelo movimento dos índices setoriais correlacionados.\n5. **O Volume Deve Confirmar a Tendência:** O volume financeiro deve expandir a favor da tendência primária e retrair durante as correções.\n6. **A Tendência é Válida até um Sinal Definitivo de Reversão:** Não antecipe topos ou fundos; opere a favor da tendência até que topos e fundos descendentes (ou ascendentes) rompam a estrutura prévia."
+        },
+        {
+          "id": "analise_tecnica_m1_l2",
+          "title": "Topos, Fundos e Ziguezague dos Preços",
+          "content": "O mercado financeiro nunca se desloca em linha reta. Ele avança em um padrão clássico de **Ziguezague** formado por ondas de impulso e retração.\n\n### Definição Estrutural:\n*   **Tendência de Alta:** Sucessão ininterrupta de **Topos Mais Altos (Pivôs de Alta)** e **Fundos Mais Altos**.\n*   **Tendência de Baixa:** Sucessão ininterrupta de **Topos Mais Baixos** e **Fundos Mais Baixos (Pivôs de Baixa)**.\n*   **Tendência Lateral (Consolidação):** Topos e fundos alinhados no mesmo nível de preço, demonstrando equilíbrio temporário entre forças compradoras e vendedoras.\n\n> **Regra de Ouro:** Uma tendência de alta só é considerada formalmente revertida quando o preço romper para baixo o último fundo relevante que originou o topo máximo."
+        }
+      ],
+      "examples": [
+        {
+          "id": "analise_tecnica_m1_e1",
+          "title": "Tendência de Alta: Topos e Fundos Ascendentes",
+          "description": "O gráfico ilustra a dinâmica clássica da Teoria de Dow: impulsos fortes de compra intercalados por correções rasas, formando topos e fundos sucessivamente mais altos.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.10,
+                "y1": 0.85,
+                "x2": 0.35,
+                "y2": 0.45,
+                "colorStyle": "success"
+              },
+              {
+                "type": "line",
+                "x1": 0.35,
+                "y1": 0.45,
+                "x2": 0.50,
+                "y2": 0.65,
+                "colorStyle": "error"
+              },
+              {
+                "type": "line",
+                "x1": 0.50,
+                "y1": 0.65,
+                "x2": 0.80,
+                "y2": 0.20,
+                "colorStyle": "success"
+              },
+              {
+                "type": "circle",
+                "cx": 0.10,
+                "cy": 0.85,
+                "r": 0.015,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "circle",
+                "cx": 0.35,
+                "cy": 0.45,
+                "r": 0.015,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "circle",
+                "cx": 0.50,
+                "cy": 0.65,
+                "r": 0.015,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "circle",
+                "cx": 0.80,
+                "cy": 0.20,
+                "r": 0.015,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "text",
+                "x": 0.30,
+                "y": 0.35,
+                "content": "Topo 1",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.46,
+                "y": 0.75,
+                "content": "Fundo +Alto",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.74,
+                "y": 0.10,
+                "content": "Novo Topo",
+                "colorStyle": "success"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "analise_tecnica_m1_ex1",
+          "instruction": "Avalie a estrutura de tendência de Dow em seu gráfico de prática:",
+          "checklist": [
+            "Mapeei o último topo e o último fundo relevante do ativo.",
+            "Confirmei que o movimento atual renovou a máxima anterior (Pivô de Alta).",
+            "Verifiquei se o volume financeiro cresceu durante as velas de impulsão."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "analise_tecnica_m1_q1",
+          "question": "De acordo com a Teoria de Dow, quando uma tendência de alta é formalmente revertida?",
+          "options": [
+            "Quando surge uma única vela vermelha de grande amplitude.",
+            "Apenas quando o preço rompe para baixo o último fundo ascendente relevante.",
+            "Quando o volume financeiro diminui por mais de 3 dias consecutivos.",
+            "No exato momento em que o preço atinge uma média móvel de 200 períodos."
+          ],
+          "correctIndex": 1,
+          "explanation": "Pela Teoria de Dow, a tendência permanece válida até que surja um sinal definitivo de reversão, caracterizado pela perda do último fundo ascendente (formação de pivô de baixa)."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "analise_tecnica_m1_ch1",
+          "title": "Mestre da Teoria de Dow",
+          "description": "Complete o checklist de identificação de tendência de Dow e acerte a pergunta de fixação para consolidar os fundamentos clássicos."
+        }
+      ]
+    },
+    {
+      "id": "analise_tecnica_m2",
+      "title": "Suporte, Resistência e Bipolaridade",
+      "description": "Aprenda a mapear barreiras horizontais de preço e compreenda como a memória operacional dos participantes cria zonas de reação.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "analise_tecnica_m2_l1",
+          "title": "Zonas de Suporte e Resistência",
+          "content": "Suportes e Resistências são os conceitos mais utilizados em análise técnica:\n\n### O que é um Suporte?\nÉ uma região horizontal de preços onde a **pressão compradora supera a pressão vendedora**, impedindo que o preço caia além daquele patamar. Funciona como um 'piso'.\n\n### O que é uma Resistência?\nÉ uma região horizontal de preços onde a **pressão vendedora supera a pressão compradora**, impedindo que o preço suba além daquele patamar. Funciona como um 'teto'.\n\n### Por que ocorrem?\n1. **Memória de Preço:** Traders que deixaram de comprar no fundo anterior esperam ansiosamente o preço retornar ao mesmo nível para comprar.\n2. **Barreiras Psicológicas:** Números redondos (ex: R$ 10,00, R$ 50,00, US$ 100,00) atraem concentração natural de ordens limitadas.\n\n> **Importante:** Suporte e Resistência são **zonas/regiões de preços**, e não linhas milimétricas exatas. Sempre considere uma faixa de tolerância ao redor do nível."
+        },
+        {
+          "id": "analise_tecnica_m2_l2",
+          "title": "O Princípio da Bipolaridade",
+          "content": "Um dos fenômenos mais confiáveis da análise clássica é a **Troca de Polaridade**:\n\n### Como Funciona a Bipolaridade:\n*   **Suporte Rompido vira Resistência:** Quando um suporte relevante é perdido para baixo, ele passa a atuar como uma barreira de venda quando o preço tentar subir novamente.\n*   **Resistência Rompida vira Suporte:** Quando uma resistência é superada para cima, ela passa a atuar como piso comprador nos futuros recuos.\n\n### A Psicologia por trás da Bipolaridade:\nCompradores que mantiveram posições no suporte antes do rompimento ficam no prejuízo. Quando o preço retorna àquele nível antigo (Pullback), eles liquidam suas posições no **zero a zero (breakeven)**, adicionando uma enxurrada de ordens de venda no mercado."
+        }
+      ],
+      "examples": [
+        {
+          "id": "analise_tecnica_m2_e1",
+          "title": "Troca de Polaridade: Suporte Rompido vira Resistência",
+          "description": "O nível que sustentou o preço como suporte é rompido com forte vela de baixa. No reteste subsequente (pullback), a linha inverte de função e passa a atuar como resistência intransponível.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.55,
+                "x2": 0.95,
+                "y2": 0.55,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "candle",
+                "cx": 0.15,
+                "cy": 0.50,
+                "x1": 0.08,
+                "y1": 0.04,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.35,
+                "cy": 0.50,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.05,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.55,
+                "cy": 0.65,
+                "x1": 0.18,
+                "y1": 0.02,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.75,
+                "cy": 0.58,
+                "x1": 0.06,
+                "y1": 0.08,
+                "y2": 0.02,
+                "content": "red"
+              },
+              {
+                "type": "text",
+                "x": 0.08,
+                "y": 0.40,
+                "content": "Suporte Válido",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.46,
+                "y": 0.88,
+                "content": "Rompimento",
+                "colorStyle": "error"
+              },
+              {
+                "type": "text",
+                "x": 0.68,
+                "y": 0.40,
+                "content": "Nova Resistência",
+                "colorStyle": "error"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "analise_tecnica_m2_ex1",
+          "instruction": "Execute o mapeamento de zonas de suporte e resistência:",
+          "checklist": [
+            "Tracei linhas horizontais nos pontos onde o preço tocou e reverteu ao menos 2 vezes.",
+            "Identifiquei se houve rompimento recente com vela de corpo expressivo.",
+            "Aguardei o reteste da linha rompida para buscar confluência de polaridade."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "analise_tecnica_m2_q1",
+          "question": "O que acontece com um suporte horizontal quando ele é rompido expressivamente para baixo?",
+          "options": [
+            "Ele deixa de ter qualquer relevância e deve ser apagado do gráfico.",
+            "Ele passa a atuar como uma nova região de resistência nos futuros pullbacks.",
+            "Ele atua imediatamente como sinal de compra obrigatória.",
+            "Ele dobra a probabilidade de alta imediata do mercado."
+          ],
+          "correctIndex": 1,
+          "explanation": "Pelo princípio da Bipolaridade, suportes rompidos convertem-se em resistências, pois os traders presos no prejuízo buscam sair no zero a zero vendendo suas posições no reteste."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "analise_tecnica_m2_ch1",
+          "title": "Mapeador de Polaridade",
+          "description": "Comprove seu domínio sobre regiões horizontais de compra e venda e conclua o módulo."
+        }
+      ]
+    },
+    {
+      "id": "analise_tecnica_m3",
+      "title": "Linhas de Tendência (LTA / LTB) e Canais",
+      "description": "Aprenda a traçar suportes e resistências dinâmicas diagonais e a projetar canais de aceleração de preços.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "analise_tecnica_m3_l1",
+          "title": "Linha de Tendência de Alta (LTA) e de Baixa (LTB)",
+          "content": "As Linhas de Tendência funcionam como **suportes e resistências diagonais/dinâmicas** que acompanham a evolução temporal do ativo.\n\n### Linha de Tendência de Alta (LTA):\n*   **Como Traçar:** Conecta dois ou mais **fundos ascendentes**.\n*   **Função:** Atua como suporte diagonal. Enquanto o preço negociar acima da LTA, a tendência de alta está protegida.\n*   **Ângulo Saudável:** Linhas com inclinação em torno de 45° são as mais sustentáveis ao longo do tempo.\n\n### Linha de Tendência de Baixa (LTB):\n*   **Como Traçar:** Conecta dois ou mais **topos descendentes**.\n*   **Função:** Atua como resistência diagonal. Enquanto o preço estiver abaixo da LTB, as forças vendedoras prevalecem.\n\n### Critério de Validação:\n*   **2 Toques:** Linha Provisória (em teste).\n*   **3 Toques ou mais:** Linha Confirmada e Fortalecida pelo mercado."
+        },
+        {
+          "id": "analise_tecnica_m3_l2",
+          "title": "Canais de Tendência e Linhas de Retorno",
+          "content": "Quando traçamos uma linha paralela à linha de tendência primária, criamos um **Canal de Tendência**:\n\n### Anatomia do Canal:\n*   **Linha Base:** É a própria LTA (no fundo) ou LTB (no topo).\n*   **Linha de Retorno:** Linha traçada paralelamente passando pelos topos opostos (em alta) ou fundos opostos (em baixa).\n\n### Como Operar Canais:\n1. **Entradas:** Compras na linha base da LTA ou vendas na linha base da LTB.\n2. **Alvos (Take Profit):** A linha de retorno funciona como ponto ideal de realização parcial ou total de lucros.\n3. **Sinal de Exaustão:** Se o preço não consegue mais alcançar a linha de retorno antes de recuar, há enfraquecimento de momentum e alerta de reversão iminente."
+        }
+      ],
+      "examples": [
+        {
+          "id": "analise_tecnica_m3_e1",
+          "title": "Canal de Alta com Linha de Retorno",
+          "description": "O preço oscila harmonicamente entre a LTA (suporte diagonal inferior) e a Linha de Retorno paralela (resistência diagonal superior).",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.08,
+                "y1": 0.85,
+                "x2": 0.92,
+                "y2": 0.40,
+                "colorStyle": "success"
+              },
+              {
+                "type": "dotted_line",
+                "x1": 0.08,
+                "y1": 0.55,
+                "x2": 0.92,
+                "y2": 0.10,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "candle",
+                "cx": 0.22,
+                "cy": 0.76,
+                "x1": 0.07,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.45,
+                "cy": 0.32,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.60,
+                "cy": 0.55,
+                "x1": 0.07,
+                "y1": 0.03,
+                "y2": 0.04,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.82,
+                "cy": 0.16,
+                "x1": 0.08,
+                "y1": 0.04,
+                "y2": 0.02,
+                "content": "red"
+              },
+              {
+                "type": "text",
+                "x": 0.25,
+                "y": 0.88,
+                "content": "LTA (Suporte)",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.48,
+                "y": 0.18,
+                "content": "Linha de Retorno",
+                "colorStyle": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "analise_tecnica_m3_ex1",
+          "instruction": "Valide o traçado de linhas de tendência e canais no gráfico:",
+          "checklist": [
+            "Conectei com precisão os fundos ascendentes (LTA) sem cortar o corpo dos candles.",
+            "Verifiquei se a linha possui 3 ou mais toques de confirmação.",
+            "Tracei a paralela superior para identificar o alvo da linha de retorno."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "analise_tecnica_m3_q1",
+          "question": "Como se define uma Linha de Tendência de Alta (LTA) válida?",
+          "options": [
+            "Unindo os topos mais altos do gráfico em linha horizontal.",
+            "Unindo fundos sucessivamente mais altos com no mínimo dois ou três pontos de contato.",
+            "Traçando uma média móvel exponencial de 50 períodos.",
+            "Unindo o fechamento do primeiro candle da manhã ao último candle da tarde."
+          ],
+          "correctIndex": 1,
+          "explanation": "Uma LTA é traçada conectando fundos ascendentes e serve como linha diagonal de suporte para a tendência em desenvolvimento."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "analise_tecnica_m3_ch1",
+          "title": "Especialista em Linhas e Canais",
+          "description": "Comprove que sabe traçar LTAs e LTBs sem distorções para finalizar o módulo."
+        }
+      ]
+    },
+    {
+      "id": "analise_tecnica_m4",
+      "title": "Rompimentos, Falsos Rompimentos e Pullback",
+      "description": "Diferencie rompimentos verdadeiros de armadilhas do mercado e execute entradas de baixo risco no teste pós-rompimento.",
+      "xpValue": 100,
+      "lessons": [
+        {
+          "id": "analise_tecnica_m4_l1",
+          "title": "Rompimento Verdadeiro vs Falso Rompimento",
+          "content": "Operar rompimentos é uma das abordagens mais populares, porém exige rigor técnico para não ser vítima de armadilhas:\n\n### Critérios de um Rompimento Válido:\n1. **Fechamento do Corpo:** A vela deve fechar com o corpo real claramente além da linha de suporte/resistência (não apenas o pavio).\n2. **Volume Financeiro Expressivo:** Deve haver um pico de volume na vela de rompimento, comprovando agressão institucional.\n3. **Amplitude da Vela (Barra Elefante/Deslocamento):** Velas fortes e convictas confirmam a expulsão da contraparte.\n\n### Falsos Rompimentos (Bull Trap / Bear Trap):\nOcorrem quando o preço ultrapassa o nível apenas para capturar ordens de stop do varejo e reverte violentamente no mesmo candle, deixando um longo pavio de rejeição."
+        },
+        {
+          "id": "analise_tecnica_m4_l2",
+          "title": "A Entrada Conservadora: O Pullback",
+          "content": "A estratégia mais segura e profissional para operar rompimentos é esperar o **Pullback**:\n\n### As 3 Etapas do Trade de Pullback:\n1. **O Rompimento:** O preço quebra o nível com força e volume.\n2. **O Reteste (Pullback / Throwback):** O preço recua com volume baixo em direção à linha rompida (troca de polaridade).\n3. **O Gatilho de Entrada:** Surge um candle de rejeição (ex: Martelo ou Engolfo) na linha rompida, confirmando o suporte/resistência. A entrada é feita na superação da máxima desse candle de confirmação.\n\n> **Vantagem:** O Pullback permite posicionar um Stop Loss extremamente curto e protegido, elevando drasticamente a relação Risco vs Retorno da operação."
+        }
+      ],
+      "examples": [
+        {
+          "id": "analise_tecnica_m4_e1",
+          "title": "Rompimento com Confirmação e Pullback",
+          "description": "A resistência é rompida por uma forte vela verde com fechamento superior. O preço faz um recuo suave e testa a linha antes de retomar o disparo de alta.",
+          "vectorCanvas": {
+            "width": 200,
+            "height": 120,
+            "elements": [
+              {
+                "type": "line",
+                "x1": 0.05,
+                "y1": 0.60,
+                "x2": 0.95,
+                "y2": 0.60,
+                "colorStyle": "primary"
+              },
+              {
+                "type": "candle",
+                "cx": 0.18,
+                "cy": 0.65,
+                "x1": 0.08,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.40,
+                "cy": 0.50,
+                "x1": 0.22,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "candle",
+                "cx": 0.62,
+                "cy": 0.58,
+                "x1": 0.06,
+                "y1": 0.02,
+                "y2": 0.06,
+                "content": "red"
+              },
+              {
+                "type": "candle",
+                "cx": 0.82,
+                "cy": 0.35,
+                "x1": 0.16,
+                "y1": 0.03,
+                "y2": 0.03,
+                "content": "green"
+              },
+              {
+                "type": "text",
+                "x": 0.08,
+                "y": 0.52,
+                "content": "Resistência",
+                "colorStyle": "text"
+              },
+              {
+                "type": "text",
+                "x": 0.32,
+                "y": 0.25,
+                "content": "Rompimento Forte",
+                "colorStyle": "success"
+              },
+              {
+                "type": "text",
+                "x": 0.56,
+                "y": 0.78,
+                "content": "Pullback",
+                "colorStyle": "primary"
+              }
+            ]
+          }
+        }
+      ],
+      "exercises": [
+        {
+          "id": "analise_tecnica_m4_ex1",
+          "instruction": "Avalie a estrutura de rompimento e teste de pullback:",
+          "checklist": [
+            "Esperei o candle fechar com corpo além do suporte/resistência.",
+            "Não entrei a mercado no topo do rompimento; esperei o pullback de retorno.",
+            "Confirmei o gatilho com stop posicionado atrás da região protegida."
+          ]
+        }
+      ],
+      "quizzes": [
+        {
+          "id": "analise_tecnica_m4_q1",
+          "question": "Por que traders profissionais preferem entrar no Pullback em vez do rompimento imediato?",
+          "options": [
+            "Porque no Pullback o mercado garante 100% de operações lucrativas.",
+            "Porque permite um Stop Loss muito mais curto e confirmação da troca de polaridade antes do risco.",
+            "Porque os corretores cobram metade da taxa de corretagem em pullbacks.",
+            "Porque o volume no pullback é sempre o maior do dia."
+          ],
+          "correctIndex": 1,
+          "explanation": "Entrar no pullback oferece uma relação Risco:Retorno infinitamente superior e confirma que o antigo nível rompido agora oferece suporte/resistência real."
+        }
+      ],
+      "challenges": [
+        {
+          "id": "analise_tecnica_m4_ch1",
+          "title": "Mestre dos Rompimentos e Pullbacks",
+          "description": "Complete todos os requisitos e conquiste a conclusão do curso de Análise Técnica Clássica."
+        }
+      ]
+    }
+  ]
+}

@@ -37,67 +37,312 @@ class LessonRenderer extends StatelessWidget {
   }
 
   List<Widget> _parseMarkdownContent(BuildContext context, String rawText) {
+    final theme = FlutterFlowTheme.of(context);
     final List<Widget> widgets = [];
-    final paragraphs = rawText.split('\n\n');
+    final lines = rawText.split('\n');
+    int i = 0;
 
-    for (final p in paragraphs) {
-      final cleanPara = p.trim();
-      if (cleanPara.isEmpty) continue;
+    while (i < lines.length) {
+      final rawLine = lines[i];
+      final trimmed = rawLine.trim();
 
-      if (cleanPara.startsWith('* ') || cleanPara.startsWith('- ')) {
-        // Tratar como Bullet Point
+      if (trimmed.isEmpty) {
+        i++;
+        continue;
+      }
+
+      // 1. Cabeçalhos (#, ##, ###)
+      if (trimmed.startsWith('#')) {
+        int level = 0;
+        while (level < trimmed.length && trimmed[level] == '#') {
+          level++;
+        }
+        final headerText = trimmed.substring(level).trim();
+
+        TextStyle headerStyle;
+        double topPadding;
+        double bottomPadding;
+
+        if (level == 1) {
+          headerStyle = theme.titleMedium.override(
+            fontFamily: theme.titleMediumFamily,
+            color: theme.primaryText,
+            fontWeight: FontWeight.bold,
+            fontSize: 16.5,
+          );
+          topPadding = 20.0;
+          bottomPadding = 8.0;
+        } else if (level == 2) {
+          headerStyle = theme.titleSmall.override(
+            fontFamily: theme.titleSmallFamily,
+            color: theme.primaryText,
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          );
+          topPadding = 16.0;
+          bottomPadding = 6.0;
+        } else {
+          // level >= 3
+          headerStyle = theme.bodyMedium.override(
+            fontFamily: theme.bodyMediumFamily,
+            color: theme.primaryText,
+            fontWeight: FontWeight.bold,
+            fontSize: 14.0,
+          );
+          topPadding = 14.0;
+          bottomPadding = 6.0;
+        }
+
         widgets.add(
           Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, left: 8.0),
+            padding: EdgeInsets.only(
+              top: widgets.isEmpty ? 0 : topPadding,
+              bottom: bottomPadding,
+            ),
+            child: _renderFormattedRichText(context, headerText, baseStyle: headerStyle),
+          ),
+        );
+        i++;
+        continue;
+      }
+
+      // 2. Blockquotes (> Citação / Destaque)
+      if (trimmed.startsWith('>')) {
+        final quoteLines = <String>[];
+        while (i < lines.length && lines[i].trim().startsWith('>')) {
+          quoteLines.add(lines[i].trim().replaceFirst(RegExp(r'^>\s*'), ''));
+          i++;
+        }
+        final quoteText = quoteLines.join('\n');
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.only(top: 6.0, bottom: 12.0),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: theme.primaryBackground,
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(8.0),
+                  bottomRight: Radius.circular(8.0),
+                ),
+                border: Border(
+                  left: BorderSide(
+                    color: theme.primary,
+                    width: 3.5,
+                  ),
+                ),
+              ),
+              child: _renderFormattedRichText(
+                context,
+                quoteText,
+                baseStyle: theme.bodyMedium.override(
+                  fontFamily: theme.bodyMediumFamily,
+                  color: theme.primaryText,
+                  fontSize: 13.0,
+                  fontStyle: FontStyle.italic,
+                  lineHeight: 1.45,
+                ),
+              ),
+            ),
+          ),
+        );
+        continue;
+      }
+
+      // 3. Bullet List (* item ou - item)
+      final bulletMatch = RegExp(r'^(\s*)([\*\-])\s+(.*)$').firstMatch(rawLine);
+      if (bulletMatch != null) {
+        final indentSpace = bulletMatch.group(1) ?? '';
+        final isSubItem = indentSpace.length >= 2;
+        final itemText = bulletMatch.group(3) ?? '';
+
+        widgets.add(
+          Padding(
+            padding: EdgeInsets.only(
+              left: isSubItem ? 20.0 : 6.0,
+              bottom: 6.0,
+              top: 2.0,
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '• ',
-                  style: TextStyle(
-                    color: FlutterFlowTheme.of(context).primary,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0, right: 8.0),
+                  child: Text(
+                    isSubItem ? '◦' : '•',
+                    style: TextStyle(
+                      color: theme.primary,
+                      fontWeight: FontWeight.bold,
+                      fontSize: isSubItem ? 12.0 : 15.0,
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: _renderFormattedText(context, cleanPara.substring(2)),
+                  child: _renderFormattedRichText(context, itemText),
                 ),
               ],
             ),
           ),
         );
-      } else {
-        // Parágrafo Normal
+        i++;
+        continue;
+      }
+
+      // 4. Numbered List (1. item, 2. item)
+      final numberedMatch = RegExp(r'^(\s*)(\d+)\.\s+(.*)$').firstMatch(rawLine);
+      if (numberedMatch != null) {
+        final indentSpace = numberedMatch.group(1) ?? '';
+        final number = numberedMatch.group(2) ?? '1';
+        final isSubItem = indentSpace.length >= 2;
+        final itemText = numberedMatch.group(3) ?? '';
+
         widgets.add(
           Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
-            child: _renderFormattedText(context, cleanPara),
+            padding: EdgeInsets.only(
+              left: isSubItem ? 20.0 : 6.0,
+              bottom: 6.0,
+              top: 2.0,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 8.0, top: 1.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 1.0),
+                  decoration: BoxDecoration(
+                    color: theme.primary.withAlpha(25),
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  child: Text(
+                    '$number.',
+                    style: TextStyle(
+                      color: theme.primary,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11.5,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: _renderFormattedRichText(context, itemText),
+                ),
+              ],
+            ),
           ),
         );
+        i++;
+        continue;
       }
+
+      // 5. Parágrafo Normal (agrupa linhas contínuas de texto)
+      final paragraphLines = <String>[rawLine.trim()];
+      i++;
+      while (i < lines.length) {
+        final nextLine = lines[i];
+        final nextTrimmed = nextLine.trim();
+        if (nextTrimmed.isEmpty ||
+            nextTrimmed.startsWith('#') ||
+            nextTrimmed.startsWith('>') ||
+            RegExp(r'^\s*([\*\-]|\d+\.)\s+').hasMatch(nextLine)) {
+          break;
+        }
+        paragraphLines.add(nextTrimmed);
+        i++;
+      }
+
+      final fullPara = paragraphLines.join(' ');
+      widgets.add(
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: _renderFormattedRichText(context, fullPara),
+        ),
+      );
     }
+
     return widgets;
   }
 
-  Widget _renderFormattedText(BuildContext context, String text) {
-    final List<TextSpan> spans = [];
-    final parts = text.split('**');
+  Widget _renderFormattedRichText(
+    BuildContext context,
+    String text, {
+    TextStyle? baseStyle,
+  }) {
+    final theme = FlutterFlowTheme.of(context);
+    final defaultStyle = baseStyle ??
+        theme.bodyMedium.override(
+          fontFamily: theme.bodyMediumFamily,
+          color: theme.secondaryText,
+          fontSize: 13.0,
+          lineHeight: 1.5,
+        );
 
-    for (int i = 0; i < parts.length; i++) {
-      final isBold = i % 2 == 1;
-      spans.add(
-        TextSpan(
-          text: parts[i],
-          style: TextStyle(
-            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-            color: isBold
-                ? FlutterFlowTheme.of(context).primaryText
-                : FlutterFlowTheme.of(context).secondaryText,
-            fontSize: 13.0,
+    final spans = <InlineSpan>[];
+    final pattern = RegExp(r'(\*\*[^*]+?\*\*|`[^`]+?`|\*[^*]+?\*|_[^_]+?_)');
+    int lastMatchEnd = 0;
+
+    for (final match in pattern.allMatches(text)) {
+      if (match.start > lastMatchEnd) {
+        spans.add(TextSpan(
+          text: text.substring(lastMatchEnd, match.start),
+          style: defaultStyle,
+        ));
+      }
+
+      final matchText = match.group(0)!;
+      if (matchText.startsWith('**') && matchText.endsWith('**')) {
+        final content = matchText.substring(2, matchText.length - 2);
+        spans.add(TextSpan(
+          text: content,
+          style: defaultStyle.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.primaryText,
           ),
-        ),
-      );
+        ));
+      } else if (matchText.startsWith('`') && matchText.endsWith('`')) {
+        final content = matchText.substring(1, matchText.length - 1);
+        spans.add(WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+            margin: const EdgeInsets.symmetric(horizontal: 2.0),
+            decoration: BoxDecoration(
+              color: theme.primaryBackground,
+              borderRadius: BorderRadius.circular(4.0),
+              border: Border.all(
+                color: theme.lineColor,
+                width: 1.0,
+              ),
+            ),
+            child: Text(
+              content,
+              style: TextStyle(
+                fontFamily: 'monospace',
+                fontSize: (defaultStyle.fontSize ?? 13.0) * 0.9,
+                fontWeight: FontWeight.w600,
+                color: theme.primary,
+              ),
+            ),
+          ),
+        ));
+      } else if ((matchText.startsWith('*') && matchText.endsWith('*')) ||
+          (matchText.startsWith('_') && matchText.endsWith('_'))) {
+        final content = matchText.substring(1, matchText.length - 1);
+        spans.add(TextSpan(
+          text: content,
+          style: defaultStyle.copyWith(
+            fontStyle: FontStyle.italic,
+          ),
+        ));
+      }
+
+      lastMatchEnd = match.end;
+    }
+
+    if (lastMatchEnd < text.length) {
+      spans.add(TextSpan(
+        text: text.substring(lastMatchEnd),
+        style: defaultStyle,
+      ));
     }
 
     return RichText(

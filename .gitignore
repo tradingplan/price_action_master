@@ -4,6 +4,8 @@
 *.pyc
 *.swp
 .DS_Store
+desktop.ini
+thumbs.db
 .atom/
 .buildlog/
 .history

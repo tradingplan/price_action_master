@@ -91,24 +91,45 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: SafeImageWidget(imageOrIcon: widget.singleCandle!.icon, width: MediaQuery.sizeOf(context).width * 1.0, height: 230.0),
+                  if (widget.singleCandle!.icon.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 8.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 140.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          borderRadius: BorderRadius.circular(12.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).lineColor,
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: SafeImageWidget(
+                          imageOrIcon: widget.singleCandle!.icon,
+                          width: 120.0,
+                          height: 120.0,
+                          fit: BoxFit.contain,
+                          backgroundColor: Colors.transparent,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Expanded(
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+                          decoration: BoxDecoration(
+                            color: (widget.singleCandle!.pattern.toLowerCase().contains('alta')
+                                ? FlutterFlowTheme.of(context).success
+                                : widget.singleCandle!.pattern.toLowerCase().contains('baixa')
+                                    ? FlutterFlowTheme.of(context).error
+                                    : FlutterFlowTheme.of(context).secondaryText).withAlpha(25),
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
                           child: Text(
                             widget.singleCandle!.pattern,
                             style: FlutterFlowTheme.of(context)
@@ -116,6 +137,13 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineMediumFamily,
+                                  color: widget.singleCandle!.pattern.toLowerCase().contains('alta')
+                                      ? FlutterFlowTheme.of(context).success
+                                      : widget.singleCandle!.pattern.toLowerCase().contains('baixa')
+                                          ? FlutterFlowTheme.of(context).error
+                                          : FlutterFlowTheme.of(context).secondaryText,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: !FlutterFlowTheme.of(context)
                                       .headlineMediumIsCustom,
@@ -315,19 +343,56 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SafeImageWidget(imageOrIcon: widget.singleCandle!.chart, width: 100.0, height: 200.0),
-                        ),
-                      ],
+                  if (widget.singleCandle!.chart.isNotEmpty) ...[
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 4.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Exemplo Gráfico',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleMediumFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: !FlutterFlowTheme.of(context)
+                                        .titleMediumIsCustom,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 16.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).lineColor,
+                            ),
+                          ),
+                          child: SafeImageWidget(
+                            imageOrIcon: widget.singleCandle!.chart,
+                            width: double.infinity,
+                            height: 220.0,
+                            fit: BoxFit.contain,
+                            backgroundColor: Colors.transparent,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                   Container(
                     decoration: BoxDecoration(),
                     child: wrapWithModel(

@@ -29,3 +29,5 @@ export '/pages/course/course_widget.dart'
     show CourseWidget;
 export '/pages/course/module_panel_widget.dart'
     show ModulePanelWidget;
+export '/pages/ajustes/ajustes_widget.dart'
+    show AjustesWidget;

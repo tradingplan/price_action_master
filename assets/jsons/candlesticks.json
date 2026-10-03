@@ -1,82 +1,349 @@
 [
   {
-    "id": "martelo",
-    "nome": "Martelo (Hammer)",
-    "icon": "🔨",
-    "description": "O Martelo é um padrão de vela de reversão de alta de uma única vela que se forma no final de uma tendência de baixa.",
-    "overview": [
-      "Corpo pequeno localizado na extremidade superior do candle.",
-      "Sombra inferior longa (pelo menos duas vezes o tamanho do corpo da vela).",
-      "Pouca ou nenhuma sombra superior."
-    ],
-    "contexto": "Deve ocorrer no fundo de uma tendência de baixa estabelecida ou após uma forte correção de queda.",
-    "psicologia": "Os vendedores tentaram empurrar agressivamente o preço para novas mínimas durante o período, mas perderam o controle e os compradores empurraram o preço de volta para fechar próximo da máxima.",
-    "confirmation": "A confirmação é dada pelo fechamento da próxima vela acima do corpo do Martelo, preferencialmente acompanhada de alto volume financeiro.",
-    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fhammer.png?alt=media",
-    "pattern": "Alta"
-  },
-  {
-    "id": "estrela_cadente",
-    "nome": "Estrela Cadente (Shooting Star)",
-    "icon": "💫",
-    "description": "A Estrela Cadente é um padrão de vela de reversão de baixa que se forma no topo de uma tendência de alta.",
-    "overview": [
-      "Corpo pequeno localizado na extremidade inferior do candle.",
-      "Sombra superior longa (pelo menos duas vezes o tamanho do corpo da vela).",
-      "Pouca ou nenhuma sombra inferior."
-    ],
-    "contexto": "Ocorre no topo de uma tendência de alta estabelecida ou próximo a uma forte resistência de preço.",
-    "psicologia": "Os compradores tentaram elevar as cotações para novas máximas, mas a pressão vendedora (institucional) entrou no mercado, forçando o fechamento próximo à mínima do período.",
-    "confirmation": "Confirmado pela próxima vela fechando abaixo do corpo da Estrela Cadente.",
-    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fshooting_star.png?alt=media",
-    "pattern": "Baixa"
-  },
-  {
-    "id": "engolfo_alta",
-    "nome": "Engolfo de Alta (Bullish Engulfing)",
-    "icon": "📈",
-    "description": "O Engolfo de Alta é um padrão de reversão composto por duas velas, onde a segunda vela (de alta) cobre completamente o corpo da primeira vela (de baixa).",
-    "overview": [
-      "Primeira vela é de baixa (vermelha) com corpo pequeno.",
-      "Segunda vela é de alta (verde) com corpo longo que cobre totalmente o corpo da primeira vela.",
-      "O volume na segunda vela costuma ser significativamente maior."
-    ],
-    "contexto": "Identificado no final de um movimento corretivo ou de tendência de queda de curto/médio prazo.",
-    "psicologia": "Demonstra uma mudança abrupta e forte de sentimento de mercado. Os vendedores abrem o mercado em queda, mas os compradores dominam completamente a sessão, anulando o dia de baixa anterior.",
-    "confirmation": "Vela subsequente fechando acima do topo do corpo do engolfo.",
-    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fbullish_engulfing.png?alt=media",
-    "pattern": "Alta"
-  },
-  {
-    "id": "engolfo_baixa",
-    "nome": "Engolfo de Baixa (Bearish Engulfing)",
-    "icon": "📉",
-    "description": "O Engolfo de Baixa é um padrão de reversão composto por duas velas, onde a segunda vela (de baixa) cobre completamente o corpo da primeira vela (de alta).",
-    "overview": [
-      "Primeira vela é de alta (verde) com corpo pequeno.",
-      "Segunda vela é de baixa (vermelha) com corpo longo que cobre totalmente o corpo da primeira vela.",
-      "Abertura da segunda acima ou igual ao fechamento da primeira."
-    ],
-    "contexto": "Topos de mercados de alta ou após testes frustrados de resistência.",
-    "psicologia": "Os compradores abrem a sessão otimistas, mas a força vendedora atua fortemente e fecha o preço abaixo da mínima da abertura anterior, sinalizando reversão para queda.",
-    "confirmation": "Próxima vela fechando abaixo do limite inferior do corpo do engolfo.",
-    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fbearish_engulfing.png?alt=media",
-    "pattern": "Baixa"
-  },
-  {
-    "id": "doji",
+    "id": "candle-01",
     "nome": "Doji",
-    "icon": "⚖️",
-    "description": "O Doji é um padrão de vela única que indica equilíbrio de forças ou indecisão no mercado, onde o preço de abertura é praticamente idêntico ao preço de fechamento.",
+    "icon": "assets/images/candlesticks/doji.png",
+    "pattern": "Indecisão",
+    "description": "* Padrão de reversão de vela única ALTA ou BAIXA.\n * A abertura é igual (ou quase igual) ao fechamento. resultando em nenhum (ou quase nenhum) corpo real.\n * Indica indecisão no mercado - nem os touros nem os ursos estão no controle. \n * O Doji pode ser encontrado na parte superior ou inferior\n * O Doji Gravestone é geralmente encontrado em uma reversão superior.\n * O Drogonfy Doji é geralmente encontrado em uma reversão inferior.",
     "overview": [
-      "Corpo da vela é uma linha fina horizontal.",
-      "Sombras superiores e inferiores podem variar de tamanho (Doji Estrela, Libélula, Lápide).",
-      "Representa o empate perfeito entre touros e ursos."
+      "Padrão de reversão de vela única ALTA ou BAIXA.",
+      "A abertura é igual (ou quase igual) ao fechamento. resultando em nenhum (ou quase nenhum) corpo real.",
+      "Indica indecisão no mercado - nem os touros nem os ursos estão no controle.",
+      "O Doji pode ser encontrado na parte superior ou inferior",
+      "O Doji Gravestone é geralmente encontrado em uma reversão superior.",
+      "O Drogonfy Doji é geralmente encontrado em uma reversão inferior."
     ],
-    "contexto": "Ocorre em qualquer momento da tendência. Em topos ou fundos esticados, alerta para possível perda de força do movimento dominante.",
-    "psicologia": "Nem compradores nem vendedores conseguiram deslocar o preço de forma sustentável para longe da abertura até o final da sessão.",
-    "confirmation": "Exige aguardar a vela seguinte para definir a direção do rompimento da máxima ou mínima do Doji.",
-    "chart": "https://firebasestorage.googleapis.com/v0/b/price-action-master.appspot.com/o/candlesticks%2Fdoji.png?alt=media",
-    "pattern": "Indecisão"
+    "contexto": "Aparece no mercado em tendência - uma tendência de alta para uma reversão de baixa ou uma tendência de baixa para uma reversão de alta.",
+    "psicologia": "Um Doji indica um 'cabo de guerra' entre os touros e os ursos em que nenhuma das partes é dominante. O preço pode ter subido e / ou caído desde a abertura, mas voltou a fechar igual (ou quase igual) ao preço de abertura. Essa indecisão no mercado frequentemente precede uma mudança na tendência para uma tendência lateral ou reversa. O Gravestone Doji (sepultura) é mais baixista e, portanto, mais eficaz no topo do mercado. O Dragonfly Doji (libélula) é mais otimista e, portanto, mais eficaz no fundo do mercado.",
+    "confirmation": "O preço é negociado acima do Doji no fundo do mercado ou abaixo do Doji no topo do mercado.",
+    "chart": "assets/images/candlesticks/doji-chart.png"
+  },
+  {
+    "id": "candle-02",
+    "nome": "Estrela Cadente",
+    "icon": "assets/images/candlesticks/estrela-cadente.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de vela única que indica possível reversão de BAIXA\n * O mercado pode fazer um gap (lacuna) antes da vela Estrela Cadente.\n * A cor pode ser VERMELHA ou VERDE\n * A sombra superior tem pelo menos 2 vezes o tamanho do corpo real.",
+    "overview": [
+      "Padrão de vela única que indica possível reversão de BAIXA",
+      "O mercado pode fazer um gap (lacuna) antes da vela Estrela Cadente.",
+      "A cor pode ser VERMELHA ou VERDE",
+      "A sombra superior tem pelo menos 2 vezes o tamanho do corpo real."
+    ],
+    "contexto": "Aparece no mercado em tendência de alta.",
+    "psicologia": "Os touros continuam a tendência de alta elevando o preço na abertura e levando-o a novas máximas, porém os ursos defendem o preço com pressão baixista. Uma Estrela Cadente vermelha é mais baixista do que uma Estrela Cadente verde, devido à capacidade dos ursos de forçar o fechamento da vela abaixo do preço de abertura.",
+    "confirmation": "O preço é negociado abaixo do corpo da Estrela Cadente.",
+    "chart": "assets/images/candlesticks/estrela-cadente-chart.png"
+  },
+  {
+    "id": "candle-03",
+    "nome": "Enforcado",
+    "icon": "assets/images/candlesticks/enforcado.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de vela única que indica possível reversão de BAIXA.\n * Idealmente, a vela Enforcado abre em gap de alta \n * A cor pode ser VERMELHA ou VERDE.\n * A sombra inferior tem pelo menos 2 vezes o tamanho do corpo real.",
+    "overview": [
+      "Padrão de vela única que indica possível reversão de BAIXA.",
+      "Idealmente, a vela Enforcado abre em gap de alta",
+      "A cor pode ser VERMELHA ou VERDE.",
+      "A sombra inferior tem pelo menos 2 vezes o tamanho do corpo real."
+    ],
+    "contexto": "Aparece no mercado em tendência de alta.",
+    "psicologia": "A tendência de alta inicialmente parecia que iria continuar fortemente com a abertura da vela Enforcado em gap de alta, no entanto, os ursos reagiram fortemente levando o preço de forma convincente para baixo. Embora os touros pareçam capazes de resistir à pressão de baixa, isso é apenas temporário. Um enforcado vermelho é mais baixista do que um enforcado verde, devido à incapacidade dos touros de forçar o fechamento da vela acima do preço de abertura. O enforcado não é considerado tão baixista quanto uma estrela cadente, devido ao fato de que os touros foram capazes de revidar em algum grau.",
+    "confirmation": "O preço é negociado abaixo do corpo da vela Enforcado.",
+    "chart": "assets/images/candlesticks/enforcado-chart.png"
+  },
+  {
+    "id": "candle-04",
+    "nome": "Martelo",
+    "icon": "assets/images/candlesticks/martelo.png",
+    "pattern": "Alta",
+    "description": "* Padrão de vela única de reversão de ALTA. \n * Idealmente a vela Martelo abre em gap de baixa. \n * A cor pode ser VERMELHA ou VERDE. \n * A sombra inferior tem pelo menos 2 vezes o tamanho do corpo real.",
+    "overview": [
+      "Padrão de vela única de reversão de ALTA.",
+      "Idealmente a vela Martelo abre em gap de baixa.",
+      "A cor pode ser VERMELHA ou VERDE.",
+      "A sombra inferior tem pelo menos 2 vezes o tamanho do corpo real."
+    ],
+    "contexto": "Aparece no mercado em tendência de baixa.",
+    "psicologia": "Os ursos continuam a tendência de baixa reduzindo o preço na abertura e levando-o a novas mínimas, mas os touros defendem e impulsionam o preço para cima. Um martelo verde é melhor do que um martelo vermelho, devido à capacidade dos touros de forçar o fechamento da vela acima do preço de abertura.",
+    "confirmation": "O preço é negociado acima do corpo real da vela Martelo.",
+    "chart": "assets/images/candlesticks/martelo-chart.png"
+  },
+  {
+    "id": "candle-05",
+    "nome": "Martelo Invertido",
+    "icon": "assets/images/candlesticks/martelo-invertido.png",
+    "pattern": "Alta",
+    "description": "* Padrão de vela única de reversão de ALTA. \n * Idealmente a vela Martelo Invertido abre em gap de baixa. \n * A cor pode ser VERMELHA ou VERDE. \n * A sombra superior tem pelo menos 2 vezes o tamanho do corpo real.",
+    "overview": [
+      "Padrão de vela única de reversão de ALTA.",
+      "Idealmente a vela Martelo Invertido abre em gap de baixa.",
+      "A cor pode ser VERMELHA ou VERDE.",
+      "A sombra superior tem pelo menos 2 vezes o tamanho do corpo real."
+    ],
+    "contexto": "Aparece no mercado em tendência de baixa.",
+    "psicologia": "Inicialmente, parecia que a tendência de baixa iria continuar com força, apôs a abertura da vela martelo invertido em gap de baixa, no entanto, os touros reagiram fortemente levando o preço de forma convincente para cima. Embora os ursos tenham conseguido resistir à pressão de alta, isso é apenas temporário. Um martelo invertido verde é mais otimista do que um martelo invertido vermelho, devido à incapacidade do urso de forçar o fechamento da vela abaixo do preço de abertura. O martelo invertido não é considerado tão altista quanto o martelo, devido ao fato de que os ursos foram capazes de revidar em algum grau.",
+    "confirmation": "O preço é negociado acima do corpo da vela do Martelo Invertido.",
+    "chart": "assets/images/candlesticks/martelo-invertido-chart.png"
+  },
+  {
+    "id": "candle-06",
+    "nome": "Engolfo de alta",
+    "icon": "assets/images/candlesticks/engolfo-alta.png",
+    "pattern": "Alta",
+    "description": "* Padrão de duas velas de reversão de ALTA. \n * A primeira vela tem um corpo real VERMELHO pequeno.\n * A segunda vela VERDE mais longa envolve completamente o corpo da primeira vela.",
+    "overview": [
+      "Padrão de duas velas de reversão de ALTA.",
+      "A primeira vela tem um corpo real VERMELHO pequeno.",
+      "A segunda vela VERDE mais longa envolve completamente o corpo da primeira vela."
+    ],
+    "contexto": "Aparece no mercado em tendência de baixa.",
+    "psicologia": "Este é um padrão de reversão muito otimista, no qual os touros infligem uma vitória rápida e decisiva sobre os ursos. A tendência de baixa continua por meio de uma vela vermelha. Idealmente, a abertura da próxima vela ocorre em gap de baixa, um sinal claro de baixa, no entanto, os touros então direcionam o preço para cima para fechar a vela acima da abertura da vela vermelha. O nome \"engolfo de alta\" é devido ao fato de que o corpo real da vela verde envolve completamente o corpo real da vela vermelha.",
+    "confirmation": "O preço é negociado acima do corpo da vela verde.",
+    "chart": "assets/images/candlesticks/engolfo-alta-chart.png"
+  },
+  {
+    "id": "candle-07",
+    "nome": "Engolfo de baixa",
+    "icon": "assets/images/candlesticks/engolfo-baixa.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de reversão de BAIXA  de duas velas. \n * A primeira vela tem um corpo real VERDE menor. \n * A segunda vela VERMELHA mais longa envolve completamente o corpo da primeira vela.",
+    "overview": [
+      "Padrão de reversão de BAIXA  de duas velas.",
+      "A primeira vela tem um corpo real VERDE menor.",
+      "A segunda vela VERMELHA mais longa envolve completamente o corpo da primeira vela."
+    ],
+    "contexto": "Aparece no mercado em tendência de alta.",
+    "psicologia": "Este é um padrão de reversão muito baixista, no qual os ursos infligem uma vitória rápida e decisiva sobre os touros. A tendência de alta continua por meio de uma vela com corpo verde. A abertura da próxima vela idealmente ocorre em gap de alta, um sinal contínuo de alta, no entanto, os ursos conseguem pressionar o preço para baixo a ponto de fechar abaixo do preço de abertura da então baixam o preço para fechar a vela abaixo da abertura da vela verde; O nome “engolfo de baixa\" é devido ao fato de que o corpo real da vela vermelha envolve completamente o corpo real da vela verde.",
+    "confirmation": "O preço é negociado abaixo do corpo da vela vermelha.",
+    "chart": "assets/images/candlesticks/engolfo-baixa-chart.png"
+  },
+  {
+    "id": "candle-08",
+    "nome": "Linha de Perfuração (Piercing Line)",
+    "icon": "assets/images/candlesticks/piercing-line.png",
+    "pattern": "Alta",
+    "description": "* Padrão de reversão de ALTA duas velas. \n * A primeira vela tem um corpo real VERMELHO. \n * A segunda vela VERDE abre abaixo e fecha na metade superior do corpo da primeira vela.",
+    "overview": [
+      "Padrão de reversão de ALTA duas velas.",
+      "A primeira vela tem um corpo real VERMELHO.",
+      "A segunda vela VERDE abre abaixo e fecha na metade superior do corpo da primeira vela."
+    ],
+    "contexto": "Aparece no mercado em tendência de baixa.",
+    "psicologia": "A tendência de baixa continua por meio de uma vela vermelha. Idealmente, a próxima vela abre em gap de baixa, sinal contínuo de baixa, no entanto, os touros, então, levam o preço de volta para cima mostrando força renovada e uma mudança potencial de tendência. Os touros vencem a batalha fechando a vela na metade superior do corpo da vela vermelha. Observe que isso não é tão otimista quanto o padrão de engolfo de alta, no qual os touros foram capazes de elevar o preço para fechar acima do corpo real da primeira vela.",
+    "confirmation": "O preço é negociado acima do corpo real da vela verde.",
+    "chart": "assets/images/candlesticks/piercing-line-chart.png"
+  },
+  {
+    "id": "candle-09",
+    "nome": "Nuvem Negra (Dark Cloud Cover)",
+    "icon": "assets/images/candlesticks/dark-cloud-cover.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de reversão de BAIXA de duas velas. \n * A primeira vela tem um corpo VERDE real. \n * A segunda vela VERMELHA abre acima e fecha na metade inferior do corpo da primeira vela.",
+    "overview": [
+      "Padrão de reversão de BAIXA de duas velas.",
+      "A primeira vela tem um corpo VERDE real.",
+      "A segunda vela VERMELHA abre acima e fecha na metade inferior do corpo da primeira vela."
+    ],
+    "contexto": "Aparece no mercado em tendência de alta.",
+    "psicologia": "A tendência de alta continua por meio de uma vela com corpo verde. Idealmente, a próxima vela abre em gap de baixa, sinal contínuo de alta, no entanto, os ursos, então, empurram o preço de volta para baixo mostrando força renovada e uma mudança potencial de tendência. Os ursos vencem a batalha fechando a vela na metade inferior do corpo da vela verde. Observe que isso não é tão baixista como o padrão engolfo de baixa, no qual os ursos foram capazes de fazer o preço cair para fechar abaixo do corpo real da primeira vela.",
+    "confirmation": "O preço é negociado abaixo do corpo real da vela vermelha.",
+    "chart": "assets/images/candlesticks/dark-cloud-cover-chart.png"
+  },
+  {
+    "id": "candle-10",
+    "nome": "Harami",
+    "icon": "assets/images/candlesticks/harami.png",
+    "pattern": "Indecisão",
+    "description": "* Padrão de duas de reversão de ALTA ou BAIXA. \n * A primeira vela continua a direção da tendência. \n * O corpo real da segunda vela está contido no corpo real da primeira vela. Esta vela pode ser verde ou vermelha.",
+    "overview": [
+      "Padrão de duas de reversão de ALTA ou BAIXA.",
+      "A primeira vela continua a direção da tendência.",
+      "O corpo real da segunda vela está contido no corpo real da primeira vela. Esta vela pode ser verde ou vermelha."
+    ],
+    "contexto": "Aparece em mercado de tendência - uma tendência de alta para uma reversão de baixa ou uma tendência de baixa para uma reversão de alta.",
+    "psicologia": "Harami de baixa - frequentemente encontrado no topo do mercado, a tendência de alta continua com os touros elevando o preço para completar uma vela verde. A segunda vela mostra indecisão quanto ao preço então para. Nem os touros nem os ursos são capazes de dominar, resultando em uma pequena vela de qualquer cor contida na primeira vela do corpo. Esta indecisão frequentemente precede uma mudança para o congestionamento lateral ou uma reversão da tendência. Harami altista - oposto ao anterior, encontrado em uma reversão inferior.",
+    "confirmation": "O preço é negociado acima do padrão para uma reversão no fundo ou abaixo do padrão para uma reversão no topo.",
+    "chart": "assets/images/candlesticks/harami-chart.png"
+  },
+  {
+    "id": "candle-11",
+    "nome": "Cruz Harami",
+    "icon": "assets/images/candlesticks/harami-cross.png",
+    "pattern": "Indecisão",
+    "description": "* Padrão de duas de reversão de ALTA ou BAIXA. \n * A primeira vela continua a direção da tendência. \n * A segunda vela é um Doji e está contida no corpo real da primeira vela.",
+    "overview": [
+      "Padrão de duas de reversão de ALTA ou BAIXA.",
+      "A primeira vela continua a direção da tendência.",
+      "A segunda vela é um Doji e está contida no corpo real da primeira vela."
+    ],
+    "contexto": "Um mercado de tendência - uma tendência de alta para uma reversão de baixa ou uma tendência de baixa para uma reversão de alta.",
+    "psicologia": "Cruz Harami de baixa ~ frequentemente encontrado no topo do mercado, a tendência de alta continua com os touros elevando o preço para completar uma vela verde. A segunda vela mostra indecisão com o preço parado formando um doji. Nem os touros nem os ursos conseguem dominar. Essa indecisão freqüentemente precede uma mudança para o congestionamento lateral ou uma reversão da tendência. Cruz Harami de alta - Oposto do anterior, encontrado em uma reversão inferior.",
+    "confirmation": "O preço é negociado acima do padrão para uma reversão inferior ou abaixo do padrão para uma reversão superior.",
+    "chart": "assets/images/candlesticks/harami-cross-chart.png"
+  },
+  {
+    "id": "candle-12",
+    "nome": "Estrela da Manhã",
+    "icon": "assets/images/candlesticks/estrela-manha.png",
+    "pattern": "Alta",
+    "description": "* Padrão de reversão de ALTA de três velas. \n * A primeira vela tem um longo corpo real VERMELHO. \n * Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de baixa. \n * A terceira vela tem um corpo VERDE real, idealmente aberto em gap de alta a partir da estrela (segunda vela).",
+    "overview": [
+      "Padrão de reversão de ALTA de três velas.",
+      "A primeira vela tem um longo corpo real VERMELHO.",
+      "Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de baixa.",
+      "A terceira vela tem um corpo VERDE real, idealmente aberto em gap de alta a partir da estrela (segunda vela)."
+    ],
+    "contexto": "Mercado em tendência de baixa.",
+    "psicologia": "Os ursos continuam a tendência de baixa formando uma longa vela vermelha. A lacuna que se abre para a segunda vela inicialmente parece baixista, mas o pequeno corpo da estrela mostra uma possível perda de momentum. Os touros então entram novamente no mercado com força, idealmente abrindo um gap a partir da estrela e levando o preço a fechar bem dentro (ou acima) da primeira vela. O quanto mais alto for o fechamento, mais decisiva será a vitória dos touros sobre os ursos.",
+    "confirmation": "O preço é negociado acima do corpo da longa vela verde.",
+    "chart": "assets/images/candlesticks/estrela-manha-chart.png"
+  },
+  {
+    "id": "candle-13",
+    "nome": "Estrela da Noite - Reversão de Baixa",
+    "icon": "assets/images/candlesticks/estrela-noite.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de reversão de BAIXA de três velas. \n * A primeira vela tem um longo corpo real VERDE. \n * Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de alta. \n * A terceira vela tem um corpo real VERMELHO, idealmente aberto em gap de baixa a partir da estrela (segunda vela).",
+    "overview": [
+      "Padrão de reversão de BAIXA de três velas.",
+      "A primeira vela tem um longo corpo real VERDE.",
+      "Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de alta.",
+      "A terceira vela tem um corpo real VERMELHO, idealmente aberto em gap de baixa a partir da estrela (segunda vela)."
+    ],
+    "contexto": "Mercado em tendência de alta.",
+    "psicologia": "Os touros continuam a tendência de alta formando uma longa vela de corpo verde. A gap que se abre para a segunda vela parece inicialmente confirmar a alta, mas o pequeno corpo da estrela mostra um possível perda de momentum. Os ursos então entram novamente no mercado com força, idealmente abrindo um gap para baixo a partir da estrela, e levando o preço a fechar bem dentro (ou abaixo) da primeira vela. Quanto menor o preço de fechamento da terceira vela, mais decisiva será a vitória dos ursos sobre os touros.",
+    "confirmation": "O preço é negociado abaixo do corpo da longa vela vermelha.",
+    "chart": "assets/images/candlesticks/estrela-noite-chart.png"
+  },
+  {
+    "id": "candle-14",
+    "nome": "Tweezwe Top (Parte superior da pinça)",
+    "icon": "assets/images/candlesticks/tweezer-top.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de reversão de BAIXA, identificando um nível de resistência. \n * Duas ou mais velas com o ponto ALTO atingindo o mesmo nível. \n * As velas podem ser de qualquer cor.",
+    "overview": [
+      "Padrão de reversão de BAIXA, identificando um nível de resistência.",
+      "Duas ou mais velas com o ponto ALTO atingindo o mesmo nível.",
+      "As velas podem ser de qualquer cor."
+    ],
+    "contexto": "Mercado em tendência de alta.",
+    "psicologia": "O extremo superior das sombras representa uma área de resistência. Os touros não estavam dispostos a comprar acima desse preço, então os ursos voltaram com força para empurrar o preço de volta para baixo. O ‘Tweezer Top ocorre quando duas ou mais sombras superiores de velas se formam no mesmo nível, confirmando a força dessa resistência, e a probabilidade de que a tendência de alta pare ou reverter para uma tendência de baixa.",
+    "confirmation": "O preço é negociado abaixo do nível de resistência. A negociação de preços abaixo do corpo das velas Tweezer Top é mais baixa e provavelmente indica uma reversão da tendência, em vez de um mudança para consolidação.",
+    "chart": "assets/images/candlesticks/tweezer-top-chart.png"
+  },
+  {
+    "id": "candle-15",
+    "nome": "Pinça inferior",
+    "icon": "assets/images/candlesticks/tweezer-bottom.png",
+    "pattern": "Alta",
+    "description": "* Padrão de reversão de ALTA, identificando um nível de suporte. \n * Duas ou mais velas com o ponto BAIXO atingindo o mesmo nível. \n * As velas podem ser de qualquer cor.",
+    "overview": [
+      "Padrão de reversão de ALTA, identificando um nível de suporte.",
+      "Duas ou mais velas com o ponto BAIXO atingindo o mesmo nível.",
+      "As velas podem ser de qualquer cor."
+    ],
+    "contexto": "Mercado em tendência de baixa.",
+    "psicologia": "‘O extremo inferior das sombras representa uma área de suporte. Os ursos não estavam dispostos a vender abaixo desse preço, então os touros voltaram com força para fazer o preço subir novamente. O Tweezer Bottom ocorre quando duas ou mais sombras inferiores da vela se formam no mesmo nível, confirmando a força desse suporte e a probabilidade de que a tendência de baixa pare ou reverta para uma tendência de alta.",
+    "confirmation": "O preço é negociado acima do nível de suporte. A negociação de preços acima do corpo das velas de pinça de fundo é mais otimista e provavelmente indica uma reversão da tendência, em vez de uma mudança para consolidação.",
+    "chart": "assets/images/candlesticks/tweezer-bottom-chart.png"
+  },
+  {
+    "id": "candle-16",
+    "nome": "Gap de Alta Tasuki (Upward Gap Tasuki)",
+    "icon": "assets/images/candlesticks/upward-gap-tasuki.png",
+    "pattern": "Alta",
+    "description": "* Padrão de continuação de ALTA de 2 velas. \n * A tendência de alta vai até uma vela VERDE, que abre em gap de alta. \n * Em seguida uma vela VERMELHA abre dentro e fecha abaixo do corpo real da vela verde.",
+    "overview": [
+      "Padrão de continuação de ALTA de 2 velas.",
+      "A tendência de alta vai até uma vela VERDE, que abre em gap de alta.",
+      "Em seguida uma vela VERMELHA abre dentro e fecha abaixo do corpo real da vela verde."
+    ],
+    "contexto": "Mercado em tendência de alta.",
+    "psicologia": "Uma tendência de alta mostra mais força ao aumentar o gap na abertura e elevar o preço para fechar como uma vela verde. Isso é seguido por uma pausa enquanto os ursos tentam forçar a queda do preço, mas são incapazes de fechar o gap. A negociação contínua acima do gap e mostra a força com os touros.",
+    "confirmation": "O preço continua a ser negociado acima do gap e, de preferência, acima do corpo real da vela vermelha.",
+    "chart": "assets/images/candlesticks/upward-gap-tasuki-chart.png"
+  },
+  {
+    "id": "candle-17",
+    "nome": "Gap de Baixa Tasuki (Downward Gap Tasuki)",
+    "icon": "assets/images/candlesticks/downward-gap-tasuki.png",
+    "pattern": "Baixa",
+    "description": "* Padrão de continuação de BAIXA de 2 velas. \n * A tendência de baixa diminui até uma vela VERMELHA, que abre em gap de baixa. \n * Em seguida uma vela VERDE abre dentro e fecha acima do corpo real da vela vermelha.",
+    "overview": [
+      "Padrão de continuação de BAIXA de 2 velas.",
+      "A tendência de baixa diminui até uma vela VERMELHA, que abre em gap de baixa.",
+      "Em seguida uma vela VERDE abre dentro e fecha acima do corpo real da vela vermelha."
+    ],
+    "contexto": "Mercado m tendência de baixa.",
+    "psicologia": "Uma tendência de baixa mostra uma força adicional ao abrir a vela em gap de baixa e levando o preço mais para baixo no fechamento da vela vermelha. Isso é seguido por uma pausa enquanto os touros tentam forçar a alta dos preços, mas são incapazes de fechar o gap. A negociação contínuando abaixo do gap mostra a força dos ursos.",
+    "confirmation": "O preço continua a ser negociado abaixo do gap e, de preferência, abaixo do corpo real da vela verde.",
+    "chart": "assets/images/candlesticks/downward-gap-tasuki-chart.png"
+  },
+  {
+    "id": "candle-18",
+    "nome": "Três Métodos de Alta",
+    "icon": "📊",
+    "pattern": "Alta",
+    "description": "* Padrão de Continuação de ALTA. \n * Uma vela de força VERDE. \n * Seguida por 2 ou mais velas curtas (idealmente VERMELHA), que estão contidas dentro do corpo da primeira vela verde. \n * Logo em seguida, uma outra vela de força VERDE fechando acima da primeira vela.",
+    "overview": [
+      "Padrão de Continuação de ALTA.",
+      "Uma vela de força VERDE.",
+      "Seguida por 2 ou mais velas curtas (idealmente VERMELHA), que estão contidas dentro do corpo da primeira vela verde.",
+      "Logo em seguida, uma outra vela de força VERDE fechando acima da primeira vela."
+    ],
+    "contexto": "Aparece em mercado em tendência de alta",
+    "psicologia": "A dominação dos ursos pelos touros é evidente na tendência de alta pela formação da primeira vela verde longa. O preço então faz uma pausa, formando 2 ou mais velas pequenas dentro do intervalo da primeira vela. Os ursos não são capazes de forçar o preço abaixo da mínima da vela inicial, e então são superados mais uma vez pelos touros que empurram o preço para cima com uma segunda e longa vela verde fechando acima da primeira vela.",
+    "confirmation": "O preço é negociado acima do corpo da segunda vela verde longa.",
+    "chart": ""
+  },
+  {
+    "id": "candle-19",
+    "nome": "Três Métodos de Queda",
+    "icon": "📉",
+    "pattern": "Baixa",
+    "description": "* Padrão de Continuação de BAIXA \n * Uma vela de força VERMELHA. \n * Seguido por 2 ou mais velas curtas (idealmente VERDES), que estão contidas dentro do corpo da primeira vela vermelha. \n * Seguido por outra vela de força VERMELHA fechando abaixo da primeira vela,",
+    "overview": [
+      "Padrão de Continuação de BAIXA",
+      "Uma vela de força VERMELHA.",
+      "Seguido por 2 ou mais velas curtas (idealmente VERDES), que estão contidas dentro do corpo da primeira vela vermelha.",
+      "Seguido por outra vela de força VERMELHA fechando abaixo da primeira vela,"
+    ],
+    "contexto": "Aparece em mercado em tendência de baixa.",
+    "psicologia": "O domínio dos ursos sobre os touros é evidente dentro da tendência de baixa pela formação da primeira vela de força vermelha. O preço então faz uma correção, formando 2 ou mais velas pequenas dentro do intervalo da primeira vela. Os touros não são capazes de forçar o preço acima da máxima da vela inicial, e então são superados mais uma vez pelos ursos, que retomam o controle e empurram o preço para baixo formando uma segunda vela de força vermelha fechando abaixo da primeira vela.",
+    "confirmation": "O preço é negociado abaixo do corpo da segunda vela vermelha longa.",
+    "chart": ""
+  },
+  {
+    "id": "candle-20",
+    "nome": "Três Soldados Brancos (Three White Soldiers)",
+    "icon": "assets/images/candlesticks/3-soldados-brancos.png",
+    "pattern": "Alta",
+    "description": "* Padrão de reversão de ALTA formado por três velas longas de alta consecutivas.\n * Cada vela abre dentro do corpo real da vela anterior e fecha acima da máxima da vela anterior.\n * Sombras superiores pequenas ou inexistentes, indicando forte pressão compradora contínua.",
+    "overview": [
+      "Padrão de reversão de ALTA formado por três velas longas de alta consecutivas.",
+      "Cada vela abre dentro do corpo real da vela anterior e fecha acima da máxima da vela anterior.",
+      "Sombras superiores pequenas ou inexistentes, indicando forte pressão compradora contínua."
+    ],
+    "contexto": "Ocorre no fundo de uma tendência de baixa estabelecida ou após um longo período de consolidação.",
+    "psicologia": "Demonstra uma virada drástica e sustentada no sentimento do mercado. Os touros assumem o controle de forma consistente por três sessões seguidas, empurrando o preço para novas máximas diárias sem dar espaço para recuo dos vendedores.",
+    "confirmation": "O preço negocia acima da máxima da terceira vela, preferencialmente acompanhado de expansão no volume financeiro.",
+    "chart": ""
+  },
+  {
+    "id": "candle-21",
+    "nome": "Peão (Spinning Top)",
+    "icon": "assets/images/candlesticks/spinning-top.png",
+    "pattern": "Indecisão",
+    "description": "* Padrão de vela única com corpo pequeno localizado no centro da vela.\n * Sombras superiores e inferiores longas de tamanhos similares.\n * A cor do corpo (verde ou vermelha) é secundária.",
+    "overview": [
+      "Padrão de vela única com corpo pequeno localizado no centro da vela.",
+      "Sombras superiores e inferiores longas de tamanhos similares.",
+      "Representa equilíbrio temporário entre compradores e vendedores."
+    ],
+    "contexto": "Pode ocorrer em qualquer fase do mercado (tendência de alta, baixa ou consolidação). Em topos ou fundos esticados, alerta para possível perda de fôlego do movimento.",
+    "psicologia": "Ambos os lados tentaram movimentar o preço agressivamente durante o período (máximas e mínimas afastadas), mas a sessão terminou praticamente empatada com o fechamento próximo da abertura. Sinaliza hesitação e perda de direção clara.",
+    "confirmation": "Aguardar o rompimento da máxima ou da mínima do Peão pelo candle seguinte para confirmar a direção.",
+    "chart": ""
   }
 ]

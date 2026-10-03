@@ -9,12 +9,12 @@ abstract class CourseRepository {
 
 class LocalCourseRepository implements CourseRepository {
   // Catálogo estático usado como fallback em caso de falha de leitura do manifesto (ex: testes unitários)
-  static const List<String> _fallbackCourseIds = ['candlesticks', 'figuras', 'smc', 'elliott', 'gestao_risco', 'wyckoff'];
+  static const List<String> _fallbackCourseIds = ['analise_tecnica', 'candlesticks', 'figuras', 'smc', 'elliott', 'gestao_risco', 'wyckoff'];
 
   @override
   Future<List<PlatformCourse>> getAllCourses() async {
     final List<PlatformCourse> courses = [];
-    List<String> ids = [];
+    final List<String> orderedIds = List.from(_fallbackCourseIds);
 
     try {
       final AssetManifest manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
@@ -26,21 +26,15 @@ class LocalCourseRepository implements CourseRepository {
       for (final path in coursePaths) {
         final String filename = path.split('/').last;
         final String id = filename.substring(0, filename.length - 5); // remover '.json'
-        if (id.isNotEmpty) {
-          ids.add(id);
+        if (id.isNotEmpty && !orderedIds.contains(id)) {
+          orderedIds.add(id);
         }
       }
     } catch (e) {
-      print('LocalCourseRepository: Erro ao listar assets dinamicamente: $e. Usando fallback.');
-      ids = List.from(_fallbackCourseIds);
+      print('LocalCourseRepository: Erro ao listar assets dinamicamente: $e. Usando catálogo padrão.');
     }
 
-    // Se por algum motivo a lista dinâmica veio vazia, usa o fallback
-    if (ids.isEmpty) {
-      ids = List.from(_fallbackCourseIds);
-    }
-
-    for (final id in ids) {
+    for (final id in orderedIds) {
       final course = await getCourseById(id);
       if (course != null) {
         courses.add(course);

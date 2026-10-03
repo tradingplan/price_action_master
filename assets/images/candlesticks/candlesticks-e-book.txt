@@ -1,0 +1,118 @@
+Evento Especial - Entendendo Operações de Milho Futuro
+https://www.youtube.com/watch?v=wRgPZIHZalU
+
+List<Candlestick> candlesticks = [
+  const Candlestick(
+      id: "1",
+      name: "Doji",
+      location: "Reversão de Alta / Baixa",
+      description:
+          "- Padrão de reversão de vela única ALTA ou BAIXA. (location)\n- A abertura é igual (ou quase igual) ao fechamento. resultando em nenhum (ou quase nenhum) corpo real.\n- Indica indecisão no mercado - nem os touros nem os ursos estão no controle.\n- O Doji pode ser encontrado na parte superior ou inferior.\n- O Doji Gravestone é geralmente encontrado em uma reversão superior.\n- O Drogonfy Doji é geralmente encontrado em uma reversão inferior.",
+      contextoMercado:
+          "Aparece no mercado em tendência - uma tendência de alta para uma reversão de baixa ou uma tendência de baixa para uma reversão de alta.",
+      psicologia:
+          "Um Doji indica um 'cabo de guerra' entre os touros e os ursos em que nenhuma das partes é dominante. O preço pode ter subido e / ou caído desde a abertura, mas voltou a fechar igual (ou quase igual) ao preço de abertura. Essa indecisão no mercado frequentemente precede uma mudança na tendência para uma tendência lateral ou reversa.\nO Gravestone Doji (sepultura) é mais baixista e, portanto, mais eficaz no topo do mercado. O Dragonfly Doji (libélula) é mais otimista e, portanto, mais eficaz no fundo do mercado.",
+      confirmation:
+          "O preço é negociado acima do Doji no fundo do mercado ou abaixo do Doji no topo do mercado.",
+      image: "assets/img/doji.png",
+      grafico: "assets/img/doji-chart.png"),
+  const Candlestick(
+      id: "2",
+      name: "Enforcado",
+      location: "Reversão de Baixa",
+      description:
+          "- Padrão de vela única que indica possível reversão de BAIXA.\n - Idealmente, a vela Enforcado abre em gap de alta\n - A cor pode ser VERMELHA ou VERDE.\n - A sombra inferior tem pelo menos 2 vezes o tamanho do corpo real.",
+      contextoMercado: "Aparece no mercado em tendência de alta.",
+      psicologia:
+          "A tendência de alta inicialmente parecia que iria continuar fortemente com a abertura da vela Enforcado em gap de alta, no entanto, os ursos reagiram fortemente levando o preço de forma convincente para baixo.\nEmbora os touros pareçam capazes de resistir à pressão de baixa, isso é apenas temporário. Um enforcado vermelho é mais baixista do que um enforcado verde, devido à incapacidade dos touros de forçar o fechamento da vela acima do preço de abertura. O enforcado não é considerado tão baixista quanto uma estrela cadente, devido ao fato de que os touros foram capazes de revidar em algum grau.",
+      confirmation: "O preço é negociado abaixo do corpo da vela Enforcado.",
+      image: "assets/img/enforcado.png",
+      grafico: "assets/img/enforcado-chart.png"),
+  const Candlestick(
+      id: "3",
+      name: "Engolfo de Alta",
+      location: "Reversão de Alta",
+      description:
+          "- Padrão de duas velas de reversão de ALTA.\n - A primeira vela tem um corpo real VERMELHO pequeno.\n - A segunda vela VERDE mais longa envolve completamente o corpo da primeira vela.",
+      contextoMercado: "Aparece no mercado em tendência de baixa.",
+      psicologia:
+          "Este é um padrão de reversão muito otimista, no qual os touros infligem uma vitória rápida e decisiva sobre os ursos. A tendência de baixa continua por meio de uma vela vermelha. Idealmente, a abertura da próxima vela ocorre em gap de baixa, um sinal claro de baixa, no entanto, os touros então direcionam o preço para cima para fechar a vela acima da abertura da vela vermelha. O nome 'engolfo de alta' é devido ao fato de que o corpo real da vela verde envolve completamente o corpo real da vela vermelha.",
+      confirmation: "O preço é negociado acima do corpo da vela verde.",
+      image: "assets/img/engolfo-alta.png",
+      grafico: "assets/img/engolfo-alta-chart.png"),
+  const Candlestick(
+      id: "4",
+      name: "Engolfo de Baixa",
+      location: "Reversão de Baixa",
+      description:
+          "- Padrão de reversão de BAIXA de duas velas.\n - A primeira vela tem um corpo real VERDE menor.\n - A segunda vela VERMELHA mais longa envolve completamente o corpo da primeira vela.",
+      contextoMercado: "Aparece no mercado em tendência de alta.",
+      psicologia:
+          "Este é um padrão de reversão muito baixista, no qual os ursos infligem uma vitória rápida e decisiva sobre os touros. A tendência de alta continua por meio de uma vela com corpo verde. A abertura da próxima vela idealmente ocorre em gap de alta, um sinal contínuo de alta, no entanto, os ursos conseguem pressionar o preço para baixo a ponto de fechar abaixo do preço de abertura da então baixam o preço para fechar a vela abaixo da abertura da vela verde; O nome 'engolfo de baixa' é devido ao fato de que o corpo real da vela vermelha envolve completamente o corpo real da vela verde.",
+      confirmation: "O preço é negociado abaixo do corpo da vela vermelha.",
+      image: "assets/img/engolfo-baixa.png",
+      grafico: "assets/img/engolfo-baixa-chart.png"),
+  const Candlestick(
+      id: "5",
+      name: "Piercing Line",
+      location: "Reversão de Alta de 2 velas",
+      description:
+          "- Padrão de reversão de ALTA duas velas.\n - A primeira vela tem um corpo real VERMELHO.\n - A segunda vela VERDE abre abaixo e fecha na metade superior do corpo da primeira vela.",
+      contextoMercado: "Aparece no mercado em tendência de baixa.",
+      psicologia:
+          "A tendência de baixa continua por meio de uma vela vermelha. Idealmente, a próxima vela abre em gap de baixa, sinal contínuo de baixa, no entanto, os touros, então, levam o preço de volta para cima mostrando força renovada e uma mudança potencial de tendência. Os touros vencem a batalha fechando a vela na metade superior do corpo da vela vermelha. Observe que isso não é tão otimista quanto o padrão de engolfo de alta, no qual os touros foram capazes de elevar o preço para fechar acima do corpo real da primeira vela.",
+      confirmation:
+          "ConfirmaçãoO preço é negociado acima do corpo real da vela verde.",
+      image: "assets/img/piercing-line.png",
+      grafico: "assets/img/piercing-line-chart.png"),
+  const Candlestick(
+      id: "6",
+      name: "Estrela Cadente",
+      location: "Reversão de Baixa",
+      description:
+          "- Padrão de vela única que indica possível reversão de BAIXA.\n - O mercado pode fazer um gap (lacuna) antes da vela Estrela Cadente.\n - A cor pode ser VERMELHA ou VERDE.\n - A sombra superior tem pelo menos 2 vezes o tamanho do corpo real.",
+      contextoMercado: "Aparece no mercado em tendência de alta.",
+      psicologia:
+          "Os touros continuam a tendência de alta elevando o preço na abertura e levando-o a novas máximas, porém os ursos defendem o preço com pressão baixista. Uma Estrela Cadente vermelha é mais baixista do que uma Estrela Cadente verde, devido à capacidade dos ursos de forçar o fechamento da vela abaixo do preço de abertura.",
+      confirmation: "O preço é negociado abaixo do corpo da Estrela Cadente.",
+      image: "assets/img/estrela-cadente.png",
+      grafico: "assets/img/estrela-cadente-chart.png"),
+  const Candlestick(
+      id: "7",
+      name: "Estrela da Manhã",
+      location: "Reversão de Alta",
+      description:
+          "- Padrão de reversão de ALTA de três velas.\n - A primeira vela tem um longo corpo real VERMELHO.\n - Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de baixa.\n - A terceira vela tem um corpo VERDE real, idealmente aberto em gap de alta a partir da estrela (segunda vela).",
+      contextoMercado: "Mercado em tendência de baixa.",
+      psicologia:
+          "Os ursos continuam a tendência de baixa formando uma longa vela vermelha. A lacuna que se abre para a segunda vela inicialmente parece baixista, mas o pequeno corpo da estrela mostra uma possível perda de momentum. Os touros então entram novamente no mercado com força, idealmente abrindo um gap a partir da estrela e levando o preço a fechar bem dentro (ou acima) da primeira vela. O quanto mais alto for o fechamento, mais decisiva será a vitória dos touros sobre os ursos.",
+      confirmation: "O preço é negociado acima do corpo da longa vela verde.",
+      image: "assets/img/estrela-manha.png",
+      grafico: "assets/img/estrela-manha-chart.png"),
+  const Candlestick(
+      id: "8",
+      name: "Estrela da Noite",
+      location: "Reversão de Baixa",
+      description:
+          "- Padrão de reversão de BAIXA de três velas.\n - A primeira vela tem um longo corpo real VERDE.\n - Idealmente, a segunda vela, de corpo pequeno (qualquer cor) abre em gap de alta.\n - A terceira vela tem um corpo real VERMELHO, idealmente aberto em gap de baixa a partir da estrela (segunda vela).",
+      contextoMercado: "Mercado em tendência de alta.",
+      psicologia:
+          "Os touros continuam a tendência de alta formando uma longa vela de corpo verde. A gap que se abre para a segunda vela parece inicialmente confirmar a alta, mas o pequeno corpo da estrela mostra um possível perda de momentum. Os ursos então entram novamente no mercado com força, idealmente abrindo um gap para baixo a partir da estrela, e levando o preço a fechar bem dentro (ou abaixo) da primeira vela. Quanto menor o preço de fechamento da terceira vela, mais decisiva será a vitória dos ursos sobre os touros.",
+      confirmation:
+          "O preço é negociado abaixo do corpo da longa vela vermelha.",
+      image: "assets/img/estrela-noite.png",
+      grafico: "assets/img/estrela-noite-chart.png"),
+  const Candlestick(
+      id: "10",
+      name: "Martelo Invertido",
+      location: "Reversão de Alta",
+      description:
+          "- Padrão de vela única de reversão de ALTA.\n - Idealmente a vela Martelo Invertido abre em gap de baixa.\n - A cor pode ser VERMELHA ou VERDE.\n - A sombra superior tem pelo menos 2 vezes o tamanho do corpo real.",
+      contextoMercado: "Aparece no mercado em tendência de baixa.",
+      psicologia:
+          "Inicialmente, parecia que a tendência de baixa iria continuar com força, apôs a abertura da vela martelo invertido em gap de baixa, no entanto, os touros reagiram fortemente levando o preço de forma convincente para cima.\nEmbora os ursos tenham conseguido resistir à pressão de alta, isso é apenas temporário. Um martelo invertido verde é mais otimista do que um martelo invertido vermelho, devido à incapacidade do urso de forçar o fechamento da vela abaixo do preço de abertura. O martelo invertido não é considerado tão altista quanto o martelo, devido ao fato de que os ursos foram capazes de revidar em algum grau.",
+      confirmation:
+          "O preço é negociado acima do corpo da vela do Martelo Invertido.",
+      image: "assets/img/martelo-invertido.png",
+      grafico: "assets/img/martelo-invertido-chart.png"),
+];

@@ -141,9 +141,10 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Inicio': InicioWidget(),
-      'AnaliseTecnica': AnaliseTecnicaWidget(),
-      'FigurasGraficas': FigurasGraficasWidget(),
+      'Calculadoras': CalculadorasWidget(),
+      'Quiz': QuizWidget(),
       'VelasJaponesas': VelasJaponesasWidget(),
+      'Ajustes': AjustesWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -151,7 +152,7 @@ class _NavBarPageState extends State<NavBarPage> {
       resizeToAvoidBottomInset: !widget.disableResizeToAvoidBottomInset,
       body: _currentPage ?? tabs[_currentPageName],
       bottomNavigationBar: GNav(
-        selectedIndex: currentIndex,
+        selectedIndex: currentIndex >= 0 ? currentIndex : 0,
         onTabChange: (i) => safeSetState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
@@ -160,40 +161,47 @@ class _NavBarPageState extends State<NavBarPage> {
         color: Color(0x8A000000),
         activeColor: FlutterFlowTheme.of(context).secondaryBackground,
         tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
-        tabBorderRadius: 0.0,
-        tabMargin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-        padding: EdgeInsets.all(8.0),
-        gap: 3.0,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        duration: Duration(milliseconds: 500),
+        tabBorderRadius: 8.0,
+        tabMargin: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+        gap: 4.0,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        duration: Duration(milliseconds: 350),
         haptic: false,
         tabs: [
           GButton(
-            icon: currentIndex == 0 ? Icons.home : Icons.home_outlined,
+            icon: currentIndex == 0 ? Icons.home_rounded : Icons.home_outlined,
             text: 'Home',
-            iconSize: 24.0,
+            iconSize: 22.0,
           ),
           GButton(
             icon: currentIndex == 1
-                ? Icons.area_chart_outlined
-                : Icons.area_chart_sharp,
-            text: 'Analise Técnica',
-            iconSize: 24.0,
+                ? Icons.calculate_rounded
+                : Icons.calculate_outlined,
+            text: 'Calculadoras',
+            iconSize: 22.0,
           ),
           GButton(
             icon: currentIndex == 2
-                ? Icons.ssid_chart_sharp
-                : Icons.ssid_chart_sharp,
-            text: 'Figuras Gráficas',
-            iconSize: 24.0,
+                ? Icons.quiz_rounded
+                : Icons.quiz_outlined,
+            text: 'Quiz',
+            iconSize: 22.0,
           ),
           GButton(
             icon: currentIndex == 3
                 ? Icons.candlestick_chart_rounded
                 : Icons.candlestick_chart_outlined,
             text: 'Candlesticks',
-            iconSize: 24.0,
-          )
+            iconSize: 22.0,
+          ),
+          GButton(
+            icon: currentIndex == 4
+                ? Icons.settings_rounded
+                : Icons.settings_outlined,
+            text: 'Ajustes',
+            iconSize: 22.0,
+          ),
         ],
       ),
     );
