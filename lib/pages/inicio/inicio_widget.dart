@@ -224,10 +224,10 @@ class _InicioWidgetState extends State<InicioWidget>
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Image.asset(
-                                  'assets/images/favicon-trading-plan.png',
+                                  'assets/images/bull_chart_hero.jpg',
                                   width: double.infinity,
-                                  height: 295.0,
-                                  fit: BoxFit.cover,
+                                  height: 260.0,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ],
@@ -237,13 +237,14 @@ class _InicioWidgetState extends State<InicioWidget>
                           animationsMap['containerOnPageLoadAnimation']!),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
                       child: Text(
-                        'Uma simples caixa de ferramentas para traders. Tenha os principais padrões gráficos do mercado financeiro na palma da sua mão para consultar a qualquer hora e em qualquer lugar, mesmo sem internet.\nEsta é uma versão de amostra, basta instalar e degustar. Não precisa criar conta, não precisa de senha, não precisa de nada! \nBom proveito!\n',
+                        'Seu guia prático de Price Action e análise técnica. Acesse padrões gráficos, calculadoras essenciais e ferramentas de mercado onde estiver — 100% offline e sem necessidade de login.',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodySmallFamily,
-                              fontSize: 16.0,
+                              fontSize: 15.0,
                               letterSpacing: 0.0,
                               useGoogleFonts: !FlutterFlowTheme.of(context)
                                   .bodySmallIsCustom,
