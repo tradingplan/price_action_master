@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 
 class SafeImageWidget extends StatelessWidget {
@@ -27,7 +28,7 @@ class SafeImageWidget extends StatelessWidget {
     if (text.startsWith('http://') || text.startsWith('https://') || text.startsWith('assets/')) {
       return false;
     }
-    if (text.contains('/') || text.contains('\\') || text.contains('.png') || text.contains('.jpg')) {
+    if (text.contains('/') || text.contains('\\') || text.contains('.png') || text.contains('.jpg') || text.contains('.svg') || text.contains('.webp')) {
       return false;
     }
     return true;
@@ -63,6 +64,20 @@ class SafeImageWidget extends StatelessWidget {
     }
 
     if (raw.startsWith('assets/')) {
+      if (raw.toLowerCase().endsWith('.svg')) {
+        return ClipRRect(
+          borderRadius: effectiveBorderRadius,
+          child: SvgPicture.asset(
+            raw,
+            width: width,
+            height: height,
+            fit: fit,
+            placeholderBuilder: (context) =>
+                _buildFallback(context, effectiveBorderRadius, effectiveBg),
+          ),
+        );
+      }
+
       return ClipRRect(
         borderRadius: effectiveBorderRadius,
         child: Image.asset(
@@ -77,6 +92,34 @@ class SafeImageWidget extends StatelessWidget {
     }
 
     if (raw.startsWith('http://') || raw.startsWith('https://')) {
+      if (raw.toLowerCase().contains('.svg')) {
+        return ClipRRect(
+          borderRadius: effectiveBorderRadius,
+          child: SvgPicture.network(
+            raw,
+            width: width,
+            height: height,
+            fit: fit,
+            placeholderBuilder: (context) => Container(
+              width: width,
+              height: height,
+              color: effectiveBg,
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 20.0,
+                height: 20.0,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.0,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+
       return ClipRRect(
         borderRadius: effectiveBorderRadius,
         child: CachedNetworkImage(

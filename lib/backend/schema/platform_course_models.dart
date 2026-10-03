@@ -131,6 +131,7 @@ class PlatformExample {
   final String title;
   final String description;
   final String? chartType;
+  final String? image;
   final PlatformVectorCanvas? vectorCanvas;
 
   PlatformExample({
@@ -138,6 +139,7 @@ class PlatformExample {
     required this.title,
     required this.description,
     this.chartType,
+    this.image,
     this.vectorCanvas,
   });
 
@@ -147,6 +149,7 @@ class PlatformExample {
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       chartType: json['chartType'] as String?,
+      image: json['image'] as String? ?? json['imageUrl'] as String?,
       vectorCanvas: json['vectorCanvas'] != null
           ? PlatformVectorCanvas.fromJson(json['vectorCanvas'] as Map<String, dynamic>)
           : null,
@@ -158,6 +161,7 @@ class PlatformExample {
         'title': title,
         'description': description,
         if (chartType != null) 'chartType': chartType,
+        if (image != null) 'image': image,
         if (vectorCanvas != null) 'vectorCanvas': vectorCanvas!.toJson(),
       };
 }

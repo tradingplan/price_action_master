@@ -98,7 +98,7 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                         width: double.infinity,
                         height: 140.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
                             color: FlutterFlowTheme.of(context).lineColor,
@@ -376,7 +376,7 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryBackground,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
                               color: FlutterFlowTheme.of(context).lineColor,
@@ -387,7 +387,7 @@ class _DetalheCandlestickWidgetState extends State<DetalheCandlestickWidget> {
                             width: double.infinity,
                             height: 220.0,
                             fit: BoxFit.contain,
-                            backgroundColor: Colors.transparent,
+                            backgroundColor: Colors.white,
                           ),
                         ),
                       ),

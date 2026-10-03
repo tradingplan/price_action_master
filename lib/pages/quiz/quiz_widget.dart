@@ -23,6 +23,7 @@ class _QuizWidgetState extends State<QuizWidget> {
   late QuizModel _model;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  List<dynamic> _allQuestions = [];
   List<dynamic> _questions = [];
   bool _isLoading = true;
   int _currentIndex = 0;
@@ -30,6 +31,18 @@ class _QuizWidgetState extends State<QuizWidget> {
   int? _selectedOptionIndex;
   bool _isAnswered = false;
   String _screenState = 'intro'; // 'intro', 'quiz', 'results'
+  String _selectedCategory = 'Todos';
+
+  static const List<String> _categories = [
+    'Todos',
+    'Candlesticks',
+    'SMC',
+    'Ondas de Elliott',
+    'Figuras Gráficas',
+    'Método Wyckoff',
+    'Análise Técnica',
+    'Gestão de Risco',
+  ];
 
   @override
   void initState() {
@@ -47,8 +60,9 @@ class _QuizWidgetState extends State<QuizWidget> {
   Future<void> _loadQuizData() async {
     try {
       final String jsonStr = await rootBundle.loadString('assets/jsons/quiz.json');
+      final List<dynamic> raw = json.decode(jsonStr) as List<dynamic>;
       setState(() {
-        _questions = json.decode(jsonStr);
+        _allQuestions = raw;
         _isLoading = false;
       });
     } catch (e) {
@@ -60,7 +74,56 @@ class _QuizWidgetState extends State<QuizWidget> {
   }
 
   void _startQuiz() {
+    List<Map<String, dynamic>> pool = [];
+
+    if (_selectedCategory == 'Todos') {
+      pool = _allQuestions.map((q) => Map<String, dynamic>.from(q as Map)).toList();
+    } else {
+      final filter = _selectedCategory.toLowerCase();
+      pool = _allQuestions
+          .where((q) {
+            final cat = (q['category'] as String? ?? '').toLowerCase();
+            return cat.contains(filter) ||
+                (_selectedCategory == 'SMC' && (cat.contains('smc') || cat.contains('smart money'))) ||
+                (_selectedCategory == 'Figuras Gráficas' && (cat.contains('figuras') || cat.contains('graficas'))) ||
+                (_selectedCategory == 'Método Wyckoff' && cat.contains('wyckoff')) ||
+                (_selectedCategory == 'Análise Técnica' && (cat.contains('analise') || cat.contains('tecnica') || cat.contains('técnica'))) ||
+                (_selectedCategory == 'Gestão de Risco' && (cat.contains('gestao') || cat.contains('gestão') || cat.contains('risco')));
+          })
+          .map((q) => Map<String, dynamic>.from(q as Map))
+          .toList();
+    }
+
+    if (pool.isEmpty) {
+      pool = _allQuestions.map((q) => Map<String, dynamic>.from(q as Map)).toList();
+    }
+
+    // 1. Embaralha a ordem das questões no pool
+    final random = Random();
+    pool.shuffle(random);
+
+    // 2. Seleciona 5 questões para a rodada
+    final int roundCount = min(5, pool.length);
+    final selectedBatch = pool.take(roundCount).toList();
+
+    // 3. Embaralha as 4 alternativas de cada pergunta mantendo a resposta correta sincronizada
+    final preparedQuestions = selectedBatch.map((q) {
+      final rawOptions = List<String>.from(q['options'] as List);
+      final int originalCorrectIndex = q['correct_index'] as int;
+      final String correctOptionText = rawOptions[originalCorrectIndex];
+
+      rawOptions.shuffle(random);
+      final int newCorrectIndex = rawOptions.indexOf(correctOptionText);
+
+      return {
+        ...q,
+        'options': rawOptions,
+        'correct_index': newCorrectIndex,
+      };
+    }).toList();
+
     setState(() {
+      _questions = preparedQuestions;
       _currentIndex = 0;
       _score = 0;
       _isAnswered = false;
@@ -73,7 +136,7 @@ class _QuizWidgetState extends State<QuizWidget> {
     if (_isAnswered) return;
 
     final currentQuestion = _questions[_currentIndex];
-    final int correctIndex = currentQuestion['correct_index'];
+    final int correctIndex = currentQuestion['correct_index'] as int;
 
     setState(() {
       _selectedOptionIndex = optionIndex;
@@ -92,14 +155,14 @@ class _QuizWidgetState extends State<QuizWidget> {
         _isAnswered = false;
       });
     } else {
-      // Finalizou o Quiz
+      // Finalizou a rodada do Quiz
       setState(() {
         _screenState = 'results';
       });
 
       // Grava o resultado no banco local
       await LocalDataManager.saveQuizAttempt(
-        category: 'GERAL',
+        category: _selectedCategory,
         score: _score,
         totalQuestions: _questions.length,
         date: DateTime.now().toString().split(' ')[0], // YYYY-MM-DD
@@ -110,19 +173,19 @@ class _QuizWidgetState extends State<QuizWidget> {
   String _getClassification() {
     final double pct = _score / (_questions.isEmpty ? 1 : _questions.length);
     if (pct >= 0.8) return 'Consistente 📈';
-    if (pct >= 0.5) return 'Sobrevivente ⚖️';
+    if (pct >= 0.6) return 'Sobrevivente ⚖️';
     return 'Aprendiz 📚';
   }
 
   String _getClassificationDescription() {
     final double pct = _score / (_questions.isEmpty ? 1 : _questions.length);
     if (pct >= 0.8) {
-      return 'Parabéns! Você demonstrou excelente leitura técnica de mercado e gestão de Price Action. Mantenha a disciplina de execução.';
+      return 'Excelente desempenho! Você demonstrou domínio refinado de Price Action, estruturas e leitura técnica de mercado.';
     }
-    if (pct >= 0.5) {
-      return 'Bom progresso. Você já entende conceitos chaves de mercado, mas ainda confunde alguns detalhes estruturais. Revise as lições erradas.';
+    if (pct >= 0.6) {
+      return 'Bom progresso! Você compreende a lógica dos padrões, mas ainda comete deslizes em detalhes estruturais. Continue praticando.';
     }
-    return 'Atenção necessária. O mercado pune severamente a falta de técnica. Estude as explicações e repita o conteúdo de candles e estruturas antes de operar.';
+    return 'Atenção necessária. O mercado pune a falta de técnica. Estude as explicações e repita as rodadas de quiz para fixar os conceitos.';
   }
 
   @override
@@ -137,7 +200,15 @@ class _QuizWidgetState extends State<QuizWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           leading: InkWell(
-            onTap: () => context.pop(),
+            onTap: () {
+              if (_screenState != 'intro') {
+                setState(() {
+                  _screenState = 'intro';
+                });
+              } else {
+                context.pop();
+              }
+            },
             child: Icon(
               Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primaryText,
@@ -156,6 +227,7 @@ class _QuizWidgetState extends State<QuizWidget> {
           elevation: 0.5,
         ),
         body: SafeArea(
+          bottom: true,
           child: _isLoading
               ? const Center(child: CircularProgressIndicator())
               : _buildCurrentScreen(),
@@ -176,92 +248,143 @@ class _QuizWidgetState extends State<QuizWidget> {
     }
   }
 
-  // --- TELA 1: INTRODUÇÃO ---
+  // --- TELA 1: INTRODUÇÃO & SELEÇÃO DE CATEGORIA ---
   Widget _buildIntroScreen() {
+    final theme = FlutterFlowTheme.of(context);
+
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 40.0),
-            Container(
-              width: 90.0,
-              height: 90.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primary.withAlpha(20),
-                shape: BoxShape.circle,
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                '🏆',
-                style: TextStyle(fontSize: 48.0),
-              ),
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 20.0),
+          Container(
+            width: 80.0,
+            height: 80.0,
+            decoration: BoxDecoration(
+              color: theme.primary.withAlpha(20),
+              shape: BoxShape.circle,
             ),
-            const SizedBox(height: 24.0),
-            Text(
-              'Quiz de Trading',
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+            alignment: Alignment.center,
+            child: const Text(
+              '🏆',
+              style: TextStyle(fontSize: 40.0),
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          Text(
+            'Simulado de Price Action',
+            style: theme.headlineSmall.override(
+                  fontFamily: theme.headlineSmallFamily,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 8.0),
+          Text(
+            'Desafie seus conhecimentos com perguntas inéditas e aleatórias a cada rodada.',
+            textAlign: TextAlign.center,
+            style: theme.bodyMedium.override(
+                  fontFamily: theme.bodyMediumFamily,
+                  color: theme.secondaryText,
+                ),
+          ),
+          const SizedBox(height: 24.0),
+
+          // Seletor de Categorias
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'ESCOLHA O TEMA DO QUIZ',
+              style: theme.bodySmall.override(
+                    fontFamily: theme.bodySmallFamily,
+                    color: theme.secondaryText,
                     fontWeight: FontWeight.bold,
+                    fontSize: 11.0,
                   ),
             ),
-            const SizedBox(height: 12.0),
-            Text(
-              'Teste seu conhecimento prático sobre padrões de velas, figuras gráficas, Smart Money (SMC) e Ondas de Elliott.',
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                    color: FlutterFlowTheme.of(context).secondaryText,
+          ),
+          const SizedBox(height: 10.0),
+          Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: _categories.map((cat) {
+              final isSelected = _selectedCategory == cat;
+              return InkWell(
+                onTap: () {
+                  setState(() {
+                    _selectedCategory = cat;
+                  });
+                },
+                borderRadius: BorderRadius.circular(20.0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 7.0),
+                  decoration: BoxDecoration(
+                    color: isSelected ? theme.primary : theme.secondaryBackground,
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: Border.all(
+                      color: isSelected ? theme.primary : theme.lineColor,
+                    ),
                   ),
-            ),
-            const SizedBox(height: 32.0),
-            // Info Box
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(16.0),
-                border: Border.all(color: FlutterFlowTheme.of(context).lineColor),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildBulletInfo('🟢', '5 perguntas realistas de mercado'),
-                  const SizedBox(height: 12.0),
-                  _buildBulletInfo('🟢', 'Gráficos e ilustrações vetoriais exclusivas'),
-                  const SizedBox(height: 12.0),
-                  _buildBulletInfo('🟢', 'Explicações teóricas detalhadas pós-resposta'),
-                ],
-              ),
-            ),
-            const SizedBox(height: 40.0),
-            // Start Button
-            SizedBox(
-              width: double.infinity,
-              height: 55.0,
-              child: ElevatedButton(
-                onPressed: _startQuiz,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: FlutterFlowTheme.of(context).primary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
+                  child: Text(
+                    cat == 'Todos' ? '🎲 Todas (Misto Aleatório)' : cat,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white : theme.primaryText,
+                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontSize: 12.0,
+                    ),
                   ),
-                  elevation: 2.0,
                 ),
-                child: Text(
-                  'Iniciar Quiz',
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+              );
+            }).toList(),
+          ),
+          const SizedBox(height: 24.0),
+
+          // Info Box
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: theme.secondaryBackground,
+              borderRadius: BorderRadius.circular(16.0),
+              border: Border.all(color: theme.lineColor),
+            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildBulletInfo('🎲', '5 questões sorteadas do banco de ${_allQuestions.length} perguntas'),
+                const SizedBox(height: 10.0),
+                _buildBulletInfo('🔄', 'Alternativas A, B, C, D embaralhadas a cada tentativa'),
+                const SizedBox(height: 10.0),
+                _buildBulletInfo('📊', 'Explicações teóricas detalhadas e registro no histórico'),
+              ],
+            ),
+          ),
+          const SizedBox(height: 30.0),
+
+          // Start Button
+          SizedBox(
+            width: double.infinity,
+            height: 52.0,
+            child: ElevatedButton(
+              onPressed: _startQuiz,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
+                elevation: 2.0,
+              ),
+              child: Text(
+                'Iniciar Quiz (${_selectedCategory == 'Todos' ? 'Misto' : _selectedCategory})',
+                style: theme.titleSmall.override(
+                      fontFamily: theme.titleSmallFamily,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -278,6 +401,7 @@ class _QuizWidgetState extends State<QuizWidget> {
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   fontWeight: FontWeight.w500,
+                  fontSize: 12.5,
                 ),
           ),
         ),
@@ -290,120 +414,129 @@ class _QuizWidgetState extends State<QuizWidget> {
     if (_questions.isEmpty) return const SizedBox();
 
     final currentQuestion = _questions[_currentIndex];
-    final String questionText = currentQuestion['question'];
-    final String category = currentQuestion['category'];
-    final String illustrationType = currentQuestion['illustration_type'];
-    final List<dynamic> options = currentQuestion['options'];
-    final int correctIndex = currentQuestion['correct_index'];
-    final String explanation = currentQuestion['explanation'];
+    final String questionText = currentQuestion['question'] as String? ?? '';
+    final String category = currentQuestion['category'] as String? ?? 'GERAL';
+    final String illustrationType = currentQuestion['illustration_type'] as String? ?? '';
+    final List<dynamic> options = currentQuestion['options'] as List<dynamic>? ?? [];
+    final int correctIndex = currentQuestion['correct_index'] as int? ?? 0;
+    final String explanation = currentQuestion['explanation'] as String? ?? '';
 
     final double progress = (_currentIndex + 1) / _questions.length;
 
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Progress indicators
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Questão ${_currentIndex + 1} de ${_questions.length}',
-                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                        fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                      ),
+      padding: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Progress indicators
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Questão ${_currentIndex + 1} de ${_questions.length}',
+                style: FlutterFlowTheme.of(context).bodySmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                    ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primary.withAlpha(25),
+                  borderRadius: BorderRadius.circular(6.0),
                 ),
-                Text(
+                child: Text(
                   category,
                   style: FlutterFlowTheme.of(context).bodySmall.override(
                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                         color: FlutterFlowTheme.of(context).primary,
                         fontWeight: FontWeight.bold,
+                        fontSize: 10.5,
                       ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10.0),
+
+          // Progress Bar
+          Container(
+            width: double.infinity,
+            height: 6.0,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).lineColor,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: ((progress * 100).round()),
+                  child: Container(
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primary,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: ((100 - (progress * 100)).round()),
+                  child: const SizedBox(),
                 ),
               ],
             ),
-            const SizedBox(height: 8.0),
-            // Progress Bar
+          ),
+          const SizedBox(height: 18.0),
+
+          // Question Prompt
+          Text(
+            questionText,
+            style: FlutterFlowTheme.of(context).bodyLarge.override(
+                  fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
+                  fontSize: 15.5,
+                  fontWeight: FontWeight.bold,
+                  lineHeight: 1.4,
+                ),
+          ),
+          const SizedBox(height: 14.0),
+
+          // Illustration Panel (quando houver tipo de ilustração)
+          if (illustrationType.isNotEmpty) ...[
             Container(
               width: double.infinity,
-              height: 6.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).lineColor,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: ((progress * 100).round()),
-                    child: Container(
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primary,
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: ((100 - (progress * 100)).round()),
-                    child: const SizedBox(),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20.0),
-
-            // Question Prompt
-            Text(
-              questionText,
-              style: FlutterFlowTheme.of(context).bodyLarge.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(height: 16.0),
-
-            // Illustration Panel
-            Container(
-              width: double.infinity,
-              height: 140.0,
+              height: 130.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(14.0),
                 border: Border.all(color: FlutterFlowTheme.of(context).lineColor),
               ),
               alignment: Alignment.center,
               child: QuizIllustration(type: illustrationType),
             ),
-            const SizedBox(height: 20.0),
-
-            // Options List
-            Column(
-              children: List.generate(options.length, (idx) {
-                final String text = options[idx];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
-                  child: _buildOptionButton(
-                    index: idx,
-                    text: text,
-                    correctIndex: correctIndex,
-                  ),
-                );
-              }),
-            ),
-
-            // Feedback Panel (shows up after answering)
-            if (_isAnswered) ...[
-              const SizedBox(height: 8.0),
-              _buildFeedbackPanel(correctIndex, explanation),
-            ],
-            const SizedBox(height: 40.0),
+            const SizedBox(height: 16.0),
           ],
-        ),
+
+          // Options List
+          Column(
+            children: List.generate(options.length, (idx) {
+              final String text = options[idx] as String;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: _buildOptionButton(
+                  index: idx,
+                  text: text,
+                  correctIndex: correctIndex,
+                ),
+              );
+            }),
+          ),
+
+          // Feedback Panel (shows up after answering)
+          if (_isAnswered) ...[
+            const SizedBox(height: 8.0),
+            _buildFeedbackPanel(correctIndex, explanation),
+          ],
+        ],
       ),
     );
   }
@@ -436,7 +569,6 @@ class _QuizWidgetState extends State<QuizWidget> {
         textColor = FlutterFlowTheme.of(context).secondaryText;
       }
     } else {
-      // Efeitos de Hover/Seleção visual pré-resposta
       if (_selectedOptionIndex == index) {
         borderColor = FlutterFlowTheme.of(context).primary;
       }
@@ -452,7 +584,7 @@ class _QuizWidgetState extends State<QuizWidget> {
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(color: borderColor, width: _selectedOptionIndex == index || (_isAnswered && index == correctIndex) ? 1.8 : 1.0),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 13.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -463,6 +595,7 @@ class _QuizWidgetState extends State<QuizWidget> {
                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: textColor,
                       fontWeight: FontWeight.w500,
+                      fontSize: 13.0,
                     ),
               ),
             ),
@@ -521,7 +654,7 @@ class _QuizWidgetState extends State<QuizWidget> {
           // Botão Próxima
           SizedBox(
             width: double.infinity,
-            height: 45.0,
+            height: 46.0,
             child: ElevatedButton(
               onPressed: _nextQuestion,
               style: ElevatedButton.styleFrom(
@@ -543,175 +676,187 @@ class _QuizWidgetState extends State<QuizWidget> {
 
   // --- TELA 3: RESULTADOS ---
   Widget _buildResultsScreen() {
+    final theme = FlutterFlowTheme.of(context);
+
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 30.0),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primary.withAlpha(20),
-                shape: BoxShape.circle,
-                border: Border.all(color: FlutterFlowTheme.of(context).primary.withAlpha(50), width: 2),
-              ),
-              alignment: Alignment.center,
-              child: const Text(
-                '🎯',
-                style: TextStyle(fontSize: 48.0),
-              ),
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 20.0),
+          Container(
+            width: 90.0,
+            height: 90.0,
+            decoration: BoxDecoration(
+              color: theme.primary.withAlpha(20),
+              shape: BoxShape.circle,
+              border: Border.all(color: theme.primary.withAlpha(50), width: 2),
             ),
-            const SizedBox(height: 20.0),
-            Text(
-              'Desempenho Final',
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
-                    fontWeight: FontWeight.bold,
-                  ),
+            alignment: Alignment.center,
+            child: const Text(
+              '🎯',
+              style: TextStyle(fontSize: 44.0),
             ),
-            const SizedBox(height: 4.0),
-            Text(
-              'Você concluiu o teste de Price Action!',
-              style: FlutterFlowTheme.of(context).bodySmall.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                  ),
-            ),
-            const SizedBox(height: 24.0),
-
-            // Score Row
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(12.0),
-                      border: Border.all(color: FlutterFlowTheme.of(context).lineColor),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          '$_score / ${_questions.length}',
-                          style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                color: FlutterFlowTheme.of(context).primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        Text(
-                          'ACERTOS',
-                          style: FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                      ],
-                    ),
-                  ),
+          ),
+          const SizedBox(height: 16.0),
+          Text(
+            'Desempenho da Rodada',
+            style: theme.headlineSmall.override(
+                  fontFamily: theme.headlineSmallFamily,
+                  fontWeight: FontWeight.bold,
                 ),
-                const SizedBox(width: 16.0),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(12.0),
-                      border: Border.all(color: FlutterFlowTheme.of(context).lineColor),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          _getClassification(),
-                          style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text(
-                          'CLASSIFICAÇÃO',
-                          style: FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                      ],
-                    ),
-                  ),
+          ),
+          const SizedBox(height: 4.0),
+          Text(
+            'Tema: ${_selectedCategory == 'Todos' ? 'Misto Geral' : _selectedCategory}',
+            style: theme.bodySmall.override(
+                  fontFamily: theme.bodySmallFamily,
+                  color: theme.secondaryText,
                 ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
+          ),
+          const SizedBox(height: 20.0),
 
-            // Description
-            Text(
-              _getClassificationDescription(),
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodySmall.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    fontSize: 12.0,
-                    lineHeight: 1.5,
-                  ),
-            ),
-            const SizedBox(height: 36.0),
-
-            // Actions Buttons
-            SizedBox(
-              width: double.infinity,
-              height: 50.0,
-              child: ElevatedButton(
-                onPressed: _startQuiz,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: FlutterFlowTheme.of(context).primary,
-                  shape: RoundedRectangleBorder(
+          // Score Row
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: theme.lineColor),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        '$_score / ${_questions.length}',
+                        style: theme.headlineSmall.override(
+                              fontFamily: theme.headlineSmallFamily,
+                              color: theme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(
+                        'ACERTOS',
+                        style: theme.bodySmall.override(
+                              fontFamily: theme.bodySmallFamily,
+                              color: theme.secondaryText,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Text(
-                  'Refazer Quiz',
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
               ),
-            ),
-            const SizedBox(height: 12.0),
-            SizedBox(
-              width: double.infinity,
-              height: 45.0,
-              child: OutlinedButton(
-                onPressed: () => context.pop(),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: FlutterFlowTheme.of(context).lineColor),
-                  shape: RoundedRectangleBorder(
+              const SizedBox(width: 14.0),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: theme.lineColor),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        _getClassification(),
+                        style: theme.headlineSmall.override(
+                              fontFamily: theme.headlineSmallFamily,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(
+                        'CLASSIFICAÇÃO',
+                        style: theme.bodySmall.override(
+                              fontFamily: theme.bodySmallFamily,
+                              color: theme.secondaryText,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Text(
-                  'Voltar ao Início',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                      ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 18.0),
+
+          // Description
+          Text(
+            _getClassificationDescription(),
+            textAlign: TextAlign.center,
+            style: theme.bodySmall.override(
+                  fontFamily: theme.bodySmallFamily,
+                  color: theme.secondaryText,
+                  fontSize: 12.0,
+                  lineHeight: 1.5,
+                ),
+          ),
+          const SizedBox(height: 30.0),
+
+          // Action Buttons
+          SizedBox(
+            width: double.infinity,
+            height: 50.0,
+            child: ElevatedButton(
+              onPressed: _startQuiz,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
               ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.casino_rounded, color: Colors.white, size: 20),
+                  SizedBox(width: 8),
+                  Text(
+                    'Novo Quiz Aleatório',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 12.0),
+          SizedBox(
+            width: double.infinity,
+            height: 46.0,
+            child: OutlinedButton(
+              onPressed: () {
+                setState(() {
+                  _screenState = 'intro';
+                });
+              },
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: theme.lineColor),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+              child: Text(
+                'Trocar Categoria / Temas',
+                style: theme.bodyMedium.override(
+                      fontFamily: theme.bodyMediumFamily,
+                      color: theme.primaryText,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

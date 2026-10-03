@@ -471,7 +471,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                   // CARD PROMOCIONAL TRADING PLAN
                   const SizedBox(height: 12.0),
                   const TradingPlanPromoBanner(
-                    variant: PromoVariant.planilhas,
+                    variant: PromoVariant.auto,
                   ),
                   const SizedBox(height: 50.0),
                 ],

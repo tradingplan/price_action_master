@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/components/safe_image_widget.dart';
+import '/components/trading_plan_promo_banner.dart';
 import '/backend/schema/candlesticks_record.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -207,8 +208,17 @@ class _VelasJaponesasWidgetState extends State<VelasJaponesasWidget> {
                         )
                       : ListView.builder(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                          itemCount: displayedCandles.length,
+                          itemCount: displayedCandles.length + 1,
                           itemBuilder: (context, index) {
+                            if (index == displayedCandles.length) {
+                              return const Padding(
+                                padding: EdgeInsets.only(top: 4.0, bottom: 50.0),
+                                child: TradingPlanPromoBanner(
+                                  variant: PromoVariant.auto,
+                                ),
+                              );
+                            }
+
                             final candle = displayedCandles[index];
                             final patternColor = _getPatternColor(context, candle.pattern);
 

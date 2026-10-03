@@ -151,9 +151,12 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
             ),
             elevation: 0.5,
           ),
-          body: TabBarView(
-            children: [
-              // 1. Aba Lição
+          body: SafeArea(
+            top: false,
+            bottom: true,
+            child: TabBarView(
+              children: [
+                // 1. Aba Lição
               _module.lessons.isNotEmpty
                   ? LessonRenderer(lesson: _module.lessons.first)
                   : const Center(child: Text('Nenhuma lição disponível.')),
@@ -213,6 +216,7 @@ class _ModulePanelWidgetState extends State<ModulePanelWidget> {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

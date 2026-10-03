@@ -2,6 +2,8 @@
 
 Instruções para o **Asset Builder** projetar ilustrações nativas em Canvas sem imagens externas.
 
+> 📖 **Veja também:** Para o guia detalhado de imagens rasterizadas (.png) e vetores (.svg) nos catálogos, consulte [GUIA_IMAGENS_E_SVGS.md](file:///d:/projects/tradingplan/price_action_master/docs/04-assets/GUIA_IMAGENS_E_SVGS.md).
+
 ---
 
 ## 1. Coordenadas Relativas (Proporcionais)

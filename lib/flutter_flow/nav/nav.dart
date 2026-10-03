@@ -30,40 +30,32 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
+Widget _buildSplashScreen() {
+  return Scaffold(
+    backgroundColor: Colors.white,
+    body: SizedBox.expand(
+      child: Image.asset(
+        'assets/images/splash-1280x1920-xxxhdpi.png',
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
+}
+
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
-          ? Builder(
-              builder: (context) => isWeb
-                  ? Container()
-                  : Container(
-                      color: Colors.transparent,
-                      child: Image.asset(
-                        'assets/images/splash-1280x1920-xxxhdpi.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-            )
+          ? _buildSplashScreen()
           : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.showSplashImage
-              ? Builder(
-                  builder: (context) => isWeb
-                      ? Container()
-                      : Container(
-                          color: Colors.transparent,
-                          child: Image.asset(
-                            'assets/images/splash-1280x1920-xxxhdpi.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                )
+              ? _buildSplashScreen()
               : NavBarPage(),
         ),
         FFRoute(

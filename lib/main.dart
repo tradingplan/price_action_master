@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -15,6 +16,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
 
   await initFirebase();
   await LocalDataManager.init();
@@ -69,7 +79,7 @@ class _MyAppState extends State<MyApp> {
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
 
-    Future.delayed(Duration(milliseconds: 1000),
+    Future.delayed(const Duration(milliseconds: 2000),
         () => safeSetState(() => _appStateNotifier.stopShowingSplashImage()));
   }
 
@@ -151,58 +161,79 @@ class _NavBarPageState extends State<NavBarPage> {
     return Scaffold(
       resizeToAvoidBottomInset: !widget.disableResizeToAvoidBottomInset,
       body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: GNav(
-        selectedIndex: currentIndex >= 0 ? currentIndex : 0,
-        onTabChange: (i) => safeSetState(() {
-          _currentPage = null;
-          _currentPageName = tabs.keys.toList()[i];
-        }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        color: Color(0x8A000000),
-        activeColor: FlutterFlowTheme.of(context).secondaryBackground,
-        tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
-        tabBorderRadius: 8.0,
-        tabMargin: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-        gap: 4.0,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        duration: Duration(milliseconds: 350),
-        haptic: false,
-        tabs: [
-          GButton(
-            icon: currentIndex == 0 ? Icons.home_rounded : Icons.home_outlined,
-            text: 'Home',
-            iconSize: 22.0,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).primaryBackground,
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x0D000000),
+              blurRadius: 4.0,
+              offset: Offset(0, -2),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          top: false,
+          left: false,
+          right: false,
+          bottom: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+            child: GNav(
+              selectedIndex: currentIndex >= 0 ? currentIndex : 0,
+              onTabChange: (i) => safeSetState(() {
+                _currentPage = null;
+                _currentPageName = tabs.keys.toList()[i];
+              }),
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              color: const Color(0x8A000000),
+              activeColor: FlutterFlowTheme.of(context).secondaryBackground,
+              tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
+              tabBorderRadius: 8.0,
+              tabMargin: const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              gap: 4.0,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              duration: const Duration(milliseconds: 350),
+              haptic: false,
+              tabs: [
+                GButton(
+                  icon: currentIndex == 0 ? Icons.home_rounded : Icons.home_outlined,
+                  text: 'Home',
+                  iconSize: 22.0,
+                ),
+                GButton(
+                  icon: currentIndex == 1
+                      ? Icons.calculate_rounded
+                      : Icons.calculate_outlined,
+                  text: 'Calculadoras',
+                  iconSize: 22.0,
+                ),
+                GButton(
+                  icon: currentIndex == 2
+                      ? Icons.quiz_rounded
+                      : Icons.quiz_outlined,
+                  text: 'Quiz',
+                  iconSize: 22.0,
+                ),
+                GButton(
+                  icon: currentIndex == 3
+                      ? Icons.candlestick_chart_rounded
+                      : Icons.candlestick_chart_outlined,
+                  text: 'Candlesticks',
+                  iconSize: 22.0,
+                ),
+                GButton(
+                  icon: currentIndex == 4
+                      ? Icons.settings_rounded
+                      : Icons.settings_outlined,
+                  text: 'Ajustes',
+                  iconSize: 22.0,
+                ),
+              ],
+            ),
           ),
-          GButton(
-            icon: currentIndex == 1
-                ? Icons.calculate_rounded
-                : Icons.calculate_outlined,
-            text: 'Calculadoras',
-            iconSize: 22.0,
-          ),
-          GButton(
-            icon: currentIndex == 2
-                ? Icons.quiz_rounded
-                : Icons.quiz_outlined,
-            text: 'Quiz',
-            iconSize: 22.0,
-          ),
-          GButton(
-            icon: currentIndex == 3
-                ? Icons.candlestick_chart_rounded
-                : Icons.candlestick_chart_outlined,
-            text: 'Candlesticks',
-            iconSize: 22.0,
-          ),
-          GButton(
-            icon: currentIndex == 4
-                ? Icons.settings_rounded
-                : Icons.settings_outlined,
-            text: 'Ajustes',
-            iconSize: 22.0,
-          ),
-        ],
+        ),
       ),
     );
   }

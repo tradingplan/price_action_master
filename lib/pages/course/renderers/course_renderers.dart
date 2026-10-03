@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:price_action_master/backend/schema/platform_course_models.dart';
 import '../../../flutter_flow/flutter_flow_theme.dart';
 import '../../../components/trading_plan_promo_banner.dart';
+import '../../../components/safe_image_widget.dart';
 import 'vector_painter.dart';
 import '../../smc/detalhe_smc_widget.dart';
 import '../../elliott/detalhe_elliott_widget.dart';
@@ -16,11 +17,10 @@ class LessonRenderer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
             Text(
               lesson.title,
               style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -33,9 +33,8 @@ class LessonRenderer extends StatelessWidget {
             ..._parseMarkdownContent(context, lesson.content),
           ],
         ),
-      ),
-    );
-  }
+      );
+    }
 
   List<Widget> _parseMarkdownContent(BuildContext context, String rawText) {
     final theme = FlutterFlowTheme.of(context);
@@ -361,11 +360,10 @@ class ExampleRenderer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
             Text(
               example.title,
               style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -398,12 +396,22 @@ class ExampleRenderer extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
+      );
+    }
 
   Widget _buildChartWidget(BuildContext context) {
-    // 1. Prioridade para Vector Canvas Dinâmico
+    // 1. Suporte a Imagem / SVG (.svg, .png, .jpg ou icon)
+    if (example.image != null && example.image!.isNotEmpty) {
+      return SafeImageWidget(
+        imageOrIcon: example.image!,
+        width: double.infinity,
+        height: 180.0,
+        fit: BoxFit.contain,
+        backgroundColor: Colors.transparent,
+      );
+    }
+
+    // 2. Prioridade para Vector Canvas Dinâmico
     if (example.vectorCanvas != null) {
       return CustomPaint(
         size: Size(example.vectorCanvas!.width, example.vectorCanvas!.height),
@@ -462,11 +470,10 @@ class _ExerciseRendererState extends State<ExerciseRenderer> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
             Text(
               'Prática Recomendada',
               style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -528,8 +535,7 @@ class _ExerciseRendererState extends State<ExerciseRenderer> {
             }),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -556,11 +562,10 @@ class _QuizRendererState extends State<QuizRenderer> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
             Text(
               'Pergunta de Fixação',
               style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -673,8 +678,7 @@ class _QuizRendererState extends State<QuizRenderer> {
             ],
           ],
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -698,11 +702,10 @@ class ChallengeRenderer extends StatelessWidget {
     final bool isReadyToComplete = isExerciseDone && isQuizDone;
 
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 90.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
             Text(
               challenge.title,
               style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -821,10 +824,8 @@ class ChallengeRenderer extends StatelessWidget {
             const TradingPlanPromoBanner(
               variant: PromoVariant.auto,
             ),
-            const SizedBox(height: 40.0),
           ],
         ),
-      ),
-    );
-  }
+      );
+    }
 }

@@ -24,7 +24,7 @@ class PromoContent {
   });
 }
 
-class TradingPlanPromoBanner extends StatelessWidget {
+class TradingPlanPromoBanner extends StatefulWidget {
   final PromoVariant variant;
   final String url;
   final EdgeInsetsGeometry? margin;
@@ -35,6 +35,13 @@ class TradingPlanPromoBanner extends StatelessWidget {
     this.url = 'https://www.tradingplan.com.br',
     this.margin,
   });
+
+  @override
+  State<TradingPlanPromoBanner> createState() => _TradingPlanPromoBannerState();
+}
+
+class _TradingPlanPromoBannerState extends State<TradingPlanPromoBanner> {
+  late PromoContent _promo;
 
   static const List<PromoContent> _allPromos = [
     PromoContent(
@@ -57,8 +64,14 @@ class TradingPlanPromoBanner extends StatelessWidget {
     ),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    _promo = _getSelectedPromo();
+  }
+
   PromoContent _getSelectedPromo() {
-    switch (variant) {
+    switch (widget.variant) {
       case PromoVariant.planilhas:
         return _allPromos[0];
       case PromoVariant.comunidade:
@@ -73,13 +86,11 @@ class TradingPlanPromoBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final promo = _getSelectedPromo();
-
     return Padding(
-      padding: margin ?? EdgeInsets.zero,
+      padding: widget.margin ?? EdgeInsets.zero,
       child: InkWell(
         onTap: () async {
-          final uri = Uri.parse(url);
+          final uri = Uri.parse(widget.url);
           if (await canLaunchUrl(uri)) {
             await launchUrl(uri, mode: LaunchMode.externalApplication);
           }
@@ -121,7 +132,7 @@ class TradingPlanPromoBanner extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: Icon(
-                  promo.icon,
+                  _promo.icon,
                   color: FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
@@ -137,7 +148,7 @@ class TradingPlanPromoBanner extends StatelessWidget {
                       runSpacing: 2.0,
                       children: [
                         Text(
-                          promo.title,
+                          _promo.title,
                           style: FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                 fontWeight: FontWeight.bold,
@@ -151,7 +162,7 @@ class TradingPlanPromoBanner extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4.0),
                           ),
                           child: Text(
-                            promo.tag,
+                            _promo.tag,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 8.5,
@@ -163,7 +174,7 @@ class TradingPlanPromoBanner extends StatelessWidget {
                     ),
                     const SizedBox(height: 3.0),
                     Text(
-                      promo.description,
+                      _promo.description,
                       style: FlutterFlowTheme.of(context).bodySmall.override(
                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,

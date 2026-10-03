@@ -29,6 +29,48 @@
   },
   {
     "id": "q3",
+    "category": "CANDLESTICKS",
+    "question": "Em uma zona de forte resistência no topo de uma tendência de alta, qual padrão sinaliza rejeição compradora?",
+    "illustration_type": "hammer",
+    "options": [
+      "Estrela Cadente (Shooting Star)",
+      "Martelo Invertido em Suporte",
+      "Marubozu de Alta",
+      "Três Soldados Brancos"
+    ],
+    "correct_index": 0,
+    "explanation": "A Estrela Cadente (Shooting Star) no topo possui longa sombra superior e pequeno corpo inferior, demonstrando que os compradores tentaram romper a resistência mas foram repelidos pelos vendedores."
+  },
+  {
+    "id": "q4",
+    "category": "CANDLESTICKS",
+    "question": "O que representa o candle 'Doji' no contexto do Price Action?",
+    "illustration_type": "",
+    "options": [
+      "Força direcional absoluta dos compradores",
+      "Equilíbrio temporário e indecisão entre compradores e vendedores",
+      "Garantia imediata de reversão na próxima barra",
+      "Falta total de liquidez da corretora"
+    ],
+    "correct_index": 1,
+    "explanation": "O Doji possui preço de abertura e fechamento idênticos ou quase idênticos, simbolizando indecisão ou perda de momento da tendência prévia."
+  },
+  {
+    "id": "q5",
+    "category": "CANDLESTICKS",
+    "question": "Qual é a principal característica do padrão 'Três Soldados Brancos' (Three White Soldiers)?",
+    "illustration_type": "",
+    "options": [
+      "Três velas vermelhas com fechamentos em mínimas",
+      "Três velas verdes consecutivas com corpos longos e sombras curtas em fundo",
+      "Três velas doji em consolidação",
+      "Uma vela verde engolida por duas vermelhas"
+    ],
+    "correct_index": 1,
+    "explanation": "Os Três Soldados Brancos são formados por três velas verdes fortes em sequência após uma queda, demonstrando domínio consistente da pressão compradora."
+  },
+  {
+    "id": "q6",
     "category": "SMART MONEY CONCEPTS (SMC)",
     "question": "O que representa o conceito de CHoCH (Change of Character) no SMC?",
     "illustration_type": "choch",
@@ -42,9 +84,65 @@
     "explanation": "O CHoCH (Mudança de Caráter) ocorre quando o preço quebra o último fundo (em tendência de alta) ou topo (em tendência de baixa), sinalizando a reversão do fluxo de ordens institucional."
   },
   {
-    "id": "q4",
+    "id": "q7",
+    "category": "SMART MONEY CONCEPTS (SMC)",
+    "question": "Qual a diferença essencial entre BOS (Break of Structure) e CHoCH no SMC?",
+    "illustration_type": "bos",
+    "options": [
+      "BOS confirma a continuação da tendência atual, enquanto CHoCH sinaliza a reversão",
+      "BOS só acontece em gráficos de 1 minuto e CHoCH no diário",
+      "BOS é um padrão de candle e CHoCH é um indicador de volume",
+      "Não há diferença técnica entre os dois conceitos"
+    ],
+    "correct_index": 0,
+    "explanation": "O BOS (Break of Structure) ocorre quando o preço rompe topos em tendência de alta ou fundos em tendência de baixa, confirmando a continuidade do fluxo estrutural."
+  },
+  {
+    "id": "q8",
+    "category": "SMART MONEY CONCEPTS (SMC)",
+    "question": "O que é um 'Order Block' (OB) de Demanda no Smart Money Concepts?",
+    "illustration_type": "order_block",
+    "options": [
+      "A última vela de baixa antes do movimento impulsivo de alta que quebrou estrutura",
+      "Um indicador de médias móveis exponenciais",
+      "Uma ordem stop loss colocada pelo trader no gráfico",
+      "Uma linha horizontal traçada em qualquer topo do dia"
+    ],
+    "correct_index": 0,
+    "explanation": "O Order Block de Demanda representa a última vela vendedora antes da forte injeção de liquidez compradora institucional que gerou o rompimento estrutural."
+  },
+  {
+    "id": "q9",
+    "category": "SMART MONEY CONCEPTS (SMC)",
+    "question": "O que define um Fair Value Gap (FVG) ou Imbalance no gráfico?",
+    "illustration_type": "fvg",
+    "options": [
+      "Um padrão de três velas onde há um espaço vazio entre a máxima da vela 1 e a mínima da vela 3",
+      "Uma linha de suporte que nunca foi tocada pelo preço",
+      "O cruzamento de duas médias de 20 e 200 períodos",
+      "O fechamento do mercado às 18h"
+    ],
+    "correct_index": 0,
+    "explanation": "O FVG é uma ineficiência de preço gerada por movimento agressivo unilateral onde as sombras das velas laterais não se sobrepõem, deixando uma área que tende a ser retestada."
+  },
+  {
+    "id": "q10",
+    "category": "SMART MONEY CONCEPTS (SMC)",
+    "question": "O que é um 'Liquidity Sweep' (Caça à Liquidez / Inducement)?",
+    "illustration_type": "",
+    "options": [
+      "Quando o preço viola brevemente um topo/fundo para acionar stops de varejo e reverte logo em seguida",
+      "Quando o mercado fecha por feriado bancário",
+      "Uma compra no fundo sem stop loss",
+      "Uma ordem limitada enviada fora do horário"
+    ],
+    "correct_index": 0,
+    "explanation": "Institucionais utilizam a liquidez acumulada acima de topos duplos ou abaixo de fundos para preencher suas ordens gigantescas, gerando falsos rompimentos conhecidos como Sweeps."
+  },
+  {
+    "id": "q11",
     "category": "ONDAS DE ELLIOTT",
-    "question": "Segundo as Ondas de Elliott, qual destas ondas representa uma movimentação Corretiva?",
+    "question": "Segundo a teoria clássica de Elliott, qual destas ondas representa um ciclo Corretivo?",
     "illustration_type": "elliott",
     "options": [
       "Onda 1",
@@ -53,10 +151,52 @@
       "Onda 5"
     ],
     "correct_index": 2,
-    "explanation": "As ondas de Elliot são compostas por 5 ondas de impulso (1, 2, 3, 4, 5) a favor da tendência e 3 ondas de correção (A, B, C) contra a tendência principal. A Onda B é de correção."
+    "explanation": "As ondas de Elliott são divididas em 5 ondas de impulso (1, 2, 3, 4, 5) a favor da tendência e 3 ondas de correção (A, B, C) contra a tendência. A Onda B é corretiva."
   },
   {
-    "id": "q5",
+    "id": "q12",
+    "category": "ONDAS DE ELLIOTT",
+    "question": "Qual é a Regra de Ouro inegociável sobre a Onda 3 de Elliott?",
+    "illustration_type": "",
+    "options": [
+      "A Onda 3 nunca pode ser a mais curta entre as ondas impulsivas (1, 3 e 5)",
+      "A Onda 3 deve ter exatamente o mesmo tamanho da Onda 1",
+      "A Onda 3 nunca pode ter volume alto",
+      "A Onda 3 só ocorre em tendências de baixa"
+    ],
+    "correct_index": 0,
+    "explanation": "A regra cardeal de Ralph Nelson Elliott afirma que a Onda 3 nunca pode ser a menor das ondas de impulso e é frequentemente a mais longa e poderosa."
+  },
+  {
+    "id": "q13",
+    "category": "ONDAS DE ELLIOTT",
+    "question": "Qual é a Regra de Ouro sobre a Onda 4 no ciclo impulsivo de Elliott?",
+    "illustration_type": "",
+    "options": [
+      "A Onda 4 não pode entrar no território de preço da Onda 1 (exceto em diagonais)",
+      "A Onda 4 deve sempre romper a mínima da Onda 2",
+      "A Onda 4 precisa durar mais de 30 dias",
+      "A Onda 4 é sempre a maior onda do ciclo"
+    ],
+    "correct_index": 0,
+    "explanation": "Em uma onda de impulso clássica, a retração da Onda 4 não pode cruzar ou sobrepor o topo da Onda 1."
+  },
+  {
+    "id": "q14",
+    "category": "ONDAS DE ELLIOTT",
+    "question": "Qual relação de Fibonacci é o alvo clássico mais comum para a projeção da Onda 3?",
+    "illustration_type": "",
+    "options": [
+      "161.8% do comprimento da Onda 1",
+      "38.2% do comprimento da Onda 1",
+      "50.0% do comprimento da Onda 1",
+      "23.6% do comprimento da Onda 1"
+    ],
+    "correct_index": 0,
+    "explanation": "A extensão de Fibonacci de 161.8% da Onda 1 a partir do fundo da Onda 2 é a projeção estatisticamente mais comum e respeitada para a Onda 3."
+  },
+  {
+    "id": "q15",
     "category": "FIGURAS GRÁFICAS",
     "question": "Qual das seguintes figuras gráficas é um padrão clássico de reversão de alta?",
     "illustration_type": "oco_inverted",
@@ -68,5 +208,145 @@
     ],
     "correct_index": 2,
     "explanation": "O Ombro-Cabeça-Ombro Invertido (OCOI) ocorre no final de uma tendência de baixa, onde o preço falha em continuar caindo (formando ombros mais altos que a cabeça central) e reverte em alta."
+  },
+  {
+    "id": "q16",
+    "category": "FIGURAS GRÁFICAS",
+    "question": "O que indica a figura gráfica 'Bandeira de Alta' (Bull Flag)?",
+    "illustration_type": "",
+    "options": [
+      "Padrão de continuação de tendência formado por mastro impulsivo e canal corretivo estreito",
+      "Reversão imediata para tendência de baixa",
+      "Uma consolidação sem direção de médio prazo",
+      "Uma falha de suporte em topo duplo"
+    ],
+    "correct_index": 0,
+    "explanation": "A Bandeira de Alta é um padrão de continuação onde o mastro representa a força compradora e a bandeira representa a realização de lucros saudável antes do rompimento."
+  },
+  {
+    "id": "q17",
+    "category": "FIGURAS GRÁFICAS",
+    "question": "Como se projeta o alvo clássico de ganho em um Topo Duplo rompido?",
+    "illustration_type": "",
+    "options": [
+      "Projeta-se a altura entre os topos e a Linha de Pescoço (Neckline) para baixo a partir do ponto de rompimento",
+      "Um valor fixo de 100 pontos",
+      "Até o preço atingir zero",
+      "A metade da vela de rompimento"
+    ],
+    "correct_index": 0,
+    "explanation": "A projeção técnica clássica mede a distância vertical dos topos até a linha de pescoço e projeta essa mesma amplitude para baixo a partir do rompimento."
+  },
+  {
+    "id": "q18",
+    "category": "MÉTODO WYCKOFF",
+    "question": "No Método Wyckoff, o que é o 'Spring' na Fase C de Acumulação?",
+    "illustration_type": "",
+    "options": [
+      "Um falso rompimento do suporte do range que testa a oferta remanescente e captura liquidez antes da alta",
+      "Uma quebra definitiva para baixo que inicia um bear market",
+      "Um gap de abertura no primeiro dia do mês",
+      "Uma ordem automática de compra a mercado"
+    ],
+    "correct_index": 0,
+    "explanation": "O Spring é a 'mola' de Wyckoff: o preço penetra temporariamente abaixo do suporte para absorver os stops do varejo antes de disparar na tendência de alta (Markup)."
+  },
+  {
+    "id": "q19",
+    "category": "MÉTODO WYCKOFF",
+    "question": "O que representa o 'POC' (Point of Control) no Volume Profile?",
+    "illustration_type": "",
+    "options": [
+      "O nível de preço exato onde ocorreu o maior volume financeiro negociado no período",
+      "O preço médio da abertura do dia",
+      "A máxima absoluta atingida no gráfico anual",
+      "Uma linha imaginária traçada pelo trader"
+    ],
+    "correct_index": 0,
+    "explanation": "A POC é o nível de preço com maior concentração de contratos negociados pelos grandes players, funcionando como um poderoso ímã e colchão de suporte/resistência institucional."
+  },
+  {
+    "id": "q20",
+    "category": "MÉTODO WYCKOFF",
+    "question": "Segundo a Lei de Esforço vs. Resultado de Wyckoff, o que significa uma barra com volume ultra alto mas corpo minúsculo?",
+    "illustration_type": "",
+    "options": [
+      "Divergência e provável absorção de ordens pelo lado oposto",
+      "Continuação forte e sem obstáculos do movimento",
+      "Erro no feed de dados da corretora",
+      "Que o mercado está sem participantes"
+    ],
+    "correct_index": 0,
+    "explanation": "Se houve um esforço gigante (volume enorme) sem resultado no preço (barra pequena), significa que grandes ordens do lado oposto absorveram todo o fluxo, antecipando uma reversão."
+  },
+  {
+    "id": "q21",
+    "category": "ANÁLISE TÉCNICA",
+    "question": "O que estabelece o 'Princípio da Polaridade' na Análise Técnica clássica?",
+    "illustration_type": "",
+    "options": [
+      "Um suporte rompido tende a se transformar em uma nova resistência (e vice-versa)",
+      "O mercado só se move nos polos magnéticos da Terra",
+      "Velas verdes só podem ser seguidas de velas vermelhas",
+      "O preço nunca respeita zonas passadas"
+    ],
+    "correct_index": 0,
+    "explanation": "Pelo Princípio da Polaridade, quando um nível de suporte é rompido com convicção, a memória de preço dos participantes faz com que ele passe a atuar como resistência em futuros retestes."
+  },
+  {
+    "id": "q22",
+    "category": "ANÁLISE TÉCNICA",
+    "question": "Qual é a regra prática para traçar e validar uma Linha de Tendência de Alta (LTA)?",
+    "illustration_type": "",
+    "options": [
+      "Conectar no mínimo dois fundos ascendentes, sendo confirmada no terceiro toque",
+      "Conectar dois topos descendentes",
+      "Ligar a abertura da primeira vela do ano ao fechamento",
+      "Traçar uma linha reta horizontal no meio do gráfico"
+    ],
+    "correct_index": 0,
+    "explanation": "Dois fundos ascendentes definem uma LTA provisória. O terceiro toque com reação compradora confirma e fortalece a linha como guia dinâmico da tendência."
+  },
+  {
+    "id": "q23",
+    "category": "GESTÃO DE RISCO",
+    "question": "Por que a relação Risco:Retorno (Payoff) mínima recomendada é de 2:1?",
+    "illustration_type": "",
+    "options": [
+      "Permite ser lucrativo no longo prazo mesmo acertando menos de 40% das operações",
+      "Porque a corretora exige essa relação por contrato",
+      "Para pagar menos imposto de renda sobre os ganhos",
+      "Para que o trade encerre obrigatoriamente no mesmo dia"
+    ],
+    "correct_index": 0,
+    "explanation": "Com um Payoff de 2:1 (ganhar 2 para arriscar 1), você precisa de apenas 34% de taxa de acerto para empatar e se torna altamente lucrativo com 40-50% de acertos."
+  },
+  {
+    "id": "q24",
+    "category": "GESTÃO DE RISCO",
+    "question": "Onde deve ser posicionado o Stop Loss técnico de acordo com as regras de Price Action?",
+    "illustration_type": "",
+    "options": [
+      "Alguns ticks além da extremidade estrutural da sombra do padrão de gatilho ou fundo/topo relevante",
+      "Em um valor aleatório de R$ 50,00 ou 10 pontos",
+      "Nunca se deve utilizar stop loss",
+      "No preço exato de abertura da posição"
+    ],
+    "correct_index": 0,
+    "explanation": "O stop técnico deve ficar onde a premissa analítica é comprovadamente invalidada, isto é, além da mínima do Martelo/fundo ou máxima da Estrela/topo."
+  },
+  {
+    "id": "q25",
+    "category": "GESTÃO DE RISCO",
+    "question": "Por que é fundamental esperar o fechamento do candle antes de executar uma entrada?",
+    "illustration_type": "",
+    "options": [
+      "Uma vela que parece um Martelo em formação pode fechar como uma barra cheia de baixa nos últimos segundos",
+      "Porque as corretoras cobram taxa extra antes do fechamento",
+      "Porque o spread do mercado zera no final do candle",
+      "Para dar tempo de ligar para a mesa de operações"
+    ],
+    "correct_index": 0,
+    "explanation": "Enquanto o cronômetro do candle está ativo, a formação é volátil. O padrão só existe tecnicamente quando a barra é encerrada e registrada no livro."
   }
 ]
