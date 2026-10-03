@@ -173,18 +173,15 @@ class _InicioWidgetState extends State<InicioWidget>
                 'Price Action Master',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).displaySmall.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).displaySmallFamily,
+                      fontFamily: 'ITCErasStd',
                       fontSize: 30.0,
                       letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.italic,
-                      useGoogleFonts:
-                          !FlutterFlowTheme.of(context).displaySmallIsCustom,
+                      fontWeight: FontWeight.w500,
+                      useGoogleFonts: false,
                     ),
               ),
               actions: [],
-              centerTitle: false,
+              centerTitle: true,
               elevation: 0.0,
             ),
             body: SafeArea(
