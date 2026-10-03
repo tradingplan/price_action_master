@@ -505,8 +505,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                       child: Row(
                         children: [
                           Container(
-                            width: 48.0,
-                            height: 48.0,
+                            width: 44.0,
+                            height: 44.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primary.withAlpha(30),
                               borderRadius: BorderRadius.circular(12.0),
@@ -514,15 +514,18 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                             child: Icon(
                               Icons.auto_graph_rounded,
                               color: FlutterFlowTheme.of(context).primary,
-                              size: 26.0,
+                              size: 24.0,
                             ),
                           ),
-                          const SizedBox(width: 14.0),
+                          const SizedBox(width: 12.0),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
+                                Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 6.0,
+                                  runSpacing: 2.0,
                                   children: [
                                     Text(
                                       'Planilhas & Diário de Trade',
@@ -531,9 +534,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
-                                    const SizedBox(width: 6.0),
                                     Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                                      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 1.5),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context).primary,
                                         borderRadius: BorderRadius.circular(4.0),
@@ -542,28 +544,29 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                         'GRÁTIS',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 9.0,
+                                          fontSize: 8.5,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 4.0),
+                                const SizedBox(height: 3.0),
                                 Text(
                                   'Acesse ferramentas avançadas de gestão e risco no portal tradingplan.com.br',
                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                         color: FlutterFlowTheme.of(context).secondaryText,
-                                        fontSize: 11.5,
+                                        fontSize: 11.0,
                                       ),
                                 ),
                               ],
                             ),
                           ),
+                          const SizedBox(width: 6.0),
                           Icon(
                             Icons.arrow_forward_ios_rounded,
-                            size: 16.0,
+                            size: 15.0,
                             color: FlutterFlowTheme.of(context).primary,
                           ),
                         ],
