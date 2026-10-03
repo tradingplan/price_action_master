@@ -7,30 +7,36 @@ appId: br.com.tradingplan.priceactionmaster
 - assertVisible: "Price Action Master"
 - takeScreenshot: screenshots/01_home_screen
 
-# 2. Navegação para Velas Japonesas / Catálogo
+# 2. Tela de Candlesticks
 - tapOn:
-    id: "nav_velas"
+    text: "Candlesticks"
     optional: true
-- tapOn: "Padrões de Candlestick"
+- assertVisible: "Candlesticks"
 - takeScreenshot: screenshots/02_candlesticks_atlas
 
-# 3. Navegação para Calculadoras de Mercado
+# 3. Tela de Calculadoras
 - tapOn:
-    id: "nav_calculadoras"
+    text: "Calculadoras"
     optional: true
-- tapOn: "Calculadoras"
+- assertVisible: "Calculadoras"
 - takeScreenshot: screenshots/03_calculadoras_multi_mercado
 
-# 4. Navegação para Desafios / Quizzes
+# 4. Tela de Quiz
 - tapOn:
-    id: "nav_desafios"
+    text: "Quiz"
     optional: true
-- tapOn: "Desafios"
+- assertVisible: "Quiz de Trading"
 - takeScreenshot: screenshots/04_desafios_quiz
 
-# 5. Navegação para Ajustes
+# 5. Tela de Ajustes
 - tapOn:
-    id: "nav_ajustes"
+    text: "Ajustes"
     optional: true
-- tapOn: "Ajustes"
+- assertVisible: "Ajustes"
 - takeScreenshot: screenshots/05_ajustes_configuracoes
+
+# 6. Retorna para Home
+- tapOn:
+    text: "Home"
+    optional: true
+- assertVisible: "Price Action Master"
