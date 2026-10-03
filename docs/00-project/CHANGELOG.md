@@ -2,6 +2,26 @@
 
 Histórico de atualizações arquiteturais e evolutivas da plataforma.
 
+## [1.5.0] - 2026-10-02
+### Adicionado
+*   **Calculadoras de Mercado & Filtros de Segmento:**
+    *   Filtros por categoria: `Todos`, `B3 🇧🇷`, `Mercado Americano 🇺🇸` e `Forex 💱`.
+    *   Contratos B3 completos com cálculo de ticks e especificação de margens/lotes: `DOL`, `WDO`, `IND`, `WIN`, `CCM` e `BITFUT`.
+    *   Contratos futuros dos EUA (CME/COMEX/NYMEX) em dólares: `NQ`, `MNQ`, `ES`, `MES`, `GC`, `MGC`, `CL` e `MCL`.
+    *   Calculadora avançada de Lucro Forex e Valor do Pip para os 9 principais pares (`EURUSD`, `GBPUSD`, `USDJPY`, `USDCHF`, `AUDUSD`, `USDCAD`, `NZDUSD`, `XAUUSD`, `HK50`), com alternância de moeda da conta (USD / BRL), taxa de câmbio USD/BRL e direção Compra/Venda.
+*   **Atlas de Candlesticks & Galeria Gráfica:**
+    *   Expansão para 20 padrões clássicos de candlesticks com ilustrações exclusivas, anatomia técnica e gráficos reais de alta resolução nos assets locais (`assets/images/candlesticks/`).
+    *   Modal interativo de ampliação de gráficos com detalhes explicativos.
+*   **Integração com Ecossistema Trading Plan & Promoção:**
+    *   Acesso interativo ao portal oficial `tradingplan.com.br` no cabeçalho do app.
+    *   Card de Ecossistema e Ferramentas Gratuitas na tela Inicial (`inicio_widget.dart`).
+    *   Card promocional de Planilhas e Diário de Trade na tela de Calculadoras.
+    *   Funcionalidade nativa de Compartilhamento do App (`Share.share`) e link oficial para a Política de Privacidade na tela de Ajustes (`ajustes_widget.dart`).
+*   **Refinamento de Código e Linter:**
+    *   Validação completa com `flutter analyze` reportando 0 erros e 0 warnings.
+
+---
+
 ## [1.4.0] - 2026-09-30
 ### Adicionado
 *   Módulo **Tarot Trader** para controle de viés cognitivo e calibração psicológica diária do trader, 100% offline-first.
