@@ -179,18 +179,34 @@ class _TarotWidgetState extends State<TarotWidget> with SingleTickerProviderStat
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: true,
-          title: Text(
-            'Tarot Trader',
-            style: TextStyle(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pop();
+            },
+            child: Icon(
+              Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primaryText,
-              fontSize: 20.0,
-              fontWeight: FontWeight.w700,
+              size: 32.0,
             ),
           ),
+          title: Text(
+            'Tarot Trader',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                  useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                ),
+          ),
           centerTitle: false,
-          elevation: 0.0,
+          elevation: 0.5,
         ),
         body: SafeArea(
           top: true,
