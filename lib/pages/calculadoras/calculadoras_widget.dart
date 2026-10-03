@@ -70,8 +70,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'DOL',
       description: 'DÓLAR CHEIO (B3)',
-      rateText: 'R\$ 50/ponto',
-      ticksText: '2 tick/ponto (0.50 pt)',
+      rateText: 'R\$ 50/pt',
+      ticksText: '2 ticks/pt',
       valuePerPoint: 50.0,
       ticksPerPoint: 2.0,
       currency: 'BRL',
@@ -88,8 +88,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'WDO',
       description: 'MINI DÓLAR (B3)',
-      rateText: 'R\$ 10/ponto',
-      ticksText: '2 tick/ponto (0.50 pt)',
+      rateText: 'R\$ 10/pt',
+      ticksText: '2 ticks/pt',
       valuePerPoint: 10.0,
       ticksPerPoint: 2.0,
       currency: 'BRL',
@@ -106,8 +106,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'IND',
       description: 'ÍNDICE CHEIO (B3)',
-      rateText: 'R\$ 250/ponto',
-      ticksText: '0.2 tick/ponto (5 pts)',
+      rateText: 'R\$ 250/pt',
+      ticksText: '0.2 tick/pt',
       valuePerPoint: 250.0,
       ticksPerPoint: 0.2,
       currency: 'BRL',
@@ -124,8 +124,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'WIN',
       description: 'MINI ÍNDICE (B3)',
-      rateText: 'R\$ 0.2/ponto',
-      ticksText: '0.2 tick/ponto (5 pts)',
+      rateText: 'R\$ 0.20/pt',
+      ticksText: '0.2 tick/pt',
       valuePerPoint: 0.2,
       ticksPerPoint: 0.2,
       currency: 'BRL',
@@ -142,8 +142,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'BITFUT',
       description: 'BITCOIN FUTURO (B3)',
-      rateText: 'R\$ 0.1/ponto',
-      ticksText: '0.05 tick/ponto',
+      rateText: 'R\$ 0.10/pt',
+      ticksText: '0.05 tick/pt',
       valuePerPoint: 0.1,
       ticksPerPoint: 0.05,
       currency: 'BRL',
@@ -159,8 +159,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
     ContractModel(
       title: 'CCM',
       description: 'MILHO FUTURO (B3)',
-      rateText: 'R\$ 450/ponto',
-      ticksText: '100 tick/ponto (R\$ 0.01)',
+      rateText: 'R\$ 450/pt',
+      ticksText: '100 ticks/pt',
       valuePerPoint: 450.0,
       ticksPerPoint: 100.0,
       currency: 'BRL',
@@ -180,7 +180,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'NQ',
       description: 'E-MINI NASDAQ-100 (CME)',
       rateText: '\$ 20/ponto',
-      ticksText: '4 ticks/ponto (\$ 5.00/tick)',
+      ticksText: '4 ticks/pt (\$5.00)',
       valuePerPoint: 20.0,
       ticksPerPoint: 4.0,
       currency: 'USD',
@@ -199,7 +199,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'MNQ',
       description: 'MICRO E-MINI NASDAQ-100 (CME)',
       rateText: '\$ 2/ponto',
-      ticksText: '4 ticks/ponto (\$ 0.50/tick)',
+      ticksText: '4 ticks/pt (\$0.50)',
       valuePerPoint: 2.0,
       ticksPerPoint: 4.0,
       currency: 'USD',
@@ -218,7 +218,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'ES',
       description: 'E-MINI S&P 500 (CME)',
       rateText: '\$ 50/ponto',
-      ticksText: '4 ticks/ponto (\$ 12.50/tick)',
+      ticksText: '4 ticks/pt (\$12.50)',
       valuePerPoint: 50.0,
       ticksPerPoint: 4.0,
       currency: 'USD',
@@ -237,7 +237,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'MES',
       description: 'MICRO E-MINI S&P 500 (CME)',
       rateText: '\$ 5/ponto',
-      ticksText: '4 ticks/ponto (\$ 1.25/tick)',
+      ticksText: '4 ticks/pt (\$1.25)',
       valuePerPoint: 5.0,
       ticksPerPoint: 4.0,
       currency: 'USD',
@@ -256,7 +256,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'GC',
       description: 'GOLD FUTURES / OURO (COMEX)',
       rateText: '\$ 100/ponto',
-      ticksText: '10 ticks/ponto (\$ 10.00/tick)',
+      ticksText: '10 ticks/pt (\$10.00)',
       valuePerPoint: 100.0,
       ticksPerPoint: 10.0,
       currency: 'USD',
@@ -274,7 +274,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'MGC',
       description: 'MICRO GOLD FUTURES (COMEX)',
       rateText: '\$ 10/ponto',
-      ticksText: '10 ticks/ponto (\$ 1.00/tick)',
+      ticksText: '10 ticks/pt (\$1.00)',
       valuePerPoint: 10.0,
       ticksPerPoint: 10.0,
       currency: 'USD',
@@ -292,7 +292,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'CL',
       description: 'CRUDE OIL WTI / PETRÓLEO (NYMEX)',
       rateText: '\$ 1.000/ponto',
-      ticksText: '100 ticks/ponto (\$ 10.00/tick)',
+      ticksText: '100 ticks/pt (\$10.00)',
       valuePerPoint: 1000.0,
       ticksPerPoint: 100.0,
       currency: 'USD',
@@ -310,7 +310,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       title: 'MCL',
       description: 'MICRO CRUDE OIL WTI (NYMEX)',
       rateText: '\$ 100/ponto',
-      ticksText: '100 ticks/ponto (\$ 1.00/tick)',
+      ticksText: '100 ticks/pt (\$1.00)',
       valuePerPoint: 100.0,
       ticksPerPoint: 100.0,
       currency: 'USD',
@@ -793,56 +793,62 @@ class _CalculatorCardState extends State<CalculatorCard> {
           children: [
             // Top Row (Título / Descrição e Preços)
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          widget.contract.title,
-                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
-                                color: FlutterFlowTheme.of(context).primary,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: !FlutterFlowTheme.of(context).titleLargeIsCustom,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            widget.contract.title,
+                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                  fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleLargeIsCustom,
+                                ),
+                          ),
+                          const SizedBox(width: 6.0),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.5),
+                            decoration: BoxDecoration(
+                              color: isUsd ? Colors.blue.withAlpha(35) : Colors.green.withAlpha(35),
+                              borderRadius: BorderRadius.circular(4.0),
+                              border: Border.all(
+                                color: isUsd ? Colors.blue.withAlpha(80) : Colors.green.withAlpha(80),
+                                width: 0.5,
                               ),
-                        ),
-                        const SizedBox(width: 6.0),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.5),
-                          decoration: BoxDecoration(
-                            color: isUsd ? Colors.blue.withAlpha(35) : Colors.green.withAlpha(35),
-                            borderRadius: BorderRadius.circular(4.0),
-                            border: Border.all(
-                              color: isUsd ? Colors.blue.withAlpha(80) : Colors.green.withAlpha(80),
-                              width: 0.5,
+                            ),
+                            child: Text(
+                              isUsd ? 'EUA 🇺🇸' : 'B3 🇧🇷',
+                              style: TextStyle(
+                                fontSize: 9.5,
+                                fontWeight: FontWeight.bold,
+                                color: isUsd ? Colors.blue : Colors.green,
+                              ),
                             ),
                           ),
-                          child: Text(
-                            isUsd ? 'EUA 🇺🇸' : 'B3 🇧🇷',
-                            style: TextStyle(
-                              fontSize: 9.5,
-                              fontWeight: FontWeight.bold,
-                              color: isUsd ? Colors.blue : Colors.green,
+                        ],
+                      ),
+                      const SizedBox(height: 2.0),
+                      Text(
+                        widget.contract.description,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              fontSize: 10.5,
+                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 2.0),
-                    Text(
-                      widget.contract.description,
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 11.0,
-                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                          ),
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
+                const SizedBox(width: 8.0),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -854,12 +860,14 @@ class _CalculatorCardState extends State<CalculatorCard> {
                             useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                           ),
                     ),
+                    const SizedBox(height: 2.0),
                     Text(
                       widget.contract.ticksText,
+                      textAlign: TextAlign.end,
                       style: FlutterFlowTheme.of(context).bodySmall.override(
                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 11.0,
+                            fontSize: 10.5,
                             useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                           ),
                     ),
