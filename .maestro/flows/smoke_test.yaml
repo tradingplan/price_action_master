@@ -1,0 +1,10 @@
+appId: br.com.tradingplan.priceactionmaster
+---
+- launchApp:
+    clearState: false
+
+- assertVisible: "Price Action Master"
+- tapOn: "Padrões de Candlestick"
+- scroll
+- back
+- assertVisible: "Price Action Master"
