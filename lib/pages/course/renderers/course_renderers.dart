@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:price_action_master/backend/schema/platform_course_models.dart';
 import '../../../flutter_flow/flutter_flow_theme.dart';
+import '../../../components/trading_plan_promo_banner.dart';
 import 'vector_painter.dart';
 import '../../smc/detalhe_smc_widget.dart';
 import '../../elliott/detalhe_elliott_widget.dart';
@@ -814,7 +815,13 @@ class ChallengeRenderer extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 50.0),
+            const SizedBox(height: 24.0),
+
+            // Card Promocional Dinâmico Trading Plan
+            const TradingPlanPromoBanner(
+              variant: PromoVariant.auto,
+            ),
+            const SizedBox(height: 40.0),
           ],
         ),
       ),
