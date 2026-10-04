@@ -131,12 +131,15 @@ class NavBarPage extends StatefulWidget {
   final Widget? page;
   final bool disableResizeToAvoidBottomInset;
 
+  static NavBarPageState? of(BuildContext context) =>
+      context.findAncestorStateOfType<NavBarPageState>();
+
   @override
-  _NavBarPageState createState() => _NavBarPageState();
+  NavBarPageState createState() => NavBarPageState();
 }
 
-/// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
+/// This is the State class that goes with NavBarPage.
+class NavBarPageState extends State<NavBarPage> {
   String _currentPageName = 'Inicio';
   late Widget? _currentPage;
 
@@ -148,13 +151,34 @@ class _NavBarPageState extends State<NavBarPage> {
   }
 
   @override
+  void didUpdateWidget(NavBarPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialPage != null && widget.initialPage != _currentPageName) {
+      safeSetState(() {
+        _currentPageName = widget.initialPage!;
+        _currentPage = widget.page;
+      });
+    }
+  }
+
+  void changeTab(String tabName) {
+    if (_currentPageName != tabName) {
+      safeSetState(() {
+        _currentPage = null;
+        _currentPageName = tabName;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final tabs = {
       'Inicio': InicioWidget(),
+      'Cursos': const CursosWidget(),
       'Calculadoras': CalculadorasWidget(),
-      'Quiz': QuizWidget(),
       'VelasJaponesas': VelasJaponesasWidget(),
-      'Ajustes': AjustesWidget(),
+      'Quiz': QuizWidget(),
+      'Ajustes': const AjustesWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -178,7 +202,7 @@ class _NavBarPageState extends State<NavBarPage> {
           right: false,
           bottom: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+            padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
             child: GNav(
               selectedIndex: currentIndex >= 0 ? currentIndex : 0,
               onTabChange: (i) => safeSetState(() {
@@ -190,9 +214,9 @@ class _NavBarPageState extends State<NavBarPage> {
               activeColor: FlutterFlowTheme.of(context).secondaryBackground,
               tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
               tabBorderRadius: 8.0,
-              tabMargin: const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-              gap: 4.0,
+              tabMargin: const EdgeInsets.symmetric(horizontal: 1.5, vertical: 2.0),
+              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 7.0),
+              gap: 3.0,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               duration: const Duration(milliseconds: 350),
               haptic: false,
@@ -200,35 +224,40 @@ class _NavBarPageState extends State<NavBarPage> {
                 GButton(
                   icon: currentIndex == 0 ? Icons.home_rounded : Icons.home_outlined,
                   text: 'Home',
-                  iconSize: 22.0,
+                  iconSize: 20.0,
                 ),
                 GButton(
-                  icon: currentIndex == 1
-                      ? Icons.calculate_rounded
-                      : Icons.calculate_outlined,
-                  text: 'Calculadoras',
-                  iconSize: 22.0,
+                  icon: currentIndex == 1 ? Icons.school_rounded : Icons.school_outlined,
+                  text: 'Cursos',
+                  iconSize: 20.0,
                 ),
                 GButton(
                   icon: currentIndex == 2
-                      ? Icons.quiz_rounded
-                      : Icons.quiz_outlined,
-                  text: 'Quiz',
-                  iconSize: 22.0,
+                      ? Icons.calculate_rounded
+                      : Icons.calculate_outlined,
+                  text: 'Calculadoras',
+                  iconSize: 20.0,
                 ),
                 GButton(
                   icon: currentIndex == 3
                       ? Icons.candlestick_chart_rounded
                       : Icons.candlestick_chart_outlined,
                   text: 'Candlesticks',
-                  iconSize: 22.0,
+                  iconSize: 20.0,
                 ),
                 GButton(
                   icon: currentIndex == 4
+                      ? Icons.quiz_rounded
+                      : Icons.quiz_outlined,
+                  text: 'Quiz',
+                  iconSize: 20.0,
+                ),
+                GButton(
+                  icon: currentIndex == 5
                       ? Icons.settings_rounded
                       : Icons.settings_outlined,
                   text: 'Ajustes',
-                  iconSize: 22.0,
+                  iconSize: 20.0,
                 ),
               ],
             ),

@@ -47,15 +47,15 @@ class _TradingPlanLogoWidgetState extends State<TradingPlanLogoWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: InkWell(
         onTap: _openTradingPlan,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(10.0),
         child: Image.asset(
           'assets/images/TP-logo-website-URL-500x60-white.png',
           width: double.infinity,
-          height: 100.0,
-          fit: BoxFit.fitWidth,
+          height: 48.0,
+          fit: BoxFit.contain,
         ),
       ),
     );

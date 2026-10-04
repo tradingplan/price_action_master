@@ -27,7 +27,10 @@ export '/pages/tarot/tarot_widget.dart'
     show TarotWidget;
 export '/pages/course/course_widget.dart'
     show CourseWidget;
+export '/pages/cursos/cursos_widget.dart'
+    show CursosWidget;
 export '/pages/course/module_panel_widget.dart'
     show ModulePanelWidget;
 export '/pages/ajustes/ajustes_widget.dart'
     show AjustesWidget;
+

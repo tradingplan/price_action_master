@@ -148,6 +148,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     page: AnaliseTecnicaWidget(),
                   )),
         FFRoute(
+            name: CursosWidget.routeName,
+            path: CursosWidget.routePath,
+            builder: (context, params) => NavBarPage(
+                  initialPage: 'Cursos',
+                  page: const CursosWidget(),
+                )),
+        FFRoute(
             name: CalculadorasWidget.routeName,
             path: CalculadorasWidget.routePath,
             builder: (context, params) => NavBarPage(
