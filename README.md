@@ -144,3 +144,10 @@ python tools/content_validator.py
 2. **Persistência Local Dedicada:** Todo o estado persistido do usuário é gravado localmente via `LocalDataManager` (SharedPreferences e JSONs locais).
 3. **Diagramas Vetoriais em Canvas:** `CustomPainter` nativo desenhando esquemas gráficos pedagógicos a 60 FPS com coordenadas relativas.
 4. **Nenhum Placeholder:** Todas as telas, calculadoras e lições possuem dados, cálculos e imagens reais prontos para uso em produção.
+
+---
+
+## 🌐 Landing Page & Guias de Publicação
+
+- **Landing Page Oficial do App:** Desenvolvida em [`landing/`](landing) com simuladores de gráficos e calculadoras B3 em tempo real.
+- **Guia Completo de Publicação:** Consulte [`docs/GUIA_PUBLICACAO_STORES_E_LANDING_PAGE.md`](docs/GUIA_PUBLICACAO_STORES_E_LANDING_PAGE.md) para o passo a passo de deploy na Hostinger, lançamento na Apple App Store (iOS) e atualização na Google Play Store (Android).

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price Action Master — Guia de Price Action, SMC e Calculadoras B3</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Aplicativo educacional e prático para estudo de Price Action, Candlesticks, Smart Money Concepts (SMC), Ondas de Elliott e Calculadoras de Contratos B3. 100% Offline.">
+  <meta name="keywords" content="price action, smc, candlesticks, mini indice, mini dolar, b3, calculadora de trade, ondas de elliott, analise tecnica">
+  <meta name="author" content="Price Action Master Team">
+  <meta name="theme-color" content="#0E6C04">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Price Action Master — Guia de Price Action & SMC">
+  <meta property="og:description" content="Estudo de candlesticks, estruturas de mercado e calculadoras de risco B3 100% offline.">
+  <meta property="og:image" content="assets/images/bull_chart_hero.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Price Action Master — Guia de Análise Técnica">
+  <meta name="twitter:description" content="Estude Price Action, SMC e use calculadoras de contratos no celular.">
+  <meta name="twitter:image" content="assets/images/bull_chart_hero.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon-trading-plan.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased selection:bg-emerald-600 selection:text-white">
+
+  <!-- Background Ambience & Glows -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+  <div class="glow-bg glow-3"></div>
+  <div class="trading-grid-pattern"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header id="main-header" class="fixed-nav">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo" id="nav-brand-logo">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-chart-candlestick"></i>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">Price Action <span class="text-emerald">Master</span></span>
+          <span class="logo-badge">Guia & Calculadoras</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" id="nav-menu">
+        <a href="#recursos" class="nav-link">Recursos</a>
+        <a href="#modulos" class="nav-link">Conteúdo & SMC</a>
+        <a href="#calculadora-live" class="nav-link">Calculadoras B3</a>
+        <a href="#simulador-demo" class="nav-link">Exercícios</a>
+        <a href="#publico-alvo" class="nav-link">Para Quem É</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="nav-actions">
+        <a href="#download-section" class="btn btn-emerald btn-sm" id="nav-cta-download">
+          <i class="fa-solid fa-download"></i>
+          <span>Baixar App</span>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu de navegação">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="mobile-drawer-links">
+        <a href="#recursos" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Recursos do App</a>
+        <a href="#modulos" class="mobile-link"><i class="fa-solid fa-book-open"></i> Conteúdo & SMC</a>
+        <a href="#calculadora-live" class="mobile-link"><i class="fa-solid fa-calculator"></i> Calculadoras B3</a>
+        <a href="#simulador-demo" class="mobile-link"><i class="fa-solid fa-bullseye"></i> Exemplo de Exercício</a>
+        <a href="#publico-alvo" class="mobile-link"><i class="fa-solid fa-users"></i> Para Quem É</a>
+        <a href="#faq" class="mobile-link"><i class="fa-solid fa-circle-question"></i> Perguntas Frequentes</a>
+        <div class="mobile-drawer-cta">
+          <a href="#download-section" class="btn btn-emerald btn-block">
+            <i class="fa-solid fa-download"></i> Baixar App Grátis
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Hero Text -->
+        <div class="hero-content">
+          <div class="badge-pill hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text"><i class="fa-solid fa-book-bookmark text-emerald"></i> Guia Prático de Bolso • 100% Offline</span>
+          </div>
+
+          <h1 class="hero-title">
+            Estudo de Price Action, SMC e <span class="text-gradient-emerald">Calculadoras B3</span> no seu Celular.
+          </h1>
+
+          <p class="hero-subtitle">
+            Um aplicativo direto ao ponto para consultar <strong>padrões de candlesticks</strong>, conceitos de <strong>Smart Money (SMC)</strong>, <strong>Ondas de Elliott</strong> e calcular o impacto financeiro de pontos em contratos futuros da B3.
+          </p>
+
+          <!-- CTAs -->
+          <div class="hero-cta-group">
+            <a href="#download-section" class="btn btn-emerald btn-lg">
+              <i class="fa-brands fa-google-play"></i>
+              <div class="btn-text-block">
+                <span class="btn-subtext">Disponível Grátis</span>
+                <span class="btn-maintext">Baixar Aplicativo</span>
+              </div>
+            </a>
+            <a href="#calculadora-live" class="btn btn-outline btn-lg">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Testar Calculadoras</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <i class="fa-solid fa-wifi-slash text-emerald"></i>
+              <span class="trust-label"><strong>100% Offline</strong> Funciona sem internet</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <i class="fa-solid fa-user-shield text-emerald"></i>
+              <span class="trust-label"><strong>Sem Cadastro</strong> Obrigatório</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <i class="fa-solid fa-calculator text-emerald"></i>
+              <span class="trust-label"><strong>B3 & Futuros</strong> WIN, DOL, CCM...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Smartphone Mockup -->
+        <div class="hero-device-wrapper">
+          <div class="phone-mockup-frame">
+            <div class="phone-notch">
+              <div class="speaker"></div>
+              <div class="camera"></div>
+            </div>
+
+            <div class="phone-screen" id="phone-screen-demo">
+              <!-- Simulated App Screen Top Header -->
+              <div class="app-ui-header">
+                <div class="app-ui-left">
+                  <span class="app-dot green"></span>
+                  <span class="app-ticker-name">Módulo SMC: <strong>WIN$ (5m)</strong></span>
+                </div>
+                <div class="app-ui-right">
+                  <span class="app-badge-xp"><i class="fa-solid fa-book-open text-gold"></i> Lição 04</span>
+                </div>
+              </div>
+
+              <!-- Simulated Live Interactive Canvas Chart -->
+              <div class="app-ui-chart-box">
+                <canvas id="hero-mini-chart" width="340" height="190"></canvas>
+                <div class="chart-annotation ob-tag" id="ob-tag">
+                  <span>ORDER BLOCK (OB)</span>
+                </div>
+                <div class="chart-annotation bos-tag" id="bos-tag">
+                  <span>BOS (Quebra de Estrutura)</span>
+                </div>
+              </div>
+
+              <!-- Simulated App Checklist -->
+              <div class="app-ui-checklist">
+                <div class="checklist-header">
+                  <i class="fa-solid fa-list-check text-emerald"></i>
+                  <span>Checklist de Identificação do Padrão</span>
+                </div>
+                <div class="checklist-items">
+                  <div class="check-row active">
+                    <i class="fa-solid fa-circle-check text-emerald"></i>
+                    <span>Quebra de Estrutura (BOS) identificada</span>
+                  </div>
+                  <div class="check-row active">
+                    <i class="fa-solid fa-circle-check text-emerald"></i>
+                    <span>Deslocamento com Fair Value Gap (FVG)</span>
+                  </div>
+                  <div class="check-row active">
+                    <i class="fa-solid fa-circle-check text-emerald"></i>
+                    <span>Retorno para teste na zona do Order Block</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Simulated App Bottom Bar & Quick Action -->
+              <div class="app-ui-footer">
+                <button class="app-ui-action-btn" id="hero-phone-action">
+                  <i class="fa-solid fa-check"></i> Conceito Compreendido (Próximo Tópico)
+                </button>
+              </div>
+            </div>
+
+            <!-- Glow underneath phone -->
+            <div class="phone-glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSETS TICKER STRIP -->
+    <section class="ticker-strip-section">
+      <div class="ticker-track">
+        <div class="ticker-slide">
+          <span class="ticker-item"><i class="fa-solid fa-chart-candlestick text-emerald"></i> <strong>CANDLESTICKS</strong> 20 Padrões Clássicos</span>
+          <span class="ticker-item"><i class="fa-solid fa-cube text-emerald"></i> <strong>SMC</strong> Order Blocks, BOS, FVG & Liquidez</span>
+          <span class="ticker-item"><i class="fa-solid fa-chart-line text-emerald"></i> <strong>WIN$</strong> Mini Índice B3</span>
+          <span class="ticker-item"><i class="fa-solid fa-dollar-sign text-emerald"></i> <strong>DOL$</strong> Mini Dólar B3</span>
+          <span class="ticker-item"><i class="fa-solid fa-wave-pulse text-cyan"></i> <strong>ELLIOTT</strong> 5 Ondas & Correções ABC</span>
+          <span class="ticker-item"><i class="fa-solid fa-calculator text-emerald"></i> <strong>CALCULADORAS</strong> Pontos, Ticks & Financeiro</span>
+          <span class="ticker-item"><i class="fa-solid fa-brain text-gold"></i> <strong>TAROT TRADER</strong> Reflexões de Disciplina</span>
+          <span class="ticker-item"><i class="fa-solid fa-wheat-awn text-emerald"></i> <strong>CCM & BITFUT</strong> Commodities & Cripto B3</span>
+        </div>
+        <!-- Duplicate for infinite marquee -->
+        <div class="ticker-slide" aria-hidden="true">
+          <span class="ticker-item"><i class="fa-solid fa-chart-candlestick text-emerald"></i> <strong>CANDLESTICKS</strong> 20 Padrões Clássicos</span>
+          <span class="ticker-item"><i class="fa-solid fa-cube text-emerald"></i> <strong>SMC</strong> Order Blocks, BOS, FVG & Liquidez</span>
+          <span class="ticker-item"><i class="fa-solid fa-chart-line text-emerald"></i> <strong>WIN$</strong> Mini Índice B3</span>
+          <span class="ticker-item"><i class="fa-solid fa-dollar-sign text-emerald"></i> <strong>DOL$</strong> Mini Dólar B3</span>
+          <span class="ticker-item"><i class="fa-solid fa-wave-pulse text-cyan"></i> <strong>ELLIOTT</strong> 5 Ondas & Correções ABC</span>
+          <span class="ticker-item"><i class="fa-solid fa-calculator text-emerald"></i> <strong>CALCULADORAS</strong> Pontos, Ticks & Financeiro</span>
+          <span class="ticker-item"><i class="fa-solid fa-brain text-gold"></i> <strong>TAROT TRADER</strong> Reflexões de Disciplina</span>
+          <span class="ticker-item"><i class="fa-solid fa-wheat-awn text-emerald"></i> <strong>CCM & BITFUT</strong> Commodities & Cripto B3</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Funcionalidades do Aplicativo</span>
+          <h2 class="section-title">Uma ferramenta prática de consulta e estudo</h2>
+          <p class="section-description">
+            O <strong>Price Action Master</strong> foi desenvolvido para quem deseja um material de consulta rápido no celular, sem enrolação, com foco no entendimento dos conceitos e utilitários de cálculo.
+          </p>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- Pillar 1 -->
+          <div class="comparison-card">
+            <div class="card-header-badge">
+              <i class="fa-solid fa-book-open text-emerald"></i>
+              <span>Catálogo & Resumos Técnicos</span>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <i class="fa-solid fa-check text-emerald"></i>
+                <div>
+                  <strong>Lições Concisas e Objetivas</strong>
+                  <p>Textos curtos explicando a lógica por trás de cada padrão de candlestick, zonas de suporte e conceitos de estrutura de mercado.</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-emerald"></i>
+                <div>
+                  <strong>Diagramas Anatômicos Vetoriais</strong>
+                  <p>Ilustrações gráficas limpas para visualizar pavios, corpos, zonas de desequilíbrio e rompimentos com clareza.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="comparison-card good">
+            <div class="card-header-badge">
+              <i class="fa-solid fa-calculator text-emerald"></i>
+              <span>Utilitários & Prática Diária</span>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <i class="fa-solid fa-check text-emerald"></i>
+                <div>
+                  <strong>Calculadoras de Contratos B3</strong>
+                  <p>Calcule na hora a pontuação, o número de ticks e o resultado financeiro para WIN, WDO, DOL, IND, BITFUT e CCM.</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-emerald"></i>
+                <div>
+                  <strong>Quizzes de Fixação & Modo Offline</strong>
+                  <p>Responda a questionários para testar sua retenção de conteúdo em qualquer lugar, sem necessidade de internet.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4-Step Learning Pipeline -->
+        <div class="learning-pipeline">
+          <div class="pipeline-step">
+            <div class="step-num">01</div>
+            <div class="step-title">Ler o Conceito</div>
+            <div class="step-desc">Resumo da regra técnica e contexto de mercado.</div>
+          </div>
+          <div class="pipeline-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+          <div class="pipeline-step">
+            <div class="step-num">02</div>
+            <div class="step-title">Ver a Anatomia</div>
+            <div class="step-desc">Diagrama com detalhes de pavios, topos e fundos.</div>
+          </div>
+          <div class="pipeline-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+          <div class="pipeline-step">
+            <div class="step-num">03</div>
+            <div class="step-title">Responder Quiz</div>
+            <div class="step-desc">Testes de múltipla escolha com explicações.</div>
+          </div>
+          <div class="pipeline-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+          <div class="pipeline-step highlight">
+            <div class="step-num">04</div>
+            <div class="step-title">Aplicar no Gráfico</div>
+            <div class="step-desc">Consultar calculadoras e checklists no dia a dia.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE MODULES & SHOWCASE TABS -->
+    <section class="section modules-section" id="modulos">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Módulos de Estudo</span>
+          <h2 class="section-title">O que você encontra dentro do app</h2>
+          <p class="section-description">
+            Navegue pelos principais módulos educativos organizados por categorias.
+          </p>
+        </div>
+
+        <!-- Interactive Module Tabs -->
+        <div class="module-tab-buttons" id="module-tabs">
+          <button class="tab-btn active" data-tab="smc">
+            <i class="fa-solid fa-cube"></i> Smart Money Concepts (SMC)
+          </button>
+          <button class="tab-btn" data-tab="candles">
+            <i class="fa-solid fa-chart-candlestick"></i> Price Action & Candles
+          </button>
+          <button class="tab-btn" data-tab="elliott">
+            <i class="fa-solid fa-wave-pulse"></i> Ondas de Elliott
+          </button>
+          <button class="tab-btn" data-tab="mindset">
+            <i class="fa-solid fa-brain"></i> Psicologia & Tarot Trader
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content-container">
+          
+          <!-- TAB 1: SMC -->
+          <div class="tab-pane active" id="tab-smc">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Módulo de Análise</span>
+                <h3 class="module-heading">Smart Money Concepts (SMC)</h3>
+                <p class="module-intro">
+                  Estudo das nomenclaturas e conceitos populares de estrutura de mercado, desequilíbrio e regiões de liquidez comumente analisadas em prazos menores e maiores.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clipboard-check text-emerald"></i> Tópicos Abordados:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>BOS & CHoCH:</strong> Identificação de quebra de estrutura e mudança de caráter no gráfico.</li>
+                    <li><strong>Order Blocks:</strong> Regiões de velas que antecederam impulsos expressivos.</li>
+                    <li><strong>Fair Value Gaps (FVG):</strong> Conceito de lacunas de preço e desequilíbrios entre velas consecutivas.</li>
+                    <li><strong>Liquidez:</strong> Identificação de topos e fundos duplos onde costumam se acumular ordens.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="diagram-card">
+                  <div class="diagram-header">
+                    <span class="diagram-title"><i class="fa-solid fa-diagram-project text-cyan"></i> Esquema Gráfico: Estrutura SMC</span>
+                    <span class="diagram-tag">Diagrama Vetorial</span>
+                  </div>
+                  <div class="diagram-canvas-wrap">
+                    <svg viewBox="0 0 450 260" class="smc-svg-diagram">
+                      <defs>
+                        <linearGradient id="grad-bull" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="#0E6C04" stop-opacity="0.2"/>
+                          <stop offset="100%" stop-color="#0E6C04" stop-opacity="0.05"/>
+                        </linearGradient>
+                        <linearGradient id="grad-fvg" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="#0284C7" stop-opacity="0.2"/>
+                          <stop offset="100%" stop-color="#0284C7" stop-opacity="0.05"/>
+                        </linearGradient>
+                      </defs>
+                      <!-- Trend line / structure -->
+                      <path d="M 20 220 L 90 140 L 140 180 L 250 60 L 300 110 L 420 20" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4"/>
+                      <!-- BOS Line -->
+                      <line x1="90" y1="140" x2="280" y2="140" stroke="#0284C7" stroke-width="2" stroke-dasharray="3"/>
+                      <text x="210" y="132" fill="#0284C7" font-size="11" font-weight="700">BOS (Rompimento)</text>
+                      
+                      <!-- Order Block Box -->
+                      <rect x="125" y="155" width="120" height="35" fill="url(#grad-bull)" stroke="#0E6C04" stroke-width="1.5" rx="4"/>
+                      <text x="135" y="177" fill="#0E6C04" font-size="11" font-weight="700">ORDER BLOCK (OB)</text>
+
+                      <!-- FVG Highlight -->
+                      <rect x="190" y="95" width="55" height="40" fill="url(#grad-fvg)" stroke="#0284C7" stroke-width="1" stroke-dasharray="2" rx="3"/>
+                      <text x="197" y="118" fill="#0284C7" font-size="10" font-weight="600">FVG Gap</text>
+
+                      <!-- Entry Arrow -->
+                      <circle cx="280" cy="165" r="6" fill="#0E6C04"/>
+                      <text x="295" y="170" fill="#0F172A" font-size="11" font-weight="700">Zona de Teste / Mitigação</text>
+                    </svg>
+                  </div>
+                  <div class="diagram-footer">
+                    <span><i class="fa-solid fa-circle-info text-emerald"></i> Ilustração esquemática didática</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: CANDLES & PRICE ACTION -->
+          <div class="tab-pane" id="tab-candles">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Fundamentos</span>
+                <h3 class="module-heading">Candlesticks & Figuras Gráficas</h3>
+                <p class="module-intro">
+                  Consulte os 20 principais padrões de velas japonesas, com detalhes sobre abertura, fechamento, comprimento de sombras e o contexto em que costumam aparecer.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clipboard-check text-emerald"></i> Tópicos Abordados:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>Padrões de Reversão:</strong> Martelo, Estrela Cadente, Engolfo de Alta e Baixa, Doji e Harami.</li>
+                    <li><strong>Anatomia da Vela:</strong> Rejeição de mínimas/máximas e tamanho relativo do corpo.</li>
+                    <li><strong>Figuras Gráficas:</strong> Topo e Fundo Duplo, OCO (Ombro-Cabeça-Ombro), Bandeiras e Flâmulas.</li>
+                    <li><strong>Galeria de Imagens:</strong> Gráficos com exemplos reais integrados no app.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="diagram-card">
+                  <div class="diagram-header">
+                    <span class="diagram-title"><i class="fa-solid fa-chart-candlestick text-emerald"></i> Anatomia do Martelo</span>
+                    <span class="diagram-tag">Guia Visual</span>
+                  </div>
+                  <div class="diagram-canvas-wrap">
+                    <svg viewBox="0 0 450 240" class="candle-svg-diagram">
+                      <!-- Hammer Candle Graphic -->
+                      <line x1="225" y1="40" x2="225" y2="60" stroke="#0E6C04" stroke-width="3"/>
+                      <rect x="200" y="60" width="50" height="40" fill="#0E6C04" rx="3"/>
+                      <line x1="225" y1="100" x2="225" y2="210" stroke="#0E6C04" stroke-width="3"/>
+
+                      <!-- Annotation arrows -->
+                      <text x="70" y="55" fill="#64748B" font-size="12">Sombra superior pequena ou ausente</text>
+                      <line x1="185" y1="52" x2="220" y2="52" stroke="#94A3B8" stroke-width="1.5"/>
+
+                      <text x="270" y="82" fill="#0F172A" font-size="12" font-weight="700">Corpo no terço superior</text>
+                      <line x1="255" y1="80" x2="265" y2="80" stroke="#94A3B8" stroke-width="1.5"/>
+
+                      <text x="50" y="160" fill="#0E6C04" font-size="12" font-weight="700">Sombra inferior longa (2x o corpo)</text>
+                      <text x="50" y="178" fill="#64748B" font-size="11">Indica rejeição de mínimas na sessão</text>
+                      <line x1="205" y1="160" x2="220" y2="160" stroke="#0E6C04" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                  <div class="diagram-footer">
+                    <span><i class="fa-solid fa-circle-info text-emerald"></i> Anatomia básica de identificação</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ELLIOTT WAVES -->
+          <div class="tab-pane" id="tab-elliott">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Teoria Clássica</span>
+                <h3 class="module-heading">Teoria das Ondas de Elliott</h3>
+                <p class="module-intro">
+                  Apresentação didática das diretrizes formuladas por Ralph Nelson Elliott para identificar ciclos de mercado em tendências de alta e correções.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clipboard-check text-emerald"></i> Tópicos Abordados:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>Estrutura de 5 Ondas:</strong> Regras de impulso (Ondas 1, 2, 3, 4 e 5).</li>
+                    <li><strong>Estrutura Corretiva ABC:</strong> Padrões em ziguezague e planos.</li>
+                    <li><strong>Regras de Validação:</strong> Diretrizes para evitar contagens incorretas.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="diagram-card">
+                  <div class="diagram-header">
+                    <span class="diagram-title"><i class="fa-solid fa-wave-pulse text-gold"></i> Ciclo de 5 Ondas + ABC</span>
+                    <span class="diagram-tag">Esquema Teórico</span>
+                  </div>
+                  <div class="diagram-canvas-wrap">
+                    <svg viewBox="0 0 450 240" class="elliott-svg-diagram">
+                      <!-- Wave 1 to 5 Impulse -->
+                      <polyline points="30,210 90,140 140,180 260,50 310,100 370,30" fill="none" stroke="#D97706" stroke-width="3"/>
+                      
+                      <!-- Wave ABC Correction -->
+                      <polyline points="370,30 395,95 415,65 440,130" fill="none" stroke="#DD462D" stroke-width="3"/>
+
+                      <!-- Labels 1-5 -->
+                      <circle cx="90" cy="140" r="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+                      <text x="86" y="145" fill="#D97706" font-size="12" font-weight="700">1</text>
+
+                      <circle cx="140" cy="180" r="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+                      <text x="136" y="185" fill="#D97706" font-size="12" font-weight="700">2</text>
+
+                      <circle cx="260" cy="50" r="12" fill="#D97706" stroke="#D97706" stroke-width="2"/>
+                      <text x="256" y="55" fill="#FFFFFF" font-size="14" font-weight="800">3</text>
+
+                      <circle cx="310" cy="100" r="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+                      <text x="306" y="105" fill="#D97706" font-size="12" font-weight="700">4</text>
+
+                      <circle cx="370" cy="30" r="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+                      <text x="366" y="35" fill="#D97706" font-size="12" font-weight="700">5</text>
+
+                      <!-- Labels ABC -->
+                      <text x="395" y="115" fill="#DD462D" font-size="13" font-weight="800">A</text>
+                      <text x="415" y="55" fill="#DD462D" font-size="13" font-weight="800">B</text>
+                      <text x="435" y="150" fill="#DD462D" font-size="13" font-weight="800">C</text>
+                    </svg>
+                  </div>
+                  <div class="diagram-footer">
+                    <span><i class="fa-solid fa-circle-info text-emerald"></i> Visão geral do ciclo clássico</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: TAROT TRADER & MINDSET -->
+          <div class="tab-pane" id="tab-mindset">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Psicologia & Disciplina</span>
+                <h3 class="module-heading">Tarot Trader & Gestão Emocional</h3>
+                <p class="module-intro">
+                  Um recurso interativo que utiliza arquétipos ilustrados para trazer lembretes diários sobre paciência, respeito ao stop loss e controle de ansiedade antes de iniciar as operações.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clipboard-check text-emerald"></i> Como Funciona:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>22 Arquétipos Comportamentais:</strong> Cartas com mensagens focadas em disciplina, espera do setup e controle de risco.</li>
+                    <li><strong>Ancoragem de Hábitos:</strong> Uma forma lúdica de pausar e refletir antes de tomar decisões por impulso.</li>
+                    <li><strong>Histórico Local:</strong> Registro de suas reflexões armazenado no próprio aparelho.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="diagram-card">
+                  <div class="diagram-header">
+                    <span class="diagram-title"><i class="fa-solid fa-cards text-gold"></i> Exemplo de Carta do Tarot Trader</span>
+                    <span class="diagram-tag">Reflexão</span>
+                  </div>
+                  <div class="tarot-card-showcase">
+                    <div class="tarot-card-visual">
+                      <div class="tarot-inner">
+                        <i class="fa-solid fa-shield-halved text-gold tarot-center-icon"></i>
+                        <span class="tarot-title">A DISCIPLINA</span>
+                        <p class="tarot-quote">"Esperar a confirmação do seu setup faz parte da execução profissional."</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="diagram-footer">
+                    <span><i class="fa-solid fa-circle-info text-emerald"></i> Lembrete diário de gestão de risco</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE INTERACTIVE TOOL 1: CALCULADORA B3 EM TEMPO REAL -->
+    <section class="section calculator-section" id="calculadora-live">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Ferramenta Integrada</span>
+          <h2 class="section-title">Calculadora de Pontos e Contratos B3</h2>
+          <p class="section-description">
+            Simule variações de pontos e visualize o cálculo de ticks e resultado financeiro bruto para os principais contratos futuros da B3.
+          </p>
+        </div>
+
+        <div class="calculator-card-wrapper">
+          <!-- Asset Selector Buttons -->
+          <div class="asset-selector-grid" id="calc-asset-selectors">
+            <button class="asset-btn active" data-asset="WIN">
+              <span class="asset-ticker">WIN</span>
+              <span class="asset-name">Mini Índice</span>
+            </button>
+            <button class="asset-btn" data-asset="WDO">
+              <span class="asset-ticker">WDO</span>
+              <span class="asset-name">Mini Dólar</span>
+            </button>
+            <button class="asset-btn" data-asset="DOL">
+              <span class="asset-ticker">DOL</span>
+              <span class="asset-name">Dólar Cheio</span>
+            </button>
+            <button class="asset-btn" data-asset="IND">
+              <span class="asset-ticker">IND</span>
+              <span class="asset-name">Índice Cheio</span>
+            </button>
+            <button class="asset-btn" data-asset="BITFUT">
+              <span class="asset-ticker">BITFUT</span>
+              <span class="asset-name">Bitcoin Futuro</span>
+            </button>
+            <button class="asset-btn" data-asset="CCM">
+              <span class="asset-ticker">CCM</span>
+              <span class="asset-name">Milho Futuro</span>
+            </button>
+          </div>
+
+          <!-- Active Calculator Card -->
+          <div class="calc-main-card">
+            <div class="calc-card-header">
+              <div>
+                <span class="active-asset-tag" id="calc-display-symbol">WIN — MINI ÍNDICE</span>
+                <p class="text-sm text-slate-400" id="calc-display-rule">Multiplicador: R$ 0,20 por ponto • 1 tick = 5 pontos</p>
+              </div>
+              <div class="calc-contract-badge">
+                <i class="fa-solid fa-calculator text-emerald"></i> Utilitário B3
+              </div>
+            </div>
+
+            <!-- Inputs Section -->
+            <div class="calc-inputs-grid">
+              <div class="input-group">
+                <label for="calc-contracts" class="input-label">
+                  <span>Quantidade de Contratos</span>
+                  <span class="input-val-badge" id="val-contracts">1</span>
+                </label>
+                <div class="input-control-box">
+                  <input type="range" id="calc-contracts-range" min="1" max="100" value="1" class="slider-control">
+                  <input type="number" id="calc-contracts" min="1" max="1000" value="1" class="number-input">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="calc-points" class="input-label">
+                  <span id="label-points-name">Variação de Pontos</span>
+                  <span class="input-val-badge" id="val-points">250 pts</span>
+                </label>
+                <div class="input-control-box">
+                  <input type="range" id="calc-points-range" min="5" max="5000" step="5" value="250" class="slider-control">
+                  <input type="number" id="calc-points" min="0.1" step="0.5" value="250" class="number-input">
+                </div>
+              </div>
+            </div>
+
+            <!-- Outputs Section -->
+            <div class="calc-outputs-grid">
+              <div class="output-box red-box">
+                <span class="output-title">TOTAL DE TICKS</span>
+                <span class="output-value text-rose" id="calc-res-ticks">50 ticks</span>
+                <span class="output-hint">Variação de oscilação mínima</span>
+              </div>
+
+              <div class="output-box green-box">
+                <span class="output-title">VALOR FINANCEIRO</span>
+                <span class="output-value text-emerald" id="calc-res-financial">R$ 50,00</span>
+                <span class="output-hint">Resultado bruto estimado</span>
+              </div>
+            </div>
+
+            <!-- Formula Bar -->
+            <div class="calc-formula-bar">
+              <i class="fa-solid fa-code text-gold"></i>
+              <span id="calc-formula-text">Fórmula: 1 contrato × 250 pontos × R$ 0,20 = R$ 50,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE INTERACTIVE TOOL 2: SIMULADOR DE LEITURA GRÁFICA -->
+    <section class="section simulator-section" id="simulador-demo">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Exemplo de Exercício</span>
+          <h2 class="section-title">Como funcionam os testes de fixação</h2>
+          <p class="section-description">
+            Clique nas zonas indicadas no gráfico abaixo para testar a identificação de um Order Block de suporte.
+          </p>
+        </div>
+
+        <div class="interactive-challenge-card">
+          <div class="challenge-header">
+            <div class="challenge-info">
+              <span class="challenge-badge"><i class="fa-solid fa-circle-question"></i> Questão de Fixação #01</span>
+              <h3 class="challenge-title">Qual zona representa o Order Block na base do movimento?</h3>
+            </div>
+            <div class="challenge-score-badge">
+              <span>Exercício Prático</span>
+            </div>
+          </div>
+
+          <!-- Interactive Chart Box -->
+          <div class="interactive-chart-wrapper">
+            <canvas id="interactive-challenge-canvas" width="700" height="340"></canvas>
+            
+            <!-- Clickable Hotspots overlay -->
+            <div class="chart-hotspot spot-a" data-choice="a" id="spot-a" title="Clique para selecionar a Zona A">
+              <span class="spot-pill">Zona A</span>
+            </div>
+            <div class="chart-hotspot spot-b correct" data-choice="b" id="spot-b" title="Clique para selecionar a Zona B">
+              <span class="spot-pill">Zona B</span>
+            </div>
+            <div class="chart-hotspot spot-c" data-choice="c" id="spot-c" title="Clique para selecionar a Zona C">
+              <span class="spot-pill">Zona C</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Feedback Area -->
+          <div class="challenge-feedback-box" id="challenge-feedback" style="display: none;">
+            <!-- Rendered by app.js when user clicks -->
+          </div>
+
+          <div class="challenge-instructions">
+            <i class="fa-solid fa-arrow-pointer text-emerald"></i>
+            <span>Clique na Zona A, Zona B ou Zona C no gráfico acima para ver a explicação.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO IT IS FOR SECTION (REPLACING OVERPROMISE TESTIMONIALS) -->
+    <section class="section" id="publico-alvo">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Finalidade</span>
+          <h2 class="section-title">Para quem o aplicativo é útil?</h2>
+          <p class="section-description">
+            O Price Action Master foi pensado para diferentes perfis de estudo e prática.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Item 1 -->
+          <div class="testimonial-card">
+            <div class="card-header-badge">
+              <i class="fa-solid fa-graduation-cap text-emerald"></i>
+              <span>Iniciantes em Análise Técnica</span>
+            </div>
+            <p class="testimonial-quote">
+              Quem está começando e quer um catálogo organizado para entender a anatomia de cada vela, linhas de tendência e figuras clássicas no celular.
+            </p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="testimonial-card">
+            <div class="card-header-badge">
+              <i class="fa-solid fa-calculator text-emerald"></i>
+              <span>Traders de Futuros B3</span>
+            </div>
+            <p class="testimonial-quote">
+              Quem opera Mini Índice, Mini Dólar ou Milho e precisa de uma calculadora rápida para saber o valor de cada tick e o resultado em Reais.
+            </p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="testimonial-card">
+            <div class="card-header-badge">
+              <i class="fa-solid fa-brain text-gold"></i>
+              <span>Estudo de Conceitos SMC</span>
+            </div>
+            <p class="testimonial-quote">
+              Quem já estuda conceitos institucionais (Order Blocks, BOS, FVGs) e busca resumos ilustrados para reforçar a fixação visual.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Dúvidas Frequentes</span>
+          <h2 class="section-title">Perguntas e Respostas</h2>
+          <p class="section-description">
+            Informações claras sobre o aplicativo e seu funcionamento.
+          </p>
+        </div>
+
+        <div class="faq-accordion-wrapper">
+          <!-- Question 1 -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q1">
+              <span>O aplicativo precisa de internet para funcionar?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                <strong>Não.</strong> Todo o conteúdo educativo, os diagramas gráficos, as calculadoras de contratos e os questionários funcionam 100% offline após a instalação.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q2">
+              <span>O aplicativo é gratuito?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Sim! O aplicativo pode ser baixado gratuitamente, sem cobranças de mensalidade ou assinaturas obrigatórias.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q3">
+              <span>Quais contratos estão disponíveis nas calculadoras?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                O app inclui os contratos de WIN (Mini Índice), WDO (Mini Dólar), DOL (Dólar Cheio), IND (Índice Cheio), CCM (Milho Futuro) e BITFUT (Bitcoin Futuro B3).
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q4">
+              <span>O aplicativo dá recomendações de compra ou venda?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                <strong>Não.</strong> O Price Action Master é estritamente uma ferramenta educacional e utilitária de cálculo. Ele não envia ordens a corretoras nem fornece sinais ou recomendações financeiras.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL DOWNLOAD CTA SECTION -->
+    <section class="section download-cta-section" id="download-section">
+      <div class="container">
+        <div class="cta-banner-glass">
+          <div class="cta-banner-content">
+            <span class="cta-badge"><i class="fa-solid fa-mobile-screen"></i> Download do Aplicativo</span>
+            <h2 class="cta-title">Tenha um guia prático de Price Action no seu celular</h2>
+            <p class="cta-subtitle">
+              Baixe o <strong>Price Action Master</strong> e tenha o catálogo de candlesticks, resumos de SMC e calculadoras de contratos B3 sempre à mão.
+            </p>
+
+            <div class="cta-buttons-wrapper">
+              <a href="#" class="btn btn-emerald btn-xl" id="cta-btn-android">
+                <i class="fa-brands fa-google-play"></i>
+                <div class="btn-text-block">
+                  <span class="btn-subtext">Baixar para Android</span>
+                  <span class="btn-maintext">Google Play Store</span>
+                </div>
+              </a>
+
+              <a href="#" class="btn btn-outline-white btn-xl" id="cta-btn-ios">
+                <i class="fa-brands fa-apple"></i>
+                <div class="btn-text-block">
+                  <span class="btn-subtext">Baixar para iOS</span>
+                  <span class="btn-maintext">Apple App Store</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="cta-meta-info">
+              <span><i class="fa-solid fa-check text-white"></i> 100% Offline</span>
+              <span>•</span>
+              <span><i class="fa-solid fa-check text-white"></i> Sem Necessidade de Cadastro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <!-- Brand column -->
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <div class="logo-icon-box">
+              <i class="fa-solid fa-chart-candlestick"></i>
+            </div>
+            <div class="logo-text-group">
+              <span class="logo-title">Price Action <span class="text-emerald">Master</span></span>
+              <span class="logo-badge">Aplicativo Educacional</span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Guia de consulta e utilitário de cálculo para estudantes de análise técnica e traders de mercado futuro.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Conteúdo</h4>
+          <ul class="footer-list">
+            <li><a href="#modulos">Candlesticks & Padrões</a></li>
+            <li><a href="#modulos">Smart Money Concepts (SMC)</a></li>
+            <li><a href="#modulos">Ondas de Elliott</a></li>
+            <li><a href="#modulos">Tarot Trader</a></li>
+            <li><a href="#calculadora-live">Calculadoras B3</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Aplicativo</h4>
+          <ul class="footer-list">
+            <li><a href="#recursos">Recursos do App</a></li>
+            <li><a href="#simulador-demo">Exemplo de Exercício</a></li>
+            <li><a href="#faq">Perguntas Frequentes</a></li>
+            <li><a href="#download-section">Download do App</a></li>
+          </ul>
+        </div>
+
+        <!-- Ecosystem -->
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Trading Plan</h4>
+          <p class="text-xs text-slate-500 mb-2">Visite o portal oficial:</p>
+          <a href="https://www.tradingplan.com.br" target="_blank" rel="noopener" class="text-emerald text-sm font-bold">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> tradingplan.com.br
+          </a>
+        </div>
+      </div>
+
+      <!-- Legal Disclaimer -->
+      <div class="footer-disclaimer-box">
+        <p class="disclaimer-text">
+          <strong>Aviso Legal:</strong> O aplicativo <em>Price Action Master</em> possui caráter estritamente educativo, de estudo técnico e ferramenta de cálculo. Não constitui recomendação de investimento, consultoria financeira ou promessa de resultados. Operações em renda variável e mercado futuro envolvem risco financeiro.
+        </p>
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom-row">
+        <span>&copy; 2026 Price Action Master. Todos os direitos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Privacidade</a>
+          <a href="https://www.tradingplan.com.br">Trading Plan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
