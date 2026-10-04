@@ -3,40 +3,58 @@ appId: br.com.tradingplan.priceactionmaster
 - launchApp:
     clearState: false
 
-# 1. Tela Inicial
-- assertVisible: "Price Action Master"
+- assertVisible:
+    text: "Explorar Cursos"
+
+# 1. Home - Topo
 - takeScreenshot: screenshots/01_home_screen
 
-# 2. Tela de Candlesticks
-- tapOn:
-    text: "Candlesticks"
-    optional: true
-- assertVisible: "Candlesticks"
-- takeScreenshot: screenshots/02_candlesticks_atlas
+# 2. Home - Rodapé
+- scroll
+- takeScreenshot: screenshots/02_home_footer_banners
 
-# 3. Tela de Calculadoras
+# 3. Aba Cursos (from active Tab 0 Home -> tap Tab 1 Cursos)
 - tapOn:
-    text: "Calculadoras"
-    optional: true
-- assertVisible: "Calculadoras"
-- takeScreenshot: screenshots/03_calculadoras_multi_mercado
+    point: "35%,94%"
+- takeScreenshot: screenshots/03_cursos_catalog
 
-# 4. Tela de Quiz
+# 4. Aba Calculadoras (from active Tab 1 Cursos -> tap Tab 2 Calculadoras)
 - tapOn:
-    text: "Quiz"
-    optional: true
-- assertVisible: "Quiz de Trading"
-- takeScreenshot: screenshots/04_desafios_quiz
+    point: "51%,94%"
+- takeScreenshot: screenshots/05_calculadoras
 
-# 5. Tela de Ajustes
+# 5. Aba Candlesticks (from active Tab 2 Calculadoras -> tap Tab 3 Candlesticks)
 - tapOn:
-    text: "Ajustes"
-    optional: true
-- assertVisible: "Ajustes"
-- takeScreenshot: screenshots/05_ajustes_configuracoes
+    point: "71%,94%"
+- takeScreenshot: screenshots/06_candlesticks
 
-# 6. Retorna para Home
+# 6. Aba Quiz (from active Tab 3 Candlesticks -> tap Tab 4 Quiz)
 - tapOn:
-    text: "Home"
-    optional: true
-- assertVisible: "Price Action Master"
+    point: "84%,94%"
+- takeScreenshot: screenshots/07_quiz_random
+
+# 7. Aba Ajustes (from active Tab 4 Quiz -> tap Tab 5 Ajustes)
+- tapOn:
+    point: "94%,94%"
+- takeScreenshot: screenshots/08_ajustes
+
+# 8. Detalhe do Curso (from active Tab 5 Ajustes -> tap Tab 1 Cursos -> open Course)
+- tapOn:
+    point: "18%,94%"
+- tapOn:
+    point: "50%,28%"
+- takeScreenshot: screenshots/04_curso_detalhe
+- tapOn:
+    point: "7%,4%"
+
+# 9. Retorno final para a Home
+- tapOn:
+    point: "7%,94%"
+
+
+
+
+
+
+
+
