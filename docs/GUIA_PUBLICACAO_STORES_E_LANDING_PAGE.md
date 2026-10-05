@@ -83,8 +83,8 @@ flutter build ipa --release
 3. **Mídias Obrigatórias:**
    - Screenshots para tela de **6.7"** (ex: iPhone 15/16 Pro Max - 1290 x 2796 px) e **6.5" / 5.5"**.
 4. **Metadados & Textos:**
-   - **Descrição:** Destaque para Price Action, Smart Money Concepts (SMC), Ondas de Elliott, Calculadoras de risco B3 e 100% Offline.
-   - **Palavras-chave (Keywords):** `price action, smc, smart money concepts, mini indice, mini dolar, b3, day trade, elliott, candlesticks`.
+   - **Descrição:** Destaque para Price Action, Smart Money Concepts (SMC), Ondas de Elliott, Calculadoras de risco (B3, CME e Forex) e 100% Offline.
+   - **Palavras-chave (Keywords):** `price action, smc, smart money concepts, mini indice, mini dolar, b3, nq, es, day trade, elliott, candlesticks`.
    - **URL de Suporte e Privacidade:** Inserir a URL da Landing Page hospedada (ex: `https://seusite.com.br`).
 5. **Privacidade do App (App Privacy):**
    - Como o app funciona **100% offline**, informe que **não há coleta nem rastreamento de dados pessoais**.

@@ -202,7 +202,7 @@ function initB3Calculator() {
       contractDefault: 1,
       calcTicks: (pts) => pts * 0.2,
       calcResult: (contr, pts) => contr * pts * 0.2,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,20 = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,20 = ${formatCurrency(res, 'BRL')}`
     },
     WDO: {
       name: 'WDO — MINI DÓLAR',
@@ -214,7 +214,7 @@ function initB3Calculator() {
       contractDefault: 1,
       calcTicks: (pts) => pts * 2,
       calcResult: (contr, pts) => contr * pts * 10,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 10,00 = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 10,00 = ${formatCurrency(res, 'BRL')}`
     },
     DOL: {
       name: 'DOL — DÓLAR CHEIO (Padrão 5 contratos)',
@@ -226,7 +226,7 @@ function initB3Calculator() {
       contractDefault: 5,
       calcTicks: (pts) => pts * 2,
       calcResult: (contr, pts) => contr * pts * 50,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 50,00 = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 50,00 = ${formatCurrency(res, 'BRL')}`
     },
     IND: {
       name: 'IND — ÍNDICE CHEIO (Padrão 5 contratos)',
@@ -238,7 +238,7 @@ function initB3Calculator() {
       contractDefault: 5,
       calcTicks: (pts) => pts * 0.2,
       calcResult: (contr, pts) => contr * pts * 1.0,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 1,00 = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 1,00 = ${formatCurrency(res, 'BRL')}`
     },
     BITFUT: {
       name: 'BITFUT — BITCOIN FUTURO B3',
@@ -248,9 +248,10 @@ function initB3Calculator() {
       pointDefault: 500,
       pointMax: 10000,
       contractDefault: 1,
+      currency: 'BRL',
       calcTicks: (pts) => pts * 0.05,
       calcResult: (contr, pts) => contr * pts * 0.1,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,10 = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,10 = ${formatCurrency(res, 'BRL')}`
     },
     CCM: {
       name: 'CCM — MILHO FUTURO B3 (450 sacas/contrato)',
@@ -260,9 +261,88 @@ function initB3Calculator() {
       pointDefault: 1.50,
       pointMax: 20,
       contractDefault: 1,
+      currency: 'BRL',
       calcTicks: (pts) => pts * 100,
       calcResult: (contr, pts) => contr * pts * 450,
-      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × R$ ${p.toFixed(2)}/saca × 450 sacas = ${formatBRL(res)}`
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × R$ ${p.toFixed(2)}/saca × 450 sacas = ${formatCurrency(res, 'BRL')}`
+    },
+    NQ: {
+      name: 'NQ — E-MINI NASDAQ-100 (CME)',
+      rule: 'Multiplicador: US$ 20,00 por ponto • 1 tick = 0,25 ponto (4 ticks/ponto)',
+      pointLabel: 'Variação de Pontos do Nasdaq',
+      pointStep: 0.25,
+      pointDefault: 20,
+      pointMax: 500,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 4,
+      calcResult: (contr, pts) => contr * pts * 20,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 20,00 = ${formatCurrency(res, 'USD')}`
+    },
+    MNQ: {
+      name: 'MNQ — MICRO E-MINI NASDAQ (CME)',
+      rule: 'Multiplicador: US$ 2,00 por ponto • 1 tick = 0,25 ponto (4 ticks/ponto)',
+      pointLabel: 'Variação de Pontos do Micro Nasdaq',
+      pointStep: 0.25,
+      pointDefault: 20,
+      pointMax: 500,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 4,
+      calcResult: (contr, pts) => contr * pts * 2,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 2,00 = ${formatCurrency(res, 'USD')}`
+    },
+    ES: {
+      name: 'ES — E-MINI S&P 500 (CME)',
+      rule: 'Multiplicador: US$ 50,00 por ponto • 1 tick = 0,25 ponto (4 ticks/ponto)',
+      pointLabel: 'Variação de Pontos do S&P 500',
+      pointStep: 0.25,
+      pointDefault: 10,
+      pointMax: 200,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 4,
+      calcResult: (contr, pts) => contr * pts * 50,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 50,00 = ${formatCurrency(res, 'USD')}`
+    },
+    MES: {
+      name: 'MES — MICRO E-MINI S&P 500 (CME)',
+      rule: 'Multiplicador: US$ 5,00 por ponto • 1 tick = 0,25 ponto (4 ticks/ponto)',
+      pointLabel: 'Variação de Pontos do Micro S&P 500',
+      pointStep: 0.25,
+      pointDefault: 10,
+      pointMax: 200,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 4,
+      calcResult: (contr, pts) => contr * pts * 5,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 5,00 = ${formatCurrency(res, 'USD')}`
+    },
+    GC: {
+      name: 'GC — GOLD FUTURES (OURO 100 oz)',
+      rule: 'Multiplicador: US$ 100,00 por ponto • 1 tick = 0,10 ponto (10 ticks/ponto)',
+      pointLabel: 'Variação de Preço do Ouro (US$)',
+      pointStep: 0.10,
+      pointDefault: 5,
+      pointMax: 100,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 10,
+      calcResult: (contr, pts) => contr * pts * 100,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 100,00 = ${formatCurrency(res, 'USD')}`
+    },
+    MGC: {
+      name: 'MGC — MICRO GOLD (MICRO OURO 10 oz)',
+      rule: 'Multiplicador: US$ 10,00 por ponto • 1 tick = 0,10 ponto (10 ticks/ponto)',
+      pointLabel: 'Variação de Preço do Micro Ouro (US$)',
+      pointStep: 0.10,
+      pointDefault: 5,
+      pointMax: 100,
+      contractDefault: 1,
+      currency: 'USD',
+      calcTicks: (pts) => pts * 10,
+      calcResult: (contr, pts) => contr * pts * 10,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 10,00 = ${formatCurrency(res, 'USD')}`
     }
   };
 
@@ -286,7 +366,10 @@ function initB3Calculator() {
   const resFinancial = document.getElementById('calc-res-financial');
   const formulaText = document.getElementById('calc-formula-text');
 
-  function formatBRL(value) {
+  function formatCurrency(value, currency = 'BRL') {
+    if (currency === 'USD') {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    }
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
   }
 
@@ -297,7 +380,13 @@ function initB3Calculator() {
 
     // Update badges
     contractsBadge.textContent = contracts;
-    pointsBadge.textContent = currentAsset === 'CCM' ? `R$ ${points.toFixed(2)}` : `${points} pts`;
+    if (currentAsset === 'CCM') {
+      pointsBadge.textContent = `R$ ${points.toFixed(2)}`;
+    } else if (asset.currency === 'USD') {
+      pointsBadge.textContent = `${points} pts ($)`;
+    } else {
+      pointsBadge.textContent = `${points} pts`;
+    }
 
     // Calculations
     const ticks = Math.round(asset.calcTicks(points));
@@ -305,7 +394,7 @@ function initB3Calculator() {
 
     // Outputs
     resTicks.textContent = `${ticks} ticks`;
-    resFinancial.textContent = formatBRL(resultValue);
+    resFinancial.textContent = formatCurrency(resultValue, asset.currency || 'BRL');
     formulaText.textContent = asset.formulaText(contracts, points, resultValue);
   }
 
