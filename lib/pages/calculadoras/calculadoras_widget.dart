@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '../../components/trading_plan_promo_banner.dart';
+import '../../components/ad_banner_placeholder.dart';
 import 'calculadoras_model.dart';
 export 'calculadoras_model.dart';
 
@@ -472,6 +473,12 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                   const SizedBox(height: 12.0),
                   const TradingPlanPromoBanner(
                     variant: PromoVariant.auto,
+                    utmContent: 'calculadoras',
+                  ),
+                  const SizedBox(height: 10.0),
+                  const AdBannerPlaceholder(
+                    height: 60.0,
+                    margin: EdgeInsets.zero,
                   ),
                   const SizedBox(height: 50.0),
                 ],

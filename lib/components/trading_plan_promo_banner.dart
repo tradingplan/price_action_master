@@ -27,12 +27,14 @@ class PromoContent {
 class TradingPlanPromoBanner extends StatefulWidget {
   final PromoVariant variant;
   final String url;
+  final String? utmContent;
   final EdgeInsetsGeometry? margin;
 
   const TradingPlanPromoBanner({
     super.key,
     this.variant = PromoVariant.auto,
     this.url = 'https://www.tradingplan.com.br',
+    this.utmContent,
     this.margin,
   });
 
@@ -84,13 +86,31 @@ class _TradingPlanPromoBannerState extends State<TradingPlanPromoBanner> {
     }
   }
 
+  String _buildTaggedUrl() {
+    try {
+      final uri = Uri.parse(widget.url);
+      final queryParams = Map<String, String>.from(uri.queryParameters);
+      if (!queryParams.containsKey('utm_source')) {
+        queryParams['utm_source'] = 'app_price_action';
+        queryParams['utm_medium'] = 'in_app_banner';
+        queryParams['utm_campaign'] = 'ecossistema';
+        queryParams['utm_content'] = widget.utmContent ?? _promo.tag.toLowerCase();
+        return uri.replace(queryParameters: queryParams).toString();
+      }
+      return widget.url;
+    } catch (_) {
+      return widget.url;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.margin ?? EdgeInsets.zero,
       child: InkWell(
         onTap: () async {
-          final uri = Uri.parse(widget.url);
+          final targetUrl = _buildTaggedUrl();
+          final uri = Uri.parse(targetUrl);
           if (await canLaunchUrl(uri)) {
             await launchUrl(uri, mode: LaunchMode.externalApplication);
           }

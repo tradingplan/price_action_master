@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:price_action_master/backend/schema/platform_course_models.dart';
 import '../../../flutter_flow/flutter_flow_theme.dart';
 import '../../../components/trading_plan_promo_banner.dart';
+import '../../../components/ad_banner_placeholder.dart';
 import '../../../components/safe_image_widget.dart';
 import 'vector_painter.dart';
 import '../../smc/detalhe_smc_widget.dart';
@@ -823,6 +824,13 @@ class ChallengeRenderer extends StatelessWidget {
             // Card Promocional Dinâmico Trading Plan
             const TradingPlanPromoBanner(
               variant: PromoVariant.auto,
+              utmContent: 'desafio_modulo',
+            ),
+            const SizedBox(height: 12.0),
+            // Placeholder de Anúncio AdMob discreto
+            const AdBannerPlaceholder(
+              height: 60.0,
+              margin: EdgeInsets.only(bottom: 24.0),
             ),
           ],
         ),

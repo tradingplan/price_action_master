@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/backend/repositories/course_repository.dart';
 import '/backend/schema/platform_course_models.dart';
 import '/components/trading_plan_promo_banner.dart';
+import '/components/ad_banner_placeholder.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '../course/course_widget.dart';
@@ -238,8 +239,18 @@ class _CursosWidgetState extends State<CursosWidget> {
                             if (index == displayedCourses.length) {
                               return const Padding(
                                 padding: EdgeInsets.only(top: 8.0, bottom: 20.0),
-                                child: TradingPlanPromoBanner(
-                                  variant: PromoVariant.auto,
+                                child: Column(
+                                  children: [
+                                    TradingPlanPromoBanner(
+                                      variant: PromoVariant.auto,
+                                      utmContent: 'lista_cursos',
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    AdBannerPlaceholder(
+                                      height: 60.0,
+                                      margin: EdgeInsets.zero,
+                                    ),
+                                  ],
                                 ),
                               );
                             }

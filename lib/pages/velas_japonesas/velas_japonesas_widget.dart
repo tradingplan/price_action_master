@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/components/safe_image_widget.dart';
 import '/components/trading_plan_promo_banner.dart';
+import '/components/ad_banner_placeholder.dart';
 import '/backend/schema/candlesticks_record.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -213,8 +214,18 @@ class _VelasJaponesasWidgetState extends State<VelasJaponesasWidget> {
                             if (index == displayedCandles.length) {
                               return const Padding(
                                 padding: EdgeInsets.only(top: 4.0, bottom: 50.0),
-                                child: TradingPlanPromoBanner(
-                                  variant: PromoVariant.auto,
+                                child: Column(
+                                  children: [
+                                    TradingPlanPromoBanner(
+                                      variant: PromoVariant.auto,
+                                      utmContent: 'catalogo_candles',
+                                    ),
+                                    SizedBox(height: 10.0),
+                                    AdBannerPlaceholder(
+                                      height: 60.0,
+                                      margin: EdgeInsets.zero,
+                                    ),
+                                  ],
                                 ),
                               );
                             }

@@ -36,7 +36,8 @@ class _TradingPlanLogoWidgetState extends State<TradingPlanLogoWidget> {
   }
 
   Future<void> _openTradingPlan() async {
-    final uri = Uri.parse('https://www.tradingplan.com.br');
+    final uri = Uri.parse(
+        'https://www.tradingplan.com.br/?utm_source=app_price_action&utm_medium=in_app_banner&utm_campaign=ecossistema&utm_content=logo_banner');
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);

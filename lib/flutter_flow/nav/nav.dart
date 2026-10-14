@@ -74,13 +74,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'singleCandle':
                   getDoc(['candlesticks'], CandlesticksRecord.fromSnapshot),
             },
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: DetalheCandlestickWidget(
-                    singleCandle: params.getParam(
-                      'singleCandle',
-                      ParamType.Document,
-                    ),
+            builder: (context, params) => DetalheCandlestickWidget(
+                  singleCandle: params.getParam(
+                    'singleCandle',
+                    ParamType.Document,
                   ),
                 )),
         FFRoute(
@@ -89,13 +86,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             asyncParams: {
               'singleAT': getDoc(['conceitos'], ConceitosRecord.fromSnapshot),
             },
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: DetalheATWidget(
-                    singleAT: params.getParam(
-                      'singleAT',
-                      ParamType.Document,
-                    ),
+            builder: (context, params) => DetalheATWidget(
+                  singleAT: params.getParam(
+                    'singleAT',
+                    ParamType.Document,
                   ),
                 )),
         FFRoute(
@@ -104,31 +98,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             asyncParams: {
               'singleFigura': getDoc(['figuras'], FigurasRecord.fromSnapshot),
             },
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: DetalheFiguraWidget(
-                    singleFigura: params.getParam(
-                      'singleFigura',
-                      ParamType.Document,
-                    ),
+            builder: (context, params) => DetalheFiguraWidget(
+                  singleFigura: params.getParam(
+                    'singleFigura',
+                    ParamType.Document,
                   ),
                 )),
         FFRoute(
             name: FigurasGraficasWidget.routeName,
             path: FigurasGraficasWidget.routePath,
-            builder: (context, params) => params.isEmpty
-                ? NavBarPage(initialPage: 'FigurasGraficas')
-                : NavBarPage(
-                    initialPage: 'FigurasGraficas',
-                    page: FigurasGraficasWidget(
-                      singleFigura: params.getParam(
-                        'singleFigura',
-                        ParamType.DocumentReference,
-                        isList: false,
-                        collectionNamePath: ['figuras'],
-                      ),
-                    ),
-                  )),
+            builder: (context, params) => FigurasGraficasWidget(
+                  singleFigura: params.getParam(
+                    'singleFigura',
+                    ParamType.DocumentReference,
+                    isList: false,
+                    collectionNamePath: ['figuras'],
+                  ),
+                )),
         FFRoute(
             name: VelasJaponesasWidget.routeName,
             path: VelasJaponesasWidget.routePath,
@@ -141,12 +127,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
             name: AnaliseTecnicaWidget.routeName,
             path: AnaliseTecnicaWidget.routePath,
-            builder: (context, params) => params.isEmpty
-                ? NavBarPage(initialPage: 'AnaliseTecnica')
-                : NavBarPage(
-                    initialPage: 'AnaliseTecnica',
-                    page: AnaliseTecnicaWidget(),
-                  )),
+            builder: (context, params) => AnaliseTecnicaWidget()),
         FFRoute(
             name: CursosWidget.routeName,
             path: CursosWidget.routePath,
@@ -178,74 +159,53 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
             name: SmcWidget.routeName,
             path: SmcWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: SmcWidget(),
-                )),
+            builder: (context, params) => SmcWidget()),
         FFRoute(
             name: DetalheSMCWidget.routeName,
             path: DetalheSMCWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: DetalheSMCWidget(
-                    concept: params.getParam(
-                      'concept',
-                      ParamType.JSON,
-                    ),
+            builder: (context, params) => DetalheSMCWidget(
+                  concept: params.getParam(
+                    'concept',
+                    ParamType.JSON,
                   ),
                 )),
         FFRoute(
             name: ElliottWidget.routeName,
             path: ElliottWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: ElliottWidget(),
-                )),
+            builder: (context, params) => ElliottWidget()),
         FFRoute(
             name: DetalheElliottWidget.routeName,
             path: DetalheElliottWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: DetalheElliottWidget(
-                    concept: params.getParam(
-                      'concept',
-                      ParamType.JSON,
-                    ),
+            builder: (context, params) => DetalheElliottWidget(
+                  concept: params.getParam(
+                    'concept',
+                    ParamType.JSON,
                   ),
                 )),
         FFRoute(
             name: TarotWidget.routeName,
             path: TarotWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: TarotWidget(),
-                )),
+            builder: (context, params) => TarotWidget()),
         FFRoute(
             name: CourseWidget.routeName,
             path: CourseWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: CourseWidget(
-                    courseId: params.getParam(
-                      'courseId',
-                      ParamType.String,
-                    ),
+            builder: (context, params) => CourseWidget(
+                  courseId: params.getParam(
+                    'courseId',
+                    ParamType.String,
                   ),
                 )),
         FFRoute(
             name: ModulePanelWidget.routeName,
             path: ModulePanelWidget.routePath,
-            builder: (context, params) => NavBarPage(
-                  initialPage: '',
-                  page: ModulePanelWidget(
-                    courseId: params.getParam(
-                      'courseId',
-                      ParamType.String,
-                    ),
-                    moduleData: params.getParam(
-                      'moduleData',
-                      ParamType.JSON,
-                    ),
+            builder: (context, params) => ModulePanelWidget(
+                  courseId: params.getParam(
+                    'courseId',
+                    ParamType.String,
+                  ),
+                  moduleData: params.getParam(
+                    'moduleData',
+                    ParamType.JSON,
                   ),
                 ))
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

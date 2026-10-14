@@ -114,9 +114,10 @@ class _AjustesWidgetState extends State<AjustesWidget> {
   }
 
   Future<void> _shareApp() async {
-    const shareUrl = 'https://tradingplan.com.br/pv/pam-privacy/';
+    const shareUrl =
+        'https://play.google.com/store/apps/details?id=br.com.tradingplan.priceactionmaster';
     const shareText =
-        '📈 Domine Price Action, Smart Money Concepts e Padrões de Candlesticks com o Price Action Master! 100% Offline.\n\nAcesse: $shareUrl';
+        '📈 Domine Price Action, Smart Money Concepts e Padrões de Candlesticks com o Price Action Master! 100% Offline.\n\nBaixe na Play Store: $shareUrl';
 
     showModalBottomSheet(
       context: context,
@@ -208,11 +209,34 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                 trailing: Icon(Icons.chevron_right, color: modalTheme.secondaryText),
                 onTap: () async {
                   Navigator.pop(ctx);
-                  final whatsappUrl = Uri.parse(
-                    'https://api.whatsapp.com/send?text=${Uri.encodeComponent(shareText)}',
-                  );
-                  if (await canLaunchUrl(whatsappUrl)) {
-                    await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
+                  final encodedText = Uri.encodeComponent(shareText);
+                  final whatsappSchemeUri = Uri.parse('whatsapp://send?text=$encodedText');
+                  final whatsappWebUri = Uri.parse('https://api.whatsapp.com/send?text=$encodedText');
+
+                  bool launched = false;
+                  try {
+                    if (await canLaunchUrl(whatsappSchemeUri)) {
+                      launched = await launchUrl(whatsappSchemeUri, mode: LaunchMode.externalApplication);
+                    }
+                  } catch (_) {}
+
+                  if (!launched) {
+                    try {
+                      if (await canLaunchUrl(whatsappWebUri)) {
+                        launched = await launchUrl(whatsappWebUri, mode: LaunchMode.externalApplication);
+                      } else {
+                        launched = await launchUrl(whatsappWebUri, mode: LaunchMode.externalApplication);
+                      }
+                    } catch (_) {}
+                  }
+
+                  if (!launched && mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: FlutterFlowTheme.of(context).error,
+                        content: const Text('Não foi possível abrir o WhatsApp.'),
+                      ),
+                    );
                   }
                 },
               ),
@@ -559,7 +583,8 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                       ),
                       trailing: Icon(Icons.open_in_new_rounded, color: theme.secondaryText, size: 18.0),
                       onTap: () async {
-                        final uri = Uri.parse('https://www.tradingplan.com.br');
+                        final uri = Uri.parse(
+                            'https://www.tradingplan.com.br/?utm_source=app_price_action&utm_medium=in_app_link&utm_campaign=ecossistema&utm_content=menu_ajustes');
                         if (await canLaunchUrl(uri)) {
                           await launchUrl(uri, mode: LaunchMode.externalApplication);
                         }

@@ -273,7 +273,7 @@ class _InicioWidgetState extends State<InicioWidget>
                           ),
                           const SizedBox(height: 14.0),
                           Text(
-                            'Domine o Price Action & Análise Técnica',
+                            'Aprenda a linguagem dos operadores do mercado',
                             textAlign: TextAlign.center,
                             style: theme.headlineSmall.override(
                               fontFamily: theme.headlineSmallFamily,
@@ -724,6 +724,7 @@ class _InicioWidgetState extends State<InicioWidget>
                   // 5. Banner Promocional do TradingPlan
                   const TradingPlanPromoBanner(
                     variant: PromoVariant.auto,
+                    utmContent: 'home_banner',
                     margin: EdgeInsets.only(bottom: 8.0),
                   ),
 
