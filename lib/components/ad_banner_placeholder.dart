@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/services/ad_service.dart';
 
-class AdBannerPlaceholder extends StatelessWidget {
+class AdBannerPlaceholder extends StatefulWidget {
   final double height;
   final EdgeInsetsGeometry? margin;
   final String? label;
@@ -14,13 +17,93 @@ class AdBannerPlaceholder extends StatelessWidget {
   });
 
   @override
+  State<AdBannerPlaceholder> createState() => _AdBannerPlaceholderState();
+}
+
+class _AdBannerPlaceholderState extends State<AdBannerPlaceholder> {
+  BannerAd? _bannerAd;
+  bool _isLoaded = false;
+  bool _hasFailed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadBannerAd();
+  }
+
+  void _loadBannerAd() {
+    // Na Web não carregamos o SDK nativo do AdMob para evitar exceções
+    if (kIsWeb) return;
+
+    try {
+      _bannerAd = BannerAd(
+        adUnitId: AdService.bannerAdUnitId,
+        size: AdSize.banner,
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            if (mounted) {
+              setState(() {
+                _isLoaded = true;
+                _hasFailed = false;
+              });
+            }
+          },
+          onAdFailedToLoad: (ad, error) {
+            debugPrint('Erro ao carregar BannerAd AdMob: ${error.message} (code: ${error.code})');
+            ad.dispose();
+            if (mounted) {
+              setState(() {
+                _bannerAd = null;
+                _isLoaded = false;
+                _hasFailed = true;
+              });
+            }
+          },
+        ),
+      );
+
+      _bannerAd!.load();
+    } catch (e) {
+      debugPrint('Exceção ao instanciar BannerAd: $e');
+      _hasFailed = true;
+    }
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // 1. Se o anúncio real carregou com sucesso no Android/iOS, exibe o AdWidget
+    if (_isLoaded && _bannerAd != null) {
+      return Container(
+        width: double.infinity,
+        alignment: Alignment.center,
+        margin: widget.margin ?? const EdgeInsets.symmetric(vertical: 8.0),
+        child: SizedBox(
+          width: _bannerAd!.size.width.toDouble(),
+          height: _bannerAd!.size.height.toDouble(),
+          child: AdWidget(ad: _bannerAd!),
+        ),
+      );
+    }
+
+    // 2. Se falhou ao carregar em produção (ex: usuário 100% offline), não quebra a interface
+    if (_hasFailed && !kDebugMode && !kIsWeb) {
+      return const SizedBox.shrink();
+    }
+
+    // 3. Em Web, em testes locais ou enquanto carrega: exibe o placeholder estilizado
     final theme = FlutterFlowTheme.of(context);
 
     return Container(
       width: double.infinity,
-      height: height,
-      margin: margin ?? const EdgeInsets.symmetric(vertical: 8.0),
+      height: widget.height,
+      margin: widget.margin ?? const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
         color: theme.secondaryBackground,
         borderRadius: BorderRadius.circular(10.0),
@@ -40,7 +123,6 @@ class AdBannerPlaceholder extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Conteúdo central do Placeholder
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -62,7 +144,7 @@ class AdBannerPlaceholder extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    label ?? 'Espaço Publicitário (Ad Banner)',
+                    widget.label ?? 'Espaço Publicitário (Ad Banner)',
                     style: TextStyle(
                       color: theme.secondaryText,
                       fontSize: 12.0,
@@ -70,7 +152,9 @@ class AdBannerPlaceholder extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Reservado para Google AdMob / Banner',
+                    kIsWeb
+                        ? 'Google AdMob ativo em celulares Android/iOS'
+                        : 'Carregando anúncio patrocinado...',
                     style: TextStyle(
                       color: theme.secondaryText.withAlpha(150),
                       fontSize: 10.0,
@@ -80,8 +164,6 @@ class AdBannerPlaceholder extends StatelessWidget {
               ),
             ],
           ),
-
-          // Tag "ADS" discreta no canto superior esquerdo
           Positioned(
             top: 6.0,
             left: 8.0,

@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -25,6 +27,15 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+
+  // Inicialização segura do Google Mobile Ads (apenas em Android/iOS)
+  if (!kIsWeb) {
+    try {
+      await MobileAds.instance.initialize();
+    } catch (e) {
+      debugPrint('Erro ao inicializar AdMob: $e');
+    }
+  }
 
   await initFirebase();
   await LocalDataManager.init();

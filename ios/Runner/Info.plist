@@ -84,5 +84,16 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
+	<!-- Google AdMob Application ID -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-8743976567848644~9150295307</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
+
 </dict>
 </plist>
