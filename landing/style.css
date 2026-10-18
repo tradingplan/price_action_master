@@ -1192,10 +1192,55 @@ img.logo-icon-img {
   margin: 0 auto;
 }
 
+/* Market Category Filter Tabs */
+.calc-market-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.market-filter-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.market-filter-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--emerald-primary);
+  transform: translateY(-1px);
+}
+
+.market-filter-btn.active {
+  background: var(--emerald-primary);
+  color: #ffffff;
+  border-color: var(--emerald-primary);
+  box-shadow: 0 4px 14px rgba(14, 108, 4, 0.28);
+}
+
+.market-flag {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
 .asset-selector-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.65rem;
   margin-bottom: 1.5rem;
 }
 
@@ -1203,7 +1248,7 @@ img.logo-icon-img {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 0.75rem 0.5rem;
+  padding: 0.65rem 0.45rem;
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1232,8 +1277,35 @@ img.logo-icon-img {
 }
 
 .asset-name {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.asset-market-tag {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.asset-market-tag.b3 {
+  background: rgba(14, 108, 4, 0.1);
+  color: var(--emerald-primary);
+  border: 1px solid rgba(14, 108, 4, 0.2);
+}
+
+.asset-market-tag.us {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.2);
 }
 
 .calc-main-card {
@@ -1267,6 +1339,9 @@ img.logo-icon-img {
   background: var(--emerald-subtle);
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .calc-inputs-grid {
@@ -2056,7 +2131,8 @@ img.logo-icon-img {
   }
 
   .asset-selector-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 0.5rem;
   }
 
   .calc-inputs-grid, .calc-outputs-grid {

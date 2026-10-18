@@ -187,61 +187,69 @@ function initModuleTabs() {
 }
 
 /* ==========================================================================
-   4. INTERACTIVE B3 & CRYPTO CALCULATOR ENGINE
+   4. INTERACTIVE B3 & US FUTURES (CME) CALCULATOR ENGINE
    ========================================================================== */
 function initB3Calculator() {
   // Asset specifications
   const assets = {
     WIN: {
-      name: 'WIN — MINI ÍNDICE',
+      name: 'WIN — MINI ÍNDICE (B3)',
       rule: 'Multiplicador: R$ 0,20 por ponto • 1 tick = 5 pontos (0,2 tick/ponto)',
       pointLabel: 'Variação de Pontos (Alvo ou Stop)',
       pointStep: 5,
       pointDefault: 250,
       pointMax: 5000,
       contractDefault: 1,
+      currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 0.2,
       calcResult: (contr, pts) => contr * pts * 0.2,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,20 = ${formatCurrency(res, 'BRL')}`
     },
     WDO: {
-      name: 'WDO — MINI DÓLAR',
+      name: 'WDO — MINI DÓLAR (B3)',
       rule: 'Multiplicador: R$ 10,00 por ponto • 1 tick = 0,5 ponto (2 ticks/ponto)',
       pointLabel: 'Variação em Pontos de Dólar',
       pointStep: 0.5,
       pointDefault: 10,
       pointMax: 100,
       contractDefault: 1,
+      currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 2,
       calcResult: (contr, pts) => contr * pts * 10,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 10,00 = ${formatCurrency(res, 'BRL')}`
     },
     DOL: {
-      name: 'DOL — DÓLAR CHEIO (Padrão 5 contratos)',
+      name: 'DOL — DÓLAR CHEIO (B3 - Padrão 5 contratos)',
       rule: 'Multiplicador: R$ 50,00 por ponto / contrato • 1 tick = 0,5 ponto',
       pointLabel: 'Variação em Pontos de Dólar',
       pointStep: 0.5,
       pointDefault: 5,
       pointMax: 80,
       contractDefault: 5,
+      currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 2,
       calcResult: (contr, pts) => contr * pts * 50,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 50,00 = ${formatCurrency(res, 'BRL')}`
     },
     IND: {
-      name: 'IND — ÍNDICE CHEIO (Padrão 5 contratos)',
+      name: 'IND — ÍNDICE CHEIO (B3 - Padrão 5 contratos)',
       rule: 'Multiplicador: R$ 1,00 por ponto / contrato • 1 tick = 5 pontos',
       pointLabel: 'Variação de Pontos do Índice',
       pointStep: 5,
       pointDefault: 250,
       pointMax: 5000,
       contractDefault: 5,
+      currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 0.2,
       calcResult: (contr, pts) => contr * pts * 1.0,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 1,00 = ${formatCurrency(res, 'BRL')}`
     },
     BITFUT: {
-      name: 'BITFUT — BITCOIN FUTURO B3',
+      name: 'BITFUT — BITCOIN FUTURO (B3)',
       rule: 'Multiplicador: R$ 0,10 por ponto • 1 tick = 20 pontos (0,05 tick/ponto)',
       pointLabel: 'Variação de Pontos do Bitcoin',
       pointStep: 20,
@@ -249,12 +257,13 @@ function initB3Calculator() {
       pointMax: 10000,
       contractDefault: 1,
       currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 0.05,
       calcResult: (contr, pts) => contr * pts * 0.1,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pontos × R$ 0,10 = ${formatCurrency(res, 'BRL')}`
     },
     CCM: {
-      name: 'CCM — MILHO FUTURO B3 (450 sacas/contrato)',
+      name: 'CCM — MILHO FUTURO (B3 - 450 sacas/contrato)',
       rule: 'Multiplicador: R$ 450,00 por ponto (R$ 1/saca) • 1 tick = 0,01 ponto (100 ticks/ponto)',
       pointLabel: 'Variação em R$ por saca',
       pointStep: 0.05,
@@ -262,6 +271,7 @@ function initB3Calculator() {
       pointMax: 20,
       contractDefault: 1,
       currency: 'BRL',
+      market: 'b3',
       calcTicks: (pts) => pts * 100,
       calcResult: (contr, pts) => contr * pts * 450,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × R$ ${p.toFixed(2)}/saca × 450 sacas = ${formatCurrency(res, 'BRL')}`
@@ -275,6 +285,7 @@ function initB3Calculator() {
       pointMax: 500,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 4,
       calcResult: (contr, pts) => contr * pts * 20,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 20,00 = ${formatCurrency(res, 'USD')}`
@@ -288,6 +299,7 @@ function initB3Calculator() {
       pointMax: 500,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 4,
       calcResult: (contr, pts) => contr * pts * 2,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 2,00 = ${formatCurrency(res, 'USD')}`
@@ -301,6 +313,7 @@ function initB3Calculator() {
       pointMax: 200,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 4,
       calcResult: (contr, pts) => contr * pts * 50,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 50,00 = ${formatCurrency(res, 'USD')}`
@@ -314,12 +327,13 @@ function initB3Calculator() {
       pointMax: 200,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 4,
       calcResult: (contr, pts) => contr * pts * 5,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 5,00 = ${formatCurrency(res, 'USD')}`
     },
     GC: {
-      name: 'GC — GOLD FUTURES (OURO 100 oz)',
+      name: 'GC — GOLD FUTURES (COMEX - OURO 100 oz)',
       rule: 'Multiplicador: US$ 100,00 por ponto • 1 tick = 0,10 ponto (10 ticks/ponto)',
       pointLabel: 'Variação de Preço do Ouro (US$)',
       pointStep: 0.10,
@@ -327,12 +341,13 @@ function initB3Calculator() {
       pointMax: 100,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 10,
       calcResult: (contr, pts) => contr * pts * 100,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 100,00 = ${formatCurrency(res, 'USD')}`
     },
     MGC: {
-      name: 'MGC — MICRO GOLD (MICRO OURO 10 oz)',
+      name: 'MGC — MICRO GOLD (COMEX - MICRO OURO 10 oz)',
       rule: 'Multiplicador: US$ 10,00 por ponto • 1 tick = 0,10 ponto (10 ticks/ponto)',
       pointLabel: 'Variação de Preço do Micro Ouro (US$)',
       pointStep: 0.10,
@@ -340,9 +355,38 @@ function initB3Calculator() {
       pointMax: 100,
       contractDefault: 1,
       currency: 'USD',
+      market: 'us',
       calcTicks: (pts) => pts * 10,
       calcResult: (contr, pts) => contr * pts * 10,
       formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × ${p} pts × US$ 10,00 = ${formatCurrency(res, 'USD')}`
+    },
+    CL: {
+      name: 'CL — CRUDE OIL WTI (NYMEX - 1.000 barris)',
+      rule: 'Multiplicador: US$ 1.000,00 por ponto • 1 tick = 0,01 ponto (100 ticks/ponto)',
+      pointLabel: 'Variação em US$ do Barril de Petróleo',
+      pointStep: 0.05,
+      pointDefault: 1.00,
+      pointMax: 20,
+      contractDefault: 1,
+      currency: 'USD',
+      market: 'us',
+      calcTicks: (pts) => pts * 100,
+      calcResult: (contr, pts) => contr * pts * 1000,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × US$ ${p.toFixed(2)}/barril × 1.000 = ${formatCurrency(res, 'USD')}`
+    },
+    MCL: {
+      name: 'MCL — MICRO CRUDE OIL WTI (NYMEX - 100 barris)',
+      rule: 'Multiplicador: US$ 100,00 por ponto • 1 tick = 0,01 ponto (100 ticks/ponto)',
+      pointLabel: 'Variação em US$ do Micro Petróleo',
+      pointStep: 0.05,
+      pointDefault: 1.00,
+      pointMax: 20,
+      contractDefault: 1,
+      currency: 'USD',
+      market: 'us',
+      calcTicks: (pts) => pts * 100,
+      calcResult: (contr, pts) => contr * pts * 100,
+      formulaText: (c, p, res) => `Fórmula: ${c} contrato(s) × US$ ${p.toFixed(2)}/barril × 100 = ${formatCurrency(res, 'USD')}`
     }
   };
 
@@ -350,9 +394,11 @@ function initB3Calculator() {
 
   // DOM Elements
   const assetButtons = document.querySelectorAll('.asset-btn');
+  const marketFilterButtons = document.querySelectorAll('.market-filter-btn');
   const displaySymbol = document.getElementById('calc-display-symbol');
   const displayRule = document.getElementById('calc-display-rule');
   const labelPoints = document.getElementById('label-points-name');
+  const contractBadge = document.getElementById('calc-contract-badge');
 
   const contractsInput = document.getElementById('calc-contracts');
   const contractsRange = document.getElementById('calc-contracts-range');
@@ -364,6 +410,7 @@ function initB3Calculator() {
 
   const resTicks = document.getElementById('calc-res-ticks');
   const resFinancial = document.getElementById('calc-res-financial');
+  const resHint = document.getElementById('calc-res-hint');
   const formulaText = document.getElementById('calc-formula-text');
 
   function formatCurrency(value, currency = 'BRL') {
@@ -375,6 +422,7 @@ function initB3Calculator() {
 
   function updateCalculator() {
     const asset = assets[currentAsset];
+    if (!asset) return;
     const contracts = parseFloat(contractsInput.value) || 1;
     const points = parseFloat(pointsInput.value) || 0;
 
@@ -382,6 +430,8 @@ function initB3Calculator() {
     contractsBadge.textContent = contracts;
     if (currentAsset === 'CCM') {
       pointsBadge.textContent = `R$ ${points.toFixed(2)}`;
+    } else if (currentAsset === 'CL' || currentAsset === 'MCL') {
+      pointsBadge.textContent = `$ ${points.toFixed(2)}`;
     } else if (asset.currency === 'USD') {
       pointsBadge.textContent = `${points} pts ($)`;
     } else {
@@ -395,10 +445,16 @@ function initB3Calculator() {
     // Outputs
     resTicks.textContent = `${ticks} ticks`;
     resFinancial.textContent = formatCurrency(resultValue, asset.currency || 'BRL');
+    if (resHint) {
+      resHint.textContent = (asset.currency === 'USD')
+        ? 'Resultado bruto estimado (US$)'
+        : 'Resultado bruto estimado (R$)';
+    }
     formulaText.textContent = asset.formulaText(contracts, points, resultValue);
   }
 
   function setAsset(assetKey) {
+    if (!assets[assetKey]) return;
     currentAsset = assetKey;
     const asset = assets[assetKey];
 
@@ -406,6 +462,15 @@ function initB3Calculator() {
     displaySymbol.textContent = asset.name;
     displayRule.textContent = asset.rule;
     labelPoints.textContent = asset.pointLabel;
+
+    // Update Market Badge in header
+    if (contractBadge) {
+      if (asset.market === 'us' || asset.currency === 'USD') {
+        contractBadge.innerHTML = '<i class="fa-solid fa-flag-usa text-emerald"></i> Mercado Americano (CME)';
+      } else {
+        contractBadge.innerHTML = '<i class="fa-solid fa-landmark text-emerald"></i> Contrato B3 (Brasil)';
+      }
+    }
 
     // Set defaults
     contractsInput.value = asset.contractDefault;
@@ -427,6 +492,35 @@ function initB3Calculator() {
     });
 
     updateCalculator();
+  }
+
+  // Market Filter listeners
+  if (marketFilterButtons.length > 0) {
+    marketFilterButtons.forEach(filterBtn => {
+      filterBtn.addEventListener('click', () => {
+        const filter = filterBtn.getAttribute('data-filter');
+        marketFilterButtons.forEach(b => b.classList.remove('active'));
+        filterBtn.classList.add('active');
+
+        assetButtons.forEach(assetBtn => {
+          const assetMarket = assetBtn.getAttribute('data-market');
+          if (filter === 'all' || assetMarket === filter) {
+            assetBtn.style.display = 'flex';
+          } else {
+            assetBtn.style.display = 'none';
+          }
+        });
+
+        // If currently selected asset is hidden by filter, auto-select first visible asset
+        const currentAssetBtn = document.querySelector(`.asset-btn[data-asset="${currentAsset}"]`);
+        if (currentAssetBtn && currentAssetBtn.style.display === 'none') {
+          const firstVisible = Array.from(assetButtons).find(b => b.style.display !== 'none');
+          if (firstVisible) {
+            setAsset(firstVisible.getAttribute('data-asset'));
+          }
+        }
+      });
+    });
   }
 
   // Asset button listeners
