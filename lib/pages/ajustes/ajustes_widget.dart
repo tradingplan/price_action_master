@@ -94,7 +94,7 @@ class _AjustesWidgetState extends State<AjustesWidget> {
   }
 
   Future<void> _openPrivacyPolicy() async {
-    final uri = Uri.parse('https://tradingplan.com.br/pv/pam-privacy/');
+    final uri = Uri.parse('https://tradingplan.com.br/pv/pam/privacidade.html');
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);

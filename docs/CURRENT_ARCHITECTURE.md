@@ -76,7 +76,7 @@ O conteúdo educacional é desacoplado do código-fonte Dart:
 - **Card Promocional & Lead Magnet:** Promove planilhas de gestão e diários de trade na tela inicial e na tela de calculadoras.
 - **Ajustes:**
   - Compartilhar aplicativo nativo com mensagem de convite.
-  - Link direto para a Política de Privacidade (`https://tradingplan.com.br/pv/pam-privacy/`).
+  - Link direto para a Política de Privacidade (`https://tradingplan.com.br/pv/pam/privacidade.html`).
 
 ---
 

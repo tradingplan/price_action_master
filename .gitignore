@@ -70,3 +70,4 @@ tarot_history.json
 
 # Temporary local artifacts
 _temp/
+*.zip

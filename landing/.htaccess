@@ -1,10 +1,14 @@
-# Desativa o redirecionamento do WordPress para a pasta /pam
+# Desativa o redirecionamento do WordPress e garante a entrega dos arquivos estáticos locais
 <IfModule mod_rewrite.c>
-RewriteEngine Off
+RewriteEngine On
+RewriteRule ^ - [L]
 </IfModule>
 
-# Garante que o index.html seja carregado prioritariamente
-DirectoryIndex index.html
+# Garante que index.html seja a página inicial prioritária
+DirectoryIndex index.html index.php
+
+# Força codificação UTF-8
+AddDefaultCharset UTF-8
 
 # Cache para performance máxima
 <IfModule mod_expires.c>

@@ -205,14 +205,33 @@ body {
 .logo-icon-box {
   width: 42px;
   height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+  flex: 0 0 42px;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--emerald-primary) 0%, #16a34a 100%);
+  background: #ffffff;
+  border: 1px solid rgba(14, 108, 4, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
-  font-size: 1.25rem;
-  box-shadow: 0 4px 12px rgba(14, 108, 4, 0.25);
+  box-shadow: 0 4px 12px rgba(14, 108, 4, 0.12);
+  overflow: hidden;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.logo-icon-box img,
+.logo-icon-img,
+img.logo-icon-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex-shrink: 0;
 }
 
 .logo-text-group {

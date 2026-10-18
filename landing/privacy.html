@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — Price Action Master</title>
+
+  <!-- SEO & Meta Tags -->
+  <meta name="description"
+    content="Política de Privacidade e Proteção de Dados do aplicativo Price Action Master em conformidade com a LGPD e as Diretrizes do Google Play Console.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Trading Plan">
+  <meta name="theme-color" content="#0E6C04">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Base Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=1.2">
+
+  <style>
+    /* Privacy Page Specific Enhancements */
+    .privacy-page {
+      padding-top: 7rem;
+      padding-bottom: 5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .privacy-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .privacy-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      background: rgba(14, 108, 4, 0.08);
+      border: 1px solid rgba(14, 108, 4, 0.25);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--emerald-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .privacy-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.6;
+    }
+
+    .privacy-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.85rem 1.5rem;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .privacy-meta-bar strong {
+      color: var(--text-primary);
+    }
+
+    /* Highlights Grid */
+    .privacy-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .highlight-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .highlight-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-card-icon.emerald {
+      background: rgba(14, 108, 4, 0.1);
+      color: var(--emerald-primary);
+    }
+
+    .highlight-card-icon.blue {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--cyan-accent);
+    }
+
+    .highlight-card-icon.gold {
+      background: rgba(217, 119, 6, 0.1);
+      color: var(--gold-accent);
+    }
+
+    .highlight-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight-card-text {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Privacy Document Content */
+    .privacy-document {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 640px) {
+      .privacy-document {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .privacy-title {
+        font-size: 1.85rem;
+      }
+    }
+
+    .privacy-document h2 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-top: 2.25rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .privacy-document h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .privacy-document h2 .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--emerald-primary);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .privacy-document h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-document p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .privacy-document p strong {
+      color: var(--text-primary);
+    }
+
+    .privacy-document ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    .privacy-document li {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-document li strong {
+      color: var(--text-primary);
+    }
+
+    .info-callout {
+      background: rgba(14, 108, 4, 0.05);
+      border-left: 4px solid var(--emerald-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.15rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .info-callout.warning {
+      background: rgba(217, 119, 6, 0.06);
+      border-left-color: var(--gold-accent);
+    }
+
+    .info-callout p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+    }
+
+    .privacy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    .privacy-table th,
+    .privacy-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .privacy-table th {
+      background: rgba(15, 23, 42, 0.03);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-status.not-collected {
+      background: rgba(14, 108, 4, 0.1);
+      color: var(--emerald-primary);
+    }
+
+    .badge-status.local-only {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--cyan-accent);
+    }
+
+    .badge-status.third-party {
+      background: rgba(217, 119, 6, 0.1);
+      color: var(--gold-accent);
+    }
+
+    .back-btn-wrapper {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-emerald-600 selection:text-white">
+
+  <!-- Background Ambience & Glows -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+  <div class="glow-bg glow-3"></div>
+  <div class="trading-grid-pattern"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header id="main-header" class="fixed-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <div class="logo-icon-box">
+          <img src="assets/images/logo.png" alt="Price Action Master Logo" class="logo-icon-img" width="38" height="38" style="width: 38px; height: 38px; max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">Price Action <span class="text-emerald">Master</span></span>
+          <span class="logo-badge">Guia & Calculadoras</span>
+        </div>
+      </a>
+
+      <!-- Action Button: Back to Homepage -->
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Voltar ao Início</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="privacy-page">
+    <div class="privacy-container">
+
+      <!-- Back Link -->
+      <div class="back-btn-wrapper">
+        <a href="index.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-chevron-left"></i> Voltar para a Home
+        </a>
+      </div>
+
+      <!-- Header Section -->
+      <header class="privacy-header">
+        <div class="privacy-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Privacidade & LGPD</span>
+        </div>
+        <h1 class="privacy-title">Política de Privacidade</h1>
+        <p class="privacy-subtitle">
+          Saiba de forma clara, transparente e objetiva como o <strong>Price Action Master</strong> respeita sua
+          privacidade, opera em modelo <strong>100% offline</strong> e cumpre integralmente os requisitos da LGPD e as
+          políticas do Google Play Console.
+        </p>
+
+        <div class="privacy-meta-bar">
+          <span><strong>Versão:</strong> 1.1</span>
+          <span><strong>Última atualização:</strong> 18 de Outubro de 2026</span>
+          <span><strong>Aplicativo:</strong> Price Action Master</span>
+          <span><strong>ID do Pacote:</strong> br.com.tradingplan.priceactionmaster</span>
+        </div>
+      </header>
+
+      <!-- Highlights Quick Cards -->
+      <section class="privacy-highlights-grid">
+        <!-- Card 1 -->
+        <div class="highlight-card">
+          <div class="highlight-card-icon emerald">
+            <i class="fa-solid fa-user-slash"></i>
+          </div>
+          <h3 class="highlight-card-title">Sem Cadastro ou Login</h3>
+          <p class="highlight-card-text">
+            Você não precisa fornecer seu nome, CPF, e-mail ou telefone para usar o aplicativo. Não mantemos contas de
+            usuário em servidores remotos.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="highlight-card">
+          <div class="highlight-card-icon blue">
+            <i class="fa-solid fa-hard-drive"></i>
+          </div>
+          <h3 class="highlight-card-title">Armazenamento 100% Local</h3>
+          <p class="highlight-card-text">
+            O seu progresso de estudo, pontuações de quizzes, histórico de simulação e reflexões do Tarot Trader são
+            salvos exclusivamente na memória do seu aparelho.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="highlight-card">
+          <div class="highlight-card-icon gold">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+          <h3 class="highlight-card-title">Exclusão Instantânea</h3>
+          <p class="highlight-card-text">
+            Você tem controle total: apague todos os seus dados locais a qualquer momento com apenas 1 toque na tela de
+            Ajustes do próprio app.
+          </p>
+        </div>
+      </section>
+
+      <!-- Full Legal Document Body -->
+      <article class="privacy-document">
+
+        <!-- Section 1 -->
+        <h2><span class="section-num">1</span> Controlador e Encarregado de Dados (DPO)</h2>
+        <p>
+          Esta Política de Privacidade aplica-se aos dados e serviços relacionados ao aplicativo móvel <strong>Price
+            Action Master</strong> e sua landing page oficial, desenvolvidos e mantidos por:
+        </p>
+        <ul>
+          <li><strong>Razão Social / Marca:</strong> Trading Plan Club</li>
+          <li><strong>CNPJ:</strong> 22.395.133/0001-47</li>
+          <li><strong>Endereço:</strong> Rua Dr Carvalho, 150, Vila, Ilhabela - SP, CEP: 11630-000
+          </li>
+          <li><strong>Encarregado de Proteção de Dados (DPO):</strong> Carlos A. F. Cadilhe</li>
+          <li><strong>Canal de Atendimento de Privacidade:</strong> <a href="mailto:contato@tradingplan.com.br"
+              class="text-emerald">contato@tradingplan.com.br</a> / <a href="mailto:sac@tradingplan.com.br"
+              class="text-emerald">sac@tradingplan.com.br</a></li>
+          <li><strong>Portal Oficial:</strong> <a href="https://www.tradingplan.com.br" target="_blank" rel="noopener"
+              class="text-emerald font-bold">www.tradingplan.com.br</a></li>
+        </ul>
+
+        <!-- Section 2 -->
+        <h2><span class="section-num">2</span> Natureza do Aplicativo e Dados Tratados</h2>
+        <p>
+          O <strong>Price Action Master</strong> é uma ferramenta educacional de consulta e cálculo para estudantes de
+          análise gráfica e traders do mercado futuro. Ele foi projetado sob o princípio da <strong>minimização de
+            dados</strong> e arquitetura <strong>Offline-First</strong>:
+        </p>
+
+        <table class="privacy-table">
+          <thead>
+            <tr>
+              <th>Tipo de Dado</th>
+              <th>Status no App</th>
+              <th>Onde fica armazenado</th>
+              <th>Finalidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dados Pessoais Cadastrais</strong> (Nome, E-mail, CPF, Telefone)</td>
+              <td><span class="badge-status not-collected">Não Coletado</span></td>
+              <td>Nenhum servidor externo</td>
+              <td>O app não requer cadastro nem autenticação.</td>
+            </tr>
+            <tr>
+              <td><strong>Progresso Educacional & Quizzes</strong></td>
+              <td><span class="badge-status local-only">Apenas Local</span></td>
+              <td>Armazenamento do dispositivo (SharedPreferences)</td>
+              <td>Acompanhamento pedagógico pessoal das lições e pontuações de quiz.</td>
+            </tr>
+            <tr>
+              <td><strong>Ordens e Saldo do Simulador Virtual</strong></td>
+              <td><span class="badge-status local-only">Apenas Local</span></td>
+              <td>Armazenamento do dispositivo</td>
+              <td>Permitir a prática simulada com dinheiro fictício (sem dinheiro real).</td>
+            </tr>
+            <tr>
+              <td><strong>Tiragens do Tarot Trader</strong></td>
+              <td><span class="badge-status local-only">Apenas Local</span></td>
+              <td>Armazenamento do dispositivo</td>
+              <td>Registrar o histórico de reflexões diárias de disciplina.</td>
+            </tr>
+            <tr>
+              <td><strong>Preferências de Interface (Tema/Ajustes)</strong></td>
+              <td><span class="badge-status local-only">Apenas Local</span></td>
+              <td>Armazenamento do dispositivo</td>
+              <td>Manter sua preferência de tela e som.</td>
+            </tr>
+            <tr>
+              <td><strong>Identificadores de Anúncios (AAID) & Telemetria</strong></td>
+              <td><span class="badge-status third-party">Google AdMob</span></td>
+              <td>Servidores do Google LLC</td>
+              <td>Exibição de anúncios patrocinados para manter o app 100% gratuito.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Section 3 -->
+        <h2><span class="section-num">3</span> Serviços de Terceiros e Publicidade (Google AdMob)</h2>
+        <p>
+          Para que o <strong>Price Action Master</strong> continue disponível de forma gratuita para toda a comunidade
+          de traders sem cobrar mensalidades, o aplicativo integra o SDK oficial de publicidade móvel <strong>Google
+            Mobile Ads (Google AdMob)</strong>, operado pela <em>Google LLC</em>.
+        </p>
+        <p>
+          O Google AdMob pode coletar e processar automaticamente determinados dados técnicos de acordo com as suas
+          próprias políticas de privacidade, incluindo:
+        </p>
+        <ul>
+          <li><strong>Identificadores do Dispositivo:</strong> Identificador de Publicidade do Google (AAID no Android
+            ou IDFA no iOS).</li>
+          <li><strong>Dados de Rede e Localização Aproximada:</strong> Endereço IP (usado para estimar a região/país do
+            dispositivo para veiculação de anúncios contextuais).</li>
+          <li><strong>Diagnóstico e Métricas de Desempenho:</strong> Relatórios anônimos de travamentos (crashes), tempo
+            de carregamento de anúncios e impressões publicitárias para prevenção de fraudes.</li>
+        </ul>
+
+        <div class="info-callout">
+          <p>
+            <i class="fa-solid fa-circle-info text-emerald"></i>
+            <strong>Links Úteis do Google:</strong><br>
+            Você pode consultar os termos detalhados em <a href="https://policies.google.com/privacy" target="_blank"
+              rel="noopener" class="text-emerald font-bold">Política de Privacidade do Google</a> e aprender como os
+            dados de publicidade são usados em <a href="https://policies.google.com/technologies/ads" target="_blank"
+              rel="noopener" class="text-emerald font-bold">Como o Google usa as informações de sites ou apps</a>.
+          </p>
+        </div>
+
+        <h3>Como controlar a personalização de anúncios no seu celular:</h3>
+        <p>
+          Você pode desativar ou redefinir seu identificador de publicidade a qualquer momento através do seu próprio
+          sistema operacional:
+        </p>
+        <ul>
+          <li><strong>No Android:</strong> Abra <em>Configurações ➔ Google ➔ Anúncios ➔ Excluir ID de publicidade</em>
+            ou <em>Redefinir ID de publicidade</em>.</li>
+          <li><strong>No iOS:</strong> Abra <em>Ajustes ➔ Privacidade e Segurança ➔ Rastreamento</em> e desative as
+            permissões.</li>
+        </ul>
+
+        <!-- Section 4 -->
+        <h2><span class="section-num">4</span> Segurança da Informação</h2>
+        <p>
+          A integridade e segurança dos dados do usuário são prioridades absolutas no desenvolvimento do <strong>Price
+            Action Master</strong>:
+        </p>
+        <ul>
+          <li><strong>Isolamento de Aplicativo (App Sandbox):</strong> Todos os arquivos e registros gerados pelo app
+            ficam confinados no diretório seguro de armazenamento privado fornecido pelos sistemas operacionais Android
+            e iOS, impedindo que outros aplicativos não autorizados acessem suas anotações ou progresso.</li>
+          <li><strong>Sem Transmissão de Dados do Usuário para Servidores Externos:</strong> Não enviamos suas
+            anotações, histórico de trades virtuais ou quizzes para a internet. O app funciona 100% desconectado da
+            rede.</li>
+          <li><strong>Conexões Criptografadas:</strong> Quaisquer links externos acessados (como o portal institucional
+            ou a loja Google Play) utilizam o protocolo seguro HTTPS com criptografia SSL/TLS.</li>
+        </ul>
+
+        <!-- Section 5 -->
+        <h2><span class="section-num">5</span> Retenção, Controle e Exclusão de Dados</h2>
+        <p>
+          Em total alinhamento com a <strong>Política de Exclusão de Dados de Usuários do Google Play</strong> e com o
+          <strong>Art. 18 da LGPD</strong>, você possui autonomia irrestrita para eliminar todos os dados associados ao
+          seu uso do aplicativo.
+        </p>
+        <p>
+          Como todos os dados residem unicamente no seu smartphone, você pode eliminá-los de três formas práticas:
+        </p>
+
+        <div class="info-callout">
+          <p>
+            <strong>Método 1 — Diretamente pelo App (Recomendado):</strong><br>
+            Abra o app ➔ Vá na aba <strong>Ajustes</strong> ➔ Role até a seção <strong>Dados & Progresso</strong> ➔
+            Toque no botão <strong>Resetar Tudo</strong> e confirme. Todos os registros locais de quizzes, saldo virtual
+            e histórico de ordens serão imediatamente apagados da memória.
+          </p>
+        </div>
+
+        <p>
+          <strong>Método 2 — Pelas Configurações do Android:</strong><br>
+          Acesse <em>Configurações do Aparelho ➔ Aplicativos ➔ Price Action Master ➔ Armazenamento ➔ Limpar Dados /
+            Limpar Cache</em>.
+        </p>
+
+        <p>
+          <strong>Método 3 — Desinstalação do Aplicativo:</strong><br>
+          Ao desinstalar o aplicativo do seu aparelho, o sistema operacional remove automaticamente todo e qualquer
+          arquivo, banco de dados ou registro local associado ao Price Action Master.
+        </p>
+
+        <!-- Section 6 -->
+        <h2><span class="section-num">6</span> Seus Direitos sob a Lei Geral de Proteção de Dados (LGPD)</h2>
+        <p>
+          A Lei Federal nº 13.709/2018 (LGPD) garante aos cidadãos uma série de direitos referentes aos seus dados
+          pessoais. O Price Action Master assegura e respeita todos esses direitos:
+        </p>
+        <ul>
+          <li><strong>Confirmação e Acesso:</strong> Você tem o direito de saber se seus dados são tratados. Conforme
+            esclarecido, o app não retém dados pessoais em servidores remotos.</li>
+          <li><strong>Correção e Atualização:</strong> As configurações visuais e preferências podem ser editadas
+            diretamente no menu do aplicativo.</li>
+          <li><strong>Eliminação e Anonimização:</strong> Exercível a qualquer instante via botão "Resetar Tudo" ou
+            desinstalação.</li>
+          <li><strong>Revogação do Consentimento:</strong> Caso não concorde com a exibição de anúncios pelo Google
+            AdMob, você pode desativar o identificador de publicidade nas configurações do sistema ou desinstalar o
+            aplicativo.</li>
+        </ul>
+
+        <!-- Section 7 -->
+        <h2><span class="section-num">7</span> Proteção de Menores de Idade (COPPA & Estatuto da Criança)</h2>
+        <p>
+          O <strong>Price Action Master</strong> é uma ferramenta voltada ao estudo técnico e conceitual de mercados de
+          capitais e derivativos futuros (B3, CME e Forex), sendo destinado a pessoas <strong>maiores de 18 (dezoito)
+            anos</strong>.
+        </p>
+        <p>
+          Não coletamos deliberadamente informações de identificação pessoal de crianças ou adolescentes menores de 18
+          anos. Caso qualquer responsável identifique uso não autorizado, orientamos a desinstalação imediata do
+          aplicativo no dispositivo da criança.
+        </p>
+
+        <!-- Section 8 -->
+        <h2><span class="section-num">8</span> Isenção de Responsabilidade Financeira</h2>
+        <div class="info-callout warning">
+          <p>
+            <i class="fa-solid fa-triangle-exclamation text-gold"></i>
+            <strong>Aviso Legal Importante:</strong><br>
+            O aplicativo <em>Price Action Master</em> possui objetivo exclusivamente educacional, pedagógico e
+            utilitário de cálculo matemático. Não executamos ordens reais em corretoras de valores, não captamos
+            recursos de terceiros e não emitimos recomendações de compra, venda ou alocação de ativos financeiros.
+            Operações em renda variável envolvem alto risco de perda patrimonial.
+          </p>
+        </div>
+
+        <!-- Section 9 -->
+        <h2><span class="section-num">9</span> Fale Conosco e Dúvidas</h2>
+        <p>
+          Se você tiver qualquer dúvida, sugestão ou solicitação referente a esta Política de Privacidade ou ao
+          tratamento de dados, entre em contato com nosso Encarregado de Proteção de Dados (DPO):
+        </p>
+        <ul>
+          <li><strong>E-mail de Contato:</strong> <a href="mailto:contato@tradingplan.com.br"
+              class="text-emerald font-bold">contato@tradingplan.com.br</a></li>
+          <li><strong>E-mail de Suporte:</strong> <a href="mailto:sac@tradingplan.com.br"
+              class="text-emerald font-bold">sac@tradingplan.com.br</a></li>
+          <li><strong>Portal Oficial:</strong> <a href="https://www.tradingplan.com.br" target="_blank" rel="noopener"
+              class="text-emerald font-bold">www.tradingplan.com.br</a></li>
+        </ul>
+
+        <!-- Section 10 -->
+        <h2><span class="section-num">10</span> Atualizações desta Política de Privacidade</h2>
+        <p>
+          Reservamo-nos o direito de aprimorar ou atualizar esta Política de Privacidade periodicamente para refletir
+          melhorias no aplicativo, novas funcionalidades ou adequações a exigências legais e regulatórias do Google Play
+          e da Autoridade Nacional de Proteção de Dados (ANPD).
+        </p>
+        <p>
+          A versão vigente estará sempre publicada nesta página com a respectiva data de atualização no cabeçalho. O uso
+          continuado do aplicativo após eventuais atualizações constitui sua ciência e concordância com os novos termos.
+        </p>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <!-- Brand column -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <div class="logo-icon-box">
+              <img src="assets/images/logo.png" alt="Price Action Master Logo" class="logo-icon-img" width="38" height="38" style="width: 38px; height: 38px; max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+            </div>
+            <div class="logo-text-group">
+              <span class="logo-title">Price Action <span class="text-emerald">Master</span></span>
+              <span class="logo-badge">Aplicativo Educacional</span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Guia de consulta e utilitário de cálculo para estudantes de análise técnica e traders de mercado futuro.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Conteúdo</h4>
+          <ul class="footer-list">
+            <li><a href="index.html#modulos">Candlesticks & Padrões</a></li>
+            <li><a href="index.html#modulos">Smart Money Concepts (SMC)</a></li>
+            <li><a href="index.html#modulos">Ondas de Elliott</a></li>
+            <li><a href="index.html#modulos">Tarot Trader</a></li>
+            <li><a href="index.html#calculadora-live">Calculadoras B3</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Aplicativo</h4>
+          <ul class="footer-list">
+            <li><a href="index.html#recursos">Recursos do App</a></li>
+            <li><a href="index.html#simulador-demo">Exemplo de Exercício</a></li>
+            <li><a href="index.html#faq">Perguntas Frequentes</a></li>
+            <li><a href="index.html#download-section">Download do App</a></li>
+            <li><a href="privacidade.html" class="text-emerald font-bold">Política de Privacidade</a></li>
+          </ul>
+        </div>
+
+        <!-- Ecosystem -->
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Trading Plan</h4>
+          <p class="text-xs text-slate-500 mb-2">Visite o portal oficial:</p>
+          <a href="https://www.tradingplan.com.br" target="_blank" rel="noopener"
+            class="text-emerald text-sm font-bold">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> tradingplan.com.br
+          </a>
+        </div>
+      </div>
+
+      <!-- Legal Disclaimer -->
+      <div class="footer-disclaimer-box">
+        <p class="disclaimer-text">
+          <strong>Aviso Legal:</strong> O aplicativo <em>Price Action Master</em> possui caráter estritamente educativo,
+          de estudo técnico e ferramenta de cálculo. Não constitui recomendação de investimento, consultoria financeira
+          ou promessa de resultados. Operações em renda variável e mercado futuro envolvem risco financeiro.
+        </p>
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom-row">
+        <span>&copy; 2026 Price Action Master. Todos os direitos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Termos de Uso</a>
+          <a href="privacidade.html" class="text-emerald font-bold">Privacidade</a>
+          <a href="https://www.tradingplan.com.br" target="_blank" rel="noopener">Trading Plan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
