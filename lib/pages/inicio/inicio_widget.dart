@@ -696,6 +696,24 @@ class _InicioWidgetState extends State<InicioWidget>
                           ),
                           _buildQuickToolCard(
                             context: context,
+                            title: 'Horários Mercado',
+                            subtitle: 'Sessões & Killzones',
+                            icon: Icons.schedule_rounded,
+                            iconColor: const Color(0xFF0284C7),
+                            onTap: () {
+                              context.pushNamed(
+                                MarketHoursWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': const TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.rightToLeft,
+                                  ),
+                                },
+                              );
+                            },
+                          ),
+                          _buildQuickToolCard(
+                            context: context,
                             title: 'Candlesticks',
                             subtitle: 'Catálogo de Padrões',
                             icon: Icons.candlestick_chart_outlined,

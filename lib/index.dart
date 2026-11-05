@@ -38,3 +38,6 @@ export '/pages/estrategias/estrategias_list_page.dart'
     show EstrategiasListPage;
 export '/pages/estrategias/estrategia_detail_page.dart'
     show EstrategiaDetailPage;
+export '/pages/market_hours/market_hours_widget.dart'
+    show MarketHoursWidget;
+

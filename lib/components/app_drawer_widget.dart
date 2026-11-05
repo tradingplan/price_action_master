@@ -300,6 +300,25 @@ class _AppDrawerWidgetState extends State<AppDrawerWidget> {
                     onTap: () => _navigateToTab('Calculadoras'),
                   ),
                   _DrawerItem(
+                    icon: Icons.schedule_rounded,
+                    title: 'Horários de Mercado (Global)',
+                    badgeText: 'NOVO',
+                    badgeColor: const Color(0xFF10B981),
+                    theme: theme,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed(
+                        MarketHoursWidget.routeName,
+                        extra: <String, dynamic>{
+                          '__transition_info__': const TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
+                      );
+                    },
+                  ),
+                  _DrawerItem(
                     icon: Icons.quiz_outlined,
                     title: 'Quizzes & Desafios',
                     theme: theme,
