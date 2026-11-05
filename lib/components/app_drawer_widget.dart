@@ -239,7 +239,7 @@ class _AppDrawerWidgetState extends State<AppDrawerWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '20 Setups, SMC & Sem Anúncios',
+                                        '19 Setups, SMC & Sem Anúncios',
                                         style: TextStyle(
                                           color: Color(0xFFB45309),
                                           fontSize: 11,
@@ -276,7 +276,7 @@ class _AppDrawerWidgetState extends State<AppDrawerWidget> {
                   ),
                   _DrawerItem(
                     icon: Icons.auto_graph_rounded,
-                    title: 'Playbook Operacional (20 Setups)',
+                    title: 'Playbook Operacional (19 Setups)',
                     badgeText: 'NOVO',
                     badgeColor: const Color(0xFFF59E0B),
                     theme: theme,

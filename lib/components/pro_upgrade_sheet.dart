@@ -257,7 +257,7 @@ class _ProUpgradeSheetState extends State<ProUpgradeSheet> {
                 children: const [
                   _BenefitRow(
                     icon: Icons.auto_graph_rounded,
-                    title: '20 Estratégias Operacionais',
+                    title: '19 Estratégias Operacionais',
                     subtitle: 'Entry, stop, target e gestão tática passo a passo',
                   ),
                   Divider(color: Color(0xFF2A344A), height: 18),

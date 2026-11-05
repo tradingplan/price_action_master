@@ -15,13 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Price Action Master — Guia de Price Action, SMC e Calculadoras B3 & CME">
   <meta property="og:description" content="Estudo de candlesticks, estruturas de mercado e calculadoras de contratos B3 e Mercado Americano 100% offline.">
-  <meta property="og:image" content="assets/images/bull_chart_hero.png">
+  <meta property="og:image" content="assets/images/bull_chart_hero-dual-theme.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Price Action Master — Guia de Análise Técnica & Calculadoras">
   <meta name="twitter:description" content="Estude Price Action, SMC e use calculadoras de contratos B3 e CME no celular.">
-  <meta name="twitter:image" content="assets/images/bull_chart_hero.png">
+  <meta name="twitter:image" content="assets/images/bull_chart_hero-dual-theme.png">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon-trading-plan.png">
@@ -61,8 +61,9 @@
       <!-- Desktop Nav -->
       <nav class="nav-links" id="nav-menu">
         <a href="#recursos" class="nav-link">Recursos</a>
-        <a href="#modulos" class="nav-link">Conteúdo & SMC</a>
+        <a href="#modulos" class="nav-link">Playbook & Conteúdo</a>
         <a href="#calculadora-live" class="nav-link">Calculadoras B3 & EUA</a>
+        <a href="#markethours-anchor" class="nav-link">Market Hours</a>
         <a href="#simulador-demo" class="nav-link">Exercícios</a>
         <a href="#publico-alvo" class="nav-link">Para Quem É</a>
         <a href="#faq" class="nav-link">FAQ</a>
@@ -84,7 +85,8 @@
     <div class="mobile-drawer" id="mobile-drawer">
       <nav class="mobile-drawer-links">
         <a href="#recursos" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Recursos do App</a>
-        <a href="#modulos" class="mobile-link"><i class="fa-solid fa-book-open"></i> Conteúdo & SMC</a>
+        <a href="#modulos" class="mobile-link"><i class="fa-solid fa-chess-knight"></i> Playbook & 19 Setups</a>
+        <a href="#markethours-anchor" class="mobile-link"><i class="fa-solid fa-clock"></i> Market Hours (Horários)</a>
         <a href="#calculadora-live" class="mobile-link"><i class="fa-solid fa-calculator"></i> Calculadoras B3 & EUA</a>
         <a href="#simulador-demo" class="mobile-link"><i class="fa-solid fa-bullseye"></i> Exemplo de Exercício</a>
         <a href="#publico-alvo" class="mobile-link"><i class="fa-solid fa-users"></i> Para Quem É</a>
@@ -114,7 +116,7 @@
           </h1>
 
           <p class="hero-subtitle">
-            Um aplicativo direto ao ponto para consultar <strong>padrões de candlesticks</strong>, conceitos de <strong>Smart Money (SMC)</strong>, <strong>Ondas de Elliott</strong> e calcular o impacto financeiro de pontos em contratos futuros da <strong>B3</strong> e do <strong>Mercado Americano (CME)</strong>.
+            Um aplicativo direto ao ponto com <strong>Playbook de 19 Setups Táticos</strong>, conceitos de <strong>Smart Money (SMC)</strong>, ferramenta de <strong>Market Hours (Horários Globais em Horário de Brasília)</strong> e calculadoras de contratos futuros para a <strong>B3</strong>, <strong>CME Americana</strong> e <strong>Forex</strong>.
           </p>
 
           <!-- CTAs -->
@@ -223,6 +225,8 @@
     <section class="ticker-strip-section">
       <div class="ticker-track">
         <div class="ticker-slide">
+          <span class="ticker-item"><i class="fa-solid fa-chess-knight text-emerald"></i> <strong>PLAYBOOK</strong> 19 Setups Táticos</span>
+          <span class="ticker-item"><i class="fa-solid fa-clock text-cyan"></i> <strong>MARKET HOURS</strong> Horários em BRT</span>
           <span class="ticker-item"><i class="fa-solid fa-chart-candlestick text-emerald"></i> <strong>CANDLESTICKS</strong> 20 Padrões Clássicos</span>
           <span class="ticker-item"><i class="fa-solid fa-cube text-emerald"></i> <strong>SMC</strong> Order Blocks, BOS, FVG & Liquidez</span>
           <span class="ticker-item"><i class="fa-solid fa-chart-line text-emerald"></i> <strong>WIN$</strong> Mini Índice B3</span>
@@ -236,6 +240,8 @@
         </div>
         <!-- Duplicate for infinite marquee -->
         <div class="ticker-slide" aria-hidden="true">
+          <span class="ticker-item"><i class="fa-solid fa-chess-knight text-emerald"></i> <strong>PLAYBOOK</strong> 19 Setups Táticos</span>
+          <span class="ticker-item"><i class="fa-solid fa-clock text-cyan"></i> <strong>MARKET HOURS</strong> Horários em BRT</span>
           <span class="ticker-item"><i class="fa-solid fa-chart-candlestick text-emerald"></i> <strong>CANDLESTICKS</strong> 20 Padrões Clássicos</span>
           <span class="ticker-item"><i class="fa-solid fa-cube text-emerald"></i> <strong>SMC</strong> Order Blocks, BOS, FVG & Liquidez</span>
           <span class="ticker-item"><i class="fa-solid fa-chart-line text-emerald"></i> <strong>WIN$</strong> Mini Índice B3</span>
@@ -353,25 +359,204 @@
 
         <!-- Interactive Module Tabs -->
         <div class="module-tab-buttons" id="module-tabs">
-          <button class="tab-btn active" data-tab="smc">
-            <i class="fa-solid fa-cube"></i> Smart Money Concepts (SMC)
+          <button class="tab-btn active" data-tab="playbook">
+            <i class="fa-solid fa-chess-knight"></i> Playbook (19 Setups)
+          </button>
+          <button class="tab-btn" data-tab="markethours" id="markethours-anchor">
+            <i class="fa-solid fa-clock"></i> Market Hours & Killzones
+          </button>
+          <button class="tab-btn" data-tab="smc">
+            <i class="fa-solid fa-cube"></i> Smart Money (SMC)
           </button>
           <button class="tab-btn" data-tab="candles">
-            <i class="fa-solid fa-chart-candlestick"></i> Price Action & Candles
+            <i class="fa-solid fa-chart-candlestick"></i> Velas Japonesas
           </button>
           <button class="tab-btn" data-tab="elliott">
             <i class="fa-solid fa-wave-pulse"></i> Ondas de Elliott
           </button>
           <button class="tab-btn" data-tab="mindset">
-            <i class="fa-solid fa-brain"></i> Psicologia & Tarot Trader
+            <i class="fa-solid fa-brain"></i> Tarot & Mindset
           </button>
         </div>
 
         <!-- Tab Contents -->
         <div class="tab-content-container">
           
+                    <!-- TAB: PLAYBOOK 19 SETUPS -->
+          <div class="tab-pane active" id="tab-playbook">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Playbook Operacional</span>
+                <h3 class="module-heading">19 Setups Táticos de Alta Probabilidade</h3>
+                <p class="module-intro">
+                  Estratégias de Day Trade e Swing Trade estruturadas no Price Action puro e SMC. Cada setup conta com parâmetros objetivos de entrada, stop técnico, alvo e filtros decisivos de contexto.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clipboard-check text-emerald"></i> O que cada estratégia traz:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>Quando Funciona (Validação):</strong> Confluências mínimas, timeframes e gatilhos de confirmação.</li>
+                    <li><strong>Quando NÃO Funciona (Filtros Anti-Armadilha):</strong> Regras rigorosas de preservação de capital para evitar entradas falsas.</li>
+                    <li><strong>Checklist Interativo:</strong> 8 a 10 checagens passo a passo para disciplinar a tomada de decisão.</li>
+                    <li><strong>Zoom em Tela Cheia:</strong> Diagramas vetoriais e esquemas gráficos com ampliação interativa.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="playbook-card-mockup">
+                  <div class="playbook-header-row">
+                    <span class="playbook-category-tag">PRICE ACTION PURO</span>
+                    <span style="font-size: 0.75rem; color: #10B981; font-weight: 800;"><i class="fa-solid fa-circle-check"></i> DISPONÍVEL NO APP</span>
+                  </div>
+                  <div class="playbook-title">Pin Bar em Zona-Chave Multi-TF</div>
+                  <div class="playbook-subtitle">Pavios longos rejeitando confluência de suporte/resistência entre 2+ timeframes.</div>
+
+                  <div class="rule-card works">
+                    <strong><i class="fa-solid fa-circle-check"></i> Quando Funciona</strong>
+                    Zona com ≥ 2 toques prévios · confluência de 2 timeframes (ex: 15M + 5M) · pavio ≥ 2× corpo da vela · fechamento dentro da zona · volume do pin bar acima da média 20.
+                  </div>
+
+                  <div class="rule-card fails">
+                    <strong><i class="fa-solid fa-triangle-exclamation"></i> Quando NÃO Funciona</strong>
+                    Pin bar isolado sem confluência em terra de ninguém · zona com apenas 1 toque frágil · fechamento além da zona (rompimento) · notícia macro iminente.
+                  </div>
+
+                  <div class="playbook-checks">
+                    <div class="check-item"><i class="fa-solid fa-square-check text-emerald"></i> Timeframe alinhado com a tendência maior (H1/M15)</div>
+                    <div class="check-item"><i class="fa-solid fa-square-check text-emerald"></i> Rejeição clara do nível de preço no candle de sinal</div>
+                    <div class="check-item"><i class="fa-solid fa-square-check text-emerald"></i> Relação Risco/Retorno mínima de 2:1 até o próximo obstáculo</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: MARKET HOURS & SESSÕES GLOBAIS -->
+          <div class="tab-pane" id="tab-markethours">
+            <div class="module-showcase-grid">
+              <div class="module-text-side">
+                <span class="module-badge">Ferramenta Integrada</span>
+                <h3 class="module-heading">Horários de Mercado & Sessões Globais</h3>
+                <p class="module-intro">
+                  Acompanhe em tempo real quais bolsas do mundo estão abertas e onde o fluxo institucional está concentrado, tudo convertido automaticamente para o <strong>Horário de Brasília (BRT / UTC-3)</strong>.
+                </p>
+
+                <div class="module-checklist-card">
+                  <h4><i class="fa-solid fa-clock text-cyan"></i> Destaques da Ferramenta:</h4>
+                  <ul class="module-features-list">
+                    <li><strong>Relógio Vivo Dual:</strong> Horário de Brasília (BRT) e UTC sincronizados segundo a segundo.</li>
+                    <li><strong>Linha do Tempo 24h:</strong> Régua visual contínua com cursor indicador do momento atual.</li>
+                    <li><strong>Sessões Mundiais:</strong> Acompanhamento de B3, NYSE / Nasdaq, Londres, Tóquio e Sydney.</li>
+                    <li><strong>SMC Killzones:</strong> Identificação clara das 4 janelas diárias de maior liquidez e manipulação institucional.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-visual-side">
+                <div class="market-hours-container" style="margin-top: 0;">
+                  <!-- Clocks Row -->
+                  <div class="mh-clocks-row">
+                    <div class="mh-clock-card">
+                      <div class="mh-clock-icon"><i class="fa-solid fa-clock"></i></div>
+                      <div>
+                        <div class="mh-clock-time" id="mh-clock-brt">--:--:-- BRT</div>
+                        <div class="mh-clock-label">🇧🇷 Horário de Brasília (UTC-3)</div>
+                      </div>
+                    </div>
+                    <div class="mh-clock-card">
+                      <div class="mh-clock-icon utc"><i class="fa-solid fa-globe"></i></div>
+                      <div>
+                        <div class="mh-clock-time" id="mh-clock-utc">--:--:-- UTC</div>
+                        <div class="mh-clock-label">🌐 Tempo Universal Coordenado</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 24h Visual Timeline -->
+                  <div class="mh-timeline-wrapper">
+                    <div class="mh-timeline-header">
+                      <span class="mh-timeline-title"><i class="fa-solid fa-bars-staggered text-emerald"></i> Régua Visual de 24 Horas (BRT)</span>
+                    </div>
+                    <div class="mh-timeline-track">
+                      <div class="mh-session-bar sydney">🇦🇺 Sydney (18h - 02h)</div>
+                      <div class="mh-session-bar tokyo">🇯🇵 Tóquio (21h - 03h)</div>
+                      <div class="mh-session-bar london">🇬🇧 Londres (05h - 13h30)</div>
+                      <div class="mh-session-bar ny">🇺🇸 Nova York (10h30 - 17h)</div>
+                      <div class="mh-session-bar b3">🇧🇷 B3 São Paulo (09h - 18h)</div>
+
+                      <!-- Needle -->
+                      <div class="mh-needle" id="mh-timeline-needle" style="left: 45%;">
+                        <span class="mh-needle-tag" id="mh-needle-tag">AGORA</span>
+                      </div>
+                    </div>
+                    <div class="mh-time-ticks">
+                      <span>00h</span>
+                      <span>04h</span>
+                      <span>08h</span>
+                      <span>12h</span>
+                      <span>16h</span>
+                      <span>20h</span>
+                      <span>24h</span>
+                    </div>
+                  </div>
+
+                  <!-- Sessions Status Grid -->
+                  <div class="mh-sessions-grid">
+                    <div class="mh-session-card">
+                      <div class="mh-session-card-header">
+                        <span class="mh-session-name">🇧🇷 B3 Brasil</span>
+                        <div id="mh-status-b3" class="mh-status-tag open"><span class="status-dot green"></span> Aberto</div>
+                      </div>
+                      <div class="mh-session-time">09:00 às 18:00 BRT</div>
+                      <div class="mh-session-note">Ações, Futuros (WIN/WDO)</div>
+                    </div>
+
+                    <div class="mh-session-card">
+                      <div class="mh-session-card-header">
+                        <span class="mh-session-name">🇺🇸 NYSE / CME</span>
+                        <div id="mh-status-ny" class="mh-status-tag open"><span class="status-dot green"></span> Aberto</div>
+                      </div>
+                      <div class="mh-session-time">10:30 às 17:00 BRT</div>
+                      <div class="mh-session-note">Wall St, NQ, ES, Ouro</div>
+                    </div>
+
+                    <div class="mh-session-card">
+                      <div class="mh-session-card-header">
+                        <span class="mh-session-name">🇬🇧 Londres</span>
+                        <div id="mh-status-lon" class="mh-status-tag closed"><span class="status-dot red"></span> Fechado</div>
+                      </div>
+                      <div class="mh-session-time">05:00 às 13:30 BRT</div>
+                      <div class="mh-session-note">Maior volume Forex mundial</div>
+                    </div>
+
+                    <div class="mh-session-card">
+                      <div class="mh-session-card-header">
+                        <span class="mh-session-name">🇯🇵 Tóquio</span>
+                        <div id="mh-status-tok" class="mh-status-tag closed"><span class="status-dot red"></span> Fechado</div>
+                      </div>
+                      <div class="mh-session-time">21:00 às 03:00 BRT</div>
+                      <div class="mh-session-note">Sessão Asiática</div>
+                    </div>
+                  </div>
+
+                  <!-- Killzones Banner -->
+                  <div class="killzones-banner">
+                    <div class="killzones-title"><i class="fa-solid fa-crosshairs"></i> SMC Killzones em Horário de Brasília</div>
+                    <div class="killzones-pills-row">
+                      <span class="kz-pill">🎯 <strong>London Open:</strong> 04:00 - 06:00 BRT</span>
+                      <span class="kz-pill">🎯 <strong>NY AM (Pico):</strong> 09:00 - 11:00 BRT</span>
+                      <span class="kz-pill">🎯 <strong>London Close:</strong> 12:00 - 14:00 BRT</span>
+                      <span class="kz-pill">🎯 <strong>NY PM:</strong> 15:00 - 17:00 BRT</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- TAB 1: SMC -->
-          <div class="tab-pane active" id="tab-smc">
+          <div class="tab-pane" id="tab-smc">
             <div class="module-showcase-grid">
               <div class="module-text-side">
                 <span class="module-badge">Módulo de Análise</span>
@@ -873,6 +1058,32 @@
         </div>
 
         <div class="faq-accordion-wrapper">
+          <!-- Question Playbook -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q-playbook">
+              <span>O que é o Playbook Operacional de 19 Setups?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                É uma coleção de <strong>19 estratégias táticas catalogadas</strong> de Price Action clássico (Brooks, Volman) e conceitos institucionais (SMC). Cada setup inclui regras precisas de ponto de entrada, posicionamento técnico de Stop Loss e Alvo, além das seções fundamentais <strong>"Quando Funciona"</strong> (gatilhos de alta probabilidade) e <strong>"Quando NÃO Funciona"</strong> (filtros para não ser stopado em armadilhas), com um <strong>checklist interativo</strong> para guiar suas operações.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question Market Hours -->
+          <div class="faq-item">
+            <button class="faq-question" id="faq-q-markethours">
+              <span>Como funciona a ferramenta de Market Hours (Horários Globais)?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                A ferramenta converte automaticamente as sessões das principais praças financeiras do planeta (B3 de São Paulo, NYSE/Nasdaq de Nova York, LSE de Londres, Tóquio e Sydney) para o <strong>Horário Oficial de Brasília (BRT)</strong>. Ela conta com relógio ao vivo, régua visual contínua de 24 horas e demarcação das <strong>Killzones de SMC</strong>, permitindo identificar onde está a liquidez institucional sem errar fusos horários.
+              </p>
+            </div>
+          </div>
+
           <!-- Question 1 -->
           <div class="faq-item">
             <button class="faq-question" id="faq-q1">

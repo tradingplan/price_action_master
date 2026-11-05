@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initB3Calculator();
   initInteractiveSimulator();
   initFaqAccordion();
+  initMarketHours();
 });
 
 /* ==========================================================================

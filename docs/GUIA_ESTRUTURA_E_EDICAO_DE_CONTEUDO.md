@@ -143,6 +143,7 @@ Localizados na pasta [`assets/jsons/`](file:///d:/projects/tradingplan/price_act
 | Arquivo | Conteúdo | Tela do App |
 | :--- | :--- | :--- |
 | [`candlesticks.json`](file:///d:/projects/tradingplan/price_action_master/assets/jsons/candlesticks.json) | Catálogo completo de padrões de candlestick (alta, baixa, reversão, continuação). | Aba **Candlesticks** (`VelasJaponesasWidget`) |
+| [`estrategias.json`](file:///d:/projects/tradingplan/price_action_master/content/estrategias/estrategias.json) | Playbook de 19 Setups Táticos de Price Action & SMC (com checklists, "Quando Funciona" e flag `"isTesterOnly"`). | Aba **Playbook** (`EstrategiasListPage`) |
 | [`figuras.json`](file:///d:/projects/tradingplan/price_action_master/assets/jsons/figuras.json) | Figuras gráficas clássicas (OCO, Triângulos, Topos Duplos, Bandeiras). | `FigurasGraficasWidget` |
 | [`conceitos.json`](file:///d:/projects/tradingplan/price_action_master/assets/jsons/conceitos.json) | Conceitos teóricos de análise técnica. | `AnaliseTecnicaWidget` |
 | [`tarot_cards.json`](file:///d:/projects/tradingplan/price_action_master/assets/jsons/tarot_cards.json) | Cartas e reflexões psicológicas de trading. | `TarotWidget` |
@@ -169,3 +170,26 @@ Localizados na pasta [`assets/jsons/`](file:///d:/projects/tradingplan/price_act
 1. **Validação do JSON:** Ao editar qualquer arquivo `.json` em `assets/jsons/` ou `content/courses/`, certifique-se de que a formatação JSON seja válida (cuidado com vírgulas extras no final de listas).
 2. **Offline-First:** Não adicione links externos obrigatórios para carregar imagens essenciais. Se precisar de novas imagens ou ícones, coloque-os na pasta `assets/images/` e declare no `pubspec.yaml`.
 3. **Teste Rápido:** Salve os arquivos e pressione **`r`** (Hot Reload) no terminal do Flutter para testar imediatamente no seu celular ou emulador.
+
+---
+
+## 7. Playbook de Estratégias & Flag de Testador (`isTesterOnly`)
+
+O arquivo [`content/estrategias/estrategias.json`](file:///d:/projects/tradingplan/price_action_master/content/estrategias/estrategias.json) armazena todos os setups operacionais.
+
+### Campos de cada Estratégia:
+```json
+{
+  "id": "pin-bar-multi-tf",
+  "nome": "Pin Bar em Zona-Chave Multi-TF",
+  "categoria": "Price Action",
+  "isPro": false,
+  "isTesterOnly": false,
+  "quandoFunciona": "Zona com >= 2 toques prévios...",
+  "quandoNaoFunciona": "Pin bar isolado sem confluência...",
+  "checklist": [ ... ]
+}
+```
+
+* `"isPro": true` -> Requer plano PRO Vitalício (ou fica bloqueada com cadeado).
+* `"isTesterOnly": true` -> **Exclusiva para Testadores.** Fica oculta para o público e para assinantes PRO normais. Só aparece se o **Modo Testador** estiver ativado nos Ajustes (5 toques no card da versão).

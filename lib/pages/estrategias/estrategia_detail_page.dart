@@ -5,6 +5,7 @@ import '/backend/schema/strategy_model.dart';
 import '/services/pro_access_service.dart';
 import '/services/in_app_purchase_service.dart';
 import '/components/pro_upgrade_sheet.dart';
+import '/components/ad_banner_placeholder.dart';
 
 class EstrategiaDetailPage extends StatefulWidget {
   final StrategyModel strategy;
@@ -288,7 +289,7 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
 
         // Render parsed markdown blocks
         ..._renderContentBlocks(widget.strategy.content, theme),
-        const SizedBox(height: 40),
+        _buildBottomAdOrSpacing(),
       ],
     );
   }
@@ -1073,6 +1074,26 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
     );
   }
 
+
+  Widget _buildBottomAdOrSpacing() {
+    final isPro = ProAccessService().isPro;
+    if (isPro) {
+      // No plano PRO: não mostra a publicidade, mas mantém o espaçamento confortável com o fim da página
+      return const SizedBox(height: 48.0);
+    }
+    // No plano Free: exibe o banner de anúncio com respiro inferior
+    return const Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(height: 16.0),
+        AdBannerPlaceholder(
+          margin: EdgeInsets.symmetric(vertical: 8.0),
+        ),
+        SizedBox(height: 32.0),
+      ],
+    );
+  }
+
   Widget _buildChecklistTab(FlutterFlowTheme theme) {
     final items = widget.strategy.checklist;
     final total = items.length;
@@ -1191,7 +1212,7 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
           const SizedBox(height: 8),
         ],
 
-        const SizedBox(height: 30),
+        _buildBottomAdOrSpacing(),
       ],
     );
   }

@@ -60,7 +60,7 @@ flutter build appbundle --release
 
 | Produto / Modalidade | ID no Google Play | Tipo de Compra | Nome Oficial na Loja | Preço Sugerido | Papel Estratégico |
 |---|---|:---:|---|:---:|---|
-| **Acesso Vitalício PRO** | `pam_pro_lifetime` | **Não-Consumível** *(Compra Única)* | `Price Action Master PRO Vitalício` | **R$ 19,90** *(pagamento único)* | 20 Setups Táticos, SMC Avançado, Checklists e Sem Anúncios. |
+| **Acesso Vitalício PRO** | `pam_pro_lifetime` | **Não-Consumível** *(Compra Única)* | `Price Action Master PRO Vitalício` | **R$ 19,90** *(pagamento único)* | 19 Setups Táticos, SMC Avançado, Checklists e Sem Anúncios. |
 
 ---
 
@@ -99,7 +99,7 @@ Com a build enviada no Teste Interno, a seção de produtos estará liberada:
 2. Clique no botão azul **Criar produto**:
    * **ID do produto:** `pam_pro_lifetime` *(atenção: deve ser exatamente idêntico a este texto)*
    * **Nome do produto:** `Price Action Master PRO Vitalício`
-   * **Descrição:** `Acesso perpétuo aos 20 setups táticos operacionais, módulo Smart Money Concepts (SMC) avançado, checklists interativos e remoção total de anúncios.`
+   * **Descrição:** `Acesso perpétuo aos 19 setups táticos operacionais, módulo Smart Money Concepts (SMC) avançado, checklists interativos e remoção total de anúncios.`
 3. Na seção **Preço**:
    * Clique em **Definir preço**.
    * Digite o valor para o Brasil: **`R$ 19,90`**.
@@ -152,3 +152,38 @@ Caso você opte por criar um projeto dedicado no RevenueCat para gerenciar o app
      await Purchases.configure(PurchasesConfiguration('goog_xxxxxxxxxxxxxxxxxxxx'));
      ```
 
+
+---
+
+## 🧪 5. Modo Testador (Beta) & Controle de Recursos Experimentais
+
+O aplicativo conta com uma flag interna para isolar conteúdos em desenvolvimento sem expô-los aos assinantes PRO nem a usuários convencionais:
+
+### 5.1. Ocultação de Setups em Desenvolvimento
+* **Caso Prático:** A estratégia `Sistema de Reversão MTF` (Al Brooks) não está finalizada e não deve ficar visível para o público geral ou assinantes na loja.
+* **Isolamento no JSON:** No arquivo `content/estrategias/estrategias.json`, a chave `"isTesterOnly": true` marca a estratégia como experimental. Setups normais utilizam `"isTesterOnly": false`.
+* **Filtragem Automática:** Na tela do Playbook (`estrategias_list_page.dart`), qualquer setup com `isTesterOnly == true` é automaticamente removido da listagem quando `ProAccessService().isTester` for falso.
+* **Badge Diferenciado:** Quando o Modo Testador é ativado, o setup surge na listagem com a tag roxa `🧪 TESTER (BETA)` em vez de "DESBLOQUEADO".
+
+### 5.2. Como Ativar/Desativar o Modo Testador no Celular (Easter Egg)
+Não é necessário compilar uma nova versão para alternar esse modo:
+1. Abra o aplicativo e acesse a aba **Ajustes**.
+2. Localize o primeiro cartão no topo: **"Price Action Master • Versão 2.0"**.
+3. Toque **5 vezes consecutivas** nesse cartão.
+4. O app exibirá uma notificação imediata (SnackBar):
+   * *"🧪 Modo Testador ATIVADO! Estratégias experimentais liberadas."*
+   * O cartão passará a exibir o selo de testador ativo.
+5. Para desativar, basta tocar novamente **5 vezes**. O estado é persistido localmente via `SharedPreferences`.
+
+---
+
+## ⚠️ 6. Diagnóstico de Alertas do Google Play Console
+
+Ao analisar o painel da versão em Produção, podem surgir **Ações Recomendadas** (avisos informativos, não bloqueantes):
+
+1. **Exibição de Ponta a Ponta (Edge-to-Edge no Android 15 / SDK 35):**
+   * *Diagnóstico:* O Google Play recomenda que apps direcionados à API 35+ tratem recuos de tela para evitar sobreposição da barra de status e navegação transparente.
+   * *Mitigação no App:* O aplicativo já utiliza nativamente o widget `SafeArea` em 100% das telas (`Inicio`, `Playbook`, `Calculadoras`, `Velas`, `Ajustes`), garantindo que botões e textos respeitem os limites do visor. Não afeta a publicação.
+2. **Otimização do Compilador R8 (Redução de Recursos & Memória):**
+   * *Diagnóstico:* Sugestão para ativar `shrinkResources` e minificação avançada no Gradle.
+   * *Mitigação no App:* Mantido em modo seguro padrão para preservar as classes de reflexão dos plugins de monetização (`google_mobile_ads`) e pagamentos (`in_app_purchase`). O app já possui tamanho enxuto (~18 MB para o usuário final).

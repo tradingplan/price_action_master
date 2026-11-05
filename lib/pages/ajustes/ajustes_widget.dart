@@ -28,6 +28,45 @@ class _AjustesWidgetState extends State<AjustesWidget> {
 
   int _userXP = 0;
   String _currentTheme = 'system';
+  int _testerTapCount = 0;
+  DateTime? _lastTapTime;
+
+  Future<void> _onVersionCardTapped() async {
+    final now = DateTime.now();
+    if (_lastTapTime == null || now.difference(_lastTapTime!) > const Duration(seconds: 3)) {
+      _testerTapCount = 1;
+    } else {
+      _testerTapCount++;
+    }
+    _lastTapTime = now;
+
+    if (_testerTapCount >= 5) {
+      _testerTapCount = 0;
+      final newMode = await ProAccessService().toggleTesterMode();
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            newMode
+                ? '🧪 Modo Testador ATIVADO! Estratégias experimentais liberadas.'
+                : 'Modo Testador DESATIVADO.',
+          ),
+          backgroundColor: newMode ? const Color(0xFF7E22CE) : const Color(0xFF334155),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      setState(() {});
+    } else if (_testerTapCount >= 2) {
+      final remaining = 5 - _testerTapCount;
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Toque mais $remaining vez(es) para alternar o Modo Testador.'),
+          duration: const Duration(milliseconds: 1000),
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -349,62 +388,104 @@ class _AjustesWidgetState extends State<AjustesWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Card do App & Versão
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(18.0),
-                decoration: BoxDecoration(
-                  color: theme.secondaryBackground,
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: theme.lineColor),
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: Color(0x1A000000),
-                      offset: Offset(0.0, 2.0),
-                    )
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 52.0,
-                      height: 52.0,
-                      decoration: BoxDecoration(
-                        color: theme.primary.withAlpha(25),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Icon(
-                        Icons.candlestick_chart_rounded,
-                        color: theme.primary,
-                        size: 30.0,
-                      ),
-                    ),
-                    const SizedBox(width: 14.0),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              // Card do App & Versão (Com Easter Egg Modo Testador ao tocar 5x)
+              InkWell(
+                onTap: _onVersionCardTapped,
+                borderRadius: BorderRadius.circular(12.0),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(18.0),
+                  decoration: BoxDecoration(
+                    color: theme.secondaryBackground,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: theme.lineColor),
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 4.0,
+                        color: Color(0x1A000000),
+                        offset: Offset(0.0, 2.0),
+                      )
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          Text(
-                            'Price Action Master',
-                            style: theme.titleMedium.override(
-                              fontFamily: theme.titleMediumFamily,
-                              fontWeight: FontWeight.bold,
+                          Container(
+                            width: 52.0,
+                            height: 52.0,
+                            decoration: BoxDecoration(
+                              color: theme.primary.withAlpha(25),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Icon(
+                              Icons.candlestick_chart_rounded,
+                              color: theme.primary,
+                              size: 30.0,
                             ),
                           ),
-                          const SizedBox(height: 2.0),
-                          Text(
-                            'Versão 2.0 • 100% Offline-First',
-                            style: theme.bodySmall.override(
-                              fontFamily: theme.bodySmallFamily,
-                              color: theme.secondaryText,
-                              fontSize: 11.5,
+                          const SizedBox(width: 14.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Price Action Master',
+                                  style: theme.titleMedium.override(
+                                    fontFamily: theme.titleMediumFamily,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 2.0),
+                                Text(
+                                  'Versão 2.0 • 100% Offline-First',
+                                  style: theme.bodySmall.override(
+                                    fontFamily: theme.bodySmallFamily,
+                                    color: theme.secondaryText,
+                                    fontSize: 11.5,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      AnimatedBuilder(
+                        animation: ProAccessService(),
+                        builder: (context, _) {
+                          final isTester = ProAccessService().isTester;
+                          if (!isTester) return const SizedBox.shrink();
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 12.0),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF3E8FF),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: const Color(0xFF9333EA), width: 0.8),
+                              ),
+                              child: const Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.science_rounded, size: 14, color: Color(0xFF7E22CE)),
+                                  SizedBox(width: 6),
+                                  Text(
+                                    '🧪 Modo Testador Ativo (Setups Experimentais Liberados)',
+                                    style: TextStyle(
+                                      color: Color(0xFF7E22CE),
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 12.0),
@@ -466,8 +547,8 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                                 const SizedBox(height: 2.0),
                                 Text(
                                   isPro
-                                      ? '20 Setups, SMC Avançado e Sem Anúncios'
-                                      : 'Acesso total aos 20 setups por ' + InAppPurchaseService().formattedPrice + ' único',
+                                      ? '19 Setups, SMC Avançado e Sem Anúncios'
+                                      : 'Acesso total aos 19 setups por ' + InAppPurchaseService().formattedPrice + ' único',
                                   style: theme.bodySmall.override(
                                     fontFamily: theme.bodySmallFamily,
                                     color: theme.secondaryText,

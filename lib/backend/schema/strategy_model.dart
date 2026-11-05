@@ -6,6 +6,7 @@ class StrategyModel {
   final List<String> mercados;
   final List<String> tags;
   final bool isPro;
+  final bool isTesterOnly;
   final List<String> checklist;
   final String content;
 
@@ -17,6 +18,7 @@ class StrategyModel {
     required this.mercados,
     required this.tags,
     required this.isPro,
+    this.isTesterOnly = false,
     required this.checklist,
     required this.content,
   });
@@ -36,6 +38,7 @@ class StrategyModel {
               .toList() ??
           const [],
       isPro: json['isPro'] as bool? ?? false,
+      isTesterOnly: json['isTesterOnly'] as bool? ?? false,
       checklist: (json['checklist'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
@@ -53,6 +56,7 @@ class StrategyModel {
       'mercados': mercados,
       'tags': tags,
       'isPro': isPro,
+      'isTesterOnly': isTesterOnly,
       'checklist': checklist,
       'content': content,
     };

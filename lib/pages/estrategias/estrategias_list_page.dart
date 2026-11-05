@@ -58,7 +58,11 @@ class _EstrategiasListPageState extends State<EstrategiasListPage> {
   }
 
   List<StrategyModel> get _filteredStrategies {
+    final isTester = ProAccessService().isTester;
     return _allStrategies.where((s) {
+      if (s.isTesterOnly && !isTester) {
+        return false;
+      }
       final matchesCategory =
           _selectedCategory == 'Todas' || s.categoria == _selectedCategory;
       final matchesSearch = _searchQuery.isEmpty ||
@@ -116,7 +120,7 @@ class _EstrategiasListPageState extends State<EstrategiasListPage> {
                   ),
                 ),
                 Text(
-                  '20 Setups Táticos de Alta Probabilidade',
+                  '19 Setups Táticos de Alta Probabilidade',
                   style: TextStyle(
                     color: theme.secondaryText,
                     fontSize: 11,
@@ -311,7 +315,7 @@ class _EstrategiasListPageState extends State<EstrategiasListPage> {
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: Text(
-                                    'Desbloqueie todos os 20 setups operacionais por ' + InAppPurchaseService().formattedPrice + ' vitalício',
+                                    'Desbloqueie todos os 19 setups operacionais por ' + InAppPurchaseService().formattedPrice + ' vitalício',
                                     style: TextStyle(
                                       color: Color(0xFF92400E),
                                       fontSize: 12.5,
@@ -445,7 +449,39 @@ class _StrategyCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (strategy.isPro)
+                if (strategy.isTesterOnly)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF3E8FF),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: const Color(0xFF9333EA),
+                        width: 0.8,
+                      ),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.science_rounded,
+                          size: 12,
+                          color: Color(0xFF7E22CE),
+                        ),
+                        SizedBox(width: 4),
+                        Text(
+                          'TESTER (BETA)',
+                          style: TextStyle(
+                            color: Color(0xFF7E22CE),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                else if (strategy.isPro)
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
