@@ -9,7 +9,8 @@ class InAppPurchaseService extends ChangeNotifier {
   InAppPurchaseService._internal();
 
   static const String proLifetimeId = 'pam_pro_lifetime';
-  static const Set<String> _kProductIds = {proLifetimeId};
+  static const String proLifetimeIdHyphen = 'pam-pro-lifetime';
+  static const Set<String> _kProductIds = {proLifetimeId, proLifetimeIdHyphen};
 
   final InAppPurchase _iap = InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _subscription;
@@ -66,7 +67,7 @@ class InAppPurchaseService extends ChangeNotifier {
 
       if (response.productDetails.isNotEmpty) {
         _proProduct = response.productDetails.firstWhere(
-          (p) => p.id == proLifetimeId,
+          (p) => p.id == proLifetimeId || p.id == proLifetimeIdHyphen,
           orElse: () => response.productDetails.first,
         );
       }
@@ -141,7 +142,8 @@ class InAppPurchaseService extends ChangeNotifier {
           notifyListeners();
         } else if (purchase.status == PurchaseStatus.purchased ||
             purchase.status == PurchaseStatus.restored) {
-          if (purchase.productID == proLifetimeId) {
+          if (purchase.productID == proLifetimeId ||
+              purchase.productID == proLifetimeIdHyphen) {
             await ProAccessService().unlockProLifetime();
           }
           _purchasePending = false;
