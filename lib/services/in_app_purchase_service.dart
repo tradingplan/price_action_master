@@ -26,7 +26,7 @@ class InAppPurchaseService extends ChangeNotifier {
   ProductDetails? get proProduct => _proProduct;
   String? get lastError => _lastError;
 
-  String get formattedPrice => _proProduct?.price ?? 'R$ 19,90';
+  String get formattedPrice => _proProduct?.price ?? 'R\$ 19,90';
 
   Future<void> initialize() async {
     // Escuta a stream de compras da loja (obrigatório desde o arranque do app)

@@ -105,9 +105,7 @@ class _ProUpgradeSheetState extends State<ProUpgradeSheet> {
           ],
         ),
         content: const Text(
-          'A cobrança nativa via Google Play Store / App Store está ativa para dispositivos móveis.
-
-No ambiente de testes web atual, você pode simular o desbloqueio PRO instantaneamente.',
+          'A cobrança nativa via Google Play Store / App Store está ativa para dispositivos móveis.\n\nNo ambiente de testes web atual, você pode simular o desbloqueio PRO instantaneamente.',
           style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14),
         ),
         actions: [
@@ -328,8 +326,8 @@ No ambiente de testes web atual, você pode simular o desbloqueio PRO instantane
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         'R\$ 49,90 ',
                         style: TextStyle(
                           color: Color(0xFF64748B),
@@ -339,7 +337,7 @@ No ambiente de testes web atual, você pode simular o desbloqueio PRO instantane
                       ),
                       Text(
                         InAppPurchaseService().formattedPrice,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w900,
