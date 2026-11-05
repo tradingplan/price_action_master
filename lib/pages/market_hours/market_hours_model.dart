@@ -9,3 +9,4 @@ class MarketHoursModel extends FlutterFlowModel<MarketHoursWidget> {
   @override
   void dispose() {}
 }
+

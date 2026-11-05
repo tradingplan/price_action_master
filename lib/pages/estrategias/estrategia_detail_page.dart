@@ -295,7 +295,7 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
 
   List<Widget> _renderContentBlocks(String rawContent, FlutterFlowTheme theme) {
     final widgets = <Widget>[];
-    final lines = rawContent.split('\n');
+    final lines = rawContent.split(RegExp(r'\r?\n'));
     final buffer = StringBuffer();
 
     void flushText() {
@@ -304,9 +304,10 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
         widgets.add(
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 6),
-            child: Text(
+            child: _renderFormattedRichText(
+              context,
               text,
-              style: TextStyle(
+              baseStyle: TextStyle(
                 color: theme.primaryText,
                 fontSize: 14.5,
                 height: 1.6,
@@ -318,154 +319,199 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
       buffer.clear();
     }
 
-    for (int i = 0; i < lines.length; i++) {
-      final line = lines[i].trim();
+    int i = 0;
+    while (i < lines.length) {
+      final rawLine = lines[i];
+      final line = rawLine.trim();
 
-      // Heading 2
+      if (line.isEmpty) {
+        i++;
+        continue;
+      }
+
+      // 1. Heading 2 (## )
       if (line.startsWith('## ')) {
         flushText();
         final title = line.substring(3).trim();
-        widgets.add(const SizedBox(height: 16));
+        widgets.add(_buildHeading2(theme, title));
+        i++;
+        continue;
+      }
+
+      // 2. Heading 3 (### )
+      if (line.startsWith('### ')) {
+        flushText();
+        final title = line.substring(4).trim();
         widgets.add(
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-            decoration: BoxDecoration(
-              color: theme.secondaryBackground,
-              borderRadius: BorderRadius.circular(10),
-              border: Border(
-                left: BorderSide(color: theme.primary, width: 4),
-              ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0x06000000),
-                  blurRadius: 4,
-                  offset: Offset(0, 1),
-                ),
-              ],
-            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 14, bottom: 6),
             child: Text(
               title,
               style: TextStyle(
-                color: theme.primaryText,
-                fontSize: 16,
+                color: theme.primary,
+                fontSize: 15.5,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
         );
-        widgets.add(const SizedBox(height: 8));
+        i++;
         continue;
       }
 
-      // Heading 3
-      if (line.startsWith('### ')) {
-        flushText();
-        final title = line.substring(4).trim();
-        widgets.add(const SizedBox(height: 12));
-        widgets.add(
-          Text(
-            title,
-            style: TextStyle(
-              color: theme.primary,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        );
-        widgets.add(const SizedBox(height: 6));
-        continue;
-      }
-
-      // Heading 4
+      // 3. Heading 4 (#### )
       if (line.startsWith('#### ')) {
         flushText();
         final title = line.substring(5).trim();
-        widgets.add(const SizedBox(height: 10));
         widgets.add(
-          Text(
-            title,
-            style: TextStyle(
-              color: theme.primaryText,
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 4),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: theme.primaryText,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         );
-        widgets.add(const SizedBox(height: 4));
+        i++;
         continue;
       }
 
-      // Image: ![alt](path)
+      // 4. Standalone Card: **Quando funciona**
+      final lowerLine = line.toLowerCase();
+      if (lowerLine == '**quando funciona**' || lowerLine.startsWith('**quando funciona')) {
+        flushText();
+        i++;
+        final criteriaLines = <String>[];
+        while (i < lines.length) {
+          final nextTrimmed = lines[i].trim();
+          if (nextTrimmed.isEmpty) {
+            i++;
+            if (i < lines.length && (lines[i].trim().startsWith('**') || lines[i].trim().startsWith('#'))) {
+              break;
+            }
+            continue;
+          }
+          if (nextTrimmed.startsWith('**') || nextTrimmed.startsWith('#')) {
+            break;
+          }
+          criteriaLines.add(nextTrimmed);
+          i++;
+        }
+        final criteriaText = criteriaLines.join(' ').trim();
+        if (criteriaText.isNotEmpty) {
+          widgets.add(_buildQuandoFuncionaCard(context, theme, criteriaText));
+        }
+        continue;
+      }
+
+      // 5. Standalone Card: **Quando não funciona**
+      if (lowerLine == '**quando não funciona**' ||
+          lowerLine.startsWith('**quando não funciona') ||
+          lowerLine == '**quando nao funciona**') {
+        flushText();
+        i++;
+        final invalidationLines = <String>[];
+        while (i < lines.length) {
+          final nextTrimmed = lines[i].trim();
+          if (nextTrimmed.isEmpty) {
+            i++;
+            if (i < lines.length && (lines[i].trim().startsWith('**') || lines[i].trim().startsWith('#'))) {
+              break;
+            }
+            continue;
+          }
+          if (nextTrimmed.startsWith('**') || nextTrimmed.startsWith('#')) {
+            break;
+          }
+          invalidationLines.add(nextTrimmed);
+          i++;
+        }
+        final invalidationText = invalidationLines.join(' ').trim();
+        if (invalidationText.isNotEmpty) {
+          widgets.add(_buildQuandoNaoFuncionaCard(context, theme, invalidationText));
+        }
+        continue;
+      }
+
+      // 6. Standalone Bold Badge / Sub-heading (ex: **Contexto multi-timeframe (H1)**)
+      if (line.startsWith('**') && line.endsWith('**') && line.length > 4 && !line.substring(2, line.length - 2).contains('**')) {
+        flushText();
+        final label = line.substring(2, line.length - 2).trim();
+        widgets.add(_buildContextBadge(theme, label));
+        i++;
+        continue;
+      }
+
+      // 7. Image: ![alt](path)
       final imgMatch = RegExp(r'!\[(.*?)\]\((.*?)\)').firstMatch(line);
       if (imgMatch != null) {
         flushText();
         final caption = imgMatch.group(1) ?? '';
         final path = imgMatch.group(2) ?? '';
-        widgets.add(const SizedBox(height: 12));
-        widgets.add(
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.secondaryBackground,
-                border: Border.all(color: theme.lineColor),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.asset(
-                    path,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      height: 140,
-                      color: theme.primaryBackground,
-                      child: Center(
-                        child: Icon(Icons.image_not_supported_rounded, color: theme.secondaryText, size: 36),
-                      ),
-                    ),
-                  ),
-                  if (caption.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      child: Text(
-                        caption,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: theme.secondaryText,
-                          fontSize: 12,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ),
-        );
-        widgets.add(const SizedBox(height: 12));
+        widgets.add(_buildImageCard(context, theme, path, caption));
+        i++;
         continue;
       }
 
-      // Bullet list item
-      if (line.startsWith('- ')) {
+      // 8. Blockquote (> Citação / Destaque)
+      if (line.startsWith('>')) {
         flushText();
-        final bulletText = line.substring(2).trim();
+        final quoteLines = <String>[];
+        while (i < lines.length && lines[i].trim().startsWith('>')) {
+          quoteLines.add(lines[i].trim().replaceFirst(RegExp(r'^>\s*'), ''));
+          i++;
+        }
+        final quoteText = quoteLines.join('\n');
+        widgets.add(_buildQuoteCard(context, theme, quoteText));
+        continue;
+      }
+
+      // 9. Bullet list item (- item ou * item)
+      if (line.startsWith('- ') || line.startsWith('* ')) {
+        flushText();
+        String bulletText = line.substring(2).trim();
+        bool isCheckbox = false;
+        bool isChecked = false;
+
+        if (bulletText.startsWith('[ ] ')) {
+          isCheckbox = true;
+          isChecked = false;
+          bulletText = bulletText.substring(4).trim();
+        } else if (bulletText.startsWith('[x] ') || bulletText.startsWith('[X] ')) {
+          isCheckbox = true;
+          isChecked = true;
+          bulletText = bulletText.substring(4).trim();
+        }
+
         widgets.add(
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 6),
-                  child: Icon(Icons.circle, size: 6, color: theme.primary),
-                ),
-                const SizedBox(width: 10),
+                if (isCheckbox)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2, right: 8),
+                    child: Icon(
+                      isChecked ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
+                      size: 16,
+                      color: isChecked ? theme.primary : theme.secondaryText,
+                    ),
+                  )
+                else
+                  Padding(
+                    padding: const EdgeInsets.only(top: 6, right: 10),
+                    child: Icon(Icons.circle, size: 6, color: theme.primary),
+                  ),
                 Expanded(
-                  child: Text(
+                  child: _renderFormattedRichText(
+                    context,
                     bulletText,
-                    style: TextStyle(
+                    baseStyle: TextStyle(
                       color: theme.primaryText,
                       fontSize: 14,
                       height: 1.45,
@@ -476,10 +522,11 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
             ),
           ),
         );
+        i++;
         continue;
       }
 
-      // Numbered list item
+      // 10. Numbered list item
       final numMatch = RegExp(r'^(\d+)\.\s+(.*)$').firstMatch(line);
       if (numMatch != null) {
         flushText();
@@ -492,8 +539,8 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 24,
-                  height: 24,
+                  width: 22,
+                  height: 22,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: theme.primary.withAlpha(25),
@@ -503,16 +550,17 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
                     numStr!,
                     style: TextStyle(
                       color: theme.primary,
-                      fontSize: 12,
+                      fontSize: 11.5,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: Text(
+                  child: _renderFormattedRichText(
+                    context,
                     itemText,
-                    style: TextStyle(
+                    baseStyle: TextStyle(
                       color: theme.primaryText,
                       fontSize: 14,
                       height: 1.45,
@@ -523,14 +571,506 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
             ),
           ),
         );
+        i++;
         continue;
       }
 
       buffer.writeln(line);
+      i++;
     }
     flushText();
 
     return widgets;
+  }
+
+  /// Card Estilizado: QUANDO FUNCIONA (Verde / Sucesso)
+  Widget _buildQuandoFuncionaCard(BuildContext context, FlutterFlowTheme theme, String content) {
+    final items = content.contains('·')
+        ? content.split('·').map((e) => e.trim()).where((e) => e.isNotEmpty).toList()
+        : <String>[];
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFF10B981).withAlpha(15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFF10B981).withAlpha(80), width: 1.2),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x0A000000),
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: const [
+              Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 18),
+              SizedBox(width: 8),
+              Text(
+                'QUANDO FUNCIONA (CENÁRIO IDEAL)',
+                style: TextStyle(
+                  color: Color(0xFF047857),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 12,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (items.isNotEmpty)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: items.map((item) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 3, right: 8),
+                      child: Icon(Icons.check, size: 14, color: Color(0xFF10B981)),
+                    ),
+                    Expanded(
+                      child: _renderFormattedRichText(
+                        context,
+                        item,
+                        baseStyle: TextStyle(
+                          color: theme.primaryText,
+                          fontSize: 13.5,
+                          height: 1.45,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )).toList(),
+            )
+          else
+            _renderFormattedRichText(
+              context,
+              content,
+              baseStyle: TextStyle(
+                color: theme.primaryText,
+                fontSize: 13.5,
+                height: 1.5,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// Card Estilizado: QUANDO NÃO FUNCIONA (Vermelho / Armadilha)
+  Widget _buildQuandoNaoFuncionaCard(BuildContext context, FlutterFlowTheme theme, String content) {
+    final items = content.contains('·')
+        ? content.split('·').map((e) => e.trim()).where((e) => e.isNotEmpty).toList()
+        : <String>[];
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFFEF4444).withAlpha(15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFEF4444).withAlpha(80), width: 1.2),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x0A000000),
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: const [
+              Icon(Icons.cancel_rounded, color: Color(0xFFEF4444), size: 18),
+              SizedBox(width: 8),
+              Text(
+                'QUANDO NÃO FUNCIONA (FILTROS DE ARMADILHA)',
+                style: TextStyle(
+                  color: Color(0xFFB91C1C),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 12,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (items.isNotEmpty)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: items.map((item) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 3, right: 8),
+                      child: Icon(Icons.close, size: 14, color: Color(0xFFEF4444)),
+                    ),
+                    Expanded(
+                      child: _renderFormattedRichText(
+                        context,
+                        item,
+                        baseStyle: TextStyle(
+                          color: theme.primaryText,
+                          fontSize: 13.5,
+                          height: 1.45,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )).toList(),
+            )
+          else
+            _renderFormattedRichText(
+              context,
+              content,
+              baseStyle: TextStyle(
+                color: theme.primaryText,
+                fontSize: 13.5,
+                height: 1.5,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// Badge / Sub-heading para contexto Multi-Timeframe e rótulos
+  Widget _buildContextBadge(FlutterFlowTheme theme, String label) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12, bottom: 6),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        decoration: BoxDecoration(
+          color: theme.primary.withAlpha(20),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: theme.primary.withAlpha(60), width: 0.8),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.layers_rounded, size: 14, color: theme.primary),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: TextStyle(
+                color: theme.primary,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Heading 2 Estilizado
+  Widget _buildHeading2(FlutterFlowTheme theme, String title) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+      decoration: BoxDecoration(
+        color: theme.secondaryBackground,
+        borderRadius: BorderRadius.circular(12),
+        border: Border(
+          left: BorderSide(color: theme.primary, width: 4),
+          top: BorderSide(color: theme.lineColor, width: 0.8),
+          right: BorderSide(color: theme.lineColor, width: 0.8),
+          bottom: BorderSide(color: theme.lineColor, width: 0.8),
+        ),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x06000000),
+            blurRadius: 4,
+            offset: Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: theme.primaryText,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  /// Image Card com suporte a toque para Zoom Fullscreen
+  Widget _buildImageCard(BuildContext context, FlutterFlowTheme theme, String rawPath, String caption) {
+    String path = rawPath.trim();
+    if (path.startsWith('images/')) {
+      path = 'assets/images/estrategias/' + path.substring(7);
+    } else if (!path.startsWith('assets/')) {
+      path = 'assets/' + path;
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          decoration: BoxDecoration(
+            color: theme.secondaryBackground,
+            border: Border.all(color: theme.lineColor),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Stack(
+                children: [
+                  InkWell(
+                    onTap: () => _openImageFullscreen(context, path, caption),
+                    child: Hero(
+                      tag: 'strategy_img_$path',
+                      child: Image.asset(
+                        path,
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          height: 140,
+                          color: theme.primaryBackground,
+                          child: Center(
+                            child: Icon(Icons.image_not_supported_rounded, color: theme.secondaryText, size: 36),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withAlpha(160),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          Icon(Icons.zoom_in, color: Colors.white, size: 14),
+                          SizedBox(width: 4),
+                          Text(
+                            'Ampliar',
+                            style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              if (caption.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Text(
+                    caption,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: theme.secondaryText,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Modal de visualização de imagem em tela cheia com zoom interativo
+  void _openImageFullscreen(BuildContext context, String imagePath, String caption) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.black.withAlpha(240),
+        insetPadding: const EdgeInsets.all(8),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            InteractiveViewer(
+              minScale: 0.8,
+              maxScale: 4.5,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.broken_image_rounded,
+                  color: Colors.white54,
+                  size: 64,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: IconButton(
+                icon: const Icon(Icons.close_rounded, color: Colors.white, size: 28),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+            if (caption.isNotEmpty)
+              Positioned(
+                bottom: 15,
+                left: 20,
+                right: 20,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withAlpha(180),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    caption,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Citação / Blockquote (> )
+  Widget _buildQuoteCard(BuildContext context, FlutterFlowTheme theme, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: theme.primaryBackground,
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(8),
+            bottomRight: Radius.circular(8),
+          ),
+          border: Border(
+            left: BorderSide(color: theme.primary, width: 3.5),
+          ),
+        ),
+        child: _renderFormattedRichText(
+          context,
+          text,
+          baseStyle: TextStyle(
+            color: theme.primaryText,
+            fontSize: 13.5,
+            fontStyle: FontStyle.italic,
+            height: 1.45,
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Renderizador Avançado de Rich Text Markdown (**bold**, *italic*, `code`)
+  Widget _renderFormattedRichText(
+    BuildContext context,
+    String text, {
+    TextStyle? baseStyle,
+    TextAlign textAlign = TextAlign.start,
+  }) {
+    final theme = FlutterFlowTheme.of(context);
+    final defaultStyle = baseStyle ??
+        TextStyle(
+          color: theme.primaryText,
+          fontSize: 14.0,
+          height: 1.55,
+        );
+
+    final spans = <InlineSpan>[];
+    final pattern = RegExp(r'(\*\*[^*]+?\*\*|`[^`]+?`|\*[^*]+?\*|_[^_]+?_)');
+    int lastMatchEnd = 0;
+
+    for (final match in pattern.allMatches(text)) {
+      if (match.start > lastMatchEnd) {
+        spans.add(TextSpan(
+          text: text.substring(lastMatchEnd, match.start),
+          style: defaultStyle,
+        ));
+      }
+
+      final matchText = match.group(0)!;
+      if (matchText.startsWith('**') && matchText.endsWith('**')) {
+        final content = matchText.substring(2, matchText.length - 2);
+        spans.add(TextSpan(
+          text: content,
+          style: defaultStyle.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.primaryText,
+          ),
+        ));
+      } else if (matchText.startsWith('`') && matchText.endsWith('`')) {
+        final content = matchText.substring(1, matchText.length - 1);
+        spans.add(WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.5),
+            margin: const EdgeInsets.symmetric(horizontal: 2.0),
+            decoration: BoxDecoration(
+              color: theme.primary.withAlpha(20),
+              borderRadius: BorderRadius.circular(4.0),
+              border: Border.all(
+                color: theme.primary.withAlpha(60),
+                width: 0.8,
+              ),
+            ),
+            child: Text(
+              content,
+              style: TextStyle(
+                fontFamily: 'monospace',
+                fontSize: (defaultStyle.fontSize ?? 13.0) * 0.9,
+                fontWeight: FontWeight.bold,
+                color: theme.primary,
+              ),
+            ),
+          ),
+        ));
+      } else if ((matchText.startsWith('*') && matchText.endsWith('*')) ||
+          (matchText.startsWith('_') && matchText.endsWith('_'))) {
+        final content = matchText.substring(1, matchText.length - 1);
+        spans.add(TextSpan(
+          text: content,
+          style: defaultStyle.copyWith(
+            fontStyle: FontStyle.italic,
+          ),
+        ));
+      }
+
+      lastMatchEnd = match.end;
+    }
+
+    if (lastMatchEnd < text.length) {
+      spans.add(TextSpan(
+        text: text.substring(lastMatchEnd),
+        style: defaultStyle,
+      ));
+    }
+
+    return RichText(
+      textAlign: textAlign,
+      text: TextSpan(children: spans),
+    );
   }
 
   Widget _buildChecklistTab(FlutterFlowTheme theme) {
