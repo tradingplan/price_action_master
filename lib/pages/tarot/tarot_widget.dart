@@ -187,7 +187,7 @@ class _TarotWidgetState extends State<TarotWidget> with SingleTickerProviderStat
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.pop();
+              context.safePop();
             },
             child: Icon(
               Icons.chevron_left_rounded,

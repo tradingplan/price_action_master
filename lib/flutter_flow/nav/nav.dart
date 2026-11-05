@@ -207,7 +207,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     'moduleData',
                     ParamType.JSON,
                   ),
-                ))
+                )),
+        FFRoute(
+            name: EstrategiasListPage.routeName,
+            path: EstrategiasListPage.routePath,
+            builder: (context, params) => const EstrategiasListPage())
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -221,13 +225,18 @@ extension NavParamExtensions on Map<String, String?> {
 
 extension NavigationExtensions on BuildContext {
   void safePop() {
-    // If there is only one route on the stack, navigate to the initial
-    // page instead of popping.
+    // If there is another route on the stack, pop it
     if (canPop()) {
       pop();
-    } else {
-      go('/');
+      return;
     }
+    // If we are inside NavBarPage and not on the primary tab, switch to 'Inicio'
+    final navPage = NavBarPage.of(this);
+    if (navPage != null) {
+      navPage.changeTab('Inicio');
+    }
+    // Fallback: navigate cleanly to the home route
+    go('/');
   }
 }
 

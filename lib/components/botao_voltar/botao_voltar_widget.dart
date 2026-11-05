@@ -46,7 +46,7 @@ class _BotaoVoltarWidgetState extends State<BotaoVoltarWidget> {
           padding: EdgeInsets.all(8.0),
           child: FFButtonWidget(
             onPressed: () async {
-              context.pop();
+              context.safePop();
             },
             text: 'Voltar',
             options: FFButtonOptions(

@@ -45,7 +45,7 @@ class _BotaoVelasWidgetState extends State<BotaoVelasWidget> {
           padding: EdgeInsets.all(8.0),
           child: FFButtonWidget(
             onPressed: () async {
-              context.pop();
+              context.safePop();
             },
             text: 'Dicionário de Velas',
             options: FFButtonOptions(

@@ -1,9 +1,13 @@
+import '/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/backend/local_data_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/services/pro_access_service.dart';
+import '/components/pro_upgrade_sheet.dart';
+
 import 'ajustes_model.dart';
 export 'ajustes_model.dart';
 
@@ -22,18 +26,36 @@ class _AjustesWidgetState extends State<AjustesWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   int _userXP = 0;
+  String _currentTheme = 'system';
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => AjustesModel());
     _loadStats();
+    _currentTheme = LocalDataManager.getThemeModeString();
   }
 
   @override
   void dispose() {
     _model.dispose();
     super.dispose();
+  }
+
+  void _setTheme(String modeStr) {
+    setState(() {
+      _currentTheme = modeStr;
+    });
+    ThemeMode mode;
+    if (modeStr == 'light') {
+      mode = ThemeMode.light;
+    } else if (modeStr == 'dark') {
+      mode = ThemeMode.dark;
+    } else {
+      mode = ThemeMode.system;
+    }
+    LocalDataManager.setThemeModeString(modeStr);
+    MyApp.of(context).setThemeMode(mode);
   }
 
   void _loadStats() {
@@ -293,6 +315,21 @@ class _AjustesWidgetState extends State<AjustesWidget> {
       appBar: AppBar(
         backgroundColor: theme.secondaryBackground,
         automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Navigator.of(context).canPop()
+                ? Icons.chevron_left_rounded
+                : Icons.menu_rounded,
+            color: theme.primaryText,
+          ),
+          onPressed: () {
+            if (Navigator.of(context).canPop()) {
+              context.safePop();
+            } else {
+              NavBarPage.openDrawer();
+            }
+          },
+        ),
         title: Text(
           'Ajustes',
           style: theme.headlineSmall.override(
@@ -364,6 +401,146 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12.0),
+              // Card Status PRO / Upgrade
+              AnimatedBuilder(
+                animation: ProAccessService(),
+                builder: (context, _) {
+                  final isPro = ProAccessService().isPro;
+                  return InkWell(
+                    onTap: isPro ? null : () => ProUpgradeSheet.show(context),
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(14.0),
+                      decoration: BoxDecoration(
+                        color: isPro
+                            ? const Color(0xFF10B981).withAlpha(20)
+                            : const Color(0xFFF59E0B).withAlpha(20),
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(
+                          color: isPro
+                              ? const Color(0xFF10B981)
+                              : const Color(0xFFF59E0B),
+                          width: 1.2,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                              color: isPro
+                                  ? const Color(0xFF10B981)
+                                  : const Color(0xFFF59E0B),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Icon(
+                              isPro
+                                  ? Icons.verified_rounded
+                                  : Icons.workspace_premium_rounded,
+                              color: Colors.white,
+                              size: 24.0,
+                            ),
+                          ),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  isPro
+                                      ? 'Membro PRO Vitalício'
+                                      : 'Desbloquear Plano PRO Vitalício',
+                                  style: theme.bodyMedium.override(
+                                    fontFamily: theme.bodyMediumFamily,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 2.0),
+                                Text(
+                                  isPro
+                                      ? '20 Setups, SMC Avançado e Sem Anúncios'
+                                      : 'Acesso total aos 20 setups por R\$ 19,90 único',
+                                  style: theme.bodySmall.override(
+                                    fontFamily: theme.bodySmallFamily,
+                                    color: theme.secondaryText,
+                                    fontSize: 11.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            isPro
+                                ? Icons.check_circle_rounded
+                                : Icons.arrow_forward_ios_rounded,
+                            size: 16.0,
+                            color: isPro
+                                ? const Color(0xFF10B981)
+                                : const Color(0xFFF59E0B),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 20.0),
+              // Seção: Aparência & Tema
+              Text(
+                'APARÊNCIA & TEMA',
+                style: theme.bodySmall.override(
+                  fontFamily: theme.bodySmallFamily,
+                  color: theme.secondaryText,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0,
+                  letterSpacing: 1.0,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(
+                  color: theme.secondaryBackground,
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: theme.lineColor),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _buildThemeOption(
+                        context: context,
+                        title: 'Claro',
+                        icon: Icons.light_mode_rounded,
+                        isSelected: _currentTheme == 'light',
+                        onTap: () => _setTheme('light'),
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: _buildThemeOption(
+                        context: context,
+                        title: 'Escuro',
+                        icon: Icons.dark_mode_rounded,
+                        isSelected: _currentTheme == 'dark',
+                        onTap: () => _setTheme('dark'),
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: _buildThemeOption(
+                        context: context,
+                        title: 'Sistema',
+                        icon: Icons.brightness_auto_rounded,
+                        isSelected: _currentTheme == 'system',
+                        onTap: () => _setTheme('system'),
                       ),
                     ),
                   ],
@@ -635,6 +812,49 @@ class _AjustesWidgetState extends State<AjustesWidget> {
           ),
         ),
       ],
+    );
+  }
+  Widget _buildThemeOption({
+    required BuildContext context,
+    required String title,
+    required IconData icon,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    final theme = FlutterFlowTheme.of(context);
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10.0),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        decoration: BoxDecoration(
+          color: isSelected ? theme.primary.withAlpha(25) : theme.primaryBackground,
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(
+            color: isSelected ? theme.primary : theme.lineColor,
+            width: isSelected ? 1.5 : 1.0,
+          ),
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              size: 22.0,
+              color: isSelected ? theme.primary : theme.secondaryText,
+            ),
+            const SizedBox(height: 6.0),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                color: isSelected ? theme.primary : theme.secondaryText,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

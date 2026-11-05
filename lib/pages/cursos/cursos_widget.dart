@@ -1,3 +1,4 @@
+import '/main.dart';
 import 'package:flutter/material.dart';
 import '/backend/repositories/course_repository.dart';
 import '/backend/schema/platform_course_models.dart';
@@ -119,7 +120,11 @@ class _CursosWidgetState extends State<CursosWidget> {
       backgroundColor: theme.primaryBackground,
       appBar: AppBar(
         backgroundColor: theme.secondaryBackground,
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.menu_rounded, color: theme.primaryText, size: 24.0),
+          tooltip: 'Menu',
+          onPressed: () => NavBarPage.openDrawer(),
+        ),
         title: Text(
           'Cursos',
           style: theme.headlineSmall.override(

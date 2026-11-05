@@ -34,3 +34,7 @@ export '/pages/course/module_panel_widget.dart'
 export '/pages/ajustes/ajustes_widget.dart'
     show AjustesWidget;
 
+export '/pages/estrategias/estrategias_list_page.dart'
+    show EstrategiasListPage;
+export '/pages/estrategias/estrategia_detail_page.dart'
+    show EstrategiaDetailPage;

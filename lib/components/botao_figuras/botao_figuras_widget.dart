@@ -45,7 +45,7 @@ class _BotaoFigurasWidgetState extends State<BotaoFigurasWidget> {
           padding: EdgeInsets.all(8.0),
           child: FFButtonWidget(
             onPressed: () async {
-              context.pop();
+              context.safePop();
             },
             text: 'Figuras Gráficas',
             options: FFButtonOptions(

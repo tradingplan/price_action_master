@@ -355,7 +355,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.pop();
+              context.safePop();
             },
             child: Icon(
               Icons.chevron_left_rounded,

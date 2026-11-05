@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/services/ad_service.dart';
+import '/services/pro_access_service.dart';
 
 class AdBannerPlaceholder extends StatefulWidget {
   final double height;
@@ -32,8 +33,8 @@ class _AdBannerPlaceholderState extends State<AdBannerPlaceholder> {
   }
 
   void _loadBannerAd() {
-    // Na Web não carregamos o SDK nativo do AdMob para evitar exceções
-    if (kIsWeb) return;
+    // Se o usuário já é PRO ou estamos na Web, não carregamos o SDK nativo
+    if (ProAccessService().isPro || kIsWeb) return;
 
     try {
       _bannerAd = BannerAd(
@@ -78,6 +79,9 @@ class _AdBannerPlaceholderState extends State<AdBannerPlaceholder> {
 
   @override
   Widget build(BuildContext context) {
+    if (ProAccessService().isPro) {
+      return const SizedBox.shrink();
+    }
     // 1. Se o anúncio real carregou com sucesso no Android/iOS, exibe o AdWidget
     if (_isLoaded && _bannerAd != null) {
       return Container(

@@ -534,6 +534,11 @@ class _ExerciseRendererState extends State<ExerciseRenderer> {
                 ),
               );
             }),
+            const SizedBox(height: 16.0),
+            const AdBannerPlaceholder(
+              height: 60.0,
+              margin: EdgeInsets.only(top: 12.0, bottom: 8.0),
+            ),
           ],
         ),
       );
@@ -677,6 +682,11 @@ class _QuizRendererState extends State<QuizRenderer> {
                 ),
               ),
             ],
+            const SizedBox(height: 16.0),
+            const AdBannerPlaceholder(
+              height: 60.0,
+              margin: EdgeInsets.only(top: 12.0, bottom: 8.0),
+            ),
           ],
         ),
       );

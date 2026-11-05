@@ -45,7 +45,7 @@ class _BotaoATWidgetState extends State<BotaoATWidget> {
           padding: EdgeInsets.all(8.0),
           child: FFButtonWidget(
             onPressed: () async {
-              context.pop();
+              context.safePop();
             },
             text: 'Análise Técnica',
             options: FFButtonOptions(

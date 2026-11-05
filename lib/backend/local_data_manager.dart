@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:crypto/crypto.dart';
@@ -381,6 +382,29 @@ class LocalDataManager {
       if (await tarotFile.exists()) await tarotFile.delete();
     } catch (e) {
       print('Error clearing local files: $e');
+    }
+  }
+  // --- TEMA DO APLICATIVO ---
+  static const String _keyThemeMode = 'app_theme_mode';
+
+  static String getThemeModeString() {
+    return _prefs?.getString(_keyThemeMode) ?? 'system';
+  }
+
+  static Future<void> setThemeModeString(String mode) async {
+    await _prefs?.setString(_keyThemeMode, mode);
+  }
+
+  static ThemeMode getThemeMode() {
+    final str = getThemeModeString();
+    switch (str) {
+      case 'light':
+        return ThemeMode.light;
+      case 'dark':
+        return ThemeMode.dark;
+      case 'system':
+      default:
+        return ThemeMode.system;
     }
   }
 }

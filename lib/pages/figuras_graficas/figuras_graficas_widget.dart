@@ -105,7 +105,7 @@ class _FigurasGraficasWidgetState extends State<FigurasGraficasWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pop();
+                                            context.safePop();
                                           },
                                           child: Icon(
                                             Icons.arrow_back,

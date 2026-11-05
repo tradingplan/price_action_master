@@ -8,6 +8,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import '/main.dart';
+import '/services/pro_access_service.dart';
+import '/components/pro_upgrade_sheet.dart';
+
 import 'inicio_model.dart';
 import '../../backend/repositories/course_repository.dart';
 import '../../backend/schema/platform_course_models.dart';
@@ -173,7 +176,13 @@ class _InicioWidgetState extends State<InicioWidget>
           backgroundColor: theme.primaryBackground,
           appBar: AppBar(
             backgroundColor: theme.secondaryBackground,
-            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: Icon(Icons.menu_rounded, color: theme.primaryText, size: 24.0),
+              tooltip: 'Menu de Ferramentas',
+              onPressed: () {
+                NavBarPage.openDrawer();
+              },
+            ),
             title: Row(
               children: [
                 Container(
@@ -215,6 +224,23 @@ class _InicioWidgetState extends State<InicioWidget>
               ],
             ),
             actions: [
+              AnimatedBuilder(
+                animation: ProAccessService(),
+                builder: (context, _) {
+                  if (ProAccessService().isPro) {
+                    return const SizedBox.shrink();
+                  }
+                  return IconButton(
+                    icon: const Icon(
+                      Icons.workspace_premium_rounded,
+                      color: Color(0xFFF59E0B),
+                      size: 24.0,
+                    ),
+                    tooltip: 'Seja PRO Vitalício',
+                    onPressed: () => ProUpgradeSheet.show(context),
+                  );
+                },
+              ),
               IconButton(
                 icon: Icon(
                   Icons.school_outlined,

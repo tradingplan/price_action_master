@@ -8,6 +8,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'backend/local_data_manager.dart';
+import 'services/pro_access_service.dart';
+import 'services/in_app_purchase_service.dart';
+import 'components/app_drawer_widget.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -39,6 +43,8 @@ void main() async {
 
   await initFirebase();
   await LocalDataManager.init();
+  await ProAccessService().initialize();
+  await InAppPurchaseService().initialize();
 
   runApp(MyApp());
 }
@@ -86,6 +92,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    _themeMode = LocalDataManager.getThemeMode();
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
@@ -124,6 +131,10 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         useMaterial3: false,
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        useMaterial3: false,
+      ),
       themeMode: _themeMode,
       routerConfig: _router,
     );
@@ -141,6 +152,12 @@ class NavBarPage extends StatefulWidget {
   final String? initialPage;
   final Widget? page;
   final bool disableResizeToAvoidBottomInset;
+
+  static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  static void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
+  }
 
   static NavBarPageState? of(BuildContext context) =>
       context.findAncestorStateOfType<NavBarPageState>();
@@ -183,19 +200,23 @@ class NavBarPageState extends State<NavBarPage> {
 
   @override
   Widget build(BuildContext context) {
+    const mainTabs = ['Inicio', 'Cursos', 'Playbook', 'VelasJaponesas'];
     final tabs = {
       'Inicio': InicioWidget(),
       'Cursos': const CursosWidget(),
-      'Calculadoras': CalculadorasWidget(),
+      'Playbook': const EstrategiasListPage(),
       'VelasJaponesas': VelasJaponesasWidget(),
+      'Calculadoras': CalculadorasWidget(),
       'Quiz': QuizWidget(),
       'Ajustes': const AjustesWidget(),
     };
-    final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
+    final currentIndex = mainTabs.indexOf(_currentPageName);
 
     return Scaffold(
+      key: NavBarPage.scaffoldKey,
+      drawer: const AppDrawerWidget(),
       resizeToAvoidBottomInset: !widget.disableResizeToAvoidBottomInset,
-      body: _currentPage ?? tabs[_currentPageName],
+      body: _currentPage ?? tabs[_currentPageName] ?? tabs['Inicio'],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
@@ -213,62 +234,48 @@ class NavBarPageState extends State<NavBarPage> {
           right: false,
           bottom: true,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: GNav(
               selectedIndex: currentIndex >= 0 ? currentIndex : 0,
               onTabChange: (i) => safeSetState(() {
                 _currentPage = null;
-                _currentPageName = tabs.keys.toList()[i];
+                _currentPageName = mainTabs[i];
               }),
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              color: const Color(0x8A000000),
-              activeColor: FlutterFlowTheme.of(context).secondaryBackground,
-              tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
-              tabBorderRadius: 8.0,
-              tabMargin: const EdgeInsets.symmetric(horizontal: 1.5, vertical: 2.0),
-              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 7.0),
-              gap: 3.0,
+              color: FlutterFlowTheme.of(context).secondaryText,
+              activeColor: FlutterFlowTheme.of(context).primary,
+              tabBackgroundColor: FlutterFlowTheme.of(context).primary.withAlpha(35),
+              tabBorderRadius: 10.0,
+              tabMargin: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              gap: 4.0,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              duration: const Duration(milliseconds: 350),
+              duration: const Duration(milliseconds: 300),
               haptic: false,
               tabs: [
                 GButton(
                   icon: currentIndex == 0 ? Icons.home_rounded : Icons.home_outlined,
                   text: 'Home',
-                  iconSize: 20.0,
+                  iconSize: 22.0,
                 ),
                 GButton(
                   icon: currentIndex == 1 ? Icons.school_rounded : Icons.school_outlined,
                   text: 'Cursos',
-                  iconSize: 20.0,
+                  iconSize: 22.0,
                 ),
                 GButton(
                   icon: currentIndex == 2
-                      ? Icons.calculate_rounded
-                      : Icons.calculate_outlined,
-                  text: 'Calculadoras',
-                  iconSize: 20.0,
+                      ? Icons.auto_graph_rounded
+                      : Icons.auto_graph_outlined,
+                  text: 'Playbook',
+                  iconSize: 22.0,
                 ),
                 GButton(
                   icon: currentIndex == 3
                       ? Icons.candlestick_chart_rounded
                       : Icons.candlestick_chart_outlined,
-                  text: 'Candlesticks',
-                  iconSize: 20.0,
-                ),
-                GButton(
-                  icon: currentIndex == 4
-                      ? Icons.quiz_rounded
-                      : Icons.quiz_outlined,
-                  text: 'Quiz',
-                  iconSize: 20.0,
-                ),
-                GButton(
-                  icon: currentIndex == 5
-                      ? Icons.settings_rounded
-                      : Icons.settings_outlined,
-                  text: 'Ajustes',
-                  iconSize: 20.0,
+                  text: 'Candles',
+                  iconSize: 22.0,
                 ),
               ],
             ),

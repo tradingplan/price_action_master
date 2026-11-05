@@ -1,3 +1,4 @@
+import '/main.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -103,7 +104,11 @@ class _VelasJaponesasWidgetState extends State<VelasJaponesasWidget> {
       backgroundColor: theme.primaryBackground,
       appBar: AppBar(
         backgroundColor: theme.secondaryBackground,
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.menu_rounded, color: theme.primaryText, size: 24.0),
+          tooltip: 'Menu',
+          onPressed: () => NavBarPage.openDrawer(),
+        ),
         title: Text(
           'Candlesticks',
           style: theme.headlineSmall.override(

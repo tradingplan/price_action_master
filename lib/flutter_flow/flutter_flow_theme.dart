@@ -14,7 +14,9 @@ abstract class FlutterFlowTheme {
 
   static FlutterFlowTheme of(BuildContext context) {
     deviceSize = getDeviceSize(context);
-    return LightModeTheme();
+    return Theme.of(context).brightness == Brightness.dark
+        ? DarkModeTheme()
+        : LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -198,6 +200,51 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color caribbeanGreen = const Color(0xFF06D6A0);
   late Color blueNCS = const Color(0xFF118AB2);
   late Color midnightGreenEagleGreen = const Color(0xFF073B4C);
+}
+
+class DarkModeTheme extends FlutterFlowTheme {
+  @Deprecated('Use primary instead')
+  Color get primaryColor => primary;
+  @Deprecated('Use secondary instead')
+  Color get secondaryColor => secondary;
+  @Deprecated('Use tertiary instead')
+  Color get tertiaryColor => tertiary;
+
+  late Color primary = const Color(0xFF10B981);
+  late Color secondary = const Color(0xFF34D399);
+  late Color tertiary = const Color(0xFFF87171);
+  late Color alternate = const Color(0xFFFF5963);
+  late Color primaryText = const Color(0xFFF8FAFC);
+  late Color secondaryText = const Color(0xFF94A3B8);
+  late Color primaryBackground = const Color(0xFF0F1218);
+  late Color secondaryBackground = const Color(0xFF171C26);
+  late Color accent1 = const Color(0xFF1E2638);
+  late Color accent2 = const Color(0xFF334155);
+  late Color accent3 = const Color(0xFF475569);
+  late Color accent4 = const Color(0xFF64748B);
+  late Color success = const Color(0xFF10B981);
+  late Color warning = const Color(0xFFF59E0B);
+  late Color error = const Color(0xFFEF4444);
+  late Color info = const Color(0xFF3B82F6);
+
+  late Color primaryBtnText = const Color(0xFFFFFFFF);
+  late Color lineColor = const Color(0xFF262F3E);
+  late Color grayIcon = const Color(0xFF64748B);
+  late Color gray200 = const Color(0xFF1E293B);
+  late Color gray600 = const Color(0xFF94A3B8);
+  late Color black600 = const Color(0xFFF1F5F9);
+  late Color tertiary400 = const Color(0xFF2DD4BF);
+  late Color textColor = const Color(0xFFF1F5F9);
+  late Color redSalsa = const Color(0xFFFF595E);
+  late Color sunglow = const Color(0xFFFFCA3A);
+  late Color yellowGreen = const Color(0xFF8AC926);
+  late Color greenBlueCrayola = const Color(0xFF1982C4);
+  late Color royalPurple = const Color(0xFF818CF8);
+  late Color paradisePink = const Color(0xFFFB7185);
+  late Color orangeYellowCrayola = const Color(0xFFFFD166);
+  late Color caribbeanGreen = const Color(0xFF34D399);
+  late Color blueNCS = const Color(0xFF38BDF8);
+  late Color midnightGreenEagleGreen = const Color(0xFF0F172A);
 }
 
 abstract class Typography {

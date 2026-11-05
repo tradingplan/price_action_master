@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/local_data_manager.dart';
+import '/components/ad_banner_placeholder.dart';
 import 'quiz_model.dart';
 export 'quiz_model.dart';
 
@@ -206,7 +207,7 @@ class _QuizWidgetState extends State<QuizWidget> {
                   _screenState = 'intro';
                 });
               } else {
-                context.pop();
+                context.safePop();
               }
             },
             child: Icon(
@@ -536,6 +537,16 @@ class _QuizWidgetState extends State<QuizWidget> {
             const SizedBox(height: 8.0),
             _buildFeedbackPanel(correctIndex, explanation),
           ],
+          const SizedBox(height: 16.0),
+          const AdBannerPlaceholder(
+            height: 60.0,
+            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+          ),
+          const SizedBox(height: 16.0),
+          const AdBannerPlaceholder(
+            height: 60.0,
+            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+          ),
         ],
       ),
     );
@@ -855,6 +866,16 @@ class _QuizWidgetState extends State<QuizWidget> {
                     ),
               ),
             ),
+          ),
+          const SizedBox(height: 16.0),
+          const AdBannerPlaceholder(
+            height: 60.0,
+            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+          ),
+          const SizedBox(height: 16.0),
+          const AdBannerPlaceholder(
+            height: 60.0,
+            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
           ),
         ],
       ),

@@ -60,7 +60,7 @@ class _DetalheSMCWidgetState extends State<DetalheSMCWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           leading: InkWell(
-            onTap: () => context.pop(),
+            onTap: () => context.safePop(),
             child: Icon(
               Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primaryText,
