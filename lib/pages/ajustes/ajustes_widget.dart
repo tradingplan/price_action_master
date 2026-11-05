@@ -6,6 +6,7 @@ import '/backend/local_data_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/services/pro_access_service.dart';
+import '/services/in_app_purchase_service.dart';
 import '/components/pro_upgrade_sheet.dart';
 
 import 'ajustes_model.dart';
@@ -466,7 +467,7 @@ class _AjustesWidgetState extends State<AjustesWidget> {
                                 Text(
                                   isPro
                                       ? '20 Setups, SMC Avançado e Sem Anúncios'
-                                      : 'Acesso total aos 20 setups por R\$ 19,90 único',
+                                      : 'Acesso total aos 20 setups por ' + InAppPurchaseService().formattedPrice + ' único',
                                   style: theme.bodySmall.override(
                                     fontFamily: theme.bodySmallFamily,
                                     color: theme.secondaryText,

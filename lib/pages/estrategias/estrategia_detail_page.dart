@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/strategy_model.dart';
 import '/services/pro_access_service.dart';
+import '/services/in_app_purchase_service.dart';
 import '/components/pro_upgrade_sheet.dart';
 
 class EstrategiaDetailPage extends StatefulWidget {
@@ -196,9 +197,9 @@ class _EstrategiaDetailPageState extends State<EstrategiaDetailPage>
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 icon: const Icon(Icons.workspace_premium_rounded),
-                label: const Text(
-                  'Desbloquear por R\$ 19,90 (Vitalício)',
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+                label: Text(
+                  'Desbloquear por ' + InAppPurchaseService().formattedPrice + ' (Vitalício)',
+                  style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
                 ),
               ),
             ),

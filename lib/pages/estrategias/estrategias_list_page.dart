@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/backend/schema/strategy_model.dart';
 import '/backend/repositories/strategy_repository.dart';
 import '/services/pro_access_service.dart';
+import '/services/in_app_purchase_service.dart';
 import '/components/pro_upgrade_sheet.dart';
 import '/main.dart';
 import 'estrategia_detail_page.dart';
@@ -304,13 +305,13 @@ class _EstrategiasListPageState extends State<EstrategiasListPage> {
                               ],
                             ),
                             child: Row(
-                              children: const [
-                                Icon(Icons.lock_open_rounded,
+                              children: [
+                                const Icon(Icons.lock_open_rounded,
                                     color: Color(0xFFB45309), size: 20),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Expanded(
                                   child: Text(
-                                    'Desbloqueie todos os 20 setups operacionais por R\$ 19,90 vitalício',
+                                    'Desbloqueie todos os 20 setups operacionais por ' + InAppPurchaseService().formattedPrice + ' vitalício',
                                     style: TextStyle(
                                       color: Color(0xFF92400E),
                                       fontSize: 12.5,
