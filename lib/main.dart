@@ -44,7 +44,14 @@ void main() async {
   await initFirebase();
   await LocalDataManager.init();
   await ProAccessService().initialize();
-  await InAppPurchaseService().initialize();
+
+  if (!kIsWeb) {
+    try {
+      await InAppPurchaseService().initialize();
+    } catch (e) {
+      debugPrint('Erro ao inicializar IAP: ');
+    }
+  }
 
   runApp(MyApp());
 }

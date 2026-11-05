@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '../../components/trading_plan_promo_banner.dart';
 import '../../components/ad_banner_placeholder.dart';
+import '../../components/pro_upgrade_sheet.dart';
+import '../../services/pro_access_service.dart';
 import 'calculadoras_model.dart';
 export 'calculadoras_model.dart';
 
@@ -23,6 +25,7 @@ class ContractModel {
   final String currency; // 'BRL' or 'USD'
   final MarketCategory market;
   final Map<String, String> specs;
+  final bool isProOnly;
 
   const ContractModel({
     required this.title,
@@ -34,6 +37,7 @@ class ContractModel {
     required this.currency,
     required this.market,
     required this.specs,
+    this.isProOnly = false,
   });
 }
 
@@ -77,6 +81,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 2.0,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: true,
       specs: {
         'Ativo': 'Contrato Futuro de Dólar Comercial (DOL)',
         'Lote Mínimo': '5 contratos (US\$ 250.000)',
@@ -95,6 +100,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 2.0,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: false,
       specs: {
         'Ativo': 'Mini Contrato Futuro de Dólar (WDO)',
         'Lote Mínimo': '1 contrato (US\$ 10.000)',
@@ -113,6 +119,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 0.2,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: true,
       specs: {
         'Ativo': 'Contrato Futuro de Ibovespa (IND)',
         'Lote Mínimo': '5 contratos (R\$ 1,00 por ponto x 5 = R\$ 5)',
@@ -131,6 +138,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 0.2,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: false,
       specs: {
         'Ativo': 'Mini Contrato Futuro de Ibovespa (WIN)',
         'Lote Mínimo': '1 contrato (R\$ 0,20 por ponto)',
@@ -149,6 +157,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 0.05,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: true,
       specs: {
         'Ativo': 'Futuro de Bitcoin B3 (BIT)',
         'Lote Mínimo': '1 contrato (0.1 BTC)',
@@ -166,6 +175,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 100.0,
       currency: 'BRL',
       market: MarketCategory.b3,
+      isProOnly: true,
       specs: {
         'Ativo': 'Futuro de Milho com Liquidação Financeira',
         'Lote Mínimo': '1 contrato (450 sacas de 60kg)',
@@ -186,6 +196,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 4.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: false,
       specs: {
         'Ativo': 'E-mini NASDAQ-100 Index Futures',
         'Lote Mínimo': '1 contrato (US\$ 20 x índice)',
@@ -205,6 +216,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 4.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: false,
       specs: {
         'Ativo': 'Micro E-mini NASDAQ-100 Index Futures',
         'Lote Mínimo': '1 contrato (US\$ 2 x índice - 1/10 do NQ)',
@@ -224,6 +236,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 4.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'E-mini S&P 500 Index Futures',
         'Lote Mínimo': '1 contrato (US\$ 50 x índice)',
@@ -243,6 +256,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 4.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'Micro E-mini S&P 500 Index Futures',
         'Lote Mínimo': '1 contrato (US\$ 5 x índice - 1/10 do ES)',
@@ -262,6 +276,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 10.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'Gold Futures (100 Onças Troy)',
         'Lote Mínimo': '1 contrato (100 oz)',
@@ -280,6 +295,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 10.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'Micro Gold Futures (10 Onças Troy - 1/10 do GC)',
         'Lote Mínimo': '1 contrato (10 oz)',
@@ -298,6 +314,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 100.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'Crude Oil Light Sweet Futures (1.000 Barris)',
         'Lote Mínimo': '1 contrato (1.000 barris de petróleo)',
@@ -316,6 +333,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       ticksPerPoint: 100.0,
       currency: 'USD',
       market: MarketCategory.mercadoAmericano,
+      isProOnly: true,
       specs: {
         'Ativo': 'Micro WTI Crude Oil Futures (100 Barris - 1/10 do CL)',
         'Lote Mínimo': '1 contrato (100 barris de petróleo)',
@@ -579,13 +597,19 @@ class _CalculatorCardState extends State<CalculatorCard> {
     super.initState();
     _contractsController = TextEditingController(text: '1');
     _pointsController = TextEditingController(text: '1');
+    ProAccessService().addListener(_onProUpdated);
   }
 
   @override
   void dispose() {
+    ProAccessService().removeListener(_onProUpdated);
     _contractsController.dispose();
     _pointsController.dispose();
     super.dispose();
+  }
+
+  void _onProUpdated() {
+    if (mounted) setState(() {});
   }
 
   String _formatCurrency(double value) {
@@ -670,6 +694,9 @@ class _CalculatorCardState extends State<CalculatorCard> {
 
   @override
   Widget build(BuildContext context) {
+    final isPro = ProAccessService().isPro;
+    final isLocked = widget.contract.isProOnly && !isPro;
+
     final totalTicks = _points * widget.contract.ticksPerPoint;
     final totalValue = _contracts * _points * widget.contract.valuePerPoint;
 
@@ -691,7 +718,9 @@ class _CalculatorCardState extends State<CalculatorCard> {
         ],
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
-          color: FlutterFlowTheme.of(context).lineColor,
+          color: isLocked
+              ? const Color(0xFFF59E0B).withAlpha(80)
+              : FlutterFlowTheme.of(context).lineColor,
           width: 1.0,
         ),
       ),
@@ -741,6 +770,34 @@ class _CalculatorCardState extends State<CalculatorCard> {
                               ),
                             ),
                           ),
+                          if (widget.contract.isProOnly) ...[
+                            const SizedBox(width: 6.0),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.5),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+                                ),
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Icon(Icons.bolt_rounded, size: 10, color: Colors.black),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    'PRO',
+                                    style: TextStyle(
+                                      fontSize: 9.5,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.black,
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ],
                       ),
                       const SizedBox(height: 2.0),
@@ -787,188 +844,250 @@ class _CalculatorCardState extends State<CalculatorCard> {
             ),
             const Divider(height: 18.0, thickness: 1.0),
 
-            // Inputs Row
-            Row(
+            // Inputs e Resultados (com bloqueio para versão Free caso seja Pro)
+            Stack(
+              alignment: Alignment.center,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Contratos',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                AbsorbPointer(
+                  absorbing: isLocked,
+                  child: Opacity(
+                    opacity: isLocked ? 0.28 : 1.0,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Inputs Row
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Contratos',
+                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                        ),
+                                  ),
+                                  const SizedBox(height: 6.0),
+                                  TextFormField(
+                                    controller: _contractsController,
+                                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                    onChanged: (_) => setState(() {}),
+                                    decoration: InputDecoration(
+                                      hintText: '1',
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context).lineColor,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                                    ),
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                      ),
-                      const SizedBox(height: 6.0),
-                      TextFormField(
-                        controller: _contractsController,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (_) => setState(() {}),
-                        decoration: InputDecoration(
-                          hintText: '1',
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).lineColor,
-                              width: 1.0,
+                            const SizedBox(width: 16.0),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Pontos',
+                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                        ),
+                                  ),
+                                  const SizedBox(height: 6.0),
+                                  TextFormField(
+                                    controller: _pointsController,
+                                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                    onChanged: (_) => setState(() {}),
+                                    decoration: InputDecoration(
+                                      hintText: '1',
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context).lineColor,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                                    ),
+                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                          ],
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 16.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Pontos',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                            ),
-                      ),
-                      const SizedBox(height: 6.0),
-                      TextFormField(
-                        controller: _pointsController,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (_) => setState(() {}),
-                        decoration: InputDecoration(
-                          hintText: '1',
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).lineColor,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 14.0),
+                        const SizedBox(height: 14.0),
 
-            // Outputs Row
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).error.withAlpha(20),
-                      borderRadius: BorderRadius.circular(12.0),
-                      border: Border.all(
-                        color: FlutterFlowTheme.of(context).error.withAlpha(51),
-                        width: 1.0,
-                      ),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'TOTAL TICKS',
-                          style: FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).error,
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                        // Outputs Row
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).error.withAlpha(20),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).error.withAlpha(51),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'TOTAL TICKS',
+                                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                            color: FlutterFlowTheme.of(context).error,
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                          ),
+                                    ),
+                                    const SizedBox(height: 3.0),
+                                    Text(
+                                      ticksFormatted,
+                                      style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                            fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                            color: FlutterFlowTheme.of(context).error,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                            useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                        ),
-                        const SizedBox(height: 3.0),
-                        Text(
-                          ticksFormatted,
-                          style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                color: FlutterFlowTheme.of(context).error,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
+                            ),
+                            const SizedBox(width: 14.0),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).success.withAlpha(20),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).success.withAlpha(51),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'RESULTADO',
+                                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                            color: FlutterFlowTheme.of(context).success,
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                          ),
+                                    ),
+                                    const SizedBox(height: 3.0),
+                                    Text(
+                                      valueFormatted,
+                                      style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                            fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                            color: FlutterFlowTheme.of(context).success,
+                                            fontSize: 17.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(width: 14.0),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).success.withAlpha(20),
-                      borderRadius: BorderRadius.circular(12.0),
-                      border: Border.all(
-                        color: FlutterFlowTheme.of(context).success.withAlpha(51),
-                        width: 1.0,
+                if (isLocked)
+                  Positioned.fill(
+                    child: Center(
+                      child: InkWell(
+                        onTap: () => ProUpgradeSheet.show(
+                          context,
+                          featureHighlighted: 'Calculadora de ${widget.contract.title}',
+                        ),
+                        borderRadius: BorderRadius.circular(24.0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                            borderRadius: BorderRadius.circular(24.0),
+                            border: Border.all(
+                              color: const Color(0xFFF59E0B),
+                              width: 1.4,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFFF59E0B).withAlpha(45),
+                                blurRadius: 10.0,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Icon(Icons.lock_rounded, color: Color(0xFFF59E0B), size: 16.0),
+                              SizedBox(width: 8.0),
+                              Text(
+                                'Desbloquear com PAM PRO',
+                                style: TextStyle(
+                                  color: Color(0xFFF59E0B),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'RESULTADO',
-                          style: FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).success,
-                                fontSize: 10.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
-                              ),
-                        ),
-                        const SizedBox(height: 3.0),
-                        Text(
-                          valueFormatted,
-                          style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                color: FlutterFlowTheme.of(context).success,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
-                              ),
-                        ),
-                      ],
-                    ),
                   ),
-                ),
               ],
             ),
             const SizedBox(height: 10.0),

@@ -12,7 +12,8 @@ class InAppPurchaseService extends ChangeNotifier {
   static const String proLifetimeIdHyphen = 'pam-pro-lifetime';
   static const Set<String> _kProductIds = {proLifetimeId, proLifetimeIdHyphen};
 
-  final InAppPurchase _iap = InAppPurchase.instance;
+  InAppPurchase? _iapInstance;
+  InAppPurchase get _iap => _iapInstance ??= InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _subscription;
 
   bool _isAvailable = false;
@@ -30,21 +31,31 @@ class InAppPurchaseService extends ChangeNotifier {
   String get formattedPrice => _proProduct?.price ?? 'R\$ 19,90';
 
   Future<void> initialize() async {
-    // Escuta a stream de compras da loja (obrigatório desde o arranque do app)
-    _subscription = _iap.purchaseStream.listen(
-      _handlePurchaseUpdates,
-      onDone: () {
-        _subscription?.cancel();
-      },
-      onError: (error) {
-        debugPrint('IAP: Erro na stream de compras: $error');
-      },
-    );
+    if (kIsWeb) {
+      _isAvailable = false;
+      return;
+    }
 
-    await queryProductDetails();
+    try {
+      // Escuta a stream de compras da loja (obrigatório desde o arranque do app)
+      _subscription = _iap.purchaseStream.listen(
+        _handlePurchaseUpdates,
+        onDone: () {
+          _subscription?.cancel();
+        },
+        onError: (error) {
+          debugPrint('IAP: Erro na stream de compras: $error');
+        },
+      );
+
+      await queryProductDetails();
+    } catch (e) {
+      debugPrint('IAP: Falha ao inicializar compras nativas: $e');
+    }
   }
 
   Future<void> queryProductDetails() async {
+    if (kIsWeb) return;
     _isLoading = true;
     notifyListeners();
 

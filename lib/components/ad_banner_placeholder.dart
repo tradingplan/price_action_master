@@ -96,9 +96,18 @@ class _AdBannerPlaceholderState extends State<AdBannerPlaceholder> {
       );
     }
 
-    // 2. Se falhou ao carregar em produção (ex: usuário 100% offline), não quebra a interface
-    if (_hasFailed && !kDebugMode && !kIsWeb) {
+    // 2. Se falhou ao carregar no mobile (ex: usuário 100% offline), não ocupa espaço
+    if (_hasFailed && !kIsWeb) {
       return const SizedBox.shrink();
+    }
+
+    // 3. No mobile, enquanto carrega pela rede, mantém apenas a reserva de espaço limpa
+    // (sem card, sem bordas e sem texto de "carregando") para evitar o flash visual
+    if (!kIsWeb && !_isLoaded) {
+      return SizedBox(
+        width: double.infinity,
+        height: widget.height,
+      );
     }
 
     // 3. Em Web, em testes locais ou enquanto carrega: exibe o placeholder estilizado

@@ -291,7 +291,7 @@ class _InicioWidgetState extends State<InicioWidget>
                           ClipRRect(
                             borderRadius: BorderRadius.circular(12.0),
                             child: Image.asset(
-                              'assets/images/bull_chart_hero.png',
+                              'assets/images/bull_chart_hero-dual-theme.png',
                               width: double.infinity,
                               height: 190.0,
                               fit: BoxFit.contain,
